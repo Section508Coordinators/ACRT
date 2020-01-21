@@ -2,7 +2,6 @@
 # Project Title
 “Accessibility Conformance Report Tool (ACRT)” 
 
-##project usage
 This application will record test results from trusted testers.All input data will be stored as JSON &/or html file in local machine. JSON file can be further manipulated for 
 analytics and reporting purposes. 
 
