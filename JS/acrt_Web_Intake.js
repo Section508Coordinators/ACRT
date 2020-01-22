@@ -1417,7 +1417,8 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[b].DisabilityImpact;  //Disability impact for newly added test condition                 
                 } else{
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[a].DisabilityImpact;			      
-			  console.log("successCriteriaFxn0");}
+			  
+			  }
               }
 			   
               if ($scope.totTstRsltJson[a].TestResult == "Pass") {
@@ -1430,14 +1431,14 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[b].DisabilityImpact;                  
                 } else
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[a].DisabilityImpact;
-                  console.log("successCriteriaFxn1");
+                  
 
                 } 				
 				else {
                   $scope.selected_name[a] = "Supports";
 				  $scope.passSelected = true;
                   $scope.dsbl_Impctd_grp[a] = "";                  
-                  console.log("successCriteriaFxn4");
+                  
                 }
               }
 			  
@@ -1451,20 +1452,20 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[b].DisabilityImpact;                  
                 } else
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[a].DisabilityImpact;
-                  console.log("successCriteriaFxn5");
+                  
 
                 } else if ($scope.passSelected == true  ) {					
                   $scope.selected_name[a] = "Supports";
                   $scope.dsbl_Impctd_grp[a] = "";
                   $scope.passSelected = true;
-                  console.log("successCriteriaFxn6");
+                  
                 } 
 				
 				else {					
 				  $scope.dnaSelected = true;
                   $scope.selected_name[a] = "Not Applicable";
                   $scope.dsbl_Impctd_grp[a] = "";
-                  console.log("successCriteriaFxn7");
+                  
                 }
 				
               }
@@ -1479,18 +1480,18 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[b].DisabilityImpact;                  
                 } else
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[a].DisabilityImpact;
-                  console.log("successCriteriaFxn8");
+                 
 
                 } else if ($scope.passSelected == true) {
                    $scope.selected_name[a] = "Supports";
                   $scope.dsbl_Impctd_grp[a] = "";
-                  console.log("successCriteriaFxn9");
+                 
                 } 
 				
 				else if($scope.dnaSelected == true){
                   $scope.selected_name[a] = "Does Not Apply";
                   $scope.dsbl_Impctd_grp[a] = "";
-			      console.log("successCriteriaFxn10");
+			      
 			  }
 				
 				else {
@@ -1502,7 +1503,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[b].DisabilityImpact;                  
                 } else
                   $scope.dsbl_Impctd_grp[a] = $scope.criteriaTestsJson.Criteria[a].DisabilityImpact;
-                  console.log("successCriteriaFxn11");
+                  
                 }
 			  }
 			  
@@ -1511,7 +1512,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
           if (a > 0)			  
             if ($scope.totTstRsltJson[a].CrtID == $scope.totTstRsltJson[a - 1].CrtID) {
               if ($scope.selected_name[a] == $scope.selected_name[a - 1]) {               
-                console.log("successCriteriaFxnSameCrdID");
+               
                 continue;
               }
             }
@@ -1619,22 +1620,22 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 			    $scope.suuprtsSelectedFinal =  false;
 			    $scope.neSelectedFinal =  false;
 			    $scope.naSelectedFinal =  false;
-				console.log("successCriteriaFxnDiffCrtID");
+				
 				}
 				
 		   if($scope.criteriaResultJSON[q].CrtID == $scope.criteriaResultJSON[p].CrtID){  
            if( $scope.criteriaResultJSON[q-1].ConformanceLvl == "Does Not Support"){            
 				$scope.conformanceLevel = "Does Not Support";
-				 console.log("successCriteriaFxn13");
+				 
 			}
 			else if($scope.criteriaResultJSON[q].ConformanceLvl == "Supports"){
 				
 				 if( $scope.criteriaResultJSON[q-1].ConformanceLvl == "Does Not Support"){            				
 				  $scope.conformanceLevel = "Does Not Support";
-				   console.log("successCriteriaFxn14");
+				   
 				}else {
 				$scope.conformanceLevel = "Supports";
-				 console.log("successCriteriaFxn15");
+				 
 				}
 			}
 			
@@ -1642,29 +1643,29 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 				    
 					if( $scope.criteriaResultJSON[q-1].ConformanceLvl == "Does Not Support"){            				
 				    $scope.conformanceLevel = "Does Not Support";
-					 console.log("successCriteriaFxn16");
+					 
 				   }else if($scope.criteriaResultJSON[q-1].ConformanceLvl == "Supports"){
 				   $scope.conformanceLevel = "Supports";
-				    console.log("successCriteriaFxn17");
+				    
 				   }else {
 				   $scope.conformanceLevel = "Not Applicable";
-				    console.log("successCriteriaFxn18");
+				    
 				   }
 			}
 			
 			else if($scope.criteriaResultJSON[q].ConformanceLvl == "Not Evaluated"){
 					if( $scope.criteriaResultJSON[q-1].ConformanceLvl == "Does Not Support"){            				
 					$scope.conformanceLevel = "Does Not Support";
-					 console.log("successCriteriaFxn19");
+					 
 					}else if($scope.criteriaResultJSON[q-1].ConformanceLvl == "Supports"){
 					$scope.conformanceLevel = "Supports";
-					 console.log("successCriteriaFxn20");
+					 
 					}else if($scope.criteriaResultJSON[q-1].ConformanceLvl == "Not Applicable"){
 					$scope.conformanceLevel = "Not Applicable";
-					 console.log("successCriteriaFxn21");
+					 
 					}else {
 					$scope.conformanceLevel = "Not Evaluated";	
-					 console.log("successCriteriaFxn22");
+					 
 					}					
 			}  	   
 		  //continue;
@@ -1673,19 +1674,19 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 
 	      	if($scope.criteriaResultJSON[q].ConformanceLvl == "Not Applicable"){
 			$scope.conformanceLevel = "Not Applicable";	
-			console.log("successCriteriaFxn26");	
+			
 			}		
 		    else if($scope.criteriaResultJSON[q].ConformanceLvl == "Does Not Support" && $scope.criteriaResultJSON[p].ConformanceLvl == "Supports"){
 			$scope.conformanceLevel = "Does Not Support";
-			console.log("successCriteriaFxn23");
+			
 			}
 			else if($scope.criteriaResultJSON[q].ConformanceLvl == "Does Not Support" && $scope.criteriaResultJSON[p].ConformanceLvl == "Not Applicable"){
 			$scope.conformanceLevel = "Does Not Support";
-			console.log("successCriteriaFxn24");
+			
 			}			
 			else if($scope.criteriaResultJSON[q].ConformanceLvl == "Does Not Support" && $scope.criteriaResultJSON[p].ConformanceLvl == "Not Evaluated"){
 			$scope.conformanceLevel = "Does Not Support";
-			console.log("successCriteriaFxn25");
+			
 			}
 			
             else if($scope.criteriaResultJSON[q].ConformanceLvl == "Not Applicable" && $scope.criteriaResultJSON[p].ConformanceLvl == "Supports"){
@@ -1693,7 +1694,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 			}			
 			else if($scope.criteriaResultJSON[q].ConformanceLvl == "Not Evaluated" && $scope.criteriaResultJSON[p].ConformanceLvl == "Supports"){
 			$scope.conformanceLevel = "Not Evaluated";	
-			console.log("successCriteriaFxn26");
+			
 			}
 			
 			
@@ -1702,7 +1703,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 			
 			
            if( $scope.criteriaResultJSON[q].ConformanceLvl == "Does Not Support"){
-			   console.log("successCriteriaFxn32");
+			   
 			   $scope.dnsSelectedFinal = true;
 			 $scope.scValueUniqueSelected = '{"CrtID": "' + $scope.criteriaResultJSON[q].CrtID + '","ConformanceLvl": "' + $scope.criteriaResultJSON[q].ConformanceLvl + '","DisabilityImpact": "'+$scope.criteriaResultJSON[q].DisabilityImpact + '","RemarkExplntn": "' + $scope.criteriaResultJSON[q].RemarkExplntn + '"}';
 		   }
@@ -1710,20 +1711,20 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 			   $scope.suuprtsSelectedFinal = true;			    
 				if($scope.dnsSelectedFinal != true){
 			    $scope.scValueUniqueSelected = '{"CrtID": "' + $scope.criteriaResultJSON[q].CrtID + '","ConformanceLvl": "' + "Supports" + '","DisabilityImpact": "'+"" + '","RemarkExplntn": "' + "Explanation is not required, Please check detail test results" + '"}';
-		        console.log("successCriteriaFxn33");
+		        
 				}
 		   }
 		   else if( $scope.criteriaResultJSON[q].ConformanceLvl == "Not Evaluated" ){	
            $scope.neSelectedFinal = true;		   
 		  if($scope.dnsSelectedFinal != true || $scope.suuprtsSelectedFinal != true){
 		  $scope.scValueUniqueSelected = '{"CrtID": "' + $scope.criteriaResultJSON[q].CrtID + '","ConformanceLvl": "' + $scope.criteriaResultJSON[q].ConformanceLvl + '","DisabilityImpact": "'+$scope.criteriaResultJSON[q].DisabilityImpact + '","RemarkExplntn": "' + $scope.criteriaResultJSON[q].RemarkExplntn + '"}';
-		 console.log("successCriteriaFxn34");
+		 
 		   }
 		 }			 
 		  else if( $scope.criteriaResultJSON[q].ConformanceLvl == "Does Not Apply"){
                  			  
 				if($scope.dnsSelectedFinal != true || $scope.suuprtsSelectedFinal != true ||  $scope.neSelectedFinal != true){
-			    console.log("successCriteriaFxn35");
+			    
 			    $scope.scValueUniqueSelected = '{"CrtID": "' + $scope.criteriaResultJSON[q].CrtID + '","ConformanceLvl": "' + "Does Not Apply" + '","DisabilityImpact": "'+"" + '","RemarkExplntn": "' + "Explanation is not required, Please check detail test results" + '"}';
 		  }
 		  }
@@ -1924,7 +1925,7 @@ setTimeout(function() {
  
  $scope.Mul_Issues.push( $scope.Mul_Issues);
  if($scope.submitClkCount > 0) {
-	 console.log(" $scope.submitClkCount    " + $scope.submitClkCount);
+	 
 	
   }
  $scope.indexCollection=[]; 	
