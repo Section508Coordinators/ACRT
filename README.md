@@ -2,10 +2,10 @@
 # Project Title
 “Accessibility Conformance Report Tool (ACRT)” 
 
-This application will record test results from testers.All input data will be stored as JSON &/or html file in local machine. JSON file can be further manipulated for analytics and reporting purposes. 
+This browser based standalone application which records test results from testers.All input data will be stored as JSON &/or html file in local machine which can be shared with others as needed. JSON file can be further manipulated for analytics and reporting purposes. 
 
 ## Getting Started
-Download/Copy files to your local machine. Once downloaded, unzip if needed. Prefered browser is Google Chrome or Microsoft edge or firefox.Open "index.html"  which is landing page for this application. You will see menu 'Instruction' for detail instruction how to use this tool. 
+Download/Copy files to your local machine. Once downloaded, unzip if needed. Open "index.html"  which is landing page for this application. You will see menu 'Instruction' for detail instruction how to use this tool.Prefered browser is Google Chrome or Microsoft edge or firefox.
 
 
 ## Instruction to use application
@@ -24,5 +24,5 @@ We use github for version control. Let's work together to make this tool great f
 
 ## License
 
-This project is licensed under the MIT License  see the (LICENSE.md) file for details
+This project is licensed under the MIT License - see the (LICENSE.md) file for details
 
