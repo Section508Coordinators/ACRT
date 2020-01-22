@@ -1,0 +1,466 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+ <link rel="stylesheet" type="text/css" href="./CSS/acrt_styles.css">     
+<title>ACRT Instructions</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Great Tool to track test results" />
+</head>
+<body>
+<div class="topnav" id="myTopnav"> 
+  <a title="Home" href="index.html" id="aboutID">Home </a>
+  <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
+  <a title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report </a>
+  <a title="Edit Report" href="./ACRT_View_webEdit.html"  id="edtRptId" >Edit Report</a>   
+  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
+  <a title="License License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>  
+</div>
+
+<article class="text">
+<br>
+<a title="Instruction in Word" href= "./Resources/ACRTTrainingManual.docx"  target="_blank"  id="tstinstrID" > Click Here for instruction in word </a> 
+<p><strong>Objectives:</strong></p>
+<ol>
+<li>Understand what is the Application Compliance Reporting Tool (ACRT)</li>
+<li>Understand how ACRT is used</li>
+</ol>
+<h2>Topic 1: What is the Application Compliance Reporting Tool (ACRT)?</h2>
+<p><strong>Tool Tips</strong>:</p>
+<ul>
+<li>Trusted Testers with government email accounts can attach the output from ACRT to the ticket in the Accessibility Compliance Management System (ACMS) 2.0 to record test results and to obtain a Compliance Determination Form.</li>
+<li>You do not need access to any government sites or databases to use ACRT.</li>
+<li>Captured data can be stored on a local machine in JSON file format or HTML file format.</li>
+<li>Non-DHS users need to email JSON files to an DHS employee with ACMS 2.0 license.</li>
+</ul>
+<h3>Introduction to ACRT</h3>
+<p>The Application Compliance Reporting Tool (ACRT) is an opensource (MIT License) and browser-based application compatible to all common operating systems. This tool does not require installation. As a standalone application, it does not directly interact with any resources outside the local working machine. Stored data can be shared with others easily using storage devices, email attachments, and/or print HTML reports, as needed.&nbsp; ACRT is only used for capturing test results related to web content at this time.</p>
+<p>
+<img src=".\Images\Homepage.JPG" alt="ACRT Home Page" width="100%" height="500"> 
+<strong><em>Figure 1: ACRT Home Page</em></strong></p>
+<h1>Chapter 2: Getting Started: How to Create, Edit, and View Test Report</h1>
+<p><strong>Objectives:</strong></p>
+<ol>
+<li>Understand how to create new test results in ACRT</li>
+<li>Understand how to edit test results in ACRT</li>
+<li>Understand how to finalize test report in ACRT</li>
+<li>Understand how to view test report in ACRT</li>
+</ol>
+<h2><strong>Topic 1:</strong> How to Download ACRT</h2>
+<p><strong>Tool Tips: </strong></p>
+<ul>
+<li>ACRT works best in Google Chrome, Microsoft Edge, Safari, and Firefox. <strong><u>It is not compatible with Internet Explorer (IE).</u></strong></li>
+<li>If you receive the messages "Allow Blocked Content&rdquo; or &ldquo;Internet Explorer restricted this webpage from running scripts or ActiveX controls," close the IE browser and re-open the file using one of the browsers the tool is designed to work with.</li>
+<li>The latest ACRT and support files can be found on the Home page.</li>
+<li>The ACRT Repository is accessible to the public and does not require a GitHub account.</li>
+</ul>
+<h3>Instructions to Begin Using ACRT</h3>
+<ol>
+<li>Download the latest ACRT and support files to your computer. Note: New users can get a copy by visiting the ACRT Repository <a href="https://github.com/Section508Coordinators/ACRT">ACRT Repository</a>.</li>
+<li>Copy the zipped ACRT files to your computer. <strong><em><img src=".\Images\zipped.JPG" alt="zipped ACRT"> Figure 2. Standard ACRT_V_1.0.0</em></strong></li>
+<li>Extract the contents of the zipped file. (The application will not work within the zipped file.)</li>
+<li>Open the Index.html file in a compatible browser.</li>
+</ol>
+<p>&nbsp;</p>
+<p><img src=".\Images\index.JPG" alt="index.html page" width="500" height="600">  <br>
+<strong><em>Figure 3: Index file highlighted in ACRT Support Files </em></strong></p>
+<p><strong>&nbsp;</strong></p>
+<h2><strong>Topic 2:</strong> How to Create a New Test Results Form</h2>
+<p><strong>Tool Tips: </strong></p>
+<ul>
+<li>Required fields must be completed before you can save the form.</li>
+<li>Unsaved data will be lost if you refresh your screen or close the file without saving it.</li>
+<li>Each time files are saved, you have the option to save to computer&rsquo;s Downloads folder or specified location of choice.</li>
+<li>JSON files default to Product name and Product Version for saved files.</li>
+<li>Expand collapsed sections to reveal data fields for Product, Test Environment, and Test Information in to input information.</li>
+<li>You can create your own customized input JSON file. You may want to do so in order to pre-populate some data fields, e.g. your tester information.</li>
+</ul>
+<h3>Instructions to Create a New Test Results Form</h3>
+<ol>
+<li>Open the Index.html file from ACRT folder created in your file location.</li>
+<li>From the ACRT Home page, select <strong>Create Report</strong> from the top navigation menu.</li>
+</ol>
+<p><img src=".\Images\CreateReport.JPG" alt="CreateReport Page" width="100%" height="500"> <strong><em>Figure 4: Navigation for ACRT Create Report Link</em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="3">
+<li>The <strong>Create New Test Results Form </strong>page will open.</li>
+</ol>
+<p> <img src=".\Images\CreateReportView.JPG" alt="CreateReport Page" width="100%" height="500">  <strong><em>Figure 5: Create Report Page View</em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="4">
+<li>Select the Input file location using one of the following options.
+<ol>
+<li>Select the SuccessCriteria.json file located in ACRT folder &gt; Resources folder.</li>
+</ol>
+</li>
+</ol>
+<p> <img src=".\Images\SuccessCriteria.JPG" alt="successcriteria.json location" width="600" height="500"> <strong><em><br>Figure 6: Resource folder highlighted to identify location of sucesscriteria.json file</em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol>
+<li>Navigate to the custom location you created for the json file.</li>
+</ol>
+<ol start="5">
+<li>Open the SuccessCriteria.JSON template file (or your custom file) by selecting the <strong>Choose File </strong></li>
+</ol>
+<p><img src=".\Images\ChooseFile.JPG" alt="Choose File" width="600" height="500"><br><strong><em>Figure 7: Choose File button highlighted on the Create Report Page</em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="6">
+<li>Select the <strong>Load Template </strong>button to load the template and create a new test results form.
+<ol>
+<li>A new <strong>Generate test results form</strong> table is displayed below.</li>
+<li>A notification will display at the bottom of the page with the message &ldquo;Upon saving, the file will be located in the system's Downloads folder by default&rdquo; is displayed.</li>
+</ol>
+</li>
+</ol>
+<p><img src=".\Images\Save.JPG" alt="Save" width="600" ><br><strong><em>Figure 8: Save button notification</em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="7">
+<li>At the top of the page, you have the option to select <strong><em> Disable common alerts</strong></em>. The types of alerts that can be disabled include:
+<p><img src=".\Images\alert.JPG" alt="Save" width="600" ><br><strong><em>Figure 9: Disable common alerts checkbox – Create Report</em></strong></p> <li>
+</ol>
+<ol start="8">
+<li>Provide details about the product. Some fields are mandatory as indicated by a red asterisk.
+<ol>
+<li>Select the Product section to <strong>expand </strong>the form fields.</li>
+<li>Complete all required fields: Name of Product, Product Version, and Product Description.</li>
+<li>Complete other fields as desired.</li>
+</ol>
+</li>
+</ol>
+<p><img src=".\Images\ProductSection.JPG" alt="Product Section" width="600" height="500"><br> <strong><em>Figure 10: Product Section </em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="9">
+<li>Provide details about the test environment. Form fields in this section <strong>are not</strong>
+<ol>
+<li>Select the Test Environment section to expand the form fields.</li>
+<li>Complete fields to describe the default browser and operating system used when performing testing.</li>
+</ol>
+</li>
+</ol>
+<p>  <img src=".\Images\TestEnvironment.JPG" alt="Test Environment" width="600" height="500"><br><strong><em>Figure 11: Test Environment Section </em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="10">
+<li>Provide details about the tester information. Some fields are mandatory as indicated by a red asterisk.
+<ol>
+<li>Select the Testing Information section to <strong>expand</strong> the form fields.</li>
+<li>Complete all required fields.</li>
+<li>Complete other fields as desired. Note: Trusted Testers are encouraged to provide their certification number in order to authenticate the results.</li>
+</ol>
+</li>
+</ol>
+<p>  <img src=".\Images\TestingInformation.JPG" alt="TestingInformation" width="600" height="500"><br><strong><em>Figure 12: Testing Information Section </em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="11">
+<li>Once you have completed all required fields about the product, you have the option to:
+<ol>
+<li>Save the file with the entered data as a custom template file for later use, in order to load a pre-populated version of the template, or</li>
+<li>Continue to the next section <strong>Generate test results form</strong> to enter testing data and create a report.</li>
+</ol>
+</li>
+</ol>
+<h2><strong>Topic 3:</strong> How to Create Report</h2>
+<p><strong>Tool Tips: </strong></p>
+<ul>
+<li>You can begin entering test results once you have completed the steps to create a new test form.</li>
+<li>You must complete all required fields, including those in the Product and Testing Information sections to save test results.</li>
+<li>On the <strong>Create New Report</strong> <strong>Form</strong> page, you can repeatedly save partially completed testing information during the current session, until you reload or close the page in your browser. You can use <strong>Edit Report</strong> later to continue entering testing information.</li>
+<li>Each input form field has a <strong>500 character limit </strong>for<strong> Tester&rsquo;s Comment </strong>for failed test conditions. Once you reach the character limit, no more characters can be entered.</li>
+<li>Comments will display in the &lsquo;Remark &amp; Explanation&rsquo; section of the <strong>View Report</strong></li>
+<li>Each time you save results, a new JSON file is created.</li>
+<li>If all tests are completed in <strong>Create Report</strong> page, you can view your report in <strong>View Report </strong> Use <strong>Edit Report </strong>page only to update or add Remediation details.</li>
+</ul>
+<ul>
+<li>Recommended image types for ACRT to attach screen shots are PNG and GIF.</li>
+</ul>
+<ul>
+<li>See <strong>&ldquo;Edit Report&rdquo; instructions</strong> for editing an existing saved file.</li>
+</ul>
+<p>&nbsp;</p>
+<p><strong>&nbsp;</strong></p>
+<h3>Instructions to Create Report</h3>
+<ol>
+<li>Following the previous <strong>Instructions to Create a New Test Form,</strong> ensure you have loaded the SuccessCriteria.json or custom template file and have completed all the required/mandatory information for the Product, Test Environment, and Testing Information.</li>
+<li>The <strong>Generate test results form </strong>table is displayed. Note: The table is not visible until the template file is loaded.</li>
+<li>Input the test results into the form.</li>
+</ol>
+<p> <img src=".\Images\GenerateTestResult.JPG" alt="GenerateTestResult table" width="100%" height="500"><br>  <strong><em>Figure 13: Generate Test Results form </em></strong></p>
+<p><strong><em>&nbsp;</em></strong></p>
+<ol start="4">
+<li>To save a screenshot of a failure in the screenshot column, use the file selection button to browse to the image stored on your local machine. Only one image may be saved in each cell. If another image is needed, select <strong>Add Issue</strong> for an additional failure. The new <strong>Child Issue</strong> will be added at the <strong>end</strong> of the table.</li>
+</ol>
+<ol>
+<ol>
+<li>Image types that support ACRT include: Joint Photographic Experts Group (JPEG or JPG), Portable Network Graphic (PNG), Graphic Exchange Format (GIF), and Windows Bitmap (BMP). Note: PNG and GIF image types are recommended.</li>
+</ol>
+</ol>
+<p> <img src=".\Images\AddIssue.JPG" alt="AddIssue" width="100%" height="500"><br>  <strong><em>Figure 14: Generate Test Results Form Issue Number column highlight to add issue</em></strong></p>
+<ol start="5">
+<li>Once test results are added, select the <strong>Save</strong> button at the bottom of page to capture the input data as an JSON file on your local machine. Note: The file will be saved to the system's Downloads folder by default. You can also store JSON file at your own repository or send it to the DHS employee for reporting and analytical purpose to generate business value.</li>
+</ol>
+<p><img src=".\Images\JSONInput.JPG" alt="JSONInput"  width="600"><br><strong><em>Figure 15: JSON file output generated</em></strong></p>
+<h2><strong>Topic 4:</strong> How to Edit Report</h2>
+<p><strong>Tool Tips: </strong></p>
+<ul>
+<li>Each input field has a <strong>500 character limit </strong>for<strong> Tester&rsquo;s Comment and Remediation Details field</strong>. Once you reach the character limit, no more characters can be entered.</li>
+<li>See <strong>&ldquo;Create Report&rdquo; Instructions </strong>for entering test results.</li>
+<li>Saved JSON files will be located in your computer&rsquo;s Downloads folder by default.</li>
+<li>By default the tool captures Product name and Product version as the saved JSON file created.</li>
+</ul>
+<ul>
+<li>Recommended image types for ACRT to attach screen shots are PNG and GIF.</li>
+</ul>
+<ul>
+<li>This page is a <strong>MUST</strong> for Remediation details and Remediation date.</li>
+</ul>
+<h3>Instructions to Edit Report</h3>
+<ol>
+<li>From the ACRT Home page, select <strong>Edit Report </strong>from the navigation menu.</li>
+</ol>
+<p><img src=".\Images\EditReportPage.JPG" alt="EditReportPage" width="600" height="500"><br> <strong><em>Figure 16: Edit Report Page View</em></strong></p>
+<ol>
+<li>The <strong>Edit Test Results Form</strong> will open.</li>
+<li>Select the saved JSON file, then select the <strong>Load Results </strong>button to populate the form with the previously stored data.</li>
+<li>At the top of the page, you have the option to select <strong><em> Disable common alerts</strong></em>. The types of alerts that can be disabled include:
+<p><img src=".\Images\alert.JPG" alt="Save" width="600" ><br><strong><em>Figure 17: Disable common alerts checkbox – Create Report</em></strong></p> </li>
+<li>Provide any updates to the Product, Test Environment, Testing Information sections as needed.</li>
+<li>In the extended <strong>Load test results</strong> section, provide a result for each test condition in the form. Note:<strong> If you are missing results in any of the test conditions, you will only be able to create a DRAFT report. </strong></li>
+<ol>
+<li>Provide a full description of any failures and include the URL for location purposes.</li>
+<li>A screenshot is <strong>highly recommended</strong> for failed test conditions. In the screenshot column, browse to the image stored in your local machine. You may only select one image per data cell.</li>
+<li>Image types that support ACRT include: Joint Photographic Experts Group (JPEG or JPG), Portable Network Graphic (PNG), Graphic Exchange Format (GIF), and Windows Bitmap (BMP). Note: PNG and GIF image types are recommended.</li>
+</ol>
+</ol>
+<p> <img src=".\Images\TestResultInputEdit.JPG" alt="TestResultInputEdit" width="100%" height="500"><br> <strong><em>Figure 18: Test Results Edit Form </em></strong></p>
+<ol>
+<li>Adding remediation details and including remediation date is <strong>highly recommended for failed test conditions</strong>, if any are in the test results. Note: You have the option to <strong>Show </strong>or<strong> Hide Remediation Details &amp; Date</strong>.</li>
+</ol>
+<ol start="6">
+<li>Once test results are added or updated, select the <strong>Save </strong>button to save the input data as a JSON file on your local machine. You can also store the JSON file in your own repository or send it to DHS employee for reporting and analytical purpose to generate business value. Save the results with an appropriate name; it is recommended you include the ticket #, application name, and version.</li>
+</ol>
+<p><img src=".\Images\SuccessCriteriaJsonEdit.JPG" alt="SuccessCriteriaJson Edit page" width="600"><br> <strong><em>Figure 19:&nbsp; JSON file generated for test results </em></strong></p>
+<ol start="7">
+<li>An additional notification will display: &ldquo;Your updates have been saved to the Downloads folder (unless otherwise specified). To continue editing, please refresh the page and load the newly created file.&rdquo; <strong>To continue editing and saving this set of results, you MUST refresh the page and then reload the newest saved file.</strong></li>
+</ol>
+<p><img src=".\Images\JSONNotification.JPG" alt="JSON Notification message"  width="600"><br> <strong><em>Figure 20: Notification displayed once JSON file is saved</em></strong></p>
+<h2><strong>Topic 5:</strong> How to Finalize Test Results &amp; View Report</h2>
+<p><strong>Tool Tips: </strong></p> 
+<ul>
+<li>If needed, open the index.html file from the ACRT folder in your file location.</li>
+</ul>
+<h3>Instructions to Create a Final Test Report</h3>
+<ol>
+<li>From ACRT Home page, select <strong>View Report </strong>from the top navigation menu.</li>
+<li><strong>View Test Report</strong> page will open.</li>
+</ol>
+<p> <img src=".\Images\ViewReport.JPG" alt="ViewReport page" width="100%" height="500"><br>  <strong><em>Figure 21: View Report Page View</em></strong></p>
+<ol>
+<li>Select the JSON file stored on your local machine, then select the <strong>Load Results </strong>button.</li>
+<li>Test Results will load at the bottom of page.</li>
+</ol>
+<p> <img src=".\Images\TestResultGeneratedReport.JPG" alt="HTML report" width="100%" height="500"><br> <strong><em>Figure 22: Test Results created to generate report as HTML file</em></strong></p>
+<ol>
+<li>If desired, select the <strong>&lsquo;Select the checkbox to view all test results&rsquo;</strong> checkbox to view all test results. When unchecked, the instruction changes to <strong>&lsquo;Uncheck checkbox to hide all test results&rsquo;.</strong></li>
+</ol>
+<p><img src=".\Images\ViewTestResults.JPG" alt="Chebox to view test results" width="100%" height="500"><br> <strong><em>Figure 23: Checkbox to view all test results&nbsp; under Test Results</em></strong></p>
+<ol>
+<li>To create an HTML version of the report, e.g. for sharing the report with others, select the <strong>&ldquo;Save as HTML&rdquo;</strong> button to generate a printer-friendly HTML version of the report (saved in the system's Downloads folder by default).</li>
+</ol>
+<p><img src=".\Images\HTMLReport.JPG" alt="Saved HTML report"  width="600"><br> <strong><em>Figure 24: File generated to create an HTML version of the report</em></strong><strong><em>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </em></strong></p>
+<ol>
+<li>To print the report, use the landscape orientation in your browser&rsquo;s print options.</li>
+</ol>
+<p><img src=".\Images\FinalTestReport.JPG" alt="Final test report sample" width="100%" height="500"><br> <strong><em>Figure 25: Final Application Test Report generated</em></strong></p>
+<p><img src=".\Images\Print.JPG" alt="Print report"><br><strong><em>Figure 26: Zoomed in view of the Print this page button for final Application Test Report</em></strong></p>
+<p>&nbsp;</p>
+<p>&nbsp;</p>
+<h1>Appendix A - File Types for ACRT Source Files</h1>
+<p>&nbsp;</p>
+<p><strong><em>Figure 1: ACRT Main Folder and Resource Folder</em></strong></p>
+<table width="100%">
+<tbody>
+<tr>
+<th width="50%" scope="col">
+<p><strong>File Name Type</strong></p>
+</th>
+<th width="50%" scope="col">
+<p><strong>File Purpose </strong></p>
+</th>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>About.html</strong></p>
+</td>
+<td width="50%">
+<p>Describes ACRT overview</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>ACRT_View_webEdit.html</strong></p>
+</td>
+<td width="50%">
+<p>Used to update or edit test result</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>ACRT_View_webReport.html</strong></p>
+</td>
+<td width="50%">
+<p>Used to view test result</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>ACRT_Web_Input_Form.html</strong></p>
+</td>
+<td width="50%">
+<p>Used to create test result</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Help.html</strong></p>
+</td>
+<td width="50%">
+<p>Provides all instructions how to use ACRT</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Help_Edit.html</strong></p>
+</td>
+<td width="50%">
+<p>Provides instruction for Edit page</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Help_Input.html</strong></p>
+</td>
+<td width="50%">
+<p>Provides instruction for Create page</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Help_Report.html</strong></p>
+</td>
+<td width="50%">
+<p>Provides instruction for Report page</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Index.html</strong></p>
+</td>
+<td width="50%">
+<p>This is landing page for this tool</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>LICENSE.html</strong></p>
+</td>
+<td width="50%">
+<p>ACRT license in html format</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>LICENSE.md</strong></p>
+</td>
+<td width="50%">
+<p>ACRT license &nbsp;in text</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>README.md</strong></p>
+</td>
+<td width="50%">
+<p>Provides overview how to use this tool</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>How to Use ACRT Training Manual.pdf</strong></p>
+</td>
+<td width="50%">
+<p>Detail instruction how to use this tool</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>SuccessCriteria.JSON</strong></p>
+</td>
+<td width="50%">
+<p>It has all the information users need to conduct test.</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Trusted_Tester_v5.0.docx</strong></p>
+</td>
+<td width="50%">
+<p>Detail Section 508 test process</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>WCAG 2.0 Impact Statements.docx</strong></p>
+</td>
+<td width="50%">
+<p>Describes type of disability and group impacted.</p>
+</td>
+</tr>
+<tr>
+<td width="50%">
+<p><strong>Acr.pdf</strong></p>
+</td>
+<td width="50%">
+<p>Accessibility Conformance Report</p>
+</td>
+</tr>
+</tbody>
+</table>
+<h1>&nbsp;</h1>
+<p>&nbsp;</p>
+<p><strong>&nbsp;</strong></p>
+<h1>Appendix B -&nbsp; Advance User Support</h1>
+<h2>Introduction to JSON</h2>
+<p>When exchanging data between a browser-based applications, the data can &nbsp;be text. JavaScript Object Notation (JSON) is a standard text-based format representing structured data based on JavaScript object syntax. The Office of Accessible Systems and Technology (OAST) uses the JSON file to populate the ACRT with Baseline elements. Most commonly it is used to transmit data in web applications (e.g., sending data from ACRT to display Application Test Results in HTML format on a web page).</p>
+<h3>JSON File Structure</h3>
+<p>&nbsp;</p>
+<p><img src=".\Images\SampleJSON.JPG" alt="Sample JSON File"  width="600"><br> <strong><em>Figure 1: Sample JSON file with property and value attribute highlighted</em></strong></p>
+<p>Test conditions can be modified in local JSON file based on different user&rsquo;s needs.&nbsp; Overall, the content in the tool is dynamically generated based on information fed from JSON file.</p>
+<h2>How to Manipulate JSON File</h2>
+<ol>
+<li>Open &lsquo;SuccessCriteria.JSON&rsquo; file.</li>
+<li>Go to &ldquo;Tester&rdquo; section of JSON file.</li>
+</ol>
+<p><img src=".\Images\TestersInformation.JPG" alt="TestersInformation JSON File"  width="600"><br><strong><em>Figure 2: Sample of Tester section of JSON file</em></strong></p>
+<ol start="3">
+<li>Only update the values (&ldquo; &ldquo;) for different properties. <strong>DO NOT</strong> modify the property.</li>
+</ol>
+<h2>How to Update Test Conditions</h2>
+<p>If you follow different test processes other than Trusted Tester, you can change test conditions in the &lsquo;successcriteria.json&rsquo; file as needed by updating the values for properties.</p>
+<p><img src=".\Images\CriteriaIDJSON.JPG" alt="Changing Test Condition in  JSON File" width="100%" height="500"  ><br> <strong><em>Figure 3: Sample JSON file highlighting Criteria ID property to replace 2.2.2 test condition value</em></strong></p>
+<p>In the above example, the test condition can be replaced by a test condition or process you are using for the Criteria ID property.</p>
+<h2>Updating Drop-down Menu Option</h2>
+<p>Different test conditions have different dropdown menu options. Please use this reference to update &ldquo;OptMenu1&rdquo; property accordingly.</p>
+<p><strong>menu1:</strong>&nbsp; 'Does Not Apply' &amp; 'Not Tested'.</p>
+<p><strong>menu2:</strong> 'Pass', 'Fail' &amp; 'Does Not Apply'.</p>
+<p><strong>menu3:</strong> 'Pass' &amp; 'Does Not Apply'.</p>
+<p><strong>menu4:</strong> 'Does Not Apply'.</p>
+<p><strong>menu5:</strong> 'Pass' &amp; 'Fail'.</p>
+
+
+
+</article>
+<br> <br> <br> <br>
+<div class="footer">
+  <p>Accessibility Conformance Reporting Tool (ACRT) Help Page </p>
+</div>
+</body>
+</html>

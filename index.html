@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<title>ACRT Home page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+<meta name="description" content="Great Tool to track test results" />
+<link rel="stylesheet" type="text/css" href="./CSS/acrt_styles.css">
+ <script src="./JS/AngularJS1.6.9/angular.min.js"></script>
+</head>
+<body >
+<div class="topnav" id="myTopnav"> 
+  <a title="Home" href="index.html" id="aboutID">Home </a>
+  <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
+  <a title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report </a>
+  <a title="Edit Report" href="./ACRT_View_webEdit.html"  id="edtRptId" >Edit Report</a>   
+  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
+  <a title="License License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
+  
+</div>
+<article>
+<div id="myHme" align="center">
+  <h1 style="text-align:center"> Accessibility Conformance Reporting Tool (ACRT) </h1>
+   Version 1.0.0 
+  <p > <font size="4">
+  an open source tool <br>
+  developed by the U.S. Department of Homeland Security<br>
+  to track testing results from the<br>
+ <i style="border: none;"  >Section 508 Conformance Test process</i> </font> <br><br>
+  
+  <font size="2">Developed for use in Chrome, Edge and Firefox</font>
+  <br><br>For the latest version of the ACRT and support files, visit the  <a title="ACRT Repository" href= "https://github.com/Section508Coordinators/ACRT " target="_blank"   id="githubSrc"> ACRT Repository </a> 
+  </p>
+</div>
+</article>
+
+
+
+<p>
+
+<h2 style="text-align:center">About ACRT</h2>
+</div>
+<div style="padding-left:100px;padding-right:100px" align="left"> 
+
+<p>
+ACRT was developed to record testing results from  Testers. ACRT and all data input are stored on the user's local machine. Data are stored as JSON files, which can be further edited for analytics and reporting purposes. Final test results can also be saved as static html files.
+ACRT is open source - free to use and modify (see the license information for full details). We encourage and welcome feedback and suggestions from the testing community! 
+<br>
+You can email us at the <a href="mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback">DHS Accessibility Help Desk.</a>
+</p>
+
+</div>
+<br><br><br>
+ <div class="footer">
+  <p>Accessibility Conformance Reporting Tool (ACRT)</p>
+</div>
+</div>
+<script>
+function myHome() {
+  var x = document.getElementById("myHme");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  } 
+}
+
+function myContact() {
+  var x = document.getElementById("myCntct");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  } 
+}
+</script>
+
+
+</body>
+</html>

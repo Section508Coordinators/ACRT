@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<script src="./JS/AngularJS1.6.9/angular.min.js"></script>
+<script src="./JS/angular-sanitize.js"></script>
+
+<head>
+  <title>View Report</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
+  <meta name="description" content="Great Tool to track test results" />
+  <link rel="stylesheet" type="text/css" href="./CSS/acrt_styles.css">
+</head>
+
+<body ng-app="acrt" ng-controller="acrtFormCtrl">
+  <div class="topnav" id="myTopnav"> 
+  <a title="Home" href="index.html" id="aboutID">Home </a>
+  <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
+  <a title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report </a>
+  <a title="Edit Report" href="./ACRT_View_webEdit.html"  id="edtRptId" >Edit Report</a>   
+  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
+  <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
+  
+</div>
+<br>
+ 	
+  <main>
+    <form id="webTestResult">
+      <h1> View Test Report </h1>
+        View test report. <a title="View Report instructions" href="./Help_Report.html" target="_blank" id="tstinstrID"> "View Report" instructions </a> 
+        <p><strong ng-if="isDraft" style="color: #FFFFFF; background-color: #be0004;"> This is a Draft report. To view final report please input all required test results. </strong><p>
+        <label for="fileinput"> Select test results file.
+        </label><br>	
+		<input type='file' class="button" id='fileinput' name='Browse to file'>
+        <br><br><label for="loadFile"> Click <strong>Load Results</strong> to load the selected test results file.
+        </label><br> <button id='buttonLoad' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form"  ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}" >Load Results</button>
+			    
+		<p id="msg1"></p> 
+	  </ul> <br>
+		
+		
+		
+        <fieldset>
+          <legend>
+            <h2> Product </h2>
+          </legend>
+		  <button class="collapsible" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Click to show Product section</div> </button> 
+		  <div class="content">
+    <div class="divSpace" id="productInfo" >           
+              <label for="productID"> Product Name: </label> <input type="string" ng-model="productID" class="betnTags" id="productID" name="Entered Name Of Product" ng-readonly="true" size="100"> &nbsp;
+              <br><label for="versionID"> Product Version: </label> <input type="string" ng-model="ownerID" class="betnTags" id="ownerID" name="Entered Product Version" ng-readonly="true" size="50"> &nbsp;
+              <br><label for="ownerID">Product Owner: </label> <input type="string" ng-model="versionID" class="betnTags" id="versionID" name="Entered Product Owner/Vendor" ng-readonly="true" size="40"> &nbsp;
+              <br><label for="productType"> Product Type: </label> <input type="string" ng-model="productType" class="betnTags" id="productType" name="Entered Type Of Product" ng-readonly="true"> &nbsp;
+              <br><label for="urlID">Location: </label> <input type="string" ng-model="urlID" class="dateField" id="urlID" name="Entered Location" ng-readonly="true"> &nbsp;
+              <br><label for="prodDescID">Product description:<br> </label> <textarea ng-model="prodDescID" class="txtarea" rows="4" cols="90" id="prodDescID" name="Entered Product Description" ng-readonly="true"></textarea>
+              <br> <label for="prdNteDescID"> Notes: <br></label> <textarea ng-model="prdNteDescID" class="txtarea" id="prdNteDescID" rows="4" cols="90" name="Entered Notes" ng-readonly="true"></textarea>
+
+            </div>
+          </div>
+        </fieldset> <br>
+        <fieldset>
+          <legend>
+            <h2> Test Environment </h2>
+          </legend>
+          <button class="collapsible" onclick="expandCollapse2()">
+            <div id="expandCollapse2"> <i class="up"></i> Click to show Test Environment section</div>
+          </button>
+          <div class="content">
+            <div class="divSpace" id="sysInfo">
+              <label for="myBrowserTested">Browser: </label> <input type="string" ng-model="myBrowserTested" class="txtarea" id="myBrowserTested" name="Selected Browser Types" ng-readonly="true" width=200 size="100"> &nbsp;
+              <br><br> <label for="myBrowser">Browser Version: </label> <input type="string" ng-model="myBrowser" class="txtarea" id="myBrowser" name="Selected Browser Versions" ng-readonly="true" size="100"> &nbsp;
+              <br><label for="compID">Compatibility View: </label> <input type="string" ng-model="compID" class="betnTags" id="compID" name="Selected Compatibility View" ng-readonly="true"> <br>
+              <br><label for="myOpsysTested"> Operating System: </label> <input type="string" ng-model="myOpsysTested" class="txtarea" id="myOpsysTested" name="Selected OS Tested" ng-readonly="true" size="80"> &nbsp;
+              <br><br><label for="myOpsys"> Operating System Version: </label> <input type="string" ng-model="myOpsys" class="txtarea" id="myOpsys" name="Selected OS Versions" ng-readonly="true" size="80"> &nbsp;
+
+            </div>
+          </div>
+        </fieldset> <br>
+        <fieldset>
+          <legend>
+            <h2> Testing Information </h2>
+          </legend>
+          <button class="collapsible" onclick="expandCollapse3()">
+            <div id="expandCollapse3"> <i class="up"></i> Click to show Testing Information section</div>
+          </button>
+          <div class="content">
+
+            <div class="divSpace" id="productInfo">
+              <label for="firstname"> Tester's First Name: </label> <input type="string" ng-model="firstname" class="betnTags" id="firstname" name="Entered Tester's First Name" ng-readonly="true"> &nbsp;
+              <br><label for="lastname"> Tester's Last Name: </label> <input type="string" ng-model="lastname" class="betnTags" id="lastname" name="Entered Tester's Last Name" ng-readonly="true"> &nbsp;
+              <br><label for="testerID"> Trusted Tester ID: </label> <input type="string" ng-model="testerID" class="betnTags" id="testerID" name="Entered Tester's ID" ng-readonly="true"> &nbsp;<br>
+              <!-- <label for="myRole"> Tester's role: </label> <input type="string" ng-model="myRole" class= "betnTags" id="myRole" name="Entered Tester's Role" ng-readonly="true"> &nbsp; -->
+              <br><label for="testerContact"> Tester's Email: </label> <input type="string" ng-model="testerContact" class="betnTags" id="testerContact" name="Entered Tester's Contact" ng-readonly="true">
+              <br><label for="testScope">Testing Scope: </label> <input type="text" ng-model="testScope" class="txtarea" id="testScope" name="Entered Test Scope" ng-readonly="true"> <br>
+            </div>
+          </div>
+        </fieldset> <br>
+        &nbsp;
+       
+<div id="displayTestRslt" hidden >
+        <h3> Test Results </h3>
+
+        <label for="evalMethod"> Testing Method:</label> <input type="string" ng-model="evalMethod" class="betnTags" id="evalMethod" name="Selected Evaluation Method Used" ng-readonly="true"> &nbsp;
+        <label for="evalMethodVrsn">Testing Method Version: </label> <input type="string" ng-model="evalMethodVrsn" class="betnTags" id="evalMethodVrsn" name="Entered Evaluation Version" ng-readonly="true"> &nbsp; <br>
+        <label for="dateSubmitted"> Test Completion Date:</label> <input type="string" ng-model="dateSubmitted" class="dateField" id="dateSubmitted" name="Test submitted date" ng-readonly="true"> <br> <br>
+
+        <!--<p ng-bind-html="myText"></p> -->
+
+        <table   id="sc1" role="presentation">
+
+          <caption> <strong>WCAG  Report </strong></caption> 
+
+          <thead>
+            <tr>
+              <th style="width: 98px" scope="col">Criteria</th>
+              <th style="width: 218px" scope="col">Conformance Level</th>
+              <th style="width: 350px" scope="col">Remarks and Explanations </th>
+            </tr>
+          </thead>
+          <tbody ng-repeat="record1 in jsonData">
+            <tr ng-repeat="test1 in record1.SuccessCriteria">
+              <th scope="row" title="Success Criteria" style="width: 100px">{{test1.CrtID}}</th>
+
+              <td style="width: 220px" title="Conformance Level" >{{test1.ConformanceLvl}}</td>
+
+              <td style="width: 350px" title="Remarks & Explanations" > {{test1.RemarkExplntn}} <br> </td>
+        </tr>
+
+        </div>
+        </div>
+
+        </div>
+        </td>
+        </tr>
+        </tbody>
+        </table>
+		
+ 		  <input id="selector111" name="Checkbox to view test results" type="checkbox" ng-model="checked1"  onclick="chkBxMsg('selector111', 'chkUnchk');"> 
+		  <label for="smoking" name="chkUnchk" id="chkUnchk">Select Checkbox to view all test results</label>
+
+		  <br />
+               
+               
+                 <div ng-show="checked1">
+ 
+				<div>
+                  
+
+
+                  <table class="table" id="th1" style="font-size: 93%" role="presentation" >
+                
+                    <thead>
+                      <tr>
+                      <tr>
+                        <th scope="col" title="Test Name">
+                          <div style="width: 83px">Test Name</div>
+                        </th>
+                        <th scope="col" title="Test ID">
+                          <div style="width: 30px">Test ID</div>
+                        </th>
+                        <th scope="col" title="Test Condition">
+                          <div style="width: 198px"> Test Condition </div>
+                        </th>
+                        <th scope="col" title="Issue Number"><div style="width: 78px"> Issue Number </div> </th> 
+                        <th scope="col" title="Test Result">
+                          <div style="width: 67px"> Test Result </div>
+                        </th>
+                        <th scope="col" title="Browser">
+                          <div style="width: 127px"> Browser </div>
+                        </th>
+						<th scope="col" title="Tester's Comment" > 
+						<div style="width: 198px"> Location/Screen </div> 
+						</th> 	
+                        <th scope="col" title="Tester's Comment">
+                          <div style="width: 198px"> Tester Comments </div>
+                        </th>
+                        <th scope="col" title="Screenshot">
+                          <div style="width: 120px" >Screenshot </div>
+                        </th>
+                        <th style="width: 61px" scope="col" title="Global Issue">Global Issue </th>
+                        <th scope="col" title="Remediation Details">
+                          <div style="width: 198px"> Remediation Details </div>
+                        </th>
+                        <th scope="col" title="Remediation Date">
+                          <div style="width: 100px"> Remediation Date </div>
+                        </th>
+                        <th>
+                          <div style="width: 10px"> </div>
+                        </th>
+                      </tr>
+
+            </tr>
+            </thead>
+
+          <tbody ng-repeat="record in jsonData ">
+            <tr ng-repeat="test in record.Criteria ">
+             
+              <th scope="row" title="Test Name">
+                <div class="widetd1"> {{TestName[$index]}} </div>
+              </th>
+              <td title="Test Id">
+                <div class="widetd2"> {{TestID[$index]}}</div>
+              </td>
+              <td title="Selected Test Condition">
+                <div class="widetd3"> {{TestCondition[$index]}}</div>
+              </td>
+							 <td title="Issue Number">
+                <div style="width: 80px"> {{$index+1}} </div>
+              </td> 
+              <td title="Selected Test Result">
+                <div style="width: 69px"> {{TestResult[$index]}} </div>
+              </td>
+              <td title="Selected Browser Types">
+                <div style="width: 129px"> {{T_brwsrType[$index]}} </br> {{T_brwsrVrsn[$index]}}</div>
+              </td>
+			  <td title="Entered location/screen">
+                <div class="widetd7"> {{location[$index]}}</div>
+              </td>
+              <td title="Entered Tester's Comment">
+                <div class="widetd7"> {{TesterComment[$index]}}</div>
+              </td>
+              <td width="151">  <img width="100" id="image{{test.Counter}}" ng-src={{ImageSrc[$index]}}  ng-click="zoom(test.Counter)" class="large-image" alt="Selected test screenshot" onerror="this.style.display='none';" >
+              
+             <div id="{{test.Counter}}" class="modal">
+             <span class="close">&times;</span>
+            <img class="modal-content" id="img{{test.Counter}}">
+             <div class="caption" id="caption{{test.Counter}}" ></div>
+             </div>
+			  </td>
+            
+              <td title="Selected Global Issue">
+                <div style="width: 46px"> {{GlobalIssue[$index]}} </div>
+              </td>
+              <td title="Entered Remediation Details">
+                <div style="width: 201px"> {{RemediationDetails[$index] }}</div>
+              </td>
+              <td title="Entered Remediation Date">
+                <div style="width: 102px"> {{RemediationDate[$index]}} </div>
+              </td>
+
+            </tr>
+          </tbody>
+
+        </table>
+
+        </div>
+
+
+        <fieldset ng-show='DisabilityImpactCollectionLength' >
+          <legend>
+            <h3> Disability Impact </h3>
+          </legend>
+
+          <h3> <a title="Disability Impact Information " ng-href="./Resources/WCAG 2.0 Impact Statements_2018-10-02.docx">Disability Impact Summary</a> </h3>
+
+          
+          <button class="collapsible"  id="dsblGrpBtn">Impact Summary </button>
+          <div class="content">
+            <div id="myImpact" ng-repeat="record in jsonData">
+              <label for="dsblImpctRslt"> Disability impact summary </label>
+              <ul id="dsblImpctRslt" ng-repeat="test in record.SuccessCriteria | unique : 'DisabilityImpact' ">
+
+                <li title="Impacted group" ng-hide='test.DisabilityImpact == "" || test.DisabilityImpact == " "'>
+                  {{test.DisabilityImpact}} 
+				  
+                </li>
+
+                
+
+
+              </ul>
+            </div>
+          </div>
+        </fieldset>
+
+        <fieldset>
+          <legend>
+            <h3> Other Test Results </h3>
+          </legend>
+          <button class="collapsible">Other Results </button>
+          <div class="content">
+
+            <h3> Hardware Test Results </h3>
+            N/A
+            <h3> Software Test Results </h3>
+            N/A
+            <h3> Document Test Results </h3>
+            N/A
+          </div>
+        </fieldset>
+    </form>
+  </main>
+  <br/><br/><br/><br/> <div>
+  <div id="htmlReportDiv" class="footerbutton" hidden >
+	Select <strong>Save as HTML</strong> to generate a printer-friendly HTML version of the report (saved in the system's Downloads folder by default). <br/>
+	<input type="button" id="sbtBtn" class="button" value="Save as HTML" ng-click="saveHtml()">
+	</div>
+	
+  <script src="./JS/acrt_Web_Report.js"> </script>
+
+
+
+  <script>
+    function myFunction() {
+      window.print();
+    }
+  </script>
+
+</body>
+
+</html>
