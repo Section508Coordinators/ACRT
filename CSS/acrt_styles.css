@@ -1,0 +1,644 @@
+/* visually hidden for users but screenreader can read this */
+.visuallyhidden  {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
+.large-image {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.large-image:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover,.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#fileinput:focus, #fileinput:hover, #fileinput:active, #fileinput:visited {
+ background-color:rgb(0, 102, 153);
+  color: #ffffff;
+}
+
+
+
+a:focus,a:hover, a:active, a:visited  {
+   color: rgb(0, 102, 153);
+font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+ 
+.collapsible:active,.collapsible:hover, .collapsible:focus, .collapsible:visited {
+ background-color:rgb(0, 102, 153);
+ color: #ffffff;
+}
+
+button:focus,button:hover, button:active, button:visited  {
+ background-color:rgb(0, 102, 153);
+ color: #ffffff;
+}
+
+ 
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+input {
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+textarea {
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+select {
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+input[type=checkbox] {
+   float:left;
+ }
+
+i{
+	
+  border: solid white;
+  border-width: 0 10px 10px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+  
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+  
+}
+
+/*
+h1 { 
+  color: white;
+  display: block;
+  font-size: 2em;
+  margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+ 
+  font-weight: bold;
+  background-color:rgb(0, 51, 102);
+  text-align: center;  
+}
+*/
+
+a {
+  
+  color: rgb(0, 51, 102);
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+.warning{
+	color: 	#F0FFFF;
+	background-color: #DAA520;	
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+ .required:before { 
+ content:"*"; 
+ font-weight: bold;
+ color: red;
+ display: inline-block;}
+ 
+.show{
+	display: inline-block;
+	
+}
+
+.span1{
+	font-weight: bold;	
+	color: rgb(0, 51, 102);
+	
+}
+
+fieldset
+{  
+  height: 100%;
+  padding:6px;	
+}
+
+.left-div {
+    float: left;
+    width: 500px;
+    height: 0px;
+    margin-right: 8px;
+    
+}
+.right-div {
+    margin-left: 700px;
+	 height: 350px;
+    
+}
+
+.text{
+	color: #000000;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0px;
+	/*letter-spacing: 2px;
+	 line-height: 1.8; */
+	/* word-spacing: 10px;*/
+	 font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+	
+}
+
+
+.footer {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:rgb(0, 51, 102);
+   color: white;
+   text-align: center;
+   font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+.footerbutton {
+   position: fixed;
+   left: 0;
+   bottom: 0;
+   width: 100%;
+   background-color:rgb(190, 190, 220);
+   color: black;
+   //text-align: center;
+   font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+.collapsible {
+  background-color:rgb(0, 51, 102);
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 11px;
+  text-align: left;
+  outline: none;
+  font-size: 90%;
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+ /* transition: max-height 0.3s ease-out; */
+  background-color: #f1f1f1;
+	display: none;
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+.content1 {
+  padding: 0 18px;
+  max-height: 10px;
+  height:100%;
+  overflow: hidden;
+  /* transition: max-height 0.3s ease-out; */
+  background-color: #f1f1f1;
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+h2,h3,h4 {font-weight: bold;
+       /*padding: 10px;*/
+       text-align: left;
+	   font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";}
+	   
+.button {
+  background-color:rgb(0, 51, 102); 
+  color: white;
+  /*padding: 12px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 250px;
+  font-size: 100%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 8px;
+  border-radius: 11px;
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+.divSpace {    
+    padding: 10px;
+    text-align: left;
+}
+
+/*
+txtarea{
+    margin-top: 20px;
+    /*width: 500px;*/
+	height: 75px;   
+	padding: 5px;
+	overflow-y: scroll;
+	 
+	overflow: scroll; 
+	resize: none;
+*/
+
+.txtarea{
+    margin-top: 20px;
+    /*width: 500px;*/
+	height: 75px;   
+	padding: 5px;
+	overflow-y: scroll;
+	 
+	overflow: scroll; 
+	resize: none;
+
+}
+
+
+.betnTags{
+margin-left: 20px;
+margin-top:15px;
+margin-bottom:10px;
+}
+.dateField{
+margin-left: 20px;
+margin-top:15px;
+margin-bottom:10px;
+width: 450px;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  background-color: #eee;
+}
+/*
+ .list_container {
+    direction: rtl;
+    overflow:auto;
+   
+  }
+
+ .item_direction {
+    direction:ltr;
+  }
+*/
+
+table tbody, table thead
+{
+    display: block;
+}
+
+table tbody 
+{
+   overflow: auto;
+  /* height: 500px; */
+}
+
+
+
+
+table {
+	/* width: 100%;  */
+    /* can be dynamic  */
+	table-layout:fixed; 
+	overflow:auto;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	 border-collapse: collapse;	  
+	  margin: 10px;
+}
+
+th
+{
+   /*width: 75px; */
+	border: 1px solid #A9A9A9;
+    text-align: left;
+    padding: 3px;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-weight: bold;
+	font-size: 90%;
+	vertical-align: bottom;
+}
+
+tr th {
+	vertical-align: top;
+}
+td
+{
+    /*width: 75px; */
+	border: 1px solid #A9A9A9;
+    text-align: left;
+    padding: 2px;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+    word-wrap: break-word;
+	vertical-align: top;
+
+
+}
+
+article {
+	padding-right: 20px;
+}
+.table1 {
+    font-family: arial, sans-serif;
+    text-decoration:none;
+    border-collapse: collapse;
+    width: 100%;
+    display:block;
+	padding: 3px;  
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	overflow:auto;  
+ 
+}
+.widetd1{    
+    width: 85px;	
+	display: inline-block;
+	font-weight: normal;
+	font-stretch: condensed;
+	font-size: 90%;
+	vertical-align: top;
+
+}
+
+.widetd2{    
+    width: 32px;	
+	display: inline-block;	
+}
+.widetd3{    
+    width: 200px;	
+	display: inline-block;	
+}
+.widetd4{    
+    width: 86px;	
+	display: inline-block;	
+	white-space: pre-wrap;
+}
+.widetd5{    
+    width: 105px;	
+	display: inline-block;	
+}
+.widetd6{    
+    width: 40px;	
+	display: inline-block;	
+}
+
+.widetd7{    
+    width: 200px;	
+	display: inline-block;	
+}
+.widetd8{    
+    width: 190px;	
+	display: inline-block;	
+}
+
+/*
+td {
+    border: 1px solid #A9A9A9;
+    text-align: left;
+    padding: 3px;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+	
+}
+th {
+    border: 1px solid #A9A9A9;
+    text-align: left;
+    padding: 3px;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-weight: bold;
+	font-size: large;
+	
+	
+}
+*/
+tr:nth-child(even) {
+    background-color: #F0FFFF;
+	 padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+ul {
+    
+    margin: 0;
+    
+  /*  width: 170px; */
+    background-color: #f1f1f1;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	padding-left:70px;
+	list-style-type:  disc;
+	background-color:white;
+} 
+ol{
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	padding-left:70px;
+	
+}
+
+ol.sblst {
+  list-style-type: lower-alpha;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+}
+
+/* Change the link color on hover */
+li a:hover {
+	background-color:rgb(0, 102, 153);
+    color: white;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+body {
+	height:100%;
+    width:100%;
+    padding:0;    
+	margin: 20px;  
+	/*border: 1px solid #A9A9A9; */
+	border: none;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+.topnav {
+  overflow: hidden;
+  background-color:rgb(0, 51, 102);
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+.topnav a {
+  float: left;
+  padding-left:170px;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 100%;
+  font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  background-color:rgb(0, 51, 102);
+}
+
+/*
+.topnav a:visited {
+  background-color: rgb(0, 102, 153);
+  color: white;
+}
+*/
+
+.topnav a:hover {
+ background-color:rgb(0, 102, 153);
+  color: white;
+}
+
+.topnav a:active {
+  background-color: rgb(0, 102, 153);
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+	
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+#fileinput input[type=file] {
+ display:none;
+ margin:10px;
+ }
+ #fileinput input[type=file] + label {
+ display:inline-block;
+ margin:20px;
+ padding: 4px 32px;
+ background-color: #FFFFFF;
+ border:solid 1px #666F77;
+ border-radius: 6px;
+ color:#666F77;
+ }
+ #fileinput input[type=file]:active + label {
+ background-image: none;
+ background-color:#2D6C7A;
+ color:#FFFFFF;
+ }
