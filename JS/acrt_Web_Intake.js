@@ -1060,8 +1060,8 @@ $scope.submit = function() {
     $scope.location[i] = $scope.location[i].toString().replace(/""/g, '"');
 	$scope.location[i] = $scope.location[i].toString().replace(/\n/g, " ");
 	
-    if ($scope.selected_name_glbl[i] == undefined);
-      $scope.selected_name_glbl[i] = " ";
+    /*if ($scope.selected_name_glbl[i] == undefined);
+      $scope.selected_name_glbl[i] = " ";*/
     if ($scope.browserTypeCollection1[i] == undefined)
       $scope.browserTypeCollection1[i] = " ";
     if ($scope.imgCnvrsnJSON[i] == undefined)
