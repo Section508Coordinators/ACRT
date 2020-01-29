@@ -5,7 +5,7 @@
 This is browser based standalone application which records accessibility test results from testers.All input data will be stored as JSON &/or html file in local machine which can be shared with others as needed. Information on JSON file can be further manipulated for analytics and reporting purposes as your need. 
 
 ## Getting Started
-Download/Copy files to your local machine. For instruction how to download from GitHub Refer [Instruction](https://www.wikihow.com/Download-a-GitHub-Folder ).  Once downloaded, unzip if needed. Open "index.html" file which is landing page for this application. You will see menu 'Instruction' for detail instruction how to use this tool.Prefered browser for ACRT are Google Chrome or Microsoft edge or firefox.
+Download/Copy files to your local machine. For instruction how to download from GitHub visit [Download](https://www.wikihow.com/Download-a-GitHub-Folder ).  Once downloaded, unzip if needed. Open "index.html" file which is landing page for this application. You will see menu 'Instruction' for detail instruction how to use this tool.Prefered browser for ACRT are Google Chrome or Microsoft edge or firefox.
 
 
 ## Instruction to use application
