@@ -20,7 +20,7 @@ For all users we are using [ACRTGitHubRepository](https://github.com/Section508C
 * **Department Of Homeland Security ** - *Initial work* - 
 
 
-Contact
+* Contact
 [DHS Accessibility Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)
 
 
