@@ -1,4 +1,5 @@
 //Alert message before navigating away from page
+//
 
 window.onbeforeunload = function(event) {
   var message = 'Are you Sure you want to leave Create Report Page ?';
