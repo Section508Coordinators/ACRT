@@ -8,7 +8,7 @@ function IsJsonString(str) {
     JSON.parse(str);
   } catch (e) {
     
-	alert("There is a problem with the data. Check browser console or contact technical support.");
+	alert("There is a problem with the data. Contact technical support team.");
 	console.log(str);
 	//return false;
   }
@@ -1644,8 +1644,7 @@ $scope.uploadImageClicked1 = true;
 		$scope.default_frfxVersn1 = $scope.default_frfxVersn1.toString().trim();
 		if($scope.default_frfxVersn1[i] == " " || $scope.default_frfxVersn1[i] == "")
 		$scope.selected_name_fxVersnl[i] = $scope.selected_name_fxVersn;
-      }
-	  console.log($scope.checkboxModel.value21[i]+' & '+$scope.selected_name_chVersnl[i]);
+      }	  
       //$scope.selected_name_tstgrp[i] = $scope.selected_name_tstgrp[c]; 
 
       $scope.browserIndividualVersionsCollection1[i] = '","S_ieVrsh": "' + $scope.selected_name_ieVersnl[i] + '","S_edgeVrsn": "  ' + $scope.selected_name_edVersnl[i] + '  ","S_chromeVrsn": "  ' + $scope.selected_name_chVersnl[i] +'  ","S_sfVrsn": "  ' + $scope.selected_name_sfVersnl[i] + '  ","S_firefoxVrsn": "  ' + $scope.selected_name_fxVersnl[i] + '  ","S_othrBrsVrsn": "  ' + $scope.entOthrBrsrIDVrsn1[i];
