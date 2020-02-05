@@ -53,12 +53,7 @@ function chkBxMsg(thecheckbox, thelabel) {
 
     var checkboxvar = document.getElementById(thecheckbox);
     var labelvar = document.getElementById(thelabel);
-    if (!checkboxvar.checked) {
-        labelvar.innerHTML = "Select Checkbox to view all test results. ";
-    }
-    else {
-        labelvar.innerHTML = "Uncheck checkbox to hide all test results.";
-    }
+//actually you may want to just remove the calls to this function
 }
 
 
