@@ -16,12 +16,7 @@ function chkBxMsg(thecheckbox, thelabel) {
 
     var checkboxvar = document.getElementById(thecheckbox);
     var labelvar = document.getElementById(thelabel);
-    if (!checkboxvar.checked) {
-        labelvar.innerHTML = "Check checkbox to Disable common alerts.";
-    }
-    else {
-        labelvar.innerHTML = "Uncheck checkbox to Enable common alerts.";
-    }
+//actually you may want to also remove the calls to this functoin, at least from Edit and Input?
 }
 
 //this section will make area collapsible
@@ -35,8 +30,8 @@ for (i = 0; i < coll.length; i++) {
     if (content.style.display === "block") {
 			content.style.display = "none";
     } else {
-			content.style.display = "block";
-			content.style.maxHeight = content.scrollHeight + "px";
+	content.style.display = "block";
+	content.style.maxHeight = content.scrollHeight + "px";
     }
   });
 }
