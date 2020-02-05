@@ -1544,8 +1544,8 @@ $scope.uploadImageClicked1 = true;
 		$scope.checkboxModel.value21[i] = $scope.chkBoxValChrm1[i];
 	  }		
 	  }		  
-      if ($scope.checkboxModel.value21[i] != true)
-        $scope.checkboxModel.value21[i] = "";
+     /* if ($scope.checkboxModel.value21[i] != true)
+        $scope.checkboxModel.value21[i] = "";*/
       if ($scope.checkboxModel.value21[i] == true)
         $scope.checkboxModel.value21[i] = "Chrome"; 
 	
@@ -1615,7 +1615,7 @@ $scope.uploadImageClicked1 = true;
       if ($scope.tstChromeSelected1[i] == "ChromeClicked1") {
         if($scope.selected_name_chVersnl[i] != undefined )
         $scope.selected_name_chVersnl[i] = $scope.selected_name_chVersnl[i];
-	   //alert("    chrome version  " + $scope.selected_name_chVersnl[i]);
+	   //alert("    chrome version  " + $scope.selected_name_chVersnl[i]);   
       }
       if ($scope.tstChromeSelected1[i] != "ChromeClicked1") {
         $scope.selected_name_chVersnl[i] = $scope.default_chrVersn1[i];
@@ -1623,8 +1623,8 @@ $scope.uploadImageClicked1 = true;
 		if($scope.default_chrVersn1[i] == " " || $scope.default_chrVersn1[i] == "")
 		$scope.selected_name_chVersnl[i] = $scope.selected_name_chVersn;	
       }
-	  if($scope.selected_name_chVersnl[i] == undefined)
-		  $scope.selected_name_chVersnl[i] = "";
+	  /*if($scope.selected_name_chVersnl[i] == undefined)
+		  $scope.selected_name_chVersnl[i] = ""; */
 
       if ($scope.tstSafariSelected1[i] == "SafariClicked1") {
         $scope.selected_name_sfVersnl[i] = $scope.selected_name_sfVersnl[i];
@@ -1645,13 +1645,13 @@ $scope.uploadImageClicked1 = true;
 		if($scope.default_frfxVersn1[i] == " " || $scope.default_frfxVersn1[i] == "")
 		$scope.selected_name_fxVersnl[i] = $scope.selected_name_fxVersn;
       }
-	  
+	  console.log($scope.checkboxModel.value21[i]+' & '+$scope.selected_name_chVersnl[i]);
       //$scope.selected_name_tstgrp[i] = $scope.selected_name_tstgrp[c]; 
 
       $scope.browserIndividualVersionsCollection1[i] = '","S_ieVrsh": "' + $scope.selected_name_ieVersnl[i] + '","S_edgeVrsn": "  ' + $scope.selected_name_edVersnl[i] + '  ","S_chromeVrsn": "  ' + $scope.selected_name_chVersnl[i] +'  ","S_sfVrsn": "  ' + $scope.selected_name_sfVersnl[i] + '  ","S_firefoxVrsn": "  ' + $scope.selected_name_fxVersnl[i] + '  ","S_othrBrsVrsn": "  ' + $scope.entOthrBrsrIDVrsn1[i];
       $scope.browserIndividualTypeCollection1[i] = ' ","S_ie": "  ' + $scope.checkboxModel.value14[i] + '  ","S_edge": "  ' + $scope.checkboxModel.value51[i] + '  ","S_chrome": "  ' + $scope.checkboxModel.value21[i] + '  ","S_safari": "  ' + $scope.checkboxModel.value31[i] + '  ","S_firefox": "  ' + $scope.checkboxModel.value41[i] + '  ","S_other": "  ' + $scope.entOthrBrsrIDl[i];
       //$scope.browserVersionsCollection1[i] = '","T_intExplr": "'+$scope.checkboxModel.value14[i]+'","T_intExplrVrsn": "'+$scope.selected_name_ieVersnl[i]+'","T_edge": "'+$scope.checkboxModel.value51[i]+ '","T_edgVrsn": "'+ $scope.selected_name_edVersnl[i]+'","T_Chrome": "'+$scope.checkboxModel.value21[i]+'","T_chrmVrsn": "'+ $scope.selected_name_chVersnl[i]+'","T_Sfri": "'+$scope.checkboxModel.value31[i]+ '","T_sfrVrsn": "'+$scope.selected_name_sfVersnl[i] + '","T_frfx": "'+$scope.checkboxModel.value41[i]+'","T_frfxVrsn": "'+$scope.selected_name_fxVersnl[i]+'","T_OthBrsr": "'+$scope.otherBrowser1[i]+'","T_OthBrsrVrsn": "'+$scope.entOthrBrsrIDl[i] ;	
-      $scope.browserVersionsCollection1[i] = $scope.selected_name_ieVersnl[i] + " " + $scope.selected_name_edVersnl[i] + " " + /*$scope.selected_name_chVersnl[i] */ " " + " " + $scope.selected_name_sfVersnl[i] + " " + $scope.selected_name_fxVersnl[i] + " " + $scope.entOthrBrsrIDVrsn1[i];
+      $scope.browserVersionsCollection1[i] = $scope.selected_name_ieVersnl[i] + " " + $scope.selected_name_edVersnl[i] + " " + $scope.selected_name_chVersnl[i] + " " + " " + $scope.selected_name_sfVersnl[i] + " " + $scope.selected_name_fxVersnl[i] + " " + $scope.entOthrBrsrIDVrsn1[i];
       $scope.browserTypeCollection1[i] = $scope.checkboxModel.value14[i] + "  " + $scope.checkboxModel.value51[i] + "   " + $scope.checkboxModel.value21[i] + "  " + $scope.checkboxModel.value31[i] + "  " + $scope.checkboxModel.value41[i] + "  " + $scope.otherBrowser1[i] + " " + $scope.entOthrBrsrIDl[i];
       
       //for remediation details and date field 
