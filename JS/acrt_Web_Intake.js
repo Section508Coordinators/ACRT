@@ -6,7 +6,7 @@ function IsJsonString(str) {
   try {
     JSON.parse(str);
   } catch (e) {    
-	alert("There is a problem with the data. Check browser console or contact technical support.");
+	alert("There is a problem with the data, contact technical support.");
 	console.log(str);
 	//return false;
   }
@@ -30,8 +30,6 @@ app.filter('unique', function() {
 });
 
 
-
-
 app.controller('acrtWebIntakeCtrl', ['$scope', function($scope, $filter) {
 	
   $scope.Mul_Issues = [];
@@ -52,6 +50,8 @@ app.controller('acrtWebIntakeCtrl', ['$scope', function($scope, $filter) {
 
 $scope.elementIsClicked1 = [];
 $scope.elementIsClicked2 = [];
+$scope.elementIsClicked11 = [];
+$scope.elementIsClicked21 = [];
 
 $scope.brsrChkBoxClicked = function(x) {
   
@@ -60,7 +60,12 @@ $scope.brsrChkBoxClicked = function(x) {
   
 }
 
-
+$scope.brsrChkBoxClicked1 = function(x) {
+  
+  $scope.elementIsClicked11[x] = "VrsnSelected" + x;
+  $scope.elementIsClicked21[x] = "TypeSelected" + x;
+  
+}
 
 
 $scope.elementIsClicked4 = " ";
@@ -351,8 +356,6 @@ $scope.optionieVersn = [{
 
 ];
 
-/*var element = document.getElementById('ieeVersnID'); 
-        element.addEventListener('click', clickHandler); */
 
 $scope.selected_id_edVersn = " ";
 $scope.selected_name_edVersn = " ";
@@ -915,7 +918,8 @@ $scope.submit = function() {
   $scope.browserIndividualVersionsCollection11 = [];
   $scope.browserIndividualTypeCollection11 = [];
   $scope.entOthrBrsrIDl = [];
-  $scope.selected_name_ieVersnl1 = [];
+  $scope.entOthrBrsrIDl1 = [];  
+  $scope.selected_name_ieVersn11 = [];
   $scope.selected_name_edVersnl1 = [];
   $scope.selected_name_chVersnl1 = [];
   $scope.selected_name_sfVersnl1 = [];
@@ -1060,8 +1064,8 @@ $scope.submit = function() {
     $scope.location[i] = $scope.location[i].toString().replace(/""/g, '"');
 	$scope.location[i] = $scope.location[i].toString().replace(/\n/g, " ");
 	
-    /*if ($scope.selected_name_glbl[i] == undefined);
-      $scope.selected_name_glbl[i] = " ";*/
+    if ($scope.selected_name_glbl[i] == undefined);
+      $scope.selected_name_glbl[i] = " ";
     if ($scope.browserTypeCollection1[i] == undefined)
       $scope.browserTypeCollection1[i] = " ";
     if ($scope.imgCnvrsnJSON[i] == undefined)
@@ -1107,120 +1111,117 @@ $scope.submit = function() {
   //var i = $scope.selectedResultIndex;
   for (var k = 0; k < $scope.indexCollection.length; k++) {
 	  var i = $scope.indexCollection[k];      
-    if ($scope.tstIESelected11[k] != "IEClicked")
+        //if user don't select browser version it will get from test environment 
+      if ($scope.elementIsClicked11[k] != "VrsnSelected" + i)
+      $scope.selected_name_ieVersn1[k] = $scope.selected_name_ieVersn;
+     if ($scope.elementIsClicked11[k] == "VrsnSelected" + k){
+       
+      if ($scope.selected_name_ieVersn1[k] != undefined)	   
+      $scope.selected_name_ieVersn1[k] = $scope.selected_name_ieVersn1[k];  }
+     if ($scope.selected_name_ieVersn1[k] == undefined)
+      $scope.selected_name_ieVersn1[k] = " ";
+
+    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
+      $scope.selected_name_edVersn1[k] = $scope.selected_name_edVersn;
+   if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
+	   if ($scope.selected_name_edVersn1[k] != undefined)
+      $scope.selected_name_edVersn1[k] = $scope.selected_name_edVersn1[k];
+    if ($scope.selected_name_edVersn1[k] == undefined)
+      $scope.selected_name_edVersn1[k] = " ";
+
+    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
+      $scope.selected_name_chVersn1[k] = $scope.selected_name_chVersn;
+  if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
+	   if ($scope.selected_name_chVersn1[k] != undefined)
+      $scope.selected_name_chVersn1[k] = $scope.selected_name_chVersn1[k];
+    if ($scope.selected_name_chVersn1[k] == undefined)
+      $scope.selected_name_chVersn1[k] = " ";
+
+    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
+      $scope.selected_name_sfVersn1[k] = $scope.selected_name_sfVersn;
+  if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
+	  if ($scope.selected_name_sfVersn1[k] != undefined)
+      $scope.selected_name_sfVersn1[k] = $scope.selected_name_sfVersn1[k];
+    if ($scope.selected_name_sfVersn1[k] == undefined)
+      $scope.selected_name_sfVersn1[k] = " ";
+
+      if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
+       $scope.selected_name_fxVersn1[k] = $scope.selected_name_fxVersn;
+     if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
+	  if ($scope.selected_name_fxVersn1[k] != undefined)
+      $scope.selected_name_fxVersn1[k] = $scope.selected_name_fxVersn1[k];
+    if ($scope.selected_name_fxVersn1[k] == undefined)
+      $scope.selected_name_fxVersn1[k] = " ";
+
+    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
+      $scope.entOthrBrsrID1[k] = $scope.entOthrBrsrIDVrsn;
+  if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
+	  if ($scope.entOthrBrsrID1[k] != undefined)
+      $scope.entOthrBrsrID1[k] = $scope.entOthrBrsrID1[k];
+    if ($scope.entOthrBrsrID1[k] == undefined)
+      $scope.entOthrBrsrID1[k] = " ";
+
+
+
+    //if user don't select browser type it will get from test environment 
+
+    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
       $scope.checkboxModel.value141[k] = $scope.checkboxModel.value1;
-    if ($scope.tstIESelected11[k] == "IEClicked")
-		 if ($scope.checkboxModel.value141[k] != undefined)
+   if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
+	   if($scope.checkboxModel.value141[k] != undefined)
       $scope.checkboxModel.value141[k] = $scope.checkboxModel.value141[k];
     if ($scope.checkboxModel.value141[k] == undefined)
       $scope.checkboxModel.value141[k] = " ";
-    if ($scope.checkboxModel.value141[k] == true)
-      $scope.checkboxModel.value141[k] = "Internet Explorer";
 
-    if ($scope.tstChromeSelected11[k] != "ChromeClicked")
+    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
       $scope.checkboxModel.value211[k] = $scope.checkboxModel.value2;
-    if ($scope.tstChromeSelected11[k] == "ChromeClicked")
-		if ($scope.checkboxModel.value211[k] != undefined)
-      $scope.checkboxModel.value211[k] = $scope.checkboxModel.value211[i];
+      if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
+		  $scope.checkboxModel.value211[k] != undefined;
+      $scope.checkboxModel.value211[k] = $scope.checkboxModel.value211[k];
     if ($scope.checkboxModel.value211[k] == undefined)
       $scope.checkboxModel.value211[k] = " ";
-    if ($scope.checkboxModel.value211[k] == true)
-      $scope.checkboxModel.value211[k] = "Chrome";
 
-    if ($scope.tstSafariSelected11[k] != "SafariClicked")
+    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
       $scope.checkboxModel.value311[k] = $scope.checkboxModel.value3;
-    if ($scope.tstSafariSelected11[k] == "SafariClicked")
-		if ($scope.checkboxModel.value311[k] != undefined)
+     if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
+		 if($scope.checkboxModel.value311[k] != undefined )
       $scope.checkboxModel.value311[k] = $scope.checkboxModel.value311[k];
     if ($scope.checkboxModel.value311[k] == undefined)
       $scope.checkboxModel.value311[k] = " ";
-    if ($scope.checkboxModel.value311[k] == true)
-      $scope.checkboxModel.value311[k] = "Safari";
 
-    if ($scope.tstFirefoxSelected11[k] != "FirefoxClicked")
+    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
       $scope.checkboxModel.value411[k] = $scope.checkboxModel.value4;
-    if ($scope.tstFirefoxSelected11[k] == "FirefoxClicked")
-		if ($scope.checkboxModel.value411[k] != undefined)
+  if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
+	  if($scope.checkboxModel.value411[k] != undefined)
       $scope.checkboxModel.value411[k] = $scope.checkboxModel.value411[k];
     if ($scope.checkboxModel.value411[k] == undefined)
       $scope.checkboxModel.value411[k] = " ";
-    if ($scope.checkboxModel.value411[k] == true)
-      $scope.checkboxModel.value411[k] = "Firefox";
 
-    if ($scope.tstEdgeSelected11[k] != "EdgeClicked")
+    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
       $scope.checkboxModel.value511[k] = $scope.checkboxModel.value5;
-    if ($scope.tstEdgeSelected11[k] == "EdgeClicked")
-		if ($scope.checkboxModel.value511[k] != undefined)
+  if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
+	  if($scope.checkboxModel.value511[k] != undefined)
       $scope.checkboxModel.value511[k] = $scope.checkboxModel.value511[k];
     if ($scope.checkboxModel.value511[k] == undefined)
       $scope.checkboxModel.value511[k] = " ";
-    if ($scope.checkboxModel.value511[k] == true)
-      $scope.checkboxModel.value511[k] = "Edge";
 
+    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
+      $scope.otherBrowser1[k] = $scope.entOthrBrsrID;
+   if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
+	   if($scope.otherBrowser1[k] != undefined )
+      $scope.otherBrowser1[k] = $scope.otherBrowser1[k];
+    if($scope.otherBrowser1[k] == undefined)
+    $scope.otherBrowser1[k] = " ";
     if ($scope.otherBrowser1[k] == true)
       $scope.otherBrowser1[k] = "Other Browser";
-
-    //if user don't select browser version it will get from default one
-
-    if ($scope.tstIESelected21[k] != "IEClicked") {
-      $scope.selected_name_ieVersnl1[k] = $scope.selected_name_ieVersn;
-    }
-    if ($scope.tstIESelected21[k] == "IEClicked") {
-		if($scope.selected_name_ieVersnl1[k] != undefined)
-      $scope.selected_name_ieVersnl1[k] = $scope.selected_name_ieVersnl1[k];
-    }
-	if($scope.selected_name_ieVersnl1[k] == undefined)
-		$scope.selected_name_ieVersnl1[k] = "";
-
-    if ($scope.tstEdgeSelected21[k] == "EdgeClicked") {
-		if($scope.selected_name_edVersnl1[k] != undefined)
-      $scope.selected_name_edVersnl1[k] = $scope.selected_name_edVersnl1[k];
-    }
-	if($scope.selected_name_edVersnl1[k] == undefined)
-		$scope.selected_name_edVersnl1[k] = "";
-		
-    if ($scope.tstEdgeSelected21[k] != "EdgeClicked") {
-      $scope.selected_name_edVersnl1[k] = $scope.selected_name_edVersn;
-    }
-    if ($scope.tstChromeSelected21[k] == "ChromeClicked") {
-		if($scope.selected_name_chVersnl1[k] != undefined)
-      $scope.selected_name_chVersnl1[k] = $scope.selected_name_chVersnl1[k];
-    }
-	if($scope.selected_name_chVersnl1[k] == undefined)
-		$scope.selected_name_chVersnl1[k] = " ";
-    if ($scope.tstChromeSelected21[k] != "ChromeClicked") {
-      $scope.selected_name_chVersnl1 = $scope.selected_name_chVersn;
-    }
-
-    if ($scope.tstSafariSelected21[k] == "SafariClicked") {
-		if($scope.selected_name_sfVersnl1[k] != $scope.selected_name_sfVersnl1[k])
-      $scope.selected_name_sfVersnl1[k] = $scope.selected_name_sfVersnl1[k];
-    }
-    if ($scope.tstSafariSelected21[k] != "SafariClicked") {
-      $scope.selected_name_sfVersnl1[k] = $scope.selected_name_sfVersn;
-    }
-	if($scope.selected_name_sfVersnl1[k] == undefined)
-		$scope.selected_name_sfVersnl1[k] = "";
-
-    if ($scope.tstFirefoxSelected21[k] == "FirefoxClicked") {
-		if($scope.selected_name_fxVersnl1[k] !== undefined)
-      $scope.selected_name_fxVersnl1[k] = $scope.selected_name_fxVersnl1[k];
-    }
-    if ($scope.tstFirefoxSelected21[k] != "FirefoxClicked") {
-      $scope.selected_name_fxVersnl1[k] = $scope.selected_name_fxVersn;
-    }
-	if($scope.selected_name_fxVersnl1[k] == undefined)
-		$scope.selected_name_fxVersnl1[k] = "";
-
-
     
 
-    $scope.browserIndividualVersionsCollection11[k] = '","S_ieVrsh": "' + $scope.selected_name_ieVersnl1[k] + '","S_edgeVrsn": "' + $scope.selected_name_edVersnl1[k] + '","S_chromeVrsn": "' + $scope.selected_name_chVersnl1[k] + '","S_sfVrsn": "' + $scope.selected_name_sfVersnl1[k] + '","S_firefoxVrsn": "' + $scope.selected_name_fxVersnl1[k] + '","S_othrBrsVrsn": "' + $scope.entOthrBrsrIDVrsn1[k];
-    $scope.browserIndividualTypeCollection11[k] = '","S_ie": "' + $scope.checkboxModel.value141[k] + '","S_edge": "' + $scope.checkboxModel.value511[k] + '","S_chrome": "' + $scope.checkboxModel.value211[k] + '","S_safari": "' + $scope.checkboxModel.value311[k] + '","S_firefox": "' + $scope.checkboxModel.value411[k] + '","S_other": "' + $scope.entOthrBrsrIDl[k];
+    $scope.browserIndividualVersionsCollection11[k] =  '","S_ieVrsh": "' + $scope.selected_name_ieVersn11[k] + '","S_edgeVrsn": "' + $scope.selected_name_edVersn11[k] + '","S_chromeVrsn": "' + $scope.selected_name_chVersn11[k] + '","S_sfVrsn": "' + $scope.selected_name_sfVersn11[k] + '","S_firefoxVrsn": "' + $scope.selected_name_fxVersn11[k] + '","S_othrBrsVrsn": "' + $scope.entOthrBrsrID11[k];
+    $scope.browserIndividualTypeCollection11[k] = '","S_ie": "' + $scope.checkboxModel.value141[k] + '","S_edge": "' + $scope.checkboxModel.value511[k] + '","S_chrome": "' + $scope.checkboxModel.value211[k] + '","S_safari": "' + $scope.checkboxModel.value311[k] + '","S_firefox": "' + $scope.checkboxModel.value411[k] + '","S_other": "' + $scope.otherBrowser11[k];
     
-    $scope.browserVersionsCollection11[k] = $scope.selected_name_ieVersnl1[k] + " " + $scope.selected_name_edVersnl1[k] + " " + $scope.selected_name_chVersnl1[k] + " " + $scope.selected_name_sfVersnl1[k] + " " + $scope.selected_name_fxVersnl1[k] + " " + $scope.entOthrBrsrIDVrsn1[k] + $scope.browserIndividualVersionsCollection11[k];
-    $scope.browserTypeCollection11[k] = $scope.checkboxModel.value141[k] + "  " + $scope.checkboxModel.value511[k] + "   " + $scope.checkboxModel.value211[k] + "  " + $scope.checkboxModel.value311[k] + "  " + $scope.checkboxModel.value411[k] + "  " + $scope.otherBrowser1[k] + " " + $scope.entOthrBrsrIDl[k] + $scope.browserIndividualTypeCollection11[k];
-
+    $scope.browserVersionsCollection11[k] = $scope.selected_name_ieVersn11[k] + " " + $scope.selected_name_edVersn11[k] + " " + $scope.selected_name_chVersn11[k] + " " + $scope.selected_name_sfVersn11[k] + " " + $scope.selected_name_fxVersn11[k] + " " + $scope.entOthrBrsrID11[k] ;
+    $scope.browserTypeCollection11[k] = $scope.checkboxModel.value141[k] + "  " + $scope.checkboxModel.value511[k] + "   " + $scope.checkboxModel.value211[k] + "  " + $scope.checkboxModel.value311[k] + "  " + $scope.checkboxModel.value411[k] + "  " + $scope.otherBrowser11[k] + " " + $scope.entOthrBrsrIDl1[k] + $scope.browserIndividualTypeCollection11[k];
+    
     if ($scope.testerCommentID1[k] == undefined)
       $scope.testerCommentID1[k] = " ";
   
