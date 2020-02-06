@@ -394,14 +394,14 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
    
  </td>
 <td > <div style="width: 236px">
-  Change browser used<input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20" aria-label="Toggle ngShow" ng-click="brsrChkBoxClicked([$index])"  <br />
+  Change browser used <input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20" aria-label="Toggle ngShow" ng-click="brsrChkBoxClicked([$index])"  <br />
 
 <div  ng-show="checked20"  >  
 
 
 <span style="width: 200px" title="Browser Type"  ng-model="chkBoxValIEl[$index]" >   
  <label for="iel[$index]" >IE:
-    <input ng-checked="chkBoxValIEl[$index]" type="checkbox" title="Internet Explorer" ng-model="checkboxModel.value14[$index]"  id="ie" ng-true-value="'Internet Explorer'" ng-false-value="''">
+    <input ng-checked="chkBoxValIEl[$index]" type="checkbox" title="Internet Explorer" ng-model="checkboxModel.value14[$index]"  id="ie[$index]" ng-true-value="'Internet Explorer'" ng-false-value="''">
   </label> 
 </span>
 <span style="width: 200px" title="Browser Version"> 
@@ -538,7 +538,7 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 
 
 <td  > <div style="width: 240px">
-  Change browser used<input id="selectorrr1111[$index]" name="BrowserTypes"  type="checkbox" ng-model="checked21" aria-label="Toggle ngShow"  >  <br />
+  Change browser used<input id="selectorrr1111[$index]" name="BrowserTypes"  type="checkbox" ng-model="checked21"  ng-click="brsrChkBoxClicked1([$index])" >  <br />
 
 <div  ng-show="checked21">  
 <label id="iiee[$index]" title="Internet Explorer" >IE:
