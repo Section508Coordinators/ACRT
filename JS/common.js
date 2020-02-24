@@ -11,18 +11,19 @@ window.onbeforeunload = function(event) {
   return message;
 }
 
+/*
 //Change checkbox message 
 function chkBxMsg(thecheckbox, thelabel) {
 
     var checkboxvar = document.getElementById(thecheckbox);
     var labelvar = document.getElementById(thelabel);
     if (!checkboxvar.checked) {
-        labelvar.innerHTML = "Check checkbox to Disable common alerts.";
+        labelvar.innerHTML = "<strong>Disable</strong>  Common alerts.";
     }
     else {
-        labelvar.innerHTML = "Uncheck checkbox to Enable common alerts.";
+        labelvar.innerHTML = "<strong>Enable</strong>  Common alerts.";
     }
-}
+}*/
 
 //this section will make area collapsible
 var coll = document.getElementsByClassName("collapsible");
@@ -72,5 +73,3 @@ function expandCollapse3() {
     z.innerHTML = "<i class=\"down\"></i> Click to hide Testing Information section";
   }
 }
-
-
