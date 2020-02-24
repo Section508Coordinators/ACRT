@@ -14,8 +14,7 @@
   <div class="topnav" id="myTopnav"> 
   <a title="Home" href="index.html" id="aboutID">Home </a>
   <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
-  <a title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report </a>
-  <a title="Edit Report" href="./ACRT_View_webEdit.html"  id="edtRptId" >Edit Report</a>   
+  <a title="Create/Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create/Edit Report </a>    
   <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
   <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
   
@@ -87,9 +86,9 @@
               <label for="firstname"> Tester's First Name: </label> <input type="string" ng-model="firstname" class="betnTags" id="firstname" name="Entered Tester's First Name" ng-readonly="true"> &nbsp;
               <br><label for="lastname"> Tester's Last Name: </label> <input type="string" ng-model="lastname" class="betnTags" id="lastname" name="Entered Tester's Last Name" ng-readonly="true"> &nbsp;
               <br><label for="testerID"> Trusted Tester ID: </label> <input type="string" ng-model="testerID" class="betnTags" id="testerID" name="Entered Tester's ID" ng-readonly="true"> &nbsp;<br>
-              <!-- <label for="myRole"> Tester's role: </label> <input type="string" ng-model="myRole" class= "betnTags" id="myRole" name="Entered Tester's Role" ng-readonly="true"> &nbsp; -->
+              
               <br><label for="testerContact"> Tester's Email: </label> <input type="string" ng-model="testerContact" class="betnTags" id="testerContact" name="Entered Tester's Contact" ng-readonly="true">
-              <br><label for="testScope">Testing Scope: </label> <input type="text" ng-model="testScope" class="txtarea" id="testScope" name="Entered Test Scope" ng-readonly="true"> <br>
+              <br><label for="testScope">Testing Scope: </label> <textarea rows="4"cols="90" type="text" ng-model="testScope" class="txtarea" id="testScope" name="Entered Test Scope" ng-readonly="true"></textarea> <br>
             </div>
           </div>
         </fieldset> <br>
@@ -102,9 +101,9 @@
         <label for="evalMethodVrsn">Testing Method Version: </label> <input type="string" ng-model="evalMethodVrsn" class="betnTags" id="evalMethodVrsn" name="Entered Evaluation Version" ng-readonly="true"> &nbsp; <br>
         <label for="dateSubmitted"> Test Completion Date:</label> <input type="string" ng-model="dateSubmitted" class="dateField" id="dateSubmitted" name="Test submitted date" ng-readonly="true"> <br> <br>
 
-        <!--<p ng-bind-html="myText"></p> -->
+        
 
-        <table   id="sc1" role="presentation">
+        <table   id="sc1">
 
           <caption> <strong>WCAG  Report </strong></caption> 
 
@@ -145,41 +144,41 @@
                   
 
 
-                  <table class="table" id="th1" style="font-size: 93%" role="presentation" >
+                  <table class="table" id="th1" style="font-size: 93%"  >
                 
                     <thead>
                       <tr>
                       <tr>
-                        <th scope="col" title="Test Name">
+                        <th scope="col" title="Test Name" id="testname[$index]">
                           <div style="width: 83px">Test Name</div>
                         </th>
-                        <th scope="col" title="Test ID">
+                        <th scope="col" title="Test ID" id="testid[$index]">
                           <div style="width: 30px">Test ID</div>
                         </th>
-                        <th scope="col" title="Test Condition">
+                        <th scope="col" title="Test Condition" id="tc[$index]">
                           <div style="width: 198px"> Test Condition </div>
                         </th>
-                        <th scope="col" title="Issue Number"><div style="width: 78px"> Issue Number </div> </th> 
-                        <th scope="col" title="Test Result">
+                        <th scope="col" title="Issue Number" id="in[$index]"><div style="width: 78px"> Issue Number </div> </th> 
+                        <th scope="col" title="Test Result" id="result[$index]">
                           <div style="width: 67px"> Test Result </div>
                         </th>
-                        <th scope="col" title="Browser">
+                        <th scope="col" title="Browser" id="brsr[$index]">
                           <div style="width: 127px"> Browser </div>
                         </th>
-						<th scope="col" title="Tester's Comment" > 
+						<th scope="col" title="Tester's Comment" id="location[$index]"> 
 						<div style="width: 198px"> Location/Screen </div> 
 						</th> 	
-                        <th scope="col" title="Tester's Comment">
+                        <th scope="col" title="Tester's Comment" id="cmnt[$index]">
                           <div style="width: 198px"> Tester Comments </div>
                         </th>
-                        <th scope="col" title="Screenshot">
+                        <th scope="col" title="Screenshot" id="scrnsht[$index]">
                           <div style="width: 120px" >Screenshot </div>
                         </th>
-                        <th style="width: 61px" scope="col" title="Global Issue">Global Issue </th>
-                        <th scope="col" title="Remediation Details">
+                        <th style="width: 61px" scope="col" title="Global Issue" id="glbl[$index]">Global Issue </th>
+                        <th scope="col" title="Remediation Details" id="rmdtl[$index]">
                           <div style="width: 198px"> Remediation Details </div>
                         </th>
-                        <th scope="col" title="Remediation Date">
+                        <th scope="col" title="Remediation Date" id="rmdt[$index]">
                           <div style="width: 100px"> Remediation Date </div>
                         </th>
                         <th>
@@ -193,31 +192,31 @@
           <tbody ng-repeat="record in jsonData ">
             <tr ng-repeat="test in record.Criteria ">
              
-              <th scope="row" title="Test Name">
+              <th scope="row" title="Test Name" id="tnm1[$index]">
                 <div class="widetd1"> {{TestName[$index]}} </div>
               </th>
-              <td title="Test Id">
+              <td title="Test Id" id="tid1[$index]">
                 <div class="widetd2"> {{TestID[$index]}}</div>
               </td>
-              <td title="Selected Test Condition">
+              <td title="Selected Test Condition" id="tstcndn1[$index]">
                 <div class="widetd3"> {{TestCondition[$index]}}</div>
               </td>
 							 <td title="Issue Number">
                 <div style="width: 80px"> {{$index+1}} </div>
               </td> 
-              <td title="Selected Test Result">
+              <td title="Selected Test Result" id="tstrslt1[$index]">
                 <div style="width: 69px"> {{TestResult[$index]}} </div>
               </td>
-              <td title="Selected Browser Types">
+              <td title="Selected Browser Types" id="brsr1[$index]">
                 <div style="width: 129px"> {{T_brwsrType[$index]}} </br> {{T_brwsrVrsn[$index]}}</div>
               </td>
-			  <td title="Entered location/screen">
+			  <td title="Entered location/screen" id="lcn1[$index]">
                 <div class="widetd7"> {{location[$index]}}</div>
               </td>
-              <td title="Entered Tester's Comment">
+              <td title="Entered Tester's Comment" id="tstcmt1[$index]">
                 <div class="widetd7"> {{TesterComment[$index]}}</div>
               </td>
-              <td width="151">  <img width="100" id="image{{test.Counter}}" ng-src={{ImageSrc[$index]}}  ng-click="zoom(test.Counter)" class="large-image" alt="Selected test screenshot" onerror="this.style.display='none';" >
+              <td width="151">  <img width="100" id="image{{test.Counter}}" id="img1[$index]" ng-src={{ImageSrc[$index]}}  ng-click="zoom(test.Counter)" class="large-image" alt="Selected test screenshot" onerror="this.style.display='none';" >
               
              <div id="{{test.Counter}}" class="modal">
              <span class="close">&times;</span>
@@ -226,13 +225,13 @@
              </div>
 			  </td>
             
-              <td title="Selected Global Issue">
+              <td title="Selected Global Issue" id="glbl1[$index]">
                 <div style="width: 46px"> {{GlobalIssue[$index]}} </div>
               </td>
-              <td title="Entered Remediation Details">
+              <td title="Entered Remediation Details" id="rmdtl1[$index]" >
                 <div style="width: 201px"> {{RemediationDetails[$index] }}</div>
               </td>
-              <td title="Entered Remediation Date">
+              <td title="Entered Remediation Date" id="rmdt1[$index]" >
                 <div style="width: 102px"> {{RemediationDate[$index]}} </div>
               </td>
 
@@ -279,9 +278,7 @@
           <div class="content">
 
             <h3> Hardware Test Results </h3>
-            N/A
-            <h3> Software Test Results </h3>
-            N/A
+            N/A           
             <h3> Document Test Results </h3>
             N/A
           </div>
@@ -292,8 +289,7 @@
   <div id="htmlReportDiv" class="footerbutton" hidden >
 	Select <strong>Save as HTML</strong> to generate a printer-friendly HTML version of the report (saved in the system's Downloads folder by default). <br/>
 	<input type="button" id="sbtBtn" class="button" value="Save as HTML" ng-click="saveHtml()">
-	</div>
-	
+	</div>	
   <script src="./JS/acrt_Web_Report.js"> </script>
 
 
