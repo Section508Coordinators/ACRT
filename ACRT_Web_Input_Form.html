@@ -3,7 +3,7 @@
 
 <head>
   <meta charset="UTF-8">
-  <title>Create Report</title>
+  <title>Create/Edit Report</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
 <meta name="description" content="Great Tool to track test results" />
   <link rel="stylesheet" type="text/css" href="./CSS/acrt_styles.css">     
@@ -14,28 +14,29 @@
 <body ng-app="acrtWebIntake">
 
 <div class="topnav" id="myTopnav"> 
-  <a title="Home" href="index.html" id="aboutID">Home </a>
+  <a title="Home" href="index.html" id="aboutID">Home </a>  
   <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
-  <a title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report </a>
-  <a title="Edit Report" href="./ACRT_View_webEdit.html"  id="edtRptId" >Edit Report</a>   
-  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
-  <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
-  
+  <a title="Create/Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create/Edit Report </a> 
+  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>   
+  <a title="View License" href= "./Resources/LICENSE.md"  target="_blank"  id="licenseID"> View License </a>  
 </div>
 
   <div ng-controller="acrtWebIntakeCtrl">  
-     <br>
- 	<label for="alerts" name="chkUnchk" id="chkUnchk"> Disable common alerts </label> 
-    <input type="checkbox" id="alerts" title="alerts" ng-model="checkboxModel.alerts"  onclick="chkBxMsg('alerts', 'chkUnchk');"  ng-true-value="'off'" ng-false-value="'on'">
+     
+	 <p><strong ng-if="draftReport" style="color: #FFFFFF; background-color: #be0004;"> You have not selected all test results, Feel free to edit/update as needed. </strong><p>
+	 <br>
+ 	<label for="alerts" name="chkUnchk" id="chkUnchk"><strong>Enable</strong>  Common alerts. </label> 
+    <input type="checkbox" id="alerts" title="enable/disable alerts" ng-model="checkboxModel.alerts"  onclick="chkBxMsg('alerts', 'chkUnchk');"  ng-true-value="'on'" ng-false-value="'off'">
+	
   
- <h1> Create New Test Results Form </h1>  
-  Create a new test results form and complete required details in the Product and Tester sections. <a title="Create Report instructions." href= "./Help_Input.html"  target="_blank"  id="tstinstrID" > "Create Report" instructions.  </a> 
+ <h1> Create/Edit Test Results Form </h1>  
+  Create a new test results form and complete required details in the Product and Tester sections. <a title="Create Report instructions." href= "./Help_Input.html"  target="_blank"  id="tstinstrID" > "Create/Edit Report" instructions.  </a> 
    <p >
 	  First, select a Success Criteria template. <br>
 	  <ul id="instr">
 	    <li>To view the results table, load a template first</li>
-	    <li>The default file is <i>SuccessCriteria.json</i> in the ACRT Resources folder.</li>
-		<li>If you wish to use a json file you have customized, e.g. with your tester information, navigate to and select that file.</li>
+	    <li>The default JSON files for <strong>TT4 & TT5</strong> are located inside ACRT Resources folder.</li>
+		<li>If you wish to use a json file you have customized, e.g. with your  information, navigate to and select that file.</li>
 	  </ul>
 	</p>
 		<label for="fileinput">Select template file</label> <br>  <input type="file"  class="button" id="fileinput" name="Browse Input File" >  <br>  
@@ -55,217 +56,207 @@
  
  </ul>  </p>
 
-  <fieldset>
+<fieldset>
   <legend>
     <h2> Product  </h2></legend>
-	
-    <button class="collapsible" id="productBtn" onclick="expandCollapse1()"><div id="expandCollapse1"> <i class="up"></i> Click to show Product section</div> </button>
-	<div class="content">
-    <div class="divSpace" id="productInfo" >
-	
-   <label class="required"  for="productID"> Product Name (Required, 100 chars max): </label> <input type="string" name= "productID" ng-model="productID" class= "betnTags" id="productID" name="Name Of Product" maxlength="100" size="100" required  > &nbsp;&nbsp;&nbsp;&nbsp;
-   <br>
-   <label class="required"  for="versionID"> Product Version (Required, 50 chars max): </label>  <input type="string" ng-model="versionID" class= "betnTags" id="versionID" name="Product Version" maxlength="50" size="50" required> 
-  <br>
-   <label for="ownerID">Product Owner/Vendor (50 chars max): </label> <input type="string" ng-model="ownerID" class= "betnTags" id="ownerID" name="Product Owner" maxlength="50" size="40"> &nbsp; &nbsp;&nbsp;&nbsp;
-   <br><br>
+	<button class="collapsible" onclick="expandCollapse1()"><div id="expandCollapse1"> <i class="up"></i> Click to show Product section</div> </button> 
+<div class="content">
+<div class="divSpace" id="productInfo" >
+   <label for="productID" class="required"> Product Name (Required, 100 chars max): </label> <input type="string" name= "product Name" ng-model="productID" class= "betnTags" id="productID" name="Name Of Product" maxlength="50" required size="100">&nbsp;     
+   <br><label for="versionID" class="required"> Product Version (Required, 50 chars max): </label> <input type="string" ng-model="versionID" class= "betnTags" id="versionID" name="Product Version" maxlength="50" required size="50"> 
+   <br> <label for="ownerID">Product Owner/Vendor (50 chars max): </label> <input type="string" ng-model="ownerID" class= "betnTags" id="ownerID" name="Product Owner" maxlength="50" size="40"> &nbsp; <br>
    
-<label for="productType"> Product Type:&nbsp;&nbsp;</label>  
-<select name="Product Type" ng-model="productType"  id="productType"  >
+   <br>
+   <label for="productType"> Product Type:&nbsp;&nbsp;</label>  
+<select name="  Type of Product" ng-model="productType"  id="productType" >
+<option value="">{{default_productType}}</option>
 <option ng-repeat="result in testProductTypes" value="{{result.name}}">{{result.name}}</option>
 </select>
  <br>
- <div ng-if="productType ==''Other''">
- <label for="otherProductID">Other Product(50 chars max): </label> <input type="string" ng-model="otherProductID" class= "betnTags" id="otherProductID" name="Other Product Version" maxlength="50"> &nbsp; &nbsp;&nbsp;&nbsp;
-</div>   
+   
+   <br>
+   
+   <label for="urlID">Location (150 chars max): </label> <input type="string" ng-model="urlID" class= "dateField" id="urlID" name="Location" maxlength="500"> &nbsp;    
    
    
-   <br><label for="urlID">Location (500 chars max):</label> <input type="string" ng-model="urlID" class= "dateField" id="urlID" name="Location" maxlength="500"> <br>&nbsp; &nbsp;&nbsp;&nbsp;
-   <br><label class="required" for="prodDescID"> Product Description (Required, 500 chars max):</label><br>
-   <textarea rows="4"cols="90"type="text"ng-model="prodDescID" id="prodDescID"name="Product Description"maxlength="500"required></textarea>&nbsp;&nbsp;&nbsp;&nbsp;
-    
-   <br><br>
-   <label for="prdNteDescID"> Notes (Required, 500 chars max):&nbsp;&nbsp;</label><br>
-   <textarea rows="4" cols="90" type="text" ng-model="prdNteDescID"  id="prdNteDescID" name="Notes" maxlength="500"></textarea> <br>
-   
+   <br>
+   <br><label for="prodDescID" class="required"> Product description (Required, 500 chars max) : </label><br>
+   <textarea rows="4" cols="90" type="text" ng-model="prodDescID" class="txtarea" id="prodDescID" name="Product Description" maxlength="500" required> </textarea> &nbsp;
+   <br><br><label for="prdNteDescID"> Notes (500 chars max):</label><br>
+<textarea rows="4" cols="90" type="text" ng-model="prdNteDescID" class="txtarea" id="prdNteDescID" name="Notes" maxlength="500"> </textarea>
    
  </div>  </div>
- </fieldset><br>
-
+ </fieldset></br>
  
-<fieldset>
+  <fieldset>
 <legend> 
- <h2> Test Environment </h2>
+ <h2> Test Environment   </h2>
  </legend> 
- <button class="collapsible"  id="testBtn" onclick="expandCollapse2()"><div id="expandCollapse2"> <i class="up"></i> Click to show Test Environment section </div> </button>
+ <button class="collapsible" onclick="expandCollapse2()"><div id="expandCollapse2"> <i class="up"></i> Click to show Test Environment section</div> </button>
  <div class="content">
-<div class="divSpace" id="sysInfo" >
-   
-   <div class="left-div">
-  <label for="compIDoptTest"> Browser Compatibility View: </label> 
-	 <select 
-      ng-model="selected_id_cmpblty" 
-	  ng-model="selected_name_cmpblty" 
-      ng-options="o.id as o.name for o in optionscmpblty" 
-      ng-change="selected_name_cmpblty=(optionscmpblty|filter:{id:selected_id_cmpblty})[0].name" id="compIDoptTest">
-	  </select>  
-	  
+<div class="divSpace" id="sysInfo" >  
+   <div class="left-div">   
+   <label >Browser Compatibility View: </label> 
+	
+<select name="Compatibility View Setting Options" ng-model="selected_name_cmpblty"  title="Compatibility View Setting Options"  >
+<option value="">{{default_compatibilitySetting}}</option>
+<option ng-repeat="result in optionscmpblty" value="{{result.name}}">{{result.name}}</option>
+</select>
 	  <br><br> 
-<label class="span1" > Browser </label> 
+<label class="span1" >  Browser  </label> 
 
-<table class="table" id="th4" role="presentation">
+<table class="table" id="th4" >
      
+ 
+  
  <tbody>
 <tr>        
 	<th style="width: 200px" scope="col" title="Browser Type" >  Type </th> 		
 	<th style="width: 200px" scope="col" title="Browser Version">  Version  </th>	
 	  
   </tr>  <tr>
-<th scope="row" style="width: 180" title="Browser Type" > 
+<th scope="row" style="width: 180px" title="Browser Type"  ng-model="chkBoxValIE" >   
+  
 <label for="ie" >Internet Explorer
-    <input type="checkbox" title="Internet Explorer" ng-model="checkboxModel.value1"  id="ie" ng-true-value="'Internet Explorer'" ng-false-value="''">
-  </label>
+    <input ng-checked="chkBoxValIE" type="checkbox" title="Internet Explorer" ng-model="checkboxModel.value1"  id="ie" ng-true-value="'Internet Explorer'" ng-false-value="''">
+  </label> 
 </th>
 <td style="width: 200px" title="Browser Version"> 
-<label for="ieeVersnIDTest">Version: </label> 	  
-    
-	<select   
-      ng-model="selected_id_ieVersn" 
-	  ng-model="selected_name_ieVersn" 
-      ng-options="o.id as o.name for o in optionieVersn" 
-      ng-change="selected_name_ieVersn=(optionieVersn|filter:{id:selected_id_ieVersn})[0].name" id="ieeVersnIDTest" title="IE Version"> 
-	  </select> 
+<label for="ieeVersnIDTest">  Version: </label> 	 
+
+
+ <select name="  IE version" ng-model="selected_name_ieVersn" id="ieeVersnIDTest"  ng-click="tstIEClicked()">
+<option value="" selected disabled hidden>{{default_ieVersn}}</option>  
+<option ng-repeat="result in optionieVersn" value="{{result.name}}">{{result.name}}</option>
+</select>
 
 </td>
 </tr>
 <tr>
-<td style="width: 180" title="Browser Type" > 
+<td style="width: 180px" title="Browser Type" ng-model="chkBoxValEdg" > 
+
 <label for="ed" > Edge
-	   <input type="checkbox" ng-model="checkboxModel.value5"  id="ed" title="Edge" ng-true-value="'Edge'" ng-false-value="''">
+	   <input ng-checked="chkBoxValEdg" type="checkbox" ng-model="checkboxModel.value5"  id="ed" title="Edge" ng-true-value="'Edge'" ng-false-value="''"> 
   </label> 
 </td>
 <td style="width: 200px" title="Browser Version"> 
-<label for="edVersnID">Version: </label> 
-	<select 
-      ng-model="selected_id_edVersn" 
-	  ng-model="selected_name_edVersn" 
-      ng-options="o.id as o.name for o in optionedVersn" 
-      ng-change="selected_name_edVersn=(optionedVersn|filter:{id:selected_id_edVersn})[0].name" id="edVersnID" title="Edge Version">
-	  </select>	 
+<label for="edVersnIDTest">  Version: </label> 
+	
+	   <select name="  Edge version" ng-model="selected_name_edVersn" id="edVersnIDTest"  ng-click="tstEdgeClicked()">
+<option value="" selected disabled hidden>{{default_edgVersn}}</option>  <!-- default_edgVersn -->
+<option ng-repeat="result in optionedVersn" value="{{result.name}}">{{result.name}}</option>
+</select>
 
 </td>
 </tr>
 <tr>
-<td style="width: 180" title="Browser Type" > 
-<label for="chrome" > Chrome
-    <input type="checkbox" ng-model="checkboxModel.value2" id="chrome" title="Chrome" ng-true-value="'Chrome'" ng-false-value="''">
+<td style="width: 180px" title="Browser Type" ng-model="chkBoxValChrm"> 
+<label for="chrome" >Chrome
+    <input ng-checked="chkBoxValChrm" type="checkbox" ng-model="checkboxModel.value2" id="chrome" title="Chrome" ng-true-value="'Chrome'" ng-false-value="''">
    </label>
 </td>
 <td style="width: 200px" title="Browser Version"> 
-<label for="chVersnID">Version: </label> 
-	<select 
-      ng-model="selected_id_chVersn" 
-	  ng-model="selected_name_chVersn" 
-      ng-options="o.id as o.name for o in optionchVersn" 
-      ng-change="selected_name_chVersn=(optionchVersn|filter:{id:selected_id_chVersn})[0].name" id="chVersnID" title="Chrome Version">
-	  </select> 	 
+<label for="chVersnIDTest">  Version: </label> 	
+ <select name="  chrome Versn" ng-model="selected_name_chVersn" id="chVersnIDTest" ng-click="tstChromeClicked()">
+<option value="" selected disabled hidden>{{default_chrVersn}}</option>
+<option ng-repeat="result in optionchVersn" value="{{result.name}}">{{result.name}}</option>
+</select>	  
 
 </td>
 </tr>
 <tr>
-<td style="width: 180" title="Browser Type" > 
-<label for="safariTest" >Safari
-    <input type="checkbox" ng-model="checkboxModel.value3" id="safariTest" title="Safari" ng-true-value="'Safari'" ng-false-value="''">
+<td style="width: 180px" title="Browser Type" ng-model="chkBoxValSaf" > 
+<label for="safari" >Safari
+    <input ng-checked="chkBoxValSaf" type="checkbox" ng-model="checkboxModel.value3" id="safari" title="Safari" ng-true-value="'Safari'" ng-false-value="''">
    </label for="" > 
 </td>
 <td style="width: 200px" title="Browser Version"> 
-<label for="sfVersnIDTest">Version: </label> 
-	<select 
-      ng-model="selected_id_sfVersn" 
-	  ng-model="selected_name_sfVersn" 
-      ng-options="o.id as o.name for o in optionsfVersn" 
-      ng-change="selected_name_sfVersn=(optionsfVersn|filter:{id:selected_id_sfVersn})[0].name" id="sfVersnIDTest" title="safari Version">
-	  </select>
+<label for="sfVersnIDTest">  Version: </label> 
+	
+	  <select name="Safari Version" ng-model="selected_name_sfVersn" id="sfVersnIDTest" ng-click="tstSafariClicked()"> 
+<option value="" selected disabled hidden>{{default_sfVersn}}</option>
+<option ng-repeat="result in optionsfVersn" value="{{result.name}}">{{result.name}}</option>
+</select>
 </td>
 </tr>
 <tr>
-<td style="width: 180" title="Browser Type" > 
-<label for="firefox" >Firefox
-    <input type="checkbox" ng-model="checkboxModel.value4"  id="firefox" title="Firefox" ng-true-value="'Firefox'" ng-false-value="''">
+<td style="width: 180px" title="Browser Type"  ng-model="chkBoxValFrfx" > 
+<label for="firefoxTest" >Firefox
+    <input ng-checked="chkBoxValFrfx" type="checkbox" ng-model="checkboxModel.value4"  id="firefoxTest" title="Firefox" ng-true-value="'Firefox'" ng-false-value="''">
    </label >
 </td>
 <td style="width: 200px" title="Browser Version"> 
-<label for="fxVersnIDTest">Version: </label> 
-	<select 
-      ng-model="selected_id_fxVersn" 
-	  ng-model="selected_name_fxVersn" 
-      ng-options="o.id as o.name for o in optionfxVersn" 
-      ng-change="selected_name_fxVersn=(optionfxVersn|filter:{id:selected_id_fxVersn})[0].name" id="fxVersnIDTest" title="Firefox Version">
-	  </select>	
+<label for="fxVersnIDTest">  Version: </label> 	
+	  <select name="  Firefox Version" ng-model="selected_name_fxVersn" id="fxVersnIDTest"   ng-click="tstFirefoxClicked()">
+      <option value="" selected disabled hidden>{{default_frfxVersn}}</option>
+      <option ng-repeat="result in optionfxVersn" value="{{result.name}}">{{result.name}}</option>
+      </select>
+	  
 </td>
 </tr>
 <tr>
-<td style="width: 180" title="Browser Type" > 
+<td style="width: 180px" title="Browser Type" ng-model="chkBoxValOthr"  > 
 <div class="show">
-	 <label for="otherBrowserID">  Other Browser <input id="otherBrowserID" name="Other Browser"  type="checkbox" ng-model="otherBrowser" > </label>
-
+<label for="otherBrowserIDTest">	  Other Browser <input ng-checked= "chkBoxValOthrBrwsr1"  type="checkbox" id="otherBrowserIDTest" name="Other Browser"  title="Other Browser"  ng-model="otherBrowser" > </label>
     	
 </span>
 <TD>
-<label for="entOthrBrsrID"><span class="show" ng-show="otherBrowser"> Type: <input type="string" ng-model="entOthrBrsrID" class= "betnTags" id="entOthrBrsrID" name="Other Browser" maxlength="50" title="Other Browser" size="30"> </label> <br>	
-<label for="entOthrBrsrIDVrsn"><span class="show" ng-show="otherBrowser"> Version: <input type="string" ng-model="entOthrBrsrIDVrsn" class= "betnTags" id="entOthrBrsrIDVrsn" name="Other Browser" maxlength="50" title="Other Browser" size="20"> </label> 	
+<label for="entOthrBrsrID"><span class="show" ng-show="otherBrowser"> Type: <input type="string" ng-model="entOthrBrsrID" class= "betnTags" id="entOthrBrsrID" name="Other Browser" maxlength="50" title="Other Browser"> </label> <br>	
+<label for="entOthrBrsrIDVrsn"><span class="show" ng-show="otherBrowser"> Version: <input type="string" ng-model="entOthrBrsrIDVrsn" class= "betnTags" id="entOthrBrsrIDVrsn" name="Other Browser" maxlength="50" title="Other Browser"> </label> 	
 </td>
-</div> 	
-
+</div>
 </td>
 </tr>
 </tbody>
 </table>
 
-<br> 
-	
+
+<br> </br>
+
  
 </div>
-   
-   <br>
+   </br>
     
    
   <div  class="right-div"> 
-   <label class="span1" >  Operating System </label>  <br><br>
- <label for="window" >Window OS:
-    <input type="checkbox" ng-model="checkboxModel.value6"  id="window" ng-true-value="'Window OS'" ng-false-value="''">
+   <label class="span1" >  Operating System</label>  </br></br>
+ <label for="window" ng-model="chkBoxValWin" >Window OS:
+    <input ng-checked="chkBoxValWin"  type="checkbox" title="window os" ng-model="checkboxModel.value6"  id="window" ng-true-value="'Window OS'" ng-false-value="''">
   </label> &nbsp;
-  <label for="wnVersnIDTest">Version: </label> 
-	<select 
-      ng-model="selected_id_wnVersn" 
-	  ng-model="selected_name_wnVersn" 
-      ng-options="o.id as o.name for o in optionwnVersn" 
-      ng-change="selected_name_wnVersn=(optionwnVersn|filter:{id:selected_id_wnVersn})[0].name" id="wnVersnIDTest">
-	  </select>	
+  <label for="wnVersnIDTest">  Version: </label> 
+
+	  <select name="  Window Version" ng-model="selected_name_wnVersn" id="wnVersnIDTest"  ng-click="tstWinOSClicked()">
+      <option value="" selected disabled hidden>{{default_WindVrsn}}</option>
+      <option ng-repeat="result in optionwnVersn" value="{{result.name}}">{{result.name}}</option>
+      </select>
   
   </br></br>
-  <label for="iosTest" >Mac OS:
-    <input type="checkbox" title="Mac Os check box" ng-model="checkboxModel.value7" id="iosTest" ng-true-value="'IOS'" ng-false-value="''">
+  <label for="ios"    ng-model="chkBoxValMac" >MAC OS:
+    <input ng-checked="chkBoxValMac" type="checkbox" title="MAC OS" ng-model="checkboxModel.value7" id="ios" ng-true-value="'IOS'" ng-false-value="''">
     </label> 
-   <label for="iosVersnIDTest">Version: </label> 	
-	<select 
-      ng-model="selected_id_iosVersn" 
-	  ng-model="selected_name_iosVersn" 
-      ng-options="o.id as o.name for o in optioniosVersn" 
-      ng-change="selected_name_iosVersn=(optioniosVersn|filter:{id:selected_id_iosVersn})[0].name" id="iosVersnIDTest">
-	  </select>	  
+   <label for="iosVersnIDTest">  Version: </label> 	
+	  
+	  <select name="  Mac OS" ng-model="selected_name_iosVersn" id="iosVersnIDTest"  ng-click="tstIOSClicked()">
+      <option value="" selected disabled hidden>{{default_MacVrsn}}</option>
+      <option ng-repeat="result in optioniosVersn" value="{{result.name}}">{{result.name}}</option>
+      </select>
 	  
    </br></br>
    
+  
    <div class="show">
-   <input id="otherWindowID" name="Other Operating System"  type="checkbox" ng-model="otherWindow" aria-label="Toggle ngShow"> Other Operating System 
+   <label for="otherWindowID">Other Operating System
+    <input ng-checked= "chkBoxValOthrWndw1" id="otherWindowID" name="Other Operating System"  type="checkbox" ng-model="otherWindow"  ng-true-value="'Other window'" ng-false-value="''"> 
+	</label> &nbsp;
 
 <span  ng-show="otherWindow"> 
-Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthrWindID" name="Other OS Type" maxlength="50" ><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Version: <input type="string" ng-model="entOthrWindVrsn" class= "betnTags" id="entOthrWindVrsn" name="Other OS Version" maxlength="50" size="45">
+Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthrWindID" name="Other OS Type" maxlength="50" ><br>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Version <input type="string" ng-model="entOthrWindVrsn" class= "betnTags" id="entOthrWindVrsn" name="Other OS Version" maxlength="50" >
 
-</span> </div></div>
+</span> </div>
   
+  </div>
+   
    
  </div> </div>
  </fieldset></br>
@@ -275,44 +266,56 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
  <legend>
  <h2> Testing Information </h2>
  </legend> 
- <button class="collapsible" id="tstrBtn" onclick="expandCollapse3()"><div id="expandCollapse3"> <i class="up"></i> Click to show Testing Information section</div> </button>
+ <button class="collapsible" onclick="expandCollapse3()"> <div id="expandCollapse3"> <i class="up"></i> Click to show Testing Information section</div> </button>
 <div class="content">
 
  <div class="divSpace" id="testersInfo" >
-  <label class="required"  for="firstname"> Tester's First Name (Required, 50 chars max): </label> <input type="string" ng-model="firstname" placeholder ="First Name" class= "betnTags" id="firstname" name="Tester's First Name" maxlength="50" ng-required=true size="45"> &nbsp;  &nbsp;&nbsp;&nbsp;  
+  <label for="firstname" class="required"> Tester's First Name (Required, 50 chars max): </label> <input type="string" ng-model="firstname" placeholder ="First Name" class= "betnTags" id="firstname" name="Tester's First Name" maxlength="50" required size="50"> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   
+   <br><label for="lastname" class="required"> Tester's Last Name (Required, 50 chars max): </label> <input type="string" ng-model="lastname" placeholder ="Last Name" class= "betnTags" id="lastname" name="Tester's Last Name" maxlength="50" required size="50"> 
+  <br><label for="testerID"> Trusted Tester ID (50 chars max): </label> <input type="string" ng-model="testerID" class= "betnTags" placeholder ="ID" id="testerID" name="Trusted Tester's Id" maxlength="50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
-   <br><label class="required"  for="lastname"> Tester's Last Name (Required, 50 chars max): </label> <input type="string" ng-model="lastname" placeholder ="Last Name" class= "betnTags" id="lastname" name="Tester's Last Name" maxlength="50" ng-required=true size="50"> &nbsp;&nbsp;&nbsp;&nbsp;
-   <br>
-  <label for="testerID"> Trusted Tester ID (50 chars max): </label> <input type="string" ng-model="testerID" class= "betnTags" id="testerID" placeholder ="ID" name="Trusted Tester's Id" maxlength="50"> &nbsp;&nbsp;&nbsp;&nbsp;
-   
- <br> <label class="required"  for="testerContact"> Tester's Email (Required, 50 chars max): </label> <input type="string" ng-model="testerContact" placeholder ="Contact" class= "betnTags" id="testerContact" name="Tester's Contact"  maxlength="50" required size="45">
-  
-   &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<br> <label for="testScope"  > Testing Scope (500 chars max):</label><br>
-<textarea rows="4" cols="90" type="text" ng-model="testScope"  id="testScope" name="Test Scope" maxlength="500"  > </textarea>  <br> 
-    <label for="evalMthd"> Testing Method: </label> 	
-	<select 
-      ng-model="selected_id_tstprcss" 
-	  ng-model="selected_name_tstprcss" 
-      ng-options="o.id as o.name for o in optiontstprcss" 
-      ng-change="selected_name_tstprcss=(optiontstprcss|filter:{id:selected_id_tstprcss})[0].name" id="evalMthd">
-	  </select>
-	&nbsp;&nbsp;&nbsp;<label for="evlMthdVrsn">Version: </label> <input type="string" ng-model="evlMthdVrsn" ng-init="evlMthdVrsn='V5'" class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" maxlength="50" ng-readonly="true"> &nbsp;      
+  <br> <label for="testerContact" class="required"> Tester's Email (Required, 50 chars max): </label> <input type="string" ng-model="testerContact" placeholder ="Contact" class= "betnTags" id="testerContact" name="Tester's Contact" maxlength="50" required size="50">
+   <br><label for="testScope"  > Testing Scope (500 chars max):</label><br> <textarea rows="4"cols="90"type="text"ng-model="testScope"class="txtarea"id="testScope"name="Test Scope"></textarea>   
+    <br><br> <label for="evalMthd"> Testing Method: </label> 	
+
+	  <select name="  Evaluation Method " ng-model="selected_name_tstprcss" id="evalMthd"  >  
+<option value="" selected disabled hidden>{{default_evalMethod}}</option>
+<option ng-repeat="result in optiontstprcss" value="{{result.name}}">{{result.name}}</option>
+</select>	&nbsp;&nbsp;&nbsp;
+	<label for="evlMthdVrsn">Version: </label> 
+<select name="Test Version Used" ng-model="evlMthdVrsn"  id="evlMthdVrsn"  >
+<option value="">{{default_tstVrsn}}</option> 
+<option ng-repeat="result in optiontstvrsn" value="{{result.name}}">{{result.name}}</option>
+</select>
+	
+	
+	<!-- <input type="string" ng-model="evlMthdVrsn" ng-init="evlMthdVrsn='V5'" class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" maxlength="50" ng-readonly="true"> &nbsp;      -->
 	&nbsp;  
  </div> </div>
  </fieldset>
  &nbsp; 
+</br> </br>
+ <label for="rmdtlnd" >Do you need <strong>Remediation Detail</strong> ?  </label>
 
- 
- 
+	
+&nbsp; &nbsp; &nbsp; &nbsp; <select name="Remediation Details" ng-model="selected_name_rmdtn"  title="Remediation Details"  id="rmdtlnd" ng-change="remediationDetails()">
+<option ng-repeat="result in optionsglbl" value="{{result.name}}">{{result.name}}</option>
+</select> &nbsp; &nbsp; 
  
 <h3> Generate test results form </h3>
  To view table below, load template file first. If needed, you may open a copy of the 
  <a title="Trusted Tester Test Process" href= "https://www.dhs.gov/sites/default/files/publications/trusted_tester_test_process_v5_0_aug_16_2019.pdf"  target="_blank"  id="tstinstrID" >Trusted Tester Test Process.</a> 
  
  </br> </br>
+ 
+ 
 
 <div ng-if="displayIt"> 
-<table style="height: 500px;" id="rmdTble" role="presentation">
+
+
+<br><br>	  
+ 
+<table style="height: 500px;" id="rmdTble" >
 <caption> Report will be marked as Draft until results are entered for each test 
 <span class="visuallyhidden"> This table has information tester's need to select test results. Make sure to select or fill all required fields </span>
 </caption>
@@ -321,14 +324,16 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	<th scope="col" title="Test Name" > <div style="width: 83px">Test Name</div> </th>	
     <th scope="col" title="Test ID" > <div class="widetd2" >Test ID </div> </th>    	
 	<th scope="col" title="Test Condition"><div style="width: 198px"> Test Condition </div></th>
-    <th scope="col" title="Issue Number"><div style="width: 96px"> Issue Number </div> </th> 	
+    <th scope="col" title="Issue Number"><div style="width: 98px"> Issue Number </div> </th> 	
 	<th scope="col" title="Test Result" > <div style="width: 115px"> Test Result </div></th> 
 	<th scope="col" title="Browser" > <div style="width: 234px">  Browser </div> </th> 
 	<th scope="col" title="Tester's Comment" > <div style="width: 198px"> Location/Screen </div> </th> 	
 	<th scope="col" title="Tester's Comment" > <div style="width: 198px"> Tester Comments </div> </th> 
 	<th scope="col" title="Screenshot"> <div style="width: 188px">Screenshot </div> </th>	
-	<th style="width: 50px" scope="col" title="Global Issue" >Global Issue? </th>    
-	<th ><div style="width: 10px"> </div></th> 
+	<th style="width: 50px" scope="col" title="Global Issue" >Global Issue? </th>  
+    <th  scope="col" title="Remediation Details" ><div style="width: 198px"> Remediation Details </div></th>  	
+	<th  scope="col" title="Remediation Date" ><div style="width: 148px"> Date </div></th>  	
+	<!-- <th ><div style="width: 10px"> </div></th> -->
   </tr>  
   </thead>
   
@@ -346,16 +351,17 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
       ng-model="selected_id_tstrslt[$index]"  
 	  ng-model="selected_name_tstgrp[$index]"  
       ng-options="o.id as o.name for o in optionsTstrslt1"  
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt1|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" ng-click="elemntClicked2([$index])" >
-	  </select> 	  
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt1|filter:{id:selected_id_tstrslt[$index]})[0].name" id="testResult1[$index]" title="  Test Result" ng-click="elemntClicked2([$index])" >
+	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 
+	  
 </span>
 <span ng-if="menu1[$index] == 'menu2' ">    
       <select 
       ng-model="selected_id_tstrslt[$index]" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" ng-click="elemntClicked2([$index])" >
-	  </select> 	  
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" id="testResult2[$index]" ng-click="elemntClicked2([$index])" >
+	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
 <span ng-if="menu1[$index] == 'menu3' ">    
@@ -363,15 +369,15 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
       ng-model="selected_id_tstrslt[$index]" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt2" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt2|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" ng-click="elemntClicked2([$index])" >
-	  </select> 	  
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt2|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" id="testResult3[$index]" ng-click="elemntClicked2([$index])" >
+	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
   <span ng-if="menu1[$index] == 'menu4' ">    
-      <select title="  Test Result" ng-model="selected_name_tstgrp[$index]" ng-click="rsltSlctionClicked([$index]);">
+      <select title="  Test Result" ng-model="selected_name_tstgrp[$index]" id="testResult4[$index]" ng-click="rsltSlctionClicked([$index]);">
 	  <option value="" > Does Not Apply </option>
 	  <option ng-repeat="result in optionsTstrslt4" value="{{result.name}}">{{result.name}}</option>
-	  </select>       	  
+	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select>       	  
  </span> 
 
 <span ng-if="menu1[$index] == 'menu5' ">    
@@ -379,8 +385,8 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
       ng-model="selected_id_tstrslt[$index]" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt3" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt3|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" ng-click="elemntClicked2([$index])" >
-	  </select> 	  
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt3|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" id="testResult5[$index]" ng-click="elemntClicked2([$index])" >
+	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
 <span ng-if="menu1[$index] == 'menu6' ">    
@@ -388,20 +394,22 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
       ng-model="selected_id_tstrslt[$index]" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt5" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt5|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" ng-click="elemntClicked2([$index])" >
-	  </select> 	  
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt5|filter:{id:selected_id_tstrslt[$index]})[0].name" title="  Test Result" id="testResult6[$index]" ng-click="elemntClicked2([$index])" >
+	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
    
  </td>
-<td > <div style="width: 236px">
-  Change browser used <input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20" aria-label="Toggle ngShow" ng-click="brsrChkBoxClicked([$index])"  <br />
 
+ <td > <div style="width: 236px">
+ <label for="selectorrr111[$index]"> Change browser used
+   <input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20"   ng-click="brsrChkBoxClicked([$index])" > <br />
+</label> &nbsp;
 <div  ng-show="checked20"  >  
 
 
-<span style="width: 200px" title="Browser Type"  ng-model="chkBoxValIEl[$index]" >   
+<span style="width: 200px" title="Browser Type"  ng-model="chkBoxValIE1[$index]" >   
  <label for="iel[$index]" >IE:
-    <input ng-checked="chkBoxValIEl[$index]" type="checkbox" title="Internet Explorer" ng-model="checkboxModel.value14[$index]"  id="ie[$index]" ng-true-value="'Internet Explorer'" ng-false-value="''">
+    <input ng-checked="chkBoxValIE1[$index]" type="checkbox" title="Internet Explorer" ng-model="checkboxModel.value14[$index]"  ng-click="ieChekBox($index)" id="ie[$index]" ng-true-value="'Internet Explorer'" ng-false-value="''">
   </label> 
 </span>
 <span style="width: 200px" title="Browser Version"> 
@@ -412,14 +420,14 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_ieVersn1[$index]" 
       ng-options="o.id as o.name for o in optionieVersn" 
       ng-change="selected_name_ieVersn1[$index]=(optionieVersn|filter:{id:selected_id_ieVersn1[$index]})[0].name"  title="IE Version"> 
-	  </select> 
+	  <option value="" selected disabled hidden>{{default_ieVersn1[$index]}}</option> </select> 
 
 </span> <br>
 
-<span style="width: 200px" title="Browser Type" ng-model="chkBoxValEdgl[$index]" > 
+<span style="width: 200px" title="Browser Type" ng-model="chkBoxValEdg1[$index]" > 
 
 <label for="edl[$index]" >Edge:
-	   <input ng-checked="chkBoxValEdgl[$index]" type="checkbox" ng-model="checkboxModel.value51[$index]"  id="edl[$index]" title="Edge" ng-true-value="'Edge'" ng-false-value="''">
+	   <input ng-checked="chkBoxValEdg1[$index]" type="checkbox" ng-model="checkboxModel.value51[$index]"  ng-click="edgChekBox($index)" id="edl[$index]" title="Edge" ng-true-value="'Edge'" ng-false-value="''">
   </label> 
 </span> 
 <span style="width: 200px" title="Browser Version"> 
@@ -430,12 +438,12 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_edVersn1[$index]" 
       ng-options="o.id as o.name for o in optionedVersn" 
       ng-change="selected_name_edVersn1[$index]=(optionedVersn|filter:{id:selected_id_edVersn1[$index]})[0].name"  title="Edge Version"> 
-	  </select> 	
+	  <option value="" selected disabled hidden>{{default_edgVersn1[$index]}}</option> </select> 	
 	   
 </span><br> 
-<span style="width: 200px" title="Browser Type" ng-model="chkBoxValChrml[$index]"> 
+<span style="width: 200px" title="Browser Type" ng-model="chkBoxValChrm1[$index]"> 
 <label for="chromel[$index]" >Chrome:
-    <input ng-checked="chkBoxValChrml[$index]" type="checkbox" ng-model="checkboxModel.value21[$index]" id="chromel[$index]" title="Chrome" ng-true-value="'Chrome'" ng-false-value="''">
+    <input ng-checked="chkBoxValChrm1[$index]" type="checkbox" ng-model="checkboxModel.value21[$index]" ng-click="chromeChekBox($index)" id="chromel[$index]" title="Chrome" ng-true-value="'Chrome'" ng-false-value="''">
    </label>
 </span>
 <span style="width: 200px" title="Browser Version"> 
@@ -445,12 +453,12 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_chVersn1[$index]" 
       ng-options="o.id as o.name for o in optionchVersn" 
       ng-change="selected_name_chVersn1[$index]=(optionchVersn|filter:{id:selected_id_chVersn1[$index]})[0].name"  title="Chrome Version"> 
-	  </select> 	  
+	  <option value="" selected disabled hidden>{{default_chrVersn1[$index]}}</option> </select> 	  
 
 </span><br>
-<span style="width: 200px" title="Browser Type" ng-model="chkBoxValSafl[$index]" > 
+<span style="width: 200px" title="Browser Type" ng-model="chkBoxValSaf1[$index]" > 
 <label for="safaril[$index]" >Safari:
-    <input ng-checked="chkBoxValSafl[$index]" type="checkbox" ng-model="checkboxModel.value31[$index]" id="safaril[$index]" title="Safari" ng-true-value="'Safari'" ng-false-value="''">
+    <input ng-checked="chkBoxValSaf1[$index]" type="checkbox" ng-model="checkboxModel.value31[$index]" ng-click="safariChekBox($index)"  id="safaril[$index]" title="Safari" ng-true-value="'Safari'" ng-false-value="''">
    </label for="" > 
 </span> 
 <span style="width: 200px" title="Browser Version"> 
@@ -461,7 +469,7 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_sfVersn1[$index]" 
       ng-options="o.id as o.name for o in optionsfVersn" 
       ng-change="selected_name_sfVersn1[$index]=(optionsfVersn|filter:{id:selected_id_sfVersn1[$index]})[0].name"  title="Safari Version"> 
-	  </select> 
+	  <option value="" selected disabled hidden> {{default_sfVersn1[$index]}}</option> </select> 
 
 </span> 
 
@@ -469,9 +477,9 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 <br>
 
 
-<span style="width: 200px" title="Browser Type"  ng-model="chkBoxValFrfx" > 
+<span style="width: 200px" title="Browser Type"  ng-model="chkBoxValFrfx1[$index]" > 
 <label for="firefoxl[$index]" >Firefox:
-    <input ng-checked="chkBoxValFrfxl[$index]" type="checkbox" ng-model="checkboxModel.value41[$index]"  id="firefoxl[$index]" title="Firefox" ng-true-value="'Firefox'" ng-false-value="''">
+    <input ng-checked="chkBoxValFrfx1[$index]" type="checkbox" ng-model="checkboxModel.value41[$index]" ng-click="frfxChekBox($index)"  id="firefoxl[$index]" title="Firefox" ng-true-value="'Firefox'" ng-false-value="''">
    </label >
 </span> 
 <span style="width: 200px" title="Browser Version"> 
@@ -482,39 +490,60 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_fxVersn1[$index]" 
       ng-options="o.id as o.name for o in optionfxVersn" 
       ng-change="selected_name_fxVersn1[$index]=(optionfxVersn|filter:{id:selected_id_fxVersn1[$index]})[0].name"  title="Firefox Version"> 
-	  </select> 
+	  <option value="" selected disabled hidden>{{default_frfxVersn1[$index]}}</option> </select> 
 </span> <br>
 
 
 <span style="width: 200px" title="Browser Type" ng-model="chkBoxValOthrl[$index]" > 
 <div class="show">
-	  Other:<input id="otherBrowserIDl[$index]" name="Other Browser"  type="checkbox" ng-model="otherBrowserl[$index]" > 
-
-    	
+	  <label for="otherBrowserIDl[$index]">Other:<input ng-checked="chkBoxValOthrl[$index]" id="otherBrowserIDl[$index]" name="Other Browser"  ng-click="otherChekBox($index)" type="checkbox" ng-model="otherBrowserl[$index]"  ng-true-value="'Other Browser'" ng-false-value="''"> 
+       
+    </label> &nbsp;	
 </span> <br>
-<span>
-<label for="ieeVersnID4[$index]"><span class="show" ng-show="otherBrowserl[$index]"> Type:<input type="string" ng-model="entOthrBrsrIDl[$index]" class= "betnTags" id="entOthrBrsrID4[$index]" name="Other Browser" maxlength="50" title="Other Browser" size="20"> </label> <br>	
-<label for="entOthrBrsrIDVrsn"><span class="show" ng-show="otherBrowserl[$index]">Ver.<input type="string" ng-model="entOthrBrsrIDVrsnl[$index]" class= "betnTags" id="entOthrBrsrIDVrsnl[$index]" name="Other Browser" maxlength="50" title="Other Browser" size="20"> </label> 	
+<span> 
+<label for="otherBrowserl[$index]"><span class="show" ng-show="otherBrowserl[$index]"> Type:<input  ng-model="entOthrBrsrIDVrsnl[$index]" class= "betnTags" id="otherBrowserl[$index]" name="Other Browser type" maxlength="50" title="Other Browser" size="20"> </label> <br>	
+<label for="entOthrBrsrIDVrsn"><span class="show" ng-show="otherBrowserl[$index]">Ver.<input  ng-model="entOthrBrsrIDl[$index]" class= "betnTags" id="entOthrBrsrIDl[$index]" name="Other Browser version" maxlength="50" title="Other Browser" size="20"> </label> 	
 </span>
 </div>
 </span><br>
 </div>
 </div>
 </td>
+ 
 <td > <div class="widetd7"> <textarea rows="4" cols="25" type="text" ng-model="location[$index]" class="txtarea" title="Location/Screen" maxlength="500" > </textarea> </div> </td>
 <td > <div class="widetd7"> <textarea rows="4" cols="25" type="text" ng-model="testerCommentID[$index]" class="txtarea" maxlength="500" title="Tester's Comment" > </textarea> </div> </td>
-<td > <div class="widetd8"> <input type="file"  ng-model='imgCnvrsn[$index]' title="Screenshot"  onchange="angular.element(this).scope().uploadImage(this)" /> </div>	 </td>   
+<td title="Screenshot">  <div class="widetd8">
 
-<td  title="Global Issue">
+<br><input  type="file"  ng-model='imgCnvrsn[$index]' title="Screenshot"  onchange="angular.element(this).scope().uploadImage(this)" /> <br>
+ <img   id="image{{test.Counter}}" ng-src = {{test.ImageSrc}}  class="large-image" width="50" height="50" ng-click="zoom(test.Counter)" > 
+ 
+             <div id="{{test.Counter}}" class="modal">
+             <span class="close">&times;</span>
+            <img class="modal-content" id="img{{test.Counter}}">
+             <div class="caption" id="caption{{test.Counter}}" ></div>
+             </div>
+</div>
+	 </td>   
+<td  title="Global Issue type">
 <div style="width: 55px">
+
  <select 
       ng-model="selected_id_glbl[$index]" 
 	  ng-model="selected_name_glbl[$index]" 
       ng-options="o.id as o.name for o in optionsglbl" 
-      ng-change="selected_name_glbl[$index]=(optionsglbl|filter:{id:selected_id_glbl[$index]})[0].name" title="  Global Issue type">
-	  </select>
+      ng-change="selected_name_glbl[$index]=(optionsglbl|filter:{id:selected_id_glbl[$index]})[0].name" id="glblResult[$index]" title="  Global Issue type">
+	  <option value="" selected disabled hidden>{{default_glblRslt[$index]}}</option> </select>
 	  </div>
 </td>
+<td title="Remediation Details"> <div style="width: 200px">
+  <label for="selectorr111[$index]"> Add Remediation Details <input style="width: 150px;" id="selectorr111[$index]" name="Remediation Details"  type="checkbox" ng-model="checked10"  > </label> &nbsp;<br />
+<div  ng-show="checked10">  
+<textarea rows="4" cols="50" type="text" ng-model="rmdatnDtlID[$index]" class="txtarea" title="Remediation Details"> </textarea>
+</div></div>
+</td>
+ <td title="Remediation Date"> <div style="width: 150px"> <input   type="date" title="Remediation Date" ng-model="rmdatnDatelID[$index]"  ng-click="dateTime(test.Counter)" placeholder="mm/dd/yyyy" id="rmdatnDatelID" name="Remediation Date" />{{defaultDate[$index]}}
+ </div>
+ </td> 
 
 </tr>
 
@@ -531,8 +560,8 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
       ng-model="selected_id_tstrslt1[$index]"  
 	  ng-model="selected_name_tstgrp1[$index]"  
       ng-options="o.id as o.name for o in optionsTstrslt"  
-      ng-change="selected_name_tstgrp1[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt1[$index]})[0].name" title="  Test Result" ng-click="elemntClicked4([$index])" >
-	  </select>  
+      ng-change="selected_name_tstgrp1[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt1[$index]})[0].name" title="Test Result" ng-click="elemntClicked4([$index])" id="testResultt1[$index]">
+	  <option value="" selected disabled hidden>Result</option> </select>  
 </span> 
  </td>
 
@@ -541,17 +570,17 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
   Change browser used<input id="selectorrr1111[$index]" name="BrowserTypes"  type="checkbox" ng-model="checked21"  ng-click="brsrChkBoxClicked1([$index])" >  <br />
 
 <div  ng-show="checked21">  
-<label id="iiee[$index]" title="Internet Explorer" >IE:
-    <input type="checkbox" ng-model="checkboxModel.value141[$index]" id="iiee[$index]" title="Internet Explorer" ng-true-value="'Internet Explorer, '" ng-false-value="''">
+    <label id="iiee[$index]" title="Internet Explorer" >IE:
+    <input type="checkbox" ng-checked="chkBoxValIE11[$index]" ng-model="checkboxModel.value141[$index]" ng-click="ieChekBox1($index)" id="iiee[$index]" title="Internet Explorer" ng-true-value="'Internet Explorer, '" ng-false-value="''"> 
   </label> &nbsp; <label for="iieeVersnID5[$index]">Ver. </label> 
 	<select 
       ng-model="selected_id_ieVersn11[$index]" 
 	  ng-model="selected_name_ieVersn11[$index]" 
       ng-options="o.id as o.name for o in optionieVersn" 
       ng-change="selected_name_ieVersn11[$index]=(optionieVersn|filter:{id:selected_id_ieVersn11[$index]})[0].name"  id=="iieeVersnID5[$index]" title="Explorer Version">
-	  </select>	</br>
+	  <option value="" selected disabled hidden>Version </option> </select>	</br>
 	  <label for="eedd[$index]" >Edge:
-	   <input type="checkbox" ng-model="checkboxModel.value511[$index]"  id="eedd[$index]" ng-true-value="'Edge, '" ng-false-value="''">
+	   <input type="checkbox" ng-checked="chkBoxValEdg11[$index]" ng-model="checkboxModel.value511[$index]" ng-click="edgChekBox1($index)"  id="eedd[$index]" ng-true-value="'Edge, '" ng-false-value="''">
   </label> &nbsp;
 	  <label for="eeddVersnID[$index]">Ver. </label> 
 	  
@@ -560,9 +589,9 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_edVersn11[$index]" 
       ng-options="o.id as o.name for o in optionedVersn" 
       ng-change="selected_name_edVersn11[$index]=(optionedVersn|filter:{id:selected_id_edVersn11[$index]})[0].name" title="Edge Version" id="edVersnID[$index]" ng-click="elemntClicked([$index])">
-	  </select>	</br>  
+	  <option value="" selected disabled hidden>Version</option> </select>	</br>  
   <label for="chromeee[$index]" > Chrome:
-    <input type="checkbox" ng-model="checkboxModel.value211[$index]" id="chromeee[$index]" ng-true-value="'Chrome, '" ng-false-value="''">
+    <input type="checkbox" ng-checked="chkBoxValChrm11[$index]"  ng-model="checkboxModel.value211[$index]" ng-click="chromeChekBox1($index)" id="chromeee[$index]" ng-true-value="'Chrome, '" ng-false-value="''">
    </label>
    
    <label for="chVersnIDdd[$index]">Ver. </label> 
@@ -571,11 +600,11 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_chVersn11[$index]" 
       ng-options="o.id as o.name for o in optionchVersn" 
       ng-change="selected_name_chVersn11[$index]=(optionchVersn|filter:{id:selected_id_chVersn11[$index]})[0].name" id="chVersnIDdd[$index]"  title="Chrome Version">
-	  </select>	</br>
+	   <option value="" selected disabled hidden>Version</option></select>	</br>
    
    
    <label for="safariii[$index]" >Safari:
-    <input type="checkbox" ng-model="checkboxModel.value311[$index]" id="safariii[$index]" ng-true-value="'Safari, '" ng-false-value="''" >
+    <input type="checkbox" ng-checked="chkBoxValSaf11[$index]" ng-model="checkboxModel.value311[$index]" ng-click="safariChekBox1($index)" id="safariii[$index]"  ng-true-value="'Safari, '" ng-false-value="''" >
    </label for="" > &nbsp;
    <label for="sfVersnIDdd[$index]">Ver. </label> 
 	<select 
@@ -583,10 +612,10 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_sfVersn11[$index]" 
       ng-options="o.id as o.name for o in optionsfVersn" 
       ng-change="selected_name_sfVersn11[$index]=(optionsfVersn|filter:{id:selected_id_sfVersn11[$index]})[0].name" title="Safari Version"  id="sfVersnIDdd[$index]">
-	  </select>	</br> 
+	   <option value="" selected disabled hidden>Version</option> </select>	</br> 
    
    <label for="firefoxxx1" >Firefox:
-    <input type="checkbox" ng-model="checkboxModel.value411[$index]"  id="firefoxxx1" ng-true-value="'Firefox, '" ng-false-value="''">
+    <input type="checkbox" ng-checked="chkBoxValFrfx11[$index]" ng-model="checkboxModel.value411[$index]"  ng-click="frfxChekBox1($index)" id="firefox[$index]" ng-true-value="'Firefox, '" ng-false-value="''">
    </label > &nbsp;
    <label for="fxVersnID[$index]">Ver. </label> 
 	<select 
@@ -594,10 +623,10 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
 	  ng-model="selected_name_fxVersn11[$index]" 
       ng-options="o.id as o.name for o in optionfxVersn" 
       ng-change="selected_name_fxVersn11[$index]=(optionfxVersn|filter:{id:selected_id_fxVersn11[$index]})[0].name" title="Firefox Version" id="fxVersnID[$index]">
-	  </select>	
+	   <option value="" selected disabled hidden>Version</option> </select>	
 	  </br>
 <div class="show">
-	  Other:<input id="otherBrowserID111[$index]" name="Other Browser"  type="checkbox" ng-model="otherBrowserID111[$index]" aria-label="Toggle ngShow"> 
+	  Other:<input ng-checked="otherBrowser11[$index]" id="otherBrowserID111[$index]" name="Other Browser"  type="checkbox" ng-model="otherBrowserID111[$index]" ng-click="otherChekBox1($index)"> 
 <label for="entOthrBrsrID11[$index]"><span class="show" ng-show="otherBrowserID111[$index]"> Type:<input type="string" ng-model="entOthrBrsrID11[$index]" class= "betnTags" id="entOthrBrsrID11[$index]" name="Other Browser" maxlength="50" title="Other Browser" size="20"> </label> <br>	
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <label for="entOthrBrsrIDVrsn11[$index]"><span class="show" ng-show="otherBrowserID111[$index]"> Ver. <input type="string" ng-model="entOthrBrsrIDVrsn11[$index]" class= "betnTags" id="entOthrBrsrIDVrsn11[$index]" name="Other Browser" maxlength="50" title="Other Browser" size="20"> </label> 	
@@ -618,10 +647,17 @@ Name: <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOth
       ng-model="selected_id_glbl1[$index]" 
 	  ng-model="selected_name_glbl1[$index]" 
       ng-options="o.id as o.name for o in optionsglbl" 
-      ng-change="selected_name_glbl1[$index]=(optionsglbl|filter:{id:selected_id_glbl1[$index]})[0].name" title="  Global Issue Type">
+      ng-change="selected_name_glbl1[$index]=(optionsglbl|filter:{id:selected_id_glbl1[$index]})[0].name" id="globalResult[$index]" title="  Global Issue Type">
 	  </select>
  </div>
-</td>  
+</td> 
+<td title="Remediation Details">  <div style="width: 200px">     
+  Add Remediation Details <input style="width: 150px;" id="selectorr1111[$index]" name="Remediation Details"  type="checkbox" ng-model="checked11" >  <br />
+<div  ng-show="checked11">  
+<textarea rows="4" cols="50" type="text" ng-model="rmdatnDtlID1[$index]" class="txtarea" title="Remediation Details" maxlength="500"> </textarea>
+</div></div>
+</td>
+ <td > <div style="width: 150px"> <input type="date" title="Remediation Date" ng-model="rmdatnDatelID1[$index]"  placeholder="mm/dd/yyyy" id="rmdatnDatelID1" name="Remediation Date" /></div></td>
               
         </tr>
 </tbody>
