@@ -14,6 +14,7 @@ function IsJsonString(str) {
   return JSON.parse(str);
 }
 
+//defining filter
 app.filter('unique', function() {
   return function(collection, keyname) {
     var output = [],
@@ -29,41 +30,74 @@ app.filter('unique', function() {
   };
 });
 
+function show_hide_column(col_no, do_show) {
+  var rows = document.getElementById('rmdTble').rows;
+
+  for (var row = 0; row < rows.length; row++) {
+    var cols = rows[row].cells;
+    if (col_no >= 0 && col_no < cols.length) {
+      cols[col_no].style.display = do_show ? '' : 'none';
+    }
+  }
+}
+show_hide_column(10, false);show_hide_column(11, false);
 
 app.controller('acrtWebIntakeCtrl', ['$scope', function($scope, $filter) {
 	
-  $scope.Mul_Issues = [];
-  $scope.onlyUnique = function(value, index, self) {
-    return self.indexOf(value) === index;
+
+ 
+
+//zoom image 
+$scope.zoom = function(i) {
+var modal = document.getElementById(i);
+var img = document.getElementById("image"+i);
+var modalImg = document.getElementById("img"+i);
+var captionText = document.getElementById("caption"+i);
+var span = document.getElementsByClassName("close")[i];
+
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
+
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+	  
   }
+  
+ 
+
+//filter for unique data
+	  $scope.onlyUnique = function(value, index, self) {
+	    return self.indexOf(value) === index;
+	  }
+	
+    
   //this will determine if any element is clicked 
   $scope.elementIsClickedd = false;
   $scope.submitClkCount = 0;
 
   $scope.myVar = true;
   $scope.myVar1 = false;
+  $scope.Mul_Issues = [];
 
   function clickHandler() {
     $scope.elementIsClickedd = true;
   }
   
-
-$scope.elementIsClicked1 = [];
-$scope.elementIsClicked2 = [];
-$scope.elementIsClicked11 = [];
-$scope.elementIsClicked21 = [];
+ 
 
 $scope.brsrChkBoxClicked = function(x) {
-  
-  $scope.elementIsClicked1[x] = "VrsnSelected" + x;
-  $scope.elementIsClicked2[x] = "TypeSelected" + x;
+  if ($scope.checkboxModel.alerts == "on")
+  alert('Do you want to change default browser type and version')
   
 }
 
 $scope.brsrChkBoxClicked1 = function(x) {
-  
-  $scope.elementIsClicked11[x] = "VrsnSelected" + x;
-  $scope.elementIsClicked21[x] = "TypeSelected" + x;
+ if ($scope.checkboxModel.alerts == "on") 
+ alert('Do you want to change default browser type and version')
   
 }
 
@@ -80,60 +114,106 @@ $scope.indexCollection = [];
 
 
 $scope.tstIESelected11 = [];
-$scope.tstIEClicked11 = function(x) {
-  $scope.tstIESelected11[x] = "IEClicked";
 
-} 
-
-
-$scope.tstEdgeSelected11 = [];
-$scope.tstEdgeClicked11 = function(x) {
-  $scope.tstEdgeSelected11[x] = "EdgeClicked";
-}
-
-$scope.tstChromeSelected11 = [];
-$scope.tstChromeClicked11 = function(x) {
-  $scope.tstChromeSelected11[x] = "ChromeClicked";
-}
-
-$scope.tstSafariSelected11 = [];
-$scope.tstSafariClicked11 = function(x) {
-  $scope.tstSafariSelected11[x] = "SafariClicked";
-}
-
-$scope.tstFirefoxSelected11 = [];
-$scope.tstFirefoxClicked11 = function(x) {
-  $scope.tstFirefoxSelected11[x] = "FirefoxClicked";
-}
+ $scope.tstWinMethodSelected = " ";
+  $scope.tstWinOSClicked = function() {
+    $scope.tstWinOSSelected = "WinOSClicked";
+  }
 
 
-$scope.tstIESelected21 = [];
-$scope.tstIEClicked21 = function(x) {
-  $scope.tstIESelected21[x] = "IEClicked";
+  $scope.tstIESelected = " ";
+  $scope.tstIEClicked = function() {
+    $scope.tstIESelected = "IEClicked";
+  }
+  
+  $scope.edgChekBoxVal = [];
+  $scope.edgChekBox = function(i) {
+    $scope.edgChekBoxVal[i] = "edgChekBox";	
+	
+  }
+  
+   $scope.ieChekBoxVal = [];
+  $scope.ieChekBox = function(i) {
+    $scope.ieChekBoxVal[i] = "ieChekBox";	
+  }
+  
+   $scope.frfxChekBoxVal = [];
+  $scope.frfxChekBox = function(i) {
+    $scope.frfxChekBoxVal[i] = "frfxChekBox";	
+  }
+  
+   $scope.chromeChekBoxVal = [];
+  $scope.chromeChekBox = function(i) {
+    $scope.chromeChekBoxVal[i] = "chromeChekBox";	
+  }
+  
+   $scope.safariCheckBoxVal = [];
+  $scope.safariChekBox = function(i) {
+    $scope.safariCheckBoxVal[i] = "safariChekBox";	
+  }
+  
+   $scope.chkBoxValothr = [];
+  $scope.otherChekBox = function(i) {
+    $scope.chkBoxValothr[i] = "otherChekBox";	
+  }
+  
+ 
+   
+  $scope.edgChekBoxVal1 = [];
+  $scope.edgChekBox1 = function(i) {
+    $scope.edgChekBoxVal1[i] = "edgChekBox";	
+  }
+  
+   $scope.ieChekBoxVal1 = [];
+  $scope.ieChekBox1 = function(i) {
+    $scope.ieChekBoxVal1[i] = "ieChekBox";	
+  }
+  
+   $scope.frfxChekBoxVal1 = [];
+  $scope.frfxChekBox1 = function(i) {
+    $scope.frfxChekBoxVal1[i] = "frfxChekBox";	
+  }
+  
+   $scope.chromeChekBoxVal1 = [];
+  $scope.chromeChekBox1 = function(i) {
+    $scope.chromeChekBoxVal1[i] = "chromeChekBox";	
+  }
+  
+   $scope.safariCheckBoxVal1 = [];
+  $scope.safariChekBox1 = function(i) {
+    $scope.safariCheckBoxVal1[i] = "safariChekBox";	
+  }
+  
+   $scope.chkBoxValothr1 = [];
+  $scope.otherChekBox1 = function(i) {
+    $scope.chkBoxValothr1[i] = "otherChekBox";	
+  } 
+  
 
-}
+  $scope.tstEdgeSelected1 = [];
+  $scope.tstEdgeClicked1 = function(x) {
+    $scope.tstEdgeSelected1[x] = "EdgeClicked1";
+  }
 
+  $scope.tstChromeSelected1 = [];
+  $scope.tstChromeClicked1 = function(x) {
+    $scope.tstChromeSelected1[x] = "ChromeClicked1";
+  }
 
-$scope.tstEdgeSelected21 = [];
-$scope.tstEdgeClicked21 = function(x) {
-  $scope.tstEdgeSelected21[x] = "EdgeClicked";
-}
+  $scope.tstSafariSelected1 = [];
+  $scope.tstSafariClicked1 = function(x) {
+    $scope.tstSafariSelected1[x] = "SafariClicked1";
+  }
 
-$scope.tstChromeSelected21 = [];
-$scope.tstChromeClicked21 = function(x) {
-  //$scope.tstChromeSelected11[x] = "ChromeClicked";
-	$scope.tstChromeSelected21[x] = "ChromeClicked";
-}
-
-$scope.tstSafariSelected21 = [];
-$scope.tstSafariClicked21 = function(x) {
-  $scope.tstSafariSelected21[x] = "SafariClicked";
-}
-
-$scope.tstFirefoxSelected21 = [];
-$scope.tstFirefoxClicked21 = function(x) {
-  $scope.tstFirefoxSelected21[x] = "FirefoxClicked";
-}
+  $scope.tstFirefoxSelected1 = [];
+  $scope.tstFirefoxClicked1 = function(x) {
+    $scope.tstFirefoxSelected1[x] = "FirefoxClicked1";
+  }
+ 
+  $scope.dateSelected =[];
+  $scope.dateTime = function(x){
+    $scope.dateSelected[x] = "dateClicked";
+  }
 
 
 
@@ -181,7 +261,7 @@ $scope.selected_name_tstgrp = [];
 
 $scope.optionsTstrslt = [{
     id: 0,
-    name: ''
+    name: 'undefined'
   },
   {
     id: 1,
@@ -201,7 +281,7 @@ $scope.optionsTstrslt = [{
 
 $scope.optionsTstrslt1 = [{
     id: 0,
-    name: ''
+    name: 'undefined'
   },
   {
     id: 3,
@@ -215,7 +295,7 @@ $scope.optionsTstrslt1 = [{
 
 $scope.optionsTstrslt2 = [{
     id: 0,
-    name: ''
+    name: 'undefined'
   },
   {
     id: 1,
@@ -231,7 +311,7 @@ $scope.optionsTstrslt2 = [{
 
 $scope.optionsTstrslt5 = [{
     id: 0,
-    name: ''
+    name: 'undefined'
   },
   {
     id: 4,
@@ -241,7 +321,7 @@ $scope.optionsTstrslt5 = [{
 
 $scope.optionsTstrslt4 = [{
     id: 0,
-    name: ''
+    name: 'undefined'
   },
   {
     id: 3,
@@ -252,7 +332,7 @@ $scope.optionsTstrslt4 = [{
 
 $scope.optionsTstrslt3 = [{
     id: 0,
-    name: ''
+    name: 'undefined'
   },
   {
     id: 1,
@@ -269,22 +349,11 @@ $scope.selected_id1 = [];
 $scope.selected_name1 = [];
 $scope.selected_id = [];
 $scope.selected_name = [];
-/*$scope.options = [
-          {id:1, name:'Supports'},
-          {id:2, name:'Supports with Exceptions'},
-          {id:3, name:'Does Not Support'},
-          {id:4, name:'Not Applicable'},
-		  {id:5, name:'Not Evaluated'}		  
-        ];	*/
-
 $scope.selected_id_glbl = [];
 $scope.selected_name_glbl = [];
 $scope.selected_id_glbl1 = [ ];
 $scope.selected_name_glbl1 = [ ];
-$scope.optionsglbl = [{
-    id: 0,
-    name: ''
-  },
+$scope.optionsglbl = [
   {
     id: 1,
     name: 'Yes'
@@ -296,10 +365,11 @@ $scope.optionsglbl = [{
 
 ];
 
-$scope.testProductTypes = [{
-    id: 0,
-    name: ''
-  },
+
+
+
+
+$scope.testProductTypes = [
   {
     id: 1,
     name: 'Custom developed web page'
@@ -322,16 +392,15 @@ $scope.testProductTypes = [{
   }
 ];
 
-
+$scope.selected_name_ieVersn="";
 $scope.selected_id_ieVersn = " ";
-$scope.selected_name_ieVersn = " ";
 $scope.selected_id_ieVersn1 = [];
 $scope.selected_name_ieVersn1 = [];
 $scope.selected_id_ieVersn11 = [];
 $scope.selected_name_ieVersn11 = [];
 $scope.optionieVersn = [{
     id: 0,
-    name: ''
+    name: 'Other IE'
   },
   {
     id: 1,
@@ -366,31 +435,31 @@ $scope.selected_name_edVersn11 = [];
 
 $scope.optionedVersn = [{
     id: 0,
-    name: ''
+    name: 'Other Edge'
   },
   {
-    id: 9,
+    id: 1,
+    name: 'Edge 80'
+  },
+  {
+    id: 2,
+    name: 'Edge 79'
+  },
+  {
+    id: 3,
     name: 'Edge 44'
   },
   {
-    id: 10,
-    name: 'Edge 43'
-  },
-  {
-    id: 11,
+    id: 4,
     name: 'Edge 42'
   },
   {
-    id: 12,
+    id: 5,
     name: 'Edge 41'
   },
   {
-    id: 13,
-    name: 'Edge 40'
-  },
-  {
-    id: 14,
-    name: 'Edge 39'
+    id: 6,
+    name: 'Edge 20-30'
   }
 
 ];
@@ -405,40 +474,40 @@ $scope.selected_id_chVersn11 = [];
 $scope.selected_name_chVersn11 = [];
 $scope.optionchVersn = [{
     id: 0,
-    name: ''
+    name: 'Other Chrome'
   },
   {
     id: 1,
-    name: 'Chrome 77'
+    name: 'Chrome 80'
   },
   
   {
     id: 2,
-    name: 'Chrome 76'
+    name: 'Chrome 79'
   },
   {
     id: 3,
-    name: 'Chrome 75'
+    name: 'Chrome 78'
   },
   {
     id: 4,
-    name: 'Chrome 74'
+    name: 'Chrome 77'
   },
   {
     id: 5,
-    name: 'Chrome 73'
+    name: 'Chrome 76'
   },
   {
     id: 6,
-    name: 'Chrome 72'
+    name: 'Chrome 72-75'
   },
   {
     id: 7,
-    name: 'Chrome 71'
+    name: 'Chrome 64-71'
   },
   {
     id: 8,
-    name: 'Chrome 70'
+    name: 'Chrome 57-63'
   }
 
 ];
@@ -452,7 +521,7 @@ $scope.selected_name_sfVersn11 = [];
 
 $scope.optionsfVersn = [{
     id: 0,
-    name: ''
+    name: 'Other Safari'
   },
   {
     id: 1,
@@ -491,31 +560,41 @@ $scope.selected_id_fxVersn11 = [];
 $scope.selected_name_fxVersn11 = [];
 $scope.optionfxVersn = [{
     id: 0,
-    name: ''
+    name: 'Other Firefox'
   },
   {
     id: 1,
-    name: 'Firefox 69'
+    name: 'Firefox 73'
   },
   {
     id: 2,
-    name: 'Firefox 68'
+    name: 'Firefox 72'
   },
   {
     id: 3,
-    name: 'Firefox 67'
+    name: 'Firefox 71'
   },
   {
     id: 4,
-    name: 'Firefox 66'
+    name: 'Firefox 70'
   },
   {
     id: 5,
-    name: 'Firefox 65'
+    name: 'Firefox 69'
   },
   {
     id: 6,
-    name: 'Firefox 64'
+    name: 'Firefox 68'
+  }
+  ,
+  {
+    id: 7,
+    name: 'Firefox 65-67'
+  }
+  ,
+  {
+    id: 8,
+    name: 'Firefox 58-64'
   }
 
 
@@ -536,19 +615,27 @@ $scope.optiontstprcss = [{
     id: 1,
     name: 'Trusted Tester'
   }
-  /*,   
-  		  {id:2, name:'WCAG'},
-  		  {id:3, name:'Section 508'},		  
-  		  {id:4, name:'Others'}	*/
+ 
+];
+
+$scope.optiontstvrsn = [{
+    id: 1,
+    name: 'V5'
+  },
+  {
+    id: 2,
+    name: 'V4'
+  }
+ 
 ];
 
 
 $scope.selected_id_cmpblty = " ";
 $scope.selected_name_cmpblty = " ";
-$scope.optionscmpblty = [{
-    id: 0,
-    name: ''
-  },
+
+
+
+$scope.optionscmpblty = [
   {
     id: 1,
     name: 'Turned On'
@@ -563,23 +650,27 @@ $scope.selected_id_wnVersn = " ";
 $scope.selected_name_wnVersn = " ";
 $scope.optionwnVersn = [{
     id: 0,
-    name: ''
+    name: 'Other Window'
   },
   {
     id: 1,
-    name: 'Window Vista'
-  },
-  {
-    id: 2,
     name: 'Windows 10'
   },
   {
-    id: 3,
+    id: 2,
     name: 'Windows 8'
   },
   {
-    id: 4,
+    id: 3,
     name: 'Windows 7'
+  },
+  {
+    id: 4,
+    name: 'Window Vista'
+  },
+  {
+    id: 5,
+    name: 'Windows XP'
   }
 ];
 
@@ -587,143 +678,73 @@ $scope.selected_id_iosVersn = " ";
 $scope.selected_name_iosVersn = " ";
 $scope.optioniosVersn = [{
     id: 0,
-    name: ''
-  },
+    name: 'Other OSX'
+  }
+  ,
   {
     id: 1,
-    name: 'OSX 10.14'
+    name: 'OSX 10.15'
   },
   {
     id: 2,
-    name: 'OSX 10.13'
+    name: 'OSX 10.14'
   },
   {
     id: 3,
-    name: 'OSX 10.12'
+    name: 'OSX 10.13'
   },
   {
     id: 4,
-    name: 'OSX 10.11'
+    name: 'OSX 10.12'
   },
   {
     id: 5,
-    name: 'OSX 10.10'
+    name: 'OSX 10.11'
   },
   {
     id: 6,
+    name: 'OSX 10.10'
+  },
+  {
+    id: 7,
     name: 'OSX 10.9'
   }
 
 ];
 
-//converting image to string 
-$scope.imgCnvrsn = [];
-$scope.menu1 = [];
-$scope.RemarkExplntn = [];
-$scope.RemarkExplntnCollection = [];
 
-
-	
+   $scope.imgCnvrsn = [];
+   $scope.menu1 = [];
+   $scope.RemarkExplntn = [];  
+  $scope.default_dsbl_Impctd_grp = [];
+  $scope.imgCnvrsnDefault =[];
+  $scope.default_compatibilitySetting = "";
+  $scope.default_ieVersn="";
+  $scope.default_edgVersn="";
+  $scope.default_chrVersn="";
+  $scope.default_sfVersn="";
+  $scope.default_frfxVersn="";
+  $scope.entOthrBrsrIDVrsn="";
+  $scope.entOthrBrsrID="";
+  $scope.entOthrWindID="";
+  $scope.default_WindVrsn="";
+  $scope.default_MacVrsn="";
+  $scope.default_compatibility =""; 
+  $scope.default_ieVersn1 = [];
+  $scope.default_edgVersn1 = [];
+  $scope.default_chrVersn1 = [];
+  $scope.default_sfVersn1 = [];
+  $scope.default_frfxVersn1 = [];
+  $scope.def_entOthrBrsrIDVrsn1 = [];
+  $scope.def_entOthrBrsrIDl = [];
+  $scope.default_testResult1 = [];
+  $scope.default_WindVrsn1 = [];
+  $scope.default_MacVrsn1 = [];
+  $scope.default_SelectedResult = [];
+  $scope.default_glblRslt = [];  
+  $scope.default_frfxVersn1 = [];	
 $scope.loadclicked = 0;
 
-
-$scope.loadFile = function loadFile() {
-  var input, file, fr;
-  
-  $scope.loadclicked= $scope.loadclicked+1;	
-   if($scope.loadclicked == 1){      
-       
- 
-  if (typeof window.FileReader !== 'function') {
-    alert("Please use file browser which supports the file API.");
-    return;
-  }
-
-  input = document.getElementById('fileinput');
-  if (!input) {
-    alert("Make sure you have a file input element.");
-  } else if (!input.files) {
-    alert("Please use browser that supports the `files` property of file inputs.");
-  } else if (!input.files[0]) {
-    alert("Please select file first");
-  } else {
-    file = input.files[0];
-    fr = new FileReader();
-    fr.onload = receivedText;
-    fr.readAsText(file);
-  }
-
-  function receivedText(e) {
-    let lines = e.target.result;
-    var newArr = JSON.parse(lines);
-    $scope.jsonData = newArr;
-    document.getElementById("msg").innerHTML = "<b>File load completed</b>";
-	document.getElementById("instr").innerHTML = "";
-       
-    $scope.firstname = $scope.jsonData[0].Tester.T_fstnm;
-    $scope.lastname = $scope.jsonData[0].Tester.T_lstnm;
-    $scope.testerID = $scope.jsonData[0].Tester.T_ID;
-    $scope.myRole = $scope.jsonData[0].Tester.T_Role;
-    $scope.testerContact = $scope.jsonData[0].Tester.T_cntc;
-   
-
-    for (let i = 0; i < $scope.jsonData[0].Criteria.length; i++) {
-      $scope.menu1[i] = $scope.jsonData[0].Criteria[i].OptMenu1;
-    }
-    $scope.Mul_Issues1 = [];
-    $scope.selectedResultIndex = 0;
-	
-    $scope.addIssue = function(index) {		
-	  $scope.newIssueRsltSelected = true;	  
-      let d = 0;
-      $scope.issueClicked = 0;
-      $scope.issueClicked = $scope.issueClicked++;
-      $scope.selectedResultIndex = index;
-	 
-      $scope.insertRoww = [];
-      $scope.addedRow[index] = true;      
-      $scope.indexCollection.push(index); 
-      $scope.Mul_Issues1[index] = {
-        "InsrtTestName": '' + '*'+$scope.jsonData[0].Criteria[index].TestName + '',
-        "InsrtTestID": '' +'*'+ $scope.jsonData[0].Criteria[index].TestID + '',
-        "InsrtIndex": '' +'*'+ index + '',		
-		"InsrtDisabilityImpact": '"' + $scope.jsonData[0].Criteria[index].DisabilityImpact + '"',			
-        "InsrtTestCondition": '' +'*'+ $scope.jsonData[0].Criteria[index].TestCondition + ''
-      };
-
-      $scope.Mul_Issues.push($scope.Mul_Issues1[index]);
-
-		if ($scope.checkboxModel.alerts == "on")
-			alert("Child Issue is added at the end of this table, Please scroll down to work on it.");
-    };
-
-    $scope.removeIssue = function(index) {
-		let removePosition = $scope.jsonData[0].Criteria.length + index+1;		
-		$scope.removeIssueClicked = true;
-      $scope.issueClicked = $scope.issueClicked--;
-	  $scope.newIssueRsltSelected = false;
-      $scope.addedRow[index] = false;
-      $scope.Mul_Issues.splice(index, 1);
-	  document.getElementById("rmdTble").deleteRow(removePosition);
-      $scope.indexCollection.pop();
-    }; 
-	
-	 
-  }
-  	
-
-  $scope.displayIt = true;
-
-}
-}
-
-$scope.defaultExpand = function defaultExpand() {  
-  document.getElementById("aplType").click();
-
-}
-
-
-$scope.default_compatibilitySetting = 'Turned Off';
 $scope.productID = " ";
 $scope.ownerID = " ";
 $scope.versionID = " ";
@@ -761,8 +782,530 @@ $scope.resultFailsCollection = [];
 $scope.resultFails = [];
 $scope.crtRsltCollection = [];
 $scope.RemarkExplntnCollection = [];
+  $scope.chkBoxValIE = false;
+  $scope.chkBoxValEdg = false;
+  $scope.chkBoxValChrm = false;
+  $scope.chkBoxValSaf = false;
+  $scope.chkBoxValFrfx = false;
+  $scope.chkBoxValWin = false;
+  $scope.chkBoxValMac = false;  
+  $scope.def_entOthrBrsrIDVrsn1 = [];
+  $scope.def_entOthrBrsrIDl = [];
+  $scope.default_testResult1 = [];
+  $scope.entOthrBrsrIDVrsn1 = [];
+  $scope.default_WindVrsn1 = [];
+  $scope.default_MacVrsn1 = [];
+  $scope.default_SelectedResult = [];
+  $scope.chkBoxValIE1 = [];
+  $scope.chkBoxValEdg1 = [];
+  $scope.chkBoxValChrm1 = [];
+  $scope.chkBoxValSaf1 = [];
+  $scope.chkBoxValFrfx1 = [];
+ // $scope.entOthrBrsrIDl = [];
+  $scope.chkBoxValOthrl = [];
+  $scope.chkBoxValIE11 = [];
+  $scope.chkBoxValEdg11 = [];
+  $scope.chkBoxValChrm11 = [];
+  $scope.chkBoxValSaf11 = [];
+  $scope.chkBoxValFrfx11 = [];
+ // $scope.entOthrBrsrIDl = [];
+  $scope.chkBoxValOthrl1 = [];
+
+  $scope.chkBoxValMac1 = [];
+  $scope.chkBoxValWin1 = [];
+  $scope.chkBoxValSafl = [];
+  $scope.otherBrowserl = [];
+  $scope.remarkID = [];
+ // $scope.default_glblRslt = [];
+  $scope.criteriaUnique = [];
+  $scope.entOthrBrsrIDVrsn1 = [];
+  $scope.entOthrBrsrIDl = [];
+  $scope.testresult = [];
+  $scope.testresult2 = [];
+  $scope.totTstRslt = [];
+  $scope.testresult1 = " ";
+  $scope.criteriaName = " ";
+  //$scope.counter = [];
+  $scope.crtRsltCollection = [];
+  $scope.crtCollection = [];
+  $scope.brwsrVrsnColctn = [];
+  $scope.brwsrVrsnColctn1 = [];
+  $scope.browserVersionsCollection1 = [];
+  $scope.browserVersionsCollection11 = [];
+  $scope.browserTypeCollection1 = [];
+  $scope.browserTypeCollection11 = [];
+  $scope.grpIDCollection = [];
+  $scope.selected_name_ieVersnl = [];
+  $scope.selected_name_edVersnl = [];
+  //$scope.selected_name_chVersnl=[];
+  $scope.default_chrVersn1 = [];
+  $scope.selected_name_sfVersnl = [];
+  $scope.default_frfxVersn1 = [];
+  $scope.selected_name_fxVersnl = [];
+  $scope.productID = [];
+  $scope.versionID = [];
+  //$scope.versionID = "id";
+  $scope.ownerID = [];
+  $scope.productType = [];
+  $scope.urlID = [];
+ // $scope.prodDescID = [];
+  $scope.prdNteDescID = [];
+  $scope.firstname = [];
+  $scope.lastname = " ";
+  $scope.testerID = " ";
+  $scope.myRole = [];
+  $scope.testerContact = [];
+  
+  $scope.evlMthdVrsn = "";
+  $scope.addedIssueRow = [];
+  $scope.entOthrBrsrIDVrsnl =[];
+  $scope.criteriaResultPush = '';
+  //$scope.dataLoaded = true;
+  $scope.chkBoxValOthrBrwsr = [];
+ $scope.chkBoxValOthrWndw = [];
+ $scope.chkBoxValOthrBrwsr1 = false;
+$scope.chkBoxValOthrWndw1 = false;
+ $scope.loadclicked = 0;
+ $scope.imgCnvrsnJSON =[];
+ $scope.displayIt = false;
+ $scope.defaultDate=[];
+ $scope.originalIssueRsltSelected = false;
+
+  $scope.selected_name_rmdtn="";
+$scope.remediationDetails = function() {	
+        if($scope.selected_name_rmdtn == 'Yes'){
+			if($scope.displayIt == false)
+			alert('Please select the approperiate JSON file to  add remediation details.')
+			show_hide_column(10, true);
+			show_hide_column(11, true);
+		}
+		if($scope.selected_name_rmdtn == 'No'){
+			if($scope.displayIt == false)
+			alert('Please select the approperiate JSON file to  add remediation details.')
+		show_hide_column(10, false);
+		show_hide_column(11, false);	
+		}
+			
+    };
+  
 
 
+$scope.loadFile = function loadFile() {
+  var input, file, fr;
+   
+  
+  $scope.loadclicked= $scope.loadclicked+1;	
+   if($scope.loadclicked == 1){      
+       
+ 
+  if (typeof window.FileReader !== 'function') {
+    alert("Please use file browser which supports the file API.");
+    return;
+  }
+
+  input = document.getElementById('fileinput');
+  if (!input) {
+    alert("Make sure you have a file input element.");
+  } else if (!input.files) {
+    alert("Please use browser that supports the `files` property of file inputs.");
+  } else if (!input.files[0]) {
+    alert("Please select JSON file first");
+  } else {
+    file = input.files[0];
+    fr = new FileReader();
+    fr.onload = receivedText;
+    fr.readAsText(file);
+  }
+
+  function receivedText(e) {
+    let lines = e.target.result;
+    var newArr = JSON.parse(lines);
+    $scope.jsonData = newArr;
+    document.getElementById("msg").innerHTML = "<b>File load completed</b>";
+	document.getElementById("instr").innerHTML = "";
+      if($scope.jsonData[0].Product.P_Name != 'undefined')	
+	  $scope.productID = $scope.jsonData[0].Product.P_Name;	 
+     if($scope.jsonData[0].Product.P_Version != 'undefined')
+      $scope.versionID = $scope.jsonData[0].Product.P_Version;  
+     if($scope.jsonData[0].Product.P_Owner != 'undefined')  
+      $scope.ownerID = $scope.jsonData[0].Product.P_Owner;
+     if($scope.jsonData[0].Product.P_Type != 'undefined')
+      $scope.productType = $scope.jsonData[0].Product.P_Type;
+     if($scope.jsonData[0].Product.P_Location != 'undefined')
+      $scope.urlID = $scope.jsonData[0].Product.P_Location;
+     if($scope.jsonData[0].Product.P_Desc != 'undefined')
+      $scope.prodDescID = $scope.jsonData[0].Product.P_Desc;
+     if($scope.jsonData[0].Product.P_Notes != 'undefined')
+      $scope.prdNteDescID = $scope.jsonData[0].Product.P_Notes;
+     if($scope.jsonData[0].Tester.T_fstnm != 'undefined') 
+    $scope.firstname = $scope.jsonData[0].Tester.T_fstnm;
+    if($scope.jsonData[0].Tester.T_lstnm != 'undefined') 
+    $scope.lastname = $scope.jsonData[0].Tester.T_lstnm;
+    if($scope.jsonData[0].Tester.T_ID != 'undefined') 
+    $scope.testerID = $scope.jsonData[0].Tester.T_ID;
+    if($scope.jsonData[0].Tester.T_Role != 'undefined') 
+    $scope.myRole = $scope.jsonData[0].Tester.T_Role;
+    if($scope.jsonData[0].Tester.T_cntc != 'undefined') 
+    $scope.testerContact = $scope.jsonData[0].Tester.T_cntc;
+	if($scope.jsonData[0].Tester.T_scope != 'undefined') 
+	$scope.testScope = $scope.jsonData[0].Tester.T_scope;
+      //$scope.evlMthdVrsn = "V5"; //$scope.jsonData[0].Tester.T_evalMthd_Vrsn;	
+      $scope.criteriaUnique = $scope.jsonData[0].SuccessCriteria;  
+   
+
+    for (let i = 0; i < $scope.jsonData[0].Criteria.length; i++) {
+      $scope.menu1[i] = $scope.jsonData[0].Criteria[i].OptMenu1;
+    }
+    $scope.Mul_Issues1 = [];
+    $scope.selectedResultIndex = 0;
+	$scope.draftReport = false;	
+	
+    $scope.addIssue = function(index) {
+		
+     if($scope.selected_name_tstgrp[index] !== undefined){			
+	  $scope.newIssueRsltSelected = false;
+      
+      $scope.issueClicked = 0;
+      $scope.issueClicked = $scope.issueClicked++;
+      $scope.selectedResultIndex = index;
+	 
+      $scope.insertRoww = [];
+      $scope.addedRow[index] = true;      
+      $scope.indexCollection.push(index); 
+      $scope.Mul_Issues1[index] = {
+        "InsrtTestName": '' + '*'+$scope.jsonData[0].Criteria[index].TestName + '',
+        "InsrtTestID": '' +'*'+ $scope.jsonData[0].Criteria[index].TestID + '',
+        "InsrtIndex": '' +'*'+ index + '',		
+		"InsrtDisabilityImpact": '"' + $scope.jsonData[0].Criteria[index].DisabilityImpact + '"',			
+        "InsrtTestCondition": '' +'*'+ $scope.jsonData[0].Criteria[index].TestCondition + ''
+      };  
+
+      $scope.Mul_Issues.push($scope.Mul_Issues1[index]);
+
+		if ($scope.checkboxModel.alerts == "on")
+			alert("Child Issue is added at the end of this table, Please scroll down to work on it.");
+		}
+	else
+     		
+	alert('Please select Test result for this test before adding new one.');
+    };
+
+    $scope.removeIssue = function(index) {
+		if ($scope.checkboxModel.alerts == "on")
+		alert('Removed.');
+		//let removePosition = $scope.jsonData[0].Criteria.length + index+1;
+         let removePosition = index.rowIndex;		
+		$scope.removeIssueClicked = true;
+      $scope.issueClicked = $scope.issueClicked--;
+	  $scope.newIssueRsltSelected = true;
+      $scope.addedRow[index] = false;
+      $scope.Mul_Issues.splice(index, 1);
+	  document.getElementById("rmdTble").deleteRow(removePosition);
+      $scope.indexCollection.pop();
+    }; 
+	 if ($scope.jsonData[0].System.S_ie === 'Internet Explorer' ) {
+        $scope.chkBoxValIE = true;
+        $scope.checkboxModel.value1 = "Internet Explorer";
+
+      } 
+	  
+
+      if ($scope.jsonData[0].System.S_edge === 'Edge' ) {
+        $scope.chkBoxValEdg = true;
+        $scope.checkboxModel.value5 = "Edge";
+      }
+
+      if ($scope.jsonData[0].System.S_chrome === 'Chrome' ) {
+        $scope.chkBoxValChrm = true;
+        $scope.checkboxModel.value2 = "Chrome";
+      }
+
+      if ($scope.jsonData[0].System.S_safari === 'Safari'  ) {
+        $scope.chkBoxValSaf = true;
+        $scope.checkboxModel.value3 = "Safari";
+      }
+
+      if ($scope.jsonData[0].System.S_firefox === 'Firefox' ) {
+        $scope.chkBoxValFrfx = true;
+        $scope.checkboxModel.value4 = "Firefox";
+      }
+	  
+	  
+     
+      if ($scope.jsonData[0].System.S_other !== 'undefined') {
+        $scope.chkBoxValOthrBrwsr1 = $scope.jsonData[0].System.S_other;		
+		
+
+      }
+	  
+	  if ($scope.jsonData[0].System.S_othrBrsVrsn !== 'undefined') {
+        $scope.entOthrBrsrIDVrsn = $scope.jsonData[0].System.S_othrBrsVrsn;
+		
+
+      }
+	  
+	  if ($scope.jsonData[0].System.S_other !== 'undefined') {
+        $scope.entOthrBrsrID = $scope.jsonData[0].System.S_othrBrsType;	
+
+      }
+	   
+
+      if ($scope.jsonData[0].System.S_window === 'Window OS') {
+        $scope.chkBoxValWin = true;
+        $scope.checkboxModel.value6 = 'Window OS'
+      }
+
+      if ($scope.jsonData[0].System.S_mac === 'IOS') {
+        $scope.chkBoxValMac = true;
+        $scope.checkboxModel.value7 = 'IOS'
+      }
+
+	
+	  $scope.default_compatibilitySetting = $scope.jsonData[0].System.S_Compatibility;
+      $scope.default_ieVersn = $scope.jsonData[0].System.S_ieVrsh;	
+      //$scope.selected_name_ieVersn = $scope.default_ieVersn;
+	  if($scope.jsonData[0].Tester.S_edgVrsn != 'undefined')
+      $scope.default_edgVersn = $scope.jsonData[0].System.S_edgVrsn;
+      if($scope.jsonData[0].Tester.S_chrVrsn != 'undefined')
+      $scope.default_chrVersn = $scope.jsonData[0].System.S_chrVrsn;
+       if($scope.jsonData[0].Tester.S_sfVrsn != 'undefined')
+      $scope.default_sfVersn = $scope.jsonData[0].System.S_sfVrsn;
+     if($scope.jsonData[0].Tester.S_frfxVrsn != 'undefined')
+      $scope.default_frfxVersn = $scope.jsonData[0].System.S_frfxVrsn;
+     if($scope.jsonData[0].Tester.S_othrBrsVrsn != 'undefined')
+      $scope.entOthrBrsrIDVrsn = $scope.jsonData[0].System.S_othrBrsVrsn;
+     if($scope.jsonData[0].Tester.S_othrBrsType != 'undefined')
+      $scope.entOthrBrsrID = $scope.jsonData[0].System.S_othrBrsType;
+     if($scope.jsonData[0].Tester.S_winVrsn != 'undefined')
+      $scope.default_WindVrsn = $scope.jsonData[0].System.S_winVrsn;
+     if($scope.jsonData[0].Tester.S_iosVrsn != 'undefined')
+      $scope.default_MacVrsn = $scope.jsonData[0].System.S_iosVrsn;
+     if($scope.jsonData[0].Tester.S_otherOSType != 'undefined')
+      $scope.entOthrWindID = $scope.jsonData[0].System.S_otherOSType;
+     if($scope.jsonData[0].Tester.S_otherOSVrsn != 'undefined')
+      $scope.entOthrWindVrsn = $scope.jsonData[0].System.S_otherOSVrsn;
+     if($scope.jsonData[0].Tester.S_Compatibility != 'undefined')
+      $scope.default_compatibility = $scope.jsonData[0].System.S_Compatibility;     
+      $scope.default_evalMethod = "Trusted Tester"; //$scope.jsonData[0].Tester.T_eval;  
+	  if($scope.jsonData[0].Tester.T_evalMthd_Vrsn != 'undefined')
+	  $scope.default_tstVrsn = $scope.jsonData[0].Tester.T_evalMthd_Vrsn
+      //$scope.evlMthdVrsn = $scope.default_tstVrsn ; 
+	  if($scope.jsonData[0].Tester.P_Type != 'undefined')
+      $scope.default_productType = $scope.jsonData[0].Product.P_Type;	  
+	  $scope.jsonData[0].System.S_other = $scope.jsonData[0].System.S_other.toString().trim();	  
+	  if ($scope.jsonData[0].System.S_other === 'Other Browser' || $scope.jsonData[0].System.S_other === '  Other Browser  ' ){
+       $scope.chkBoxValOthrBrwsr1 = true;
+	   $scope.otherBrowser = true;	   
+	  }
+       
+     if ($scope.jsonData[0].System.S_otherOSChked != 'undefined'){
+     $scope.chkBoxValOthrWndw1 = $scope.jsonData[0].System.S_otherOSChked;	
+	 if($scope.chkBoxValOthrWndw1=='Other window')
+		 $scope.chkBoxValOthrWndw1= true;
+	 else 
+		  $scope.chkBoxValOthrWndw1= false;
+	 }
+ 
+  
+	   if ($scope.tstIESelected == "IEClicked") {
+        $scope.selected_name_ieVersn = $scope.selected_name_ieVersn;
+      }
+      if ($scope.tstIESelected != "IEClicked") {
+        $scope.selected_name_ieVersn = $scope.default_ieVersn;
+      }
+
+      if ($scope.tstEdgeSelected == "EdgeClicked") {
+        $scope.selected_name_edVersn = $scope.selected_name_edVersn;
+      }
+      if ($scope.tstEdgeSelected != "EdgeClicked") {
+        $scope.selected_name_edVersn = $scope.default_edgVersn;
+      }
+      if ($scope.tstChromeSelected == "ChromeClicked") {
+        $scope.selected_name_chVersn = $scope.selected_name_chVersn;
+      }
+      if ($scope.tstChromeSelected != "ChromeClicked") {
+        $scope.selected_name_chVersn = $scope.default_chrVersn;
+      }
+
+      if ($scope.tstSafariSelected == "SafariClicked") {
+        $scope.selected_name_sfVersn = $scope.selected_name_sfVersn;
+      }
+      if ($scope.tstSafariSelected != "SafariClicked") {
+        $scope.selected_name_sfVersn = $scope.default_sfVersn;
+      }
+
+      if ($scope.tstFirefoxSelected == "FirefoxClicked") {
+        $scope.selected_name_fxVersn = $scope.selected_name_fxVersn;
+      }
+      if ($scope.tstFirefoxSelected != "FirefoxClicked") {
+        $scope.selected_name_fxVersn = $scope.default_frfxVersn;
+      }
+
+     
+      if ($scope.compatibilitySelected == "CompbltySelected") {
+        $scope.selected_name_cmpblty = $scope.selected_name_cmpblty;
+      }
+      if ($scope.compatibilitySelected != "CompbltySelected") {
+        $scope.selected_name_cmpblty = $scope.default_compatibility;
+      }
+
+      if ($scope.tstWinOSSelected == "WinOSClicked") {
+        $scope.selected_name_wnVersn = $scope.selected_name_wnVersn;
+      }
+      if ($scope.tstWinOSSelected != "WinOSClicked") {
+        $scope.selected_name_wnVersn = $scope.default_WindVrsn;
+      }
+
+      if ($scope.tstIOSSelected == "IOSClicked") {
+        $scope.selected_name_iosVersn = $scope.selected_name_iosVersn;
+      }
+      if ($scope.tstIOSSelected != "IOSClicked") {
+        $scope.selected_name_iosVersn = $scope.default_MacVrsn;
+      }
+      $scope.imgDisplay = false;
+      $scope.chooseFile = false;
+
+      $scope.browserVersionClicked = [];
+      $scope.browserTypeClicked = [];
+      $scope.brsrChkBoxClicked = function(i) {
+        $scope.browserVersionClicked[i] = true;
+        $scope.browserTypeClicked[i] = true;
+      }  
+       $scope.criteriaResultOriginal = [];
+	  
+     $scope.criteriaResultOriginal = $scope.criteriaResultOriginal.filter($scope.onlyUnique);
+	  
+      $scope.origSelectedResults = $scope.jsonData[0].Criteria.length;        
+	  
+      for (let b = 0; b < $scope.jsonData[0].Criteria.length; b++) {
+		   if ($scope.jsonData[0].Criteria[b].DraftReport == 'true') {
+          $scope.draftReport = true;          
+        }
+		  $scope.issueNo[b] = $scope.jsonData[0].Criteria[b].IssueNo;
+        $scope.menu1[b] = $scope.jsonData[0].Criteria[b].OptMenu1;
+        $scope.def_entOthrBrsrIDVrsn1[b] = $scope.jsonData[0].Criteria[b].S_othrBrsVrsn;
+        $scope.default_testResult1[b] = $scope.jsonData[0].Criteria[b].S_othrBrsType;
+
+       // $scope.jsonData[0].Criteria[b].S_ie = $scope.jsonData[0].Criteria[b].S_ie.toString().trim();
+        if ($scope.jsonData[0].Criteria[b].S_ie === "Internet Explorer" || $scope.jsonData[0].Criteria[b].S_ie === "  Internet Explorer  ") {
+          $scope.chkBoxValIE1[b] = true;
+          $scope.checkboxModel.value14[b] = "Internet Explorer";	
+           //$scope.chkBoxValIE11[b] = true;
+          //$scope.checkboxModel.value141[b] = "Internet Explorer";			  
+        }		
+         //$scope.jsonData[0].Criteria[b].S_edge = $scope.jsonData[0].Criteria[b].S_edge.toString().trim();
+        if ($scope.jsonData[0].Criteria[b].S_edge === "Edge" || $scope.jsonData[0].Criteria[b].S_edge === "  Edge  ") {
+          $scope.chkBoxValEdg1[b] = true;
+          $scope.checkboxModel.value51[b] = "Edge";
+		  //$scope.chkBoxValEdg11[b] = true;
+          //$scope.checkboxModel.value511[b] = "Edge";
+        }
+       // $scope.jsonData[0].Criteria[b].S_chrome = $scope.jsonData[0].Criteria[b].S_chrome.toString().trim();
+        if ($scope.jsonData[0].Criteria[b].S_chrome === "Chrome" || $scope.jsonData[0].Criteria[b].S_chrome === "  Chrome  ") {
+          $scope.chkBoxValChrm1[b] = true;
+          $scope.checkboxModel.value21[b] = "Chrome"; 
+		 // $scope.chkBoxValChrm11[b] = true;
+          //$scope.checkboxModel.value211[b] = "Chrome"; 
+        } 
+
+       // if ($scope.jsonData[0].Criteria[b].S_safari === 'Safari') {
+		  // $scope.jsonData[0].Criteria[b].S_safari = $scope.jsonData[0].Criteria[b].S_safari.toString().trim();
+		   if ($scope.jsonData[0].Criteria[b].S_safari === "Safari" || $scope.jsonData[0].Criteria[b].S_safari === "  Safari  " ) {
+          $scope.chkBoxValSaf1[b] = true;
+          $scope.checkboxModel.value31[b] = "Safari";
+		  // $scope.chkBoxValSaf11[b] = true;
+          //$scope.checkboxModel.value311[b] = "Safari";
+        }
+		
+		//$scope.jsonData[0].System.S_other = $scope.jsonData[0].System.S_other.toString().trim();
+		 if ($scope.jsonData[0].Criteria[b].S_other === 'Other Browser' || $scope.jsonData[0].Criteria[b].S_other === '  Other Browser  ') {
+          $scope.chkBoxValOthrl[b] = true;
+		  $scope.chkBoxValOthrl1[b] = true;
+          // $scope.checkboxModel.value31[c] = "Safari";
+        }
+		 //if ($scope.jsonData[0].System.S_chrome === 'Chrome') {
+          //$scope.chkBoxValOthrWndw[b] = true;
+          // $scope.checkboxModel.value31[c] = "Safari";
+       // }
+       // $scope.jsonData[0].Criteria[b].S_firefox = $scope.jsonData[0].Criteria[b].S_firefox.toString().trim();
+        if ($scope.jsonData[0].Criteria[b].S_firefox === "Firefox" || $scope.jsonData[0].Criteria[b].S_firefox === "  Firefox  ") {
+          $scope.chkBoxValFrfx1[b] = true;
+          $scope.checkboxModel.value41[b] = "Firefox";
+
+        }
+
+        /*if ($scope.jsonData[0].Criteria[b].S_other != undefined) {
+			
+				$scope.entOthrBrsrIDl[b] = $scope.jsonData[0].System.S_othrBrsType;
+			
+        }*/
+		if($scope.jsonData[0].Criteria[b].TestResult != 'undefined')
+        $scope.default_SelectedResult[b] = $scope.jsonData[0].Criteria[b].TestResult;	
+        $scope.selected_name_tstgrp[b] = $scope.default_SelectedResult[b];	
+		if($scope.jsonData[0].Criteria[b].S_ieVrsh != 'undefined')
+        $scope.default_ieVersn1[b] = $scope.jsonData[0].Criteria[b].S_ieVrsh;  
+	    $scope.selected_name_ieVersn1[b] = $scope.default_ieVersn1[b];
+         if($scope.jsonData[0].Criteria[b].S_edgeVrsn != 'undefined')		
+        $scope.default_edgVersn1[b] = $scope.jsonData[0].Criteria[b].S_edgeVrsn;
+	    $scope.selected_name_edVersn1[b] = $scope.default_edgVersn1[b];
+		 if($scope.jsonData[0].Criteria[b].S_chromeVrsn != 'undefined')		
+        $scope.default_chrVersn1[b] = $scope.jsonData[0].Criteria[b].S_chromeVrsn;
+	    $scope.selected_name_chVersn1[b] = $scope.default_chrVersn1[b];
+		 if($scope.jsonData[0].Criteria[b].S_sfVrsn != 'undefined')			
+        $scope.default_sfVersn1[b] = $scope.jsonData[0].Criteria[b].S_sfVrsn;
+	    $scope.selected_name_sfVersn1[b] = $scope.default_sfVersn1[b];
+		 if($scope.jsonData[0].Criteria[b].S_firefoxVrsn != 'undefined')			
+        $scope.default_frfxVersn1[b] = $scope.jsonData[0].Criteria[b].S_firefoxVrsn;
+	    $scope.selected_name_fxVersn1[b] = $scope.default_frfxVersn1[b];
+		 //if($scope.jsonData[0].Criteria[b].S_othrBrsVrsn != 'undefined')		
+       // $scope.entOthrBrsrIDVrsn1[b] = $scope.jsonData[0].Criteria[b].S_othrBrsVrsn;	    
+		 if($scope.jsonData[0].Criteria[b].location != 'undefined')
+		$scope.location[b] = $scope.jsonData[0].Criteria[b].location;	    
+         if($scope.jsonData[0].Criteria[b].TesterComment != 'undefined')	
+        $scope.testerCommentID[b] = $scope.jsonData[0].Criteria[b].TesterComment;        
+	    if($scope.jsonData[0].Criteria[b].RemediationDetails != 'undefined')
+        $scope.rmdatnDtlID[b] = $scope.jsonData[0].Criteria[b].RemediationDetails;	   
+	   if($scope.jsonData[0].Criteria[b].RemediationDate != 'undefined')
+        $scope.defaultDate[b] = $scope.jsonData[0].Criteria[b].RemediationDate;		    
+		if($scope.jsonData[0].Criteria[b].GlobalIssue != 'undefined')
+        $scope.default_glblRslt[b] = $scope.jsonData[0].Criteria[b].GlobalIssue;
+	    $scope.selected_name_glbl[b] = $scope.default_glblRslt[b];
+		if($scope.jsonData[0].Criteria[b].S_othrBrsType != 'undefined')
+        $scope.entOthrBrsrIDl[b] = $scope.jsonData[0].Criteria[b].S_othrBrsType;
+		if($scope.jsonData[0].Criteria[b].S_othrBrsVrsn != 'undefined')
+        $scope.entOthrBrsrIDVrsnl[b] = $scope.jsonData[0].Criteria[b].S_othrBrsVrsn;
+		 if ($scope.jsonData[0].Criteria[b].S_other === 'Other Browser' || $scope.jsonData[0].Criteria[b].S_other === '  Other Browser  ' ){
+       $scope.otherBrowserl[b] = true;
+	   $scope.chkBoxValOthrl = true;
+	   if($scope.jsonData[0].Criteria[b].ImageSrc != "  "){ 
+       if(b != b-1){         
+		$scope.imgCnvrsn.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');		
+	   }
+	   continue;
+	   }	   
+	   else if($scope.jsonData[0].Criteria[b].ImageSrc != "   "){ 
+       if(b != b-1){       	   
+		$scope.imgCnvrsn.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');		
+	   }
+	   continue;
+	   }      
+	   $scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);  
+	  }
+		        $scope.addedIssueRow[b] = $scope.jsonData[0].Criteria[b].AddedIssue;  
+	   }
+  }
+  	
+  $scope.displayIt = true;
+  
+}
+}
+
+$scope.defaultExpand = function defaultExpand() {  
+  document.getElementById("aplType").click();
+
+}
+
+$scope.draftReport = false;
 $scope.remarkExplanation = function(i) {
 
   if ($scope.selected_name_tstgrp[i] == undefined) {
@@ -774,10 +1317,22 @@ $scope.remarkExplanation = function(i) {
     //$scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
     if ($scope.rmdatnDtlID[i] == undefined)
       $scope.rmdatnDtlID[i] = " ";
-    $scope.testresult[i] = $scope.testresult[i] + '","DraftReport": "' + $scope.draftReport + '"}';
+   // $scope.testresult[i] = $scope.testresult[i] +  '","RemediationDetails": "' + $scope.rmdatnDtlID[i]+ '","DraftReport": "' + $scope.draftReport + '"}';
+  }
+  else if ($scope.selected_name_tstgrp[i] == 'undefined') {
+    $scope.draftReport = true;
+	//$scope.newRsltSlctrion ==  true;
+    $scope.RemarkExplntn[i] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "Test Result is not selected for this " + '"}'];
+    $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[i]);    
+    $scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
+    //$scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
+    if ($scope.rmdatnDtlID[i] == undefined)
+      $scope.rmdatnDtlID[i] = " ";
+   // $scope.testresult[i] = $scope.testresult[i] +  '","RemediationDetails": "' + $scope.rmdatnDtlID[i]+ '","DraftReport": "' + $scope.draftReport + '"}';
   }
 
-  if ($scope.selected_name_tstgrp[i] == "Pass") {
+  else if ($scope.selected_name_tstgrp[i] == "Pass") {
+	  $scope.draftReport = false;
     $scope.resultFails[i] = false;
     $scope.resultFailsCollection.push($scope.resultFails[i]);
     $scope.RemarkExplntn[i] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "All Test Conditions Successfully Passed " + '"}'];
@@ -786,21 +1341,23 @@ $scope.remarkExplanation = function(i) {
     $scope.crtRsltCollection.push($scope.selected_name_tstgrp[i]);
     $scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
     $scope.rmdatnDtlID[i] = "Not Required";
-   $scope.testresult[i] = $scope.testresult[i] +  '"}';
+   //$scope.testresult[i] = $scope.testresult[i] +'","RemediationDate": "' + $scope.rmdatnDatelID[i] + '","RemediationDetails": "' + $scope.rmdatnDtlID[i]+  '"}';
   }
-  if ($scope.selected_name_tstgrp[i] == "Fail") {
+  else if ($scope.selected_name_tstgrp[i] == "Fail") {
+	  $scope.draftReport = false;
     $scope.resultFails[i] = true;
     $scope.resultFailsCollection.push($scope.resultFails[i]);
-    $scope.testerCommentID[i] = $scope.testerCommentID[i].replace(/""/g, '"');
+    $scope.testerCommentID[i] = $scope.testerCommentID[i].replace(/"/g, "'");
     $scope.RemarkExplntn[i] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "For " + $scope.criteriaTestsJson.Criteria[i].TestName + ", " + $scope.testerCommentID[i] + '"}'];
     $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[i]);
     $scope.crtRsltCollection.push($scope.selected_name_tstgrp[i]);
     $scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
-    if ($scope.rmdatnDtlID[i] == undefined)
-      $scope.rmdatnDtlID[i] = " ";
-    $scope.testresult[i] = $scope.testresult[i] + '"}';
+    /*if ($scope.rmdatnDtlID[i] == undefined)
+      $scope.rmdatnDtlID[i] = " ";*/
+    //$scope.testresult[i] = $scope.testresult[i] +'","RemediationDate": "' + $scope.rmdatnDatelID[i] + '","RemediationDetails": "' + $scope.rmdatnDtlID[i] + '"}';
   }
-  if ($scope.selected_name_tstgrp[i] == "Does Not Apply") {
+  else if ($scope.selected_name_tstgrp[i] == "Does Not Apply") {
+	  $scope.draftReport = false;
     $scope.resultFails[i] = false;
     $scope.resultFailsCollection.push($scope.resultFails[i]);
 
@@ -810,9 +1367,10 @@ $scope.remarkExplanation = function(i) {
     $scope.crtRsltCollection.push($scope.selected_name_tstgrp[i]);
     $scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
 
-    $scope.testresult[i] = $scope.testresult[i] + '"}';
+   // $scope.testresult[i] = $scope.testresult[i] +'","RemediationDate": "' + $scope.rmdatnDatelID[i] + '","RemediationDetails": "' + $scope.rmdatnDtlID[i] + '"}';
   }
-  if ($scope.selected_name_tstgrp[i] == "Not Tested") {
+  else if ($scope.selected_name_tstgrp[i] == "Not Tested") {
+	  $scope.draftReport = false;
     $scope.resultFails[i] = false;
     $scope.resultFailsCollection.push($scope.resultFails[i]);
     
@@ -820,12 +1378,13 @@ $scope.remarkExplanation = function(i) {
     $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[i]);
     $scope.crtRsltCollection.push($scope.selected_name_tstgrp[i]);
     $scope.crtCollection.push($scope.criteriaTestsJson.Criteria[i].CrtID);
-    if ($scope.rmdatnDtlID[i] == undefined)
-      $scope.rmdatnDtlID[i] = " ";
-    $scope.testresult[i] = $scope.testresult[i] + '"}';
+    
   }
+  
+   $scope.testresult[i] = $scope.testresult[i] +'","RemediationDate": "' + $scope.rmdatnDatelID[i] +  '","RemediationDetails": "' + $scope.rmdatnDtlID[i]+ '","DraftReport": "' + $scope.draftReport + '"}';
 
 };
+$scope.uploadImageClicked1 = false; 
 
 $scope.uploadImage = function(element ) { 
 $scope.uploadImageClicked1 = false;  
@@ -843,16 +1402,6 @@ $scope.uploadImageClicked1 = false;
 
 } 
 
-
-
-$scope.elementIsClicked3 = " ";
-
-$scope.elemntClicked2 = function(i) {
-
-  $scope.elementIsClicked3 = "RsltSelected" + i;
-  
-
-}
 
 //inserting image at approperiate position for newly inserted issues
 $scope.uploadImage1 = function(element ) { 
@@ -872,13 +1421,28 @@ $scope.uploadImageClicked1 = true;
 
 } 
 
+$scope.elementIsClicked3 = " ";
+
+
+$scope.elemntClicked2 = function(i) {
+
+  $scope.elementIsClicked3 = "RsltSelected" + i;
+  if($scope.selected_name_tstgrp1[i] != undefined)
+  $scope.originalIssueRsltSelected = true;
+  else if($scope.selected_name_tstgrp1[i] != 'undefined')
+  $scope.originalIssueRsltSelected = true;
+  
+
+}
+
 
 //called when selecting newly added test result. 
+//$scope.newIssueRsltSelected = false;
 $scope.elemntClicked4 = function(i) {
-$scope.newIssueRsltSelected = false;
-//if($scope.uploadImage1Clicked == false)	
-//$scope.imgCnvrsn1.push('{"imgPosition" : "'+ " " +'"', '"imgValue" :"'+ '"'+'"}');
-}
+$scope.newIssueRsltSelected = true;
+//alert($scope.selected_name_tstgrp1[i]);
+
+} 
 
 
 
@@ -905,7 +1469,7 @@ $scope.submit = function() {
   $scope.totTstRslt = [];
   $scope.testresult1 = " ";
   $scope.criteriaName = " ";
-  $scope.counter = [];  
+  $scope.counter =0;  
   $scope.crtCollection = [];
   $scope.brwsrVrsnColctn = [];
   $scope.brwsrVrsnColctn1 = [];
@@ -917,183 +1481,119 @@ $scope.submit = function() {
   $scope.counter10 = " ";
   $scope.browserIndividualVersionsCollection11 = [];
   $scope.browserIndividualTypeCollection11 = [];
-  $scope.entOthrBrsrIDl = [];
+  
   $scope.entOthrBrsrIDl1 = [];  
-  $scope.selected_name_ieVersn11 = [];
-  $scope.selected_name_edVersnl1 = [];
-  $scope.selected_name_chVersnl1 = [];
-  $scope.selected_name_sfVersnl1 = [];
-  $scope.selected_name_fxVersnl1 = [];
-  $scope.selected_name_fxVersnl1 = [];
-  $scope.entOthrBrsrIDVrsn1 = [];
-  $scope.evlMthdVrsn = "V5";
-  $scope.totTestCrtria = [];  
-  
+ 
+  $scope.totTestCrtria = []; 
+  $scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique); 
   $scope.imgCnvrsnJSON = "[ "+$scope.imgCnvrsn+ " ]";
-  $scope.imgCnvrsnJSON = IsJsonString($scope.imgCnvrsnJSON);  
   
+  $scope.imgCnvrsnJSON = IsJsonString($scope.imgCnvrsnJSON);  
+  $scope.imgCnvrsn1 = $scope.imgCnvrsn1.filter($scope.onlyUnique); 
   $scope.imgCnvrsnJSON1 = "[ "+$scope.imgCnvrsn1+ " ]";
-  $scope.imgCnvrsnJSON1 = IsJsonString($scope.imgCnvrsnJSON1);
-	
+  $scope.imgCnvrsnJSON1 = IsJsonString($scope.imgCnvrsnJSON1);  
 
   for (i = 0; i < $scope.criteriaTestsJson.Criteria.length; i++) {	  
-	 
-    
-    $scope.counter[i] = i;
-    
-    //if user don't select browser version it will get from test environment 
-      if ($scope.elementIsClicked1[i] != "VrsnSelected" + i)
-      $scope.selected_name_ieVersn1[i] = $scope.selected_name_ieVersn;
-     if ($scope.elementIsClicked1[i] == "VrsnSelected" + i){
-       
-      if ($scope.selected_name_ieVersn1[i] != undefined)	   
-      $scope.selected_name_ieVersn1[i] = $scope.selected_name_ieVersn1[i];  }
-     if ($scope.selected_name_ieVersn1[i] == undefined)
-      $scope.selected_name_ieVersn1[i] = " ";
-
-    if ($scope.elementIsClicked1[i] != "VrsnSelected" + i)
-      $scope.selected_name_edVersn1[i] = $scope.selected_name_edVersn;
-   if ($scope.elementIsClicked1[i] == "VrsnSelected" + i)
-	   if ($scope.selected_name_edVersn1[i] != undefined)
-      $scope.selected_name_edVersn1[i] = $scope.selected_name_edVersn1[i];
-    if ($scope.selected_name_edVersn1[i] == undefined)
-      $scope.selected_name_edVersn1[i] = " ";
-
-    if ($scope.elementIsClicked1[i] != "VrsnSelected" + i)
-      $scope.selected_name_chVersn1[i] = $scope.selected_name_chVersn;
-  if ($scope.elementIsClicked1[i] == "VrsnSelected" + i)
-	   if ($scope.selected_name_chVersn1[i] != undefined)
-      $scope.selected_name_chVersn1[i] = $scope.selected_name_chVersn1[i];
-    if ($scope.selected_name_chVersn1[i] == undefined)
-      $scope.selected_name_chVersn1[i] = " ";
-
-    if ($scope.elementIsClicked1[i] != "VrsnSelected" + i)
-      $scope.selected_name_sfVersn1[i] = $scope.selected_name_sfVersn;
-  if ($scope.elementIsClicked1[i] == "VrsnSelected" + i)
-	  if ($scope.selected_name_sfVersn1[i] != undefined)
-      $scope.selected_name_sfVersn1[i] = $scope.selected_name_sfVersn1[i];
-    if ($scope.selected_name_sfVersn1[i] == undefined)
-      $scope.selected_name_sfVersn1[i] = " ";
-
-      if ($scope.elementIsClicked1[i] != "VrsnSelected" + i)
-       $scope.selected_name_fxVersn1[i] = $scope.selected_name_fxVersn;
-     if ($scope.elementIsClicked1[i] == "VrsnSelected" + i)
-	  if ($scope.selected_name_fxVersn1[i] != undefined)
-      $scope.selected_name_fxVersn1[i] = $scope.selected_name_fxVersn1[i];
-    if ($scope.selected_name_fxVersn1[i] == undefined)
-      $scope.selected_name_fxVersn1[i] = " ";
-
-    if ($scope.elementIsClicked1[i] != "VrsnSelected" + i)
-      $scope.entOthrBrsrID1[i] = $scope.entOthrBrsrIDVrsn;
-  if ($scope.elementIsClicked1[i] == "VrsnSelected" + i)
-	  if ($scope.entOthrBrsrID1[i] != undefined)
-      $scope.entOthrBrsrID1[i] = $scope.entOthrBrsrID1[i];
-    if ($scope.entOthrBrsrID1[i] == undefined)
-      $scope.entOthrBrsrID1[i] = " ";
-
-
-
-    //if user don't select browser type it will get from test environment 
-
-    if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-      $scope.checkboxModel.value14[i] = $scope.checkboxModel.value1;
-   if ($scope.elementIsClicked2[i] == "TypeSelected" + i)
-	   if($scope.checkboxModel.value14[i] != undefined)
-      $scope.checkboxModel.value14[i] = $scope.checkboxModel.value14[i];
-    if ($scope.checkboxModel.value14[i] == undefined)
-      $scope.checkboxModel.value14[i] = " ";
-
-    if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-      $scope.checkboxModel.value21[i] = $scope.checkboxModel.value2;
-      if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-		  $scope.checkboxModel.value21[i] != undefined;
-      $scope.checkboxModel.value21[i] = $scope.checkboxModel.value21[i];
-    if ($scope.checkboxModel.value21[i] == undefined)
-      $scope.checkboxModel.value21[i] = " ";
-
-    if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-      $scope.checkboxModel.value31[i] = $scope.checkboxModel.value3;
-     if ($scope.elementIsClicked2[i] == "TypeSelected" + i)
-		 if($scope.checkboxModel.value31[i] != undefined )
-      $scope.checkboxModel.value31[i] = $scope.checkboxModel.value31[i];
-    if ($scope.checkboxModel.value31[i] == undefined)
-      $scope.checkboxModel.value31[i] = " ";
-
-    if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-      $scope.checkboxModel.value41[i] = $scope.checkboxModel.value4;
-  if ($scope.elementIsClicked2[i] == "TypeSelected" + i)
-	  if($scope.checkboxModel.value41[i] != undefined)
-      $scope.checkboxModel.value41[i] = $scope.checkboxModel.value41[i];
-    if ($scope.checkboxModel.value41[i] == undefined)
-      $scope.checkboxModel.value41[i] = " ";
-
-    if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-      $scope.checkboxModel.value51[i] = $scope.checkboxModel.value5;
-  if ($scope.elementIsClicked2[i] == "TypeSelected" + i)
-	  if($scope.checkboxModel.value51[i] != undefined)
-      $scope.checkboxModel.value51[i] = $scope.checkboxModel.value51[i];
-    if ($scope.checkboxModel.value51[i] == undefined)
-      $scope.checkboxModel.value51[i] = " ";
-
-    if ($scope.elementIsClicked2[i] != "TypeSelected" + i)
-      $scope.otherBrowser1[i] = $scope.entOthrBrsrID;
-   if ($scope.elementIsClicked2[i] == "TypeSelected" + i)
-	   if($scope.otherBrowser1[i] != undefined )
-      $scope.otherBrowser1[i] = $scope.otherBrowser1[i];
-    if($scope.otherBrowser1[i] == undefined)
-    $scope.otherBrowser1[i] = " ";
-    if ($scope.otherBrowser1[i] == true)
-      $scope.otherBrowser1[i] = "Other Browser";
+	
+  if($scope.ieChekBoxVal[i] == "ieChekBox"){
+  if($scope.chkBoxValIE1[i] == true )  
+  $scope.checkboxModel.value14[i] = "Internet Explorer";
+  if($scope.chkBoxValIE1[i] == false )  
+  $scope.checkboxModel.value14[i] = " ";
+  }
   
+  if($scope.edgChekBoxVal[i] == "edgChekBox"){
+  if($scope.chkBoxValEdg1[i] == true )  
+  $scope.checkboxModel.value51[i] = "Edge";
+  if($scope.chkBoxValEdg1[i] == false )  
+  $scope.checkboxModel.value51[i] = " ";
+  }
   
+  if($scope.frfxChekBoxVal[i] == "frfxChekBox"){
+  if( $scope.chkBoxValFrfx1[i] == true )  
+  $scope.checkboxModel.value41[i] = "Firefox";
+  if( $scope.chkBoxValFrfx1[i] == false )  
+  $scope.checkboxModel.value41[i] = " ";
+  }
+  
+  if($scope.chromeChekBoxVal[i] == "chromeChekBox"){
+  if($scope.chkBoxValChrm1[i] == true )  
+  $scope.checkboxModel.value21[i] = "Chrome";
+  if($scope.chkBoxValChrm1[i] == false )  
+  $scope.checkboxModel.value21[i] = " ";
+  }
+  
+  if($scope.safariCheckBoxVal[i] == "safariChekBox"){
+  if($scope.chkBoxValSaf1[i] == true )  
+  $scope.checkboxModel.value31[i] = "Safari";
+  if($scope.chkBoxValSaf1[i] == false )  
+  $scope.checkboxModel.value31[i] = " ";
+  }
+  
+ 
+  if($scope.chkBoxValothr[i] == "otherChekBox"){
+  if($scope.otherBrowser1[i] == true )  
+  $scope.otherBrowser1 = "Other Browser";
+  if($scope.otherBrowser1[i] == false )  
+  $scope.otherBrowser1= " ";
+  $scope.entOthrBrsrIDl[i] = $scope.entOthrBrsrIDl[i];
+  }
+  
+  if($scope.dateSelected[i] == "dateClicked")
+  $scope.rmdatnDatelID[i]=$scope.rmdatnDatelID[i];
+  if($scope.dateSelected[i] != "dateClicked")
+  $scope.rmdatnDatelID[i]=$scope.defaultDate[i];
     
+   
+    /*if($scope.selected_name_ieVersn1[i] == undefined)
+		$scope.selected_name_ieVersn1[i]='';
+	if($scope.selected_name_edVersn1[i] == undefined)
+		$scope.selected_name_edVersn1[i]='';
+	if($scope.selected_name_chVersn1[i] == undefined)
+		$scope.selected_name_chVersn1[i]='';
+	if($scope.selected_name_sfVersn1[i] == undefined)
+		$scope.selected_name_sfVersn1[i]='';
+	if($scope.selected_name_fxVersn1[i] == undefined)
+		$scope.selected_name_fxVersn1[i]=''; */
+	//alert($scope.entOthrBrsrIDVrsnl);
     $scope.browserIndividualVersionsCollection1 = [];
-    $scope.browserIndividualTypeCollection1 = [];
-    $scope.browserIndividualVersionsCollection1[i] = '","S_ieVrsh": "' + $scope.selected_name_ieVersn1[i] + '","S_edgeVrsn": "' + $scope.selected_name_edVersn1[i] + '","S_chromeVrsn": "' + $scope.selected_name_chVersn1[i] + '","S_sfVrsn": "' + $scope.selected_name_sfVersn1[i] + '","S_firefoxVrsn": "' + $scope.selected_name_fxVersn1[i] + '","S_othrBrsVrsn": "' + $scope.entOthrBrsrID1[i];
-    $scope.browserIndividualTypeCollection1[i] = '","S_ie": "' + $scope.checkboxModel.value14[i] + '","S_edge": "' + $scope.checkboxModel.value51[i] + '","S_chrome": "' + $scope.checkboxModel.value21[i] + '","S_safari": "' + $scope.checkboxModel.value31[i] + '","S_firefox": "' + $scope.checkboxModel.value41[i] + '","S_other": "' + $scope.otherBrowser1[i];
-    $scope.browserVersionsCollection1[i] = $scope.selected_name_ieVersn1[i] + " " + $scope.selected_name_edVersn1[i] + " " + $scope.selected_name_chVersn1[i] + " " + $scope.selected_name_sfVersn1[i] + " " + $scope.selected_name_fxVersn1[i] + " " + $scope.entOthrBrsrID1[i];
-    $scope.browserTypeCollection1[i] = $scope.checkboxModel.value14[i] + "  " + $scope.checkboxModel.value51[i] + "   " + $scope.checkboxModel.value21[i] + "  " + $scope.checkboxModel.value31[i] + "  " + $scope.checkboxModel.value41[i] + "  " + $scope.otherBrowser1[i] + " " + $scope.entOthrBrsrID11[i];
+    $scope.browserIndividualTypeCollection1 = [];	
+    $scope.browserIndividualVersionsCollection1[i] = '","S_ieVrsh": "' + $scope.selected_name_ieVersn1[i] + '","S_edgeVrsn": "' + $scope.selected_name_edVersn1[i] + '","S_chromeVrsn": "' + $scope.selected_name_chVersn1[i] + '","S_sfVrsn": "' + $scope.selected_name_sfVersn1[i] + '","S_firefoxVrsn": "' + $scope.selected_name_fxVersn1[i] + '","S_othrBrsVrsn": "' + $scope.entOthrBrsrIDVrsnl[i];
+    $scope.browserIndividualTypeCollection1[i] = '","S_ie": "' + $scope.checkboxModel.value14[i] + '","S_edge": "' + $scope.checkboxModel.value51[i] + '","S_chrome": "' + $scope.checkboxModel.value21[i] + '","S_safari": "' + $scope.checkboxModel.value31[i] + '","S_firefox": "' + $scope.checkboxModel.value41[i] + '","S_other": "' + $scope.otherBrowserl[i]+ '","S_othrBrsType": "' + $scope.entOthrBrsrIDl[i];
+    $scope.browserVersionsCollection1[i] = $scope.selected_name_ieVersn1[i] + " " + $scope.selected_name_edVersn1[i] + " " + $scope.selected_name_chVersn1[i] + " " + $scope.selected_name_sfVersn1[i] + " " + $scope.selected_name_fxVersn1[i] + " " + $scope.entOthrBrsrIDVrsnl[i];
+    $scope.browserTypeCollection1[i] = $scope.checkboxModel.value14[i] + "  " + $scope.checkboxModel.value51[i] + "   " + $scope.checkboxModel.value21[i] + "  " + $scope.checkboxModel.value31[i] + "  " + $scope.checkboxModel.value41[i] + "  " + $scope.otherBrowser1[i] + " " + $scope.entOthrBrsrIDl[i];
     
     if ($scope.testerCommentID[i] == undefined)
-      $scope.testerCommentID[i] = " ";
-    $scope.testerCommentID[i] = $scope.testerCommentID[i].toString().replace(/""/g, '"');
+      $scope.testerCommentID[i] = "";
+    $scope.testerCommentID[i] = $scope.testerCommentID[i].toString().replace(/"/g, "'");
 	$scope.testerCommentID[i] = $scope.testerCommentID[i].toString().replace(/\n/g, " ");
+	//alert($scope.testerCommentID[i]);
 	
 	 if ($scope.location[i] == undefined)
       $scope.location[i] = " ";
-    $scope.location[i] = $scope.location[i].toString().replace(/""/g, '"');
+    $scope.location[i] = $scope.location[i].toString().replace(/"/g, "'");
 	$scope.location[i] = $scope.location[i].toString().replace(/\n/g, " ");
+	/*
+    if ($scope.selected_name_glbl[i] == 'undefined');
+      $scope.selected_name_glbl[i] = " "; */
 	
-    if ($scope.selected_name_glbl[i] == undefined);
-      $scope.selected_name_glbl[i] = " ";
     if ($scope.browserTypeCollection1[i] == undefined)
       $scope.browserTypeCollection1[i] = " ";
-    if ($scope.imgCnvrsnJSON[i] == undefined)
-      $scope.imgCnvrsnJSON[i] = " ";
-     $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + "Issue " + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] + '","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' + $scope.counter[i] + '","ImageSrc":"';
-            
-			for(let m=0;m<$scope.imgCnvrsnJSON.length;m++){	
-            
-             if($scope.imgCnvrsnJSON[m].imgValue == undefined){
-				$scope.testresult[i] = $scope.testresult[i] +" "; 
-			 }
-			 
-			if($scope.imgCnvrsnJSON[m].imgPosition != undefined){
-           
-	       if($scope.counter[i] == $scope.imgCnvrsnJSON[m].imgPosition){    			   
-            
-			$scope.testresult[i] = $scope.testresult[i] +$scope.imgCnvrsnJSON[m].imgValue;
-           } 
-		  if(i != $scope.imgCnvrsnJSON[m].imgPosition){       
-           
-	       $scope.testresult[i] = $scope.testresult[i] +" ";
-		   } 
-	   }
-	   
-	 }   
+    $scope.counter=i;
+		
+    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + "Issue " + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] + '","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' + $scope.counter + '","ImageSrc":".';	
    
+    for(let m=0;m<$scope.imgCnvrsnJSON.length;m++){	
+	       if(i == $scope.imgCnvrsnJSON[m].imgPosition){ 
+            $scope.imageAdded =  true;		   
+		    $scope.testresult[i] = $scope.testresult[i].substring(0, $scope.testresult[i].length - 1);
+			$scope.testresult[i] = $scope.testresult[i]+$scope.imgCnvrsnJSON[m].imgValue;
+			
+	   }   
+	 } 
+	 
     
-
+   
     $scope.remarkExplanation(i);
 
 
@@ -1106,116 +1606,55 @@ $scope.submit = function() {
   $scope.browserVersionsCollection1.length;
   //looping through newly added rows for issues
 
-  var m = $scope.counter.length;
-  var n = m + 1;
+ 
   //var i = $scope.selectedResultIndex;
   for (var k = 0; k < $scope.indexCollection.length; k++) {
-	  var i = $scope.indexCollection[k];      
-        //if user don't select browser version it will get from test environment 
-      if ($scope.elementIsClicked11[k] != "VrsnSelected" + i)
-      $scope.selected_name_ieVersn1[k] = $scope.selected_name_ieVersn;
-     if ($scope.elementIsClicked11[k] == "VrsnSelected" + k){
-       
-      if ($scope.selected_name_ieVersn1[k] != undefined)	   
-      $scope.selected_name_ieVersn1[k] = $scope.selected_name_ieVersn1[k];  }
-     if ($scope.selected_name_ieVersn1[k] == undefined)
-      $scope.selected_name_ieVersn1[k] = " ";
-
-    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
-      $scope.selected_name_edVersn1[k] = $scope.selected_name_edVersn;
-   if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
-	   if ($scope.selected_name_edVersn1[k] != undefined)
-      $scope.selected_name_edVersn1[k] = $scope.selected_name_edVersn1[k];
-    if ($scope.selected_name_edVersn1[k] == undefined)
-      $scope.selected_name_edVersn1[k] = " ";
-
-    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
-      $scope.selected_name_chVersn1[k] = $scope.selected_name_chVersn;
-  if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
-	   if ($scope.selected_name_chVersn1[k] != undefined)
-      $scope.selected_name_chVersn1[k] = $scope.selected_name_chVersn1[k];
-    if ($scope.selected_name_chVersn1[k] == undefined)
-      $scope.selected_name_chVersn1[k] = " ";
-
-    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
-      $scope.selected_name_sfVersn1[k] = $scope.selected_name_sfVersn;
-  if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
-	  if ($scope.selected_name_sfVersn1[k] != undefined)
-      $scope.selected_name_sfVersn1[k] = $scope.selected_name_sfVersn1[k];
-    if ($scope.selected_name_sfVersn1[k] == undefined)
-      $scope.selected_name_sfVersn1[k] = " ";
-
-      if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
-       $scope.selected_name_fxVersn1[k] = $scope.selected_name_fxVersn;
-     if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
-	  if ($scope.selected_name_fxVersn1[k] != undefined)
-      $scope.selected_name_fxVersn1[k] = $scope.selected_name_fxVersn1[k];
-    if ($scope.selected_name_fxVersn1[k] == undefined)
-      $scope.selected_name_fxVersn1[k] = " ";
-
-    if ($scope.elementIsClicked11[k] != "VrsnSelected" + k)
-      $scope.entOthrBrsrID1[k] = $scope.entOthrBrsrIDVrsn;
-  if ($scope.elementIsClicked11[k] == "VrsnSelected" + k)
-	  if ($scope.entOthrBrsrID1[k] != undefined)
-      $scope.entOthrBrsrID1[k] = $scope.entOthrBrsrID1[k];
-    if ($scope.entOthrBrsrID1[k] == undefined)
-      $scope.entOthrBrsrID1[k] = " ";
-
-
-
-    //if user don't select browser type it will get from test environment 
-
-    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-      $scope.checkboxModel.value141[k] = $scope.checkboxModel.value1;
-   if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
-	   if($scope.checkboxModel.value141[k] != undefined)
-      $scope.checkboxModel.value141[k] = $scope.checkboxModel.value141[k];
-    if ($scope.checkboxModel.value141[k] == undefined)
-      $scope.checkboxModel.value141[k] = " ";
-
-    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-      $scope.checkboxModel.value211[k] = $scope.checkboxModel.value2;
-      if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-		  $scope.checkboxModel.value211[k] != undefined;
-      $scope.checkboxModel.value211[k] = $scope.checkboxModel.value211[k];
-    if ($scope.checkboxModel.value211[k] == undefined)
-      $scope.checkboxModel.value211[k] = " ";
-
-    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-      $scope.checkboxModel.value311[k] = $scope.checkboxModel.value3;
-     if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
-		 if($scope.checkboxModel.value311[k] != undefined )
-      $scope.checkboxModel.value311[k] = $scope.checkboxModel.value311[k];
-    if ($scope.checkboxModel.value311[k] == undefined)
-      $scope.checkboxModel.value311[k] = " ";
-
-    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-      $scope.checkboxModel.value411[k] = $scope.checkboxModel.value4;
-  if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
-	  if($scope.checkboxModel.value411[k] != undefined)
-      $scope.checkboxModel.value411[k] = $scope.checkboxModel.value411[k];
-    if ($scope.checkboxModel.value411[k] == undefined)
-      $scope.checkboxModel.value411[k] = " ";
-
-    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-      $scope.checkboxModel.value511[k] = $scope.checkboxModel.value5;
-  if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
-	  if($scope.checkboxModel.value511[k] != undefined)
-      $scope.checkboxModel.value511[k] = $scope.checkboxModel.value511[k];
-    if ($scope.checkboxModel.value511[k] == undefined)
-      $scope.checkboxModel.value511[k] = " ";
-
-    if ($scope.elementIsClicked21[k] != "TypeSelected" + k)
-      $scope.otherBrowser1[k] = $scope.entOthrBrsrID;
-   if ($scope.elementIsClicked21[k] == "TypeSelected" + k)
-	   if($scope.otherBrowser1[k] != undefined )
-      $scope.otherBrowser1[k] = $scope.otherBrowser1[k];
-    if($scope.otherBrowser1[k] == undefined)
-    $scope.otherBrowser1[k] = " ";
-    if ($scope.otherBrowser1[k] == true)
-      $scope.otherBrowser1[k] = "Other Browser";
-    
-
+	  var i = $scope.indexCollection[k];   
+  
+  if($scope.ieChekBoxVal1[k] == "ieChekBox"){
+  if($scope.chkBoxValIE11[k] == true )  
+  $scope.checkboxModel.value141[k] = "Internet Explorer";
+  if($scope.chkBoxValIE11[k] == false )  
+  $scope.checkboxModel.value141[k] = " ";
+  }
+  
+  
+  if($scope.edgChekBoxVal1[k] == "edgChekBox"){
+  if($scope.chkBoxValEdg11[k] == true )  
+  $scope.checkboxModel.value511[k] = "Edge";
+  if($scope.chkBoxValEdg11[k] == false )  
+  $scope.checkboxModel.value511[k] = " ";
+  }
+  
+  if($scope.frfxChekBoxVal1[k] == "frfxChekBox"){
+  if( $scope.chkBoxValFrfx11[k] == true )  
+  $scope.checkboxModel.value411[k] = "Firefox";
+  if( $scope.chkBoxValFrfx11[k] == false )  
+  $scope.checkboxModel.value411[k] = " ";
+  }
+  
+  if($scope.chromeChekBoxVal1[k] == "chromeChekBox"){
+  if($scope.chkBoxValChrm11[k] == true )  
+  $scope.checkboxModel.value211[k] = "Chrome";
+  if($scope.chkBoxValChrm11[k] == false )  
+  $scope.checkboxModel.value211[k] = " ";
+  }
+  
+  if($scope.safariCheckBoxVal1[k] == "safariChekBox"){
+  if($scope.chkBoxValSaf11[k] == true )  
+  $scope.checkboxModel.value311[k] = "Safari";
+  if($scope.chkBoxValSaf11[k] == false )  
+  $scope.checkboxModel.value311[k] = " ";
+  }
+  
+ 
+  if($scope.chkBoxValothr1[k] == "otherChekBox"){
+  if($scope.otherBrowser11[k] == true )  
+  $scope.otherBrowser11 = "Other Browser";
+  if($scope.otherBrowser11[k] == false )  
+  $scope.otherBrowser11= " ";
+  }
+  
     $scope.browserIndividualVersionsCollection11[k] =  '","S_ieVrsh": "' + $scope.selected_name_ieVersn11[k] + '","S_edgeVrsn": "' + $scope.selected_name_edVersn11[k] + '","S_chromeVrsn": "' + $scope.selected_name_chVersn11[k] + '","S_sfVrsn": "' + $scope.selected_name_sfVersn11[k] + '","S_firefoxVrsn": "' + $scope.selected_name_fxVersn11[k] + '","S_othrBrsVrsn": "' + $scope.entOthrBrsrID11[k];
     $scope.browserIndividualTypeCollection11[k] = '","S_ie": "' + $scope.checkboxModel.value141[k] + '","S_edge": "' + $scope.checkboxModel.value511[k] + '","S_chrome": "' + $scope.checkboxModel.value211[k] + '","S_safari": "' + $scope.checkboxModel.value311[k] + '","S_firefox": "' + $scope.checkboxModel.value411[k] + '","S_other": "' + $scope.otherBrowser11[k];
     
@@ -1235,77 +1674,16 @@ $scope.submit = function() {
 
     if ($scope.imgCnvrsnJSON1[k] == undefined)
       $scope.imgCnvrsnJSON1[k] = " ";  
- $scope.testerCommentID1[k] = $scope.testerCommentID1[k].toString().replace(/""/g, '"');
+ $scope.testerCommentID1[k] = $scope.testerCommentID1[k].toString().replace(/"/g, "'");
  $scope.testerCommentID1[k] = $scope.testerCommentID1[k].toString().replace(/\n/g, " ");
  
  if ($scope.location1[k] == undefined)
       $scope.location1[k] = " ";  
- $scope.location1[k] = $scope.location1[k].toString().replace(/""/g, '"');
+ $scope.location1[k] = $scope.location1[k].toString().replace(/"/g, "'");
  $scope.location1[k] = $scope.location1[k].toString().replace(/\n/g, " ");
  let o = i+1;let p=k+1; 
-   
-   $scope.testresult2[k] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID +'",' +'"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+'",' + '"Test": "' + '*'+$scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + '*'+$scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + '*'+$scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + '*'+$scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + "Issue " + o + "." + p + '","TestResult": "' + $scope.selected_name_tstgrp1[k]  +  '","location": "' + $scope.location1[k] +'","OptMenu1": "' + $scope.menu1[i] + '","TesterComment": "' + $scope.testerCommentID1[k] + '","T_brwsrType": "' + $scope.browserTypeCollection11[k] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection11[k] +  '","GlobalIssue": "' + $scope.selected_name_glbl1[k] + '","AddedIssue": "' + true + '","Counter": "' + m + '","ImageSrc":"';
-     
-      
- for(let p=0;p<$scope.imgCnvrsnJSON1.length;p++){
-	 
-	      if($scope.imgCnvrsnJSON[p].imgValue == undefined){
-				$scope.testresult2[k] = $scope.testresult2[k] +" ";
-			 } 
-	
-	
-			
-			if($scope.imgCnvrsnJSON1[p].imgPosition != undefined){				 
-           
-	       if(m == $scope.imgCnvrsnJSON1[p].imgPosition){     			   
-            
-			$scope.testresult2[k] = $scope.testresult2[k] +$scope.imgCnvrsnJSON1[p].imgValue;
-			 
-           } 
-		   if(m != $scope.imgCnvrsnJSON1[p].imgPosition){       
-           
-	       $scope.testresult2[k] = $scope.testresult2[k] +" ";
-		   }
-	   }
-	   
-	  } 	
-   if( $scope.newIssueRsltSelected == true){
-   if($scope.uploadImageClicked1 == false){
-    $scope.testresult2[k] = $scope.testresult2[k] + '."}';	
-    }else 	  
-   $scope.testresult2[k] = $scope.testresult2[k] + '"}';	
-   }   
-   
-    if( $scope.newIssueRsltSelected == false){
-   if($scope.uploadImageClicked1 == false){
-    $scope.testresult2[k] = $scope.testresult2[k] + '.';	
-    }
-   }   
-
-   m++;
-   if ($scope.selected_name_tstgrp1[k] == '' ){
-	   $scope.newRsltSlctrion =  false;	  
-	 
-  }
-  
-  if ($scope.selected_name_tstgrp1[k] != undefined ){
-	   $scope.newRsltSlctrion =  true;	  
-	
-  }
-    if ($scope.selected_name_tstgrp1[k] == undefined) {	
-	
-	$scope.selected_name_tstgrp1[k] = 'undefined';
-       
-		$scope.newRsltSlctrion =  false;	 
-       $scope.draftReport = true;
-       $scope.RemarkExplntn[k] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[k].CrtID + '", "explanation":"' + "Test Result is not selected for this " + '"}'];
-      $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[k]);      
-      if ($scope.rmdatnDtlID1[k] == undefined){
-        $scope.rmdatnDtlID1[k] = " ";	
-  $scope.testresult[k] = $scope.testresult[k] + '","DraftReport": "' + $scope.draftReport + '"}'; }	
-    }
-
-    if ($scope.selected_name_tstgrp1[k] == "Pass") {		
+// $scope.remarkExplanation(n);
+ if ($scope.selected_name_tstgrp1[k] == "Pass") {		
       $scope.resultFails[k] = false;
       $scope.resultFailsCollection.push($scope.resultFails[k]);
       $scope.RemarkExplntn[k] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "For " + "All Test Conditions Successfully Passed " + '"}'];
@@ -1317,7 +1695,7 @@ $scope.submit = function() {
     } else if ($scope.selected_name_tstgrp1[k] == "Fail") {		
       $scope.resultFails[k] = true;
       $scope.resultFailsCollection.push($scope.resultFails[k]);
-      $scope.testerCommentID[k] = $scope.testerCommentID[k].replace(/""/g, '"');
+      $scope.testerCommentID[k] = $scope.testerCommentID[k].replace(/"/g, "'");
       $scope.RemarkExplntn[k] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "For " + $scope.criteriaTestsJson.Criteria[i].TestName + ", " + $scope.testerCommentID[k] + '"}'];
       $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[k]);
       if ($scope.rmdatnDtlID1[k] == undefined)
@@ -1341,6 +1719,7 @@ $scope.submit = function() {
       $scope.resultFailsCollection.push($scope.resultFails[k]);
       $scope.RemarkExplntn[k] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "For " + " One or more test conditions not tested " + '"}'];
       $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[k]);
+	 // $scope.testresult2[k] = $scope.testresult2[k]+ '","RemediationDetails": "' + $scope.rmdatnDtlID1[k];
       if ($scope.rmdatnDtlID1[k] == undefined)
         $scope.rmdatnDtlID1[k] = " ";
       //$scope.testresult2[k] = $scope.testresult2[k] +  '"}';
@@ -1348,8 +1727,55 @@ $scope.submit = function() {
       $scope.crtCollection.push($scope.criteriaTestsJson.Criteria[k].CrtID);
 
     }
-	 if($scope.newIssueRsltSelected == false )
-	 $scope.testresult2[k] = $scope.testresult2[k] +  '"}';
+	
+   $scope.counter=$scope.counter+1;
+   
+   
+   $scope.testresult2[k] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID +'",' +'"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+'",' + '"Test": "' + '*'+$scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + '*'+$scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + '*'+$scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + '*'+$scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + "Issue " + o + "." + p + '","TestResult": "' + $scope.selected_name_tstgrp1[k]  +  '","location": "' + $scope.location1[k] +'","OptMenu1": "' + $scope.menu1[i] + '","TesterComment": "' + $scope.testerCommentID1[k] + '","T_brwsrType": "' + $scope.browserTypeCollection11[k] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection11[k] +  '","GlobalIssue": "' + $scope.selected_name_glbl1[k] + '","RemediationDate": "' + $scope.rmdatnDatelID1[i] +'","RemediationDetails": "' + $scope.rmdatnDtlID1[k]+'","AddedIssue": "' + true + '","Counter": "' + $scope.counter + '","ImageSrc":".';
+ 	  
+	  for(let p=0;p<$scope.imgCnvrsnJSON1.length;p++){         	  
+	
+	if($scope.counter == $scope.imgCnvrsnJSON1[p].imgPosition){             
+            $scope.testresult2[k] = $scope.testresult2[k].substring(0, $scope.testresult2[k].length - 1);
+			$scope.testresult2[k] = $scope.testresult2[k] +$scope.imgCnvrsnJSON1[p].imgValue;
+			
+           } 
+	  } 	
+   if( $scope.newIssueRsltSelected == true){
+   if($scope.uploadImageClicked1 == false){
+    $scope.testresult2[k] = $scope.testresult2[k] + '."}';	
+    }else 	  
+   $scope.testresult2[k] = $scope.testresult2[k] + '"}';	
+   }   
+   
+    if( $scope.newIssueRsltSelected == false){
+   if($scope.uploadImageClicked1 == false){
+    $scope.testresult2[k] = $scope.testresult2[k] + '"}';	
+    }
+   } 
+   if ($scope.selected_name_tstgrp1[k] == '' ){
+	   $scope.newRsltSlctrion =  false;	  
+	 
+  }
+  
+  if ($scope.selected_name_tstgrp1[k] != undefined ){
+	   $scope.newRsltSlctrion =  true;	  
+	
+  }
+    if ($scope.selected_name_tstgrp1[k] == undefined) {	
+	
+	$scope.selected_name_tstgrp1[k] = 'undefined';
+       
+		$scope.newRsltSlctrion =  false;	 
+       $scope.draftReport = true;
+       $scope.RemarkExplntn[k] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[k].CrtID + '", "explanation":"' + "Test Result is not selected for this " + '"}'];
+      $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[k]);      
+      if ($scope.rmdatnDtlID1[k] == undefined){
+        $scope.rmdatnDtlID1[k] = " ";	
+  $scope.testresult[k] = $scope.testresult[k] + '","DraftReport": "' + $scope.draftReport + '"}'; }	
+    }
+   
+ 
     if ($scope.testresult2[k] != undefined) {
       $scope.totTstRslt.push($scope.testresult2[k]);
       //$scope.testresult.push($scope.testresult2[i]);
@@ -1366,19 +1792,13 @@ $scope.submit = function() {
   }
   $scope.totTstRslt = $scope.totTstRslt.toString();
   if ($scope.submitClkCount != 0) {
-    $scope.totTstRslt = $scope.totTstRslt.replace(/""/g, '"');
+    //$scope.totTstRslt = $scope.totTstRslt.replace(/""/g, '"');
     $scope.totTstRslt = $scope.totTstRslt;
   }
 
   $scope.totTstRslt = $scope.totTstRslt.toString();
-  $scope.totTstRslt = $scope.totTstRslt.replace(/""/g, '"');
-  //$scope.totTstRslt =  $scope.totTstRslt+ '"}]';  
- //if( $scope.failSelectedAdditional == true)
-//$scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';	 
-//alert($scope.newRsltSlctrion);
- /*if($scope.newRsltSlctrion ==  false)
- $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + '"}]'; 
-else */ 
+  //$scope.totTstRslt = $scope.totTstRslt.replace(/""/g, '"');
+  
 $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
   $scope.criteriaLength = $scope.selected_name.length;
   $scope.criteriaResult = [];
@@ -1835,23 +2255,24 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
   $scope.formData = " ";
 
   //preventing special characters  
-  $scope.prodDescID = $scope.prodDescID.toString().replace(/"/g, '\\"');
+  $scope.prodDescID = $scope.prodDescID.toString().replace(/"/g, "'");
   $scope.prodDescID = $scope.prodDescID.toString().replace(/\n/g, " ");
-  $scope.prdNteDescID = $scope.prdNteDescID.toString().replace(/"/g, '\\"');
+  $scope.prdNteDescID = $scope.prdNteDescID.toString().replace(/"/g, "'");
   $scope.prdNteDescID = $scope.prdNteDescID.toString().replace(/\n/g, " ");
-  $scope.testScope = $scope.testScope.toString().replace(/"/g, '\\"');
-  $scope.testScope = $scope.testScope.toString().replace(/"/g, '\\"');
-  $scope.productID = $scope.productID.toString().replace(/"/g, '\\"');
-  $scope.versionID = $scope.versionID.toString().replace(/"/g, '\\"');
-  $scope.ownerID = $scope.ownerID.toString().replace(/"/g, '\\"');
-  $scope.productType = $scope.productType.toString().replace(/"/g, '\\"');
-  $scope.urlID = $scope.urlID.toString().replace(/"/g, '\\"');
-  $scope.firstname = $scope.firstname.toString().replace(/"/g, '\\"');
-  $scope.lastname = $scope.lastname.toString().replace(/"/g, '\\"');
-  $scope.testerID = $scope.testerID.toString().replace(/"/g, '\\"');
-  $scope.testerContact = $scope.testerContact.toString().replace(/"/g, '\\"');
-  $scope.testScope = $scope.testScope.toString().replace(/"/g, '\\"');
-  $scope.testScope = $scope.testScope.toString().replace(/\n/g, " ");
+  //$scope.testScope = $scope.testScope.toString().replace(/"/g, '\\"');
+  //$scope.testScope = $scope.testScope.toString().replace(/"/g, '\\"');
+  //$scope.testScope = $scope.testScope.replace(/"/g, "'");
+  //$scope.testScope = $scope.testScope.replace(/\n/g, " ");
+  $scope.productID = $scope.productID.toString().replace(/"/g, "'");
+  $scope.versionID = $scope.versionID.toString().replace(/"/g, "'");
+  $scope.ownerID = $scope.ownerID.toString().replace(/"/g, "'");
+  $scope.productType = $scope.productType.toString().replace(/"/g, "'");
+  $scope.urlID = $scope.urlID.toString().replace(/"/g, "'");
+  $scope.firstname = $scope.firstname.toString().replace(/"/g, "'");
+  $scope.lastname = $scope.lastname.toString().replace(/"/g, "'");
+  $scope.testerID = $scope.testerID.toString().replace(/"/g, "'");
+  $scope.testerContact = $scope.testerContact.toString().replace(/"/g, "'");
+  
   
 
  	$scope.browserVrsnCollection = $scope.browserVrsnCollection.toString().replace(/, /g, "").trim();
@@ -1871,6 +2292,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 };
 
 $scope.submit1 = function() {
+
   $scope.error = [];
   if ($scope.productID == " " || $scope.productID == undefined) {
     $scope.error.push("Product Name");
@@ -1901,19 +2323,25 @@ $scope.submit1 = function() {
      
   if ($scope.error.length > 0)
     alert("Please input data for " + $scope.error);
-
+  /* making sure user selects at least one test result
+  else if($scope.originalIssueRsltSelected != true)
+  alert("Please select at least one test result to save file.");
+  else if($scope.newIssueRsltSelected == false)
+ alert("Please select test result for newly added issue or remove it to save file. ");
+*/
 
   else {
 	
-    $scope.submit();	 
+    $scope.submit();	
+	
 	 
     var blob = new Blob([$scope.formData], {
       type: "Content-Type: application/json"
     });
-    saveAs(blob, $scope.productID + $scope.versionID + "Input.json");	
+    saveAs(blob, $scope.productID + $scope.versionID + ".json");	
 	
 
-setTimeout(function() {
+ setTimeout(function() {
  	if ($scope.checkboxModel.alerts == "on")
 		alert("Your updates have been saved to the Downloads folder (unless otherwise specified). You may continue editing on this page or load the newly created file in the Edit Report page.");
 }, 3000);
