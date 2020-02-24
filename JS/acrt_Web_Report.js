@@ -109,23 +109,24 @@ app.controller('acrtFormCtrl', function($scope, $filter) {
   
  
 
-  $scope.zoom = function(i) {
-    var modal = document.getElementById(i);
-    var img = document.getElementById("image" + i);
-    var modalImg = document.getElementById("img" + i);
-    var captionText = document.getElementById("caption" + i);
-    var span = document.getElementsByClassName("close")[i];
+  //zoom image 
+$scope.zoom = function(i) {
+var modal = document.getElementById(i);
+var img = document.getElementById("image"+i);
+var modalImg = document.getElementById("img"+i);
+var captionText = document.getElementById("caption"+i);
+var span = document.getElementsByClassName("close")[i];
 
-    img.onclick = function() {
-      modal.style.display = "block";
-      modalImg.src = this.src;
-      captionText.innerHTML = this.alt;
-    }
+img.onclick = function(){
+  modal.style.display = "block";
+  modalImg.src = this.src;
+  captionText.innerHTML = this.alt;
+}
 
-    span.onclick = function() {
-      modal.style.display = "none";
-    }
-
+span.onclick = function() { 
+  modal.style.display = "none";
+}
+	  
   }
 
   	
@@ -364,8 +365,7 @@ $scope.impactedGroup = [];
 
 
   $scope.saveHtml = function() {	 
-	  setTimeout(function() {
-  		if ($scope.checkboxModel.alerts == "on")
+	  setTimeout(function() {  		
 			alert("Printer-friendly HTML report has been saved to your Downloads folder (unless otherwise specified).");
 }, 3000);
     $scope.saveHtmlIsClickedd = true;
@@ -426,7 +426,7 @@ $scope.impactedGroup = [];
       html2 += "<td title=\"Tester's comment\">" + $scope.jsonData[0].Criteria[i].TesterComment; + "</td>";
       html2 += "<td title=\"Browser Type\">" + $scope.jsonData[0].Criteria[i].T_brwsrType; + "</td>";
       html2 += "<td title=\"Browser's Version\">" + $scope.jsonData[0].Criteria[i].T_brwsrVrsn; + "</td>";
-      html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"Image Source\">" + "<img id=\"i\" width=\"350\"  src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + "\">" + "</td>";
+      html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"Image Source\">" + "<img id=\""+$scope.jsonData[0].Criteria[i].Counter+"\" width=\"350\"  src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + "\">" + "</td>";
       html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[i].GlobalIssue; + "</td>";
       html2 += "<td title=\"Remediation Date\">" + $scope.jsonData[0].Criteria[i].RemediationDate; + "</td>";
       html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[i].RemediationDetails; + "</td>";
@@ -476,7 +476,7 @@ $scope.impactedGroup = [];
       "<h2> Disability Impact Summary </h2>" + $scope.DisabilityImpactCollection + "<br><br>" +       
       "<h2> End of Report </h2>" +
       "<script>function myPrint(){window.print(); }; if(document.getElementById('isDraftValue').value==\"true\")document.getElementById('draftMsg').style.display = \"block\";  </script>" +
-      "<script> function zoom(i) { var modal = document.getElementById(i); var img = document.getElementById(\"image\" + i); var modalImg = document.getElementById(\"img\" + i); var captionText = document.getElementById(\"caption\" + i); var span = document.getElementsByClassName(\"close\")[i]; img.onclick = function() { modal.style.display = \"block\"; modalImg.src = this.src; captionText.innerHTML = this.alt; }span.onclick = function() { modal.style.display = \"none\"; } } <script>"+     
+      "<script> function zoom("+0+") { var modal = document.getElementById("+0+"); var img = document.getElementById(\"image\" + "+0+"); var modalImg = document.getElementById(\"img\" + "+0+"); var captionText = document.getElementById(\"caption\" + "+0+"); var span = document.getElementsByClassName(\"close\")["+0+"]; img.onclick = function() { modal.style.display = \"block\"; modalImg.src = this.src; captionText.innerHTML = this.alt; }span.onclick = function() { modal.style.display = \"none\"; } } </script>"+     
 	 "</body>" +
       "</html>";
     var htmlContent = [$scope.capturedFormData];
