@@ -172,18 +172,16 @@
                           <div style="width: 198px"> Tester Comments </div>
                         </th>
                         <th scope="col" title="Screenshot" id="scrnsht[$index]">
-                          <div style="width: 120px" >Screenshot </div>
+                          <div style="width: 123px" >Screenshot </div>
                         </th>
                         <th style="width: 61px" scope="col" title="Global Issue" id="glbl[$index]">Global Issue </th>
                         <th scope="col" title="Remediation Details" id="rmdtl[$index]">
                           <div style="width: 198px"> Remediation Details </div>
                         </th>
-                        <th scope="col" title="Remediation Date" id="rmdt[$index]">
-                          <div style="width: 100px"> Remediation Date </div>
+                        <th scope="col" title="Date" id="rmdt[$index]">
+                          <div style="width: 102px"> Date </div>
                         </th>
-                        <th>
-                          <div style="width: 10px"> </div>
-                        </th>
+                        
                       </tr>
 
             </tr>
@@ -216,7 +214,7 @@
               <td title="Entered Tester's Comment" id="tstcmt1[$index]">
                 <div class="widetd7"> {{TesterComment[$index]}}</div>
               </td>
-              <td width="151">  <img width="100" id="image{{test.Counter}}" id="img1[$index]" ng-src={{ImageSrc[$index]}}  ng-click="zoom(test.Counter)" class="large-image" alt="Selected test screenshot" onerror="this.style.display='none';" >
+              <td width="151">  <img width="100" id="image{{test.Counter}}" id="img1[$index]" ng-src={{ImageSrc[$index]}}  ng-click="zoom(test.Counter)" class="large-image" title="Selected screenshot" alt="Selected screenshot" onerror="this.style.display='none';" >
               
              <div id="{{test.Counter}}" class="modal">
              <span class="close">&times;</span>
@@ -231,7 +229,7 @@
               <td title="Entered Remediation Details" id="rmdtl1[$index]" >
                 <div style="width: 201px"> {{RemediationDetails[$index] }}</div>
               </td>
-              <td title="Entered Remediation Date" id="rmdt1[$index]" >
+              <td title="Date" id="rmdt1[$index]" >
                 <div style="width: 102px"> {{RemediationDate[$index]}} </div>
               </td>
 
@@ -241,7 +239,7 @@
         </table>
 
         </div>
-
+</div>
 
         <fieldset ng-show='DisabilityImpactCollectionLength' >
           <legend>
@@ -253,6 +251,9 @@
           
           <button class="collapsible"  id="dsblGrpBtn">Impact Summary </button>
           <div class="content">
+		   <label for="dsblImpctRslt"> <h4>Different impacted groups are saperated by comma, check below</h4> </label> 
+		  <span id="dsblImpctRslt" >{{DisabilityImpactCollection}}</span>
+		  <!-- commented out because we dont want to display duplicate groups based on failed test conditions
             <div id="myImpact" ng-repeat="record in jsonData">
               <label for="dsblImpctRslt"> Disability impact summary </label>
               <ul id="dsblImpctRslt" ng-repeat="test in record.SuccessCriteria | unique : 'DisabilityImpact' ">
@@ -266,7 +267,7 @@
 
 
               </ul>
-            </div>
+            </div> -->
           </div>
         </fieldset>
 
@@ -285,7 +286,7 @@
         </fieldset>
     </form>
   </main>
-  <br/><br/><br/><br/> <div>
+  <br/><br/><br/><br/> 
   <div id="htmlReportDiv" class="footerbutton" hidden >
 	Select <strong>Save as HTML</strong> to generate a printer-friendly HTML version of the report (saved in the system's Downloads folder by default). <br/>
 	<input type="button" id="sbtBtn" class="button" value="Save as HTML" ng-click="saveHtml()">
