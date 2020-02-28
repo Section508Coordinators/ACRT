@@ -265,7 +265,7 @@ span.onclick = function() {
         html2 += "<th scope=\"col\">" + "Browser Version " + "</th>";
         html2 += "<th scope=\"col\">" + "ScreenShot" + "</th>";
         html2 += "<th scope=\"col\">" + "GlobalIssue" + "</th>";
-        html2 += "<th scope=\"col\">" + "RemediationDate" + "</th>";
+        html2 += "<th scope=\"col\">" + "Date" + "</th>";
         html2 += "<th scope=\"col\" >" + "RemediationDetails" + "</th>";
         html2 += "</tr>";
         html2 += "<tr>";
@@ -281,7 +281,7 @@ span.onclick = function() {
         html2 += "<td title=\"Browser Version\">" + $scope.jsonData[0].Criteria[b].T_brwsrVrsn; + "</td>";
         html2 += "<td title=\"Image Source\">" + "<img id=\"i\"  alt=\"test screenshot\" src= \"" + $scope.jsonData[0].Criteria[b].ImageSrc + 'onerror=\"this.style.display=\"none\"\"' + "\">" + "</td>";
         html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[b].GlobalIssue; + "</td>";
-        html2 += "<td title=\"Remediation Date\">" + $scope.jsonData[0].Criteria[b].RemediationDate; + "</td>";
+        html2 += "<td title=\"Date\">" + $scope.jsonData[0].Criteria[b].RemediationDate; + "</td>";
         html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[b].RemediationDetails; + "</td>";
         html2 += "</tr>";
         //}
@@ -314,8 +314,8 @@ $scope.impactedGroup = [];
            $scope.jsonData[0].SuccessCriteria[a].DisabilityImpact = "";
        
           if ($scope.jsonData[0].SuccessCriteria[a].DisabilityImpact != "" || $scope.jsonData[0].SuccessCriteria[a].DisabilityImpact != " ") {
-            $scope.impactedGroup[a] = true;
-			$scope.DisabilityImpactCollection.push($scope.jsonData[0].SuccessCriteria[a].DisabilityImpact + "<br>");
+            $scope.impactedGroup[a] = true;			
+			$scope.DisabilityImpactCollection.push($scope.jsonData[0].SuccessCriteria[a].DisabilityImpact);
           }
        
         $scope.uniqSCCrtId[a] = $scope.jsonData[0].SuccessCriteria[a].CrtID;
@@ -323,8 +323,17 @@ $scope.impactedGroup = [];
 
       }
 	
-	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.filter($scope.onlyUnique);
-	 
+	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.filter($scope.onlyUnique);	  
+	  
+	  $scope.DisabilityImpactCollection = Array.from(new Set($scope.DisabilityImpactCollection));
+	  $scope.DisabilityImpactCollectionString ="";
+	  $scope.DisabilityImpactCollectionString = $scope.DisabilityImpactCollection.toString();	  
+	  $scope.DisabilityImpactCollectionString = Array.from(new Set($scope.DisabilityImpactCollectionString.split(','))).toString();
+	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollectionString; 
+	  if($scope.DisabilityImpactCollection.length >0)
+	  $scope.DisabilityImpactCollectionLength = true;
+	  	 
+	 /* commented out because we dont want to display duplicate groups based on failed test conditions
 	  $scope.DisabilityImpactCollectionLength = true;
 	  for(let p=0; p< $scope.DisabilityImpactCollection.length; p++){
 	  if($scope.DisabilityImpactCollection[p] == "<br>"){
@@ -347,10 +356,10 @@ $scope.impactedGroup = [];
 	  }
 	  
       $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollectionClean;  
-	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.filter($scope.onlyUnique);
-       $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.toString().replace(/, /g, "").trim(); 
-	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.toString().replace(/,/g, ", ").trim(); 
-      $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.toString().replace(/[,\s]{2,}/, "");     
+	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollection.filter($scope.onlyUnique); */
+       $scope.DisabilityImpactCollection.toString().replace(/, /g, "").trim(); 
+	  $scope.DisabilityImpactCollection.toString().replace(/,/g, ", ").trim(); 
+      $scope.DisabilityImpactCollection.toString().replace(/[,\s]{2,}/, "");     
       
 
     }
@@ -407,7 +416,7 @@ $scope.impactedGroup = [];
     html2 += "<th scope=\"col\"  title=\"Browser Versions\" width=\"80px\">" + "Browser Ver." + "</th>";
     html2 += "<th scope=\"col\" title=\"Screenshot\" >" + "ScreenShot" + "</th>";
     html2 += "<th scope=\"col\"  title=\"Global Issue\" width=\"40px\">" + "Global Issue" + "</th>";
-    html2 += "<th scope=\"col\"  title=\"Remediation Date\" width=\"60px\">" + "Remediation Date" + "</th>";
+    html2 += "<th scope=\"col\"  title=\"Date\" width=\"60px\">" + "Date" + "</th>";
     html2 += "<th scope=\"col\" title=\"Remediation Details\" width=\"140px\">" + "Remediation Details" + "</th>";
     html2 += "</tr>";
 
@@ -426,9 +435,9 @@ $scope.impactedGroup = [];
       html2 += "<td title=\"Tester's comment\">" + $scope.jsonData[0].Criteria[i].TesterComment; + "</td>";
       html2 += "<td title=\"Browser Type\">" + $scope.jsonData[0].Criteria[i].T_brwsrType; + "</td>";
       html2 += "<td title=\"Browser's Version\">" + $scope.jsonData[0].Criteria[i].T_brwsrVrsn; + "</td>";
-      html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"Image Source\">" + "<img id=\""+$scope.jsonData[0].Criteria[i].Counter+"\" width=\"350\"  src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + "\">" + "</td>";
+      html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"Image Source\">" + "<img id=\""+$scope.jsonData[0].Criteria[i].Counter+"\" width=\"350\"  src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + '" '+"onerror=\"this.style.display='none'\"" + "\>" + "</td>";
       html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[i].GlobalIssue; + "</td>";
-      html2 += "<td title=\"Remediation Date\">" + $scope.jsonData[0].Criteria[i].RemediationDate; + "</td>";
+      html2 += "<td title=\"Date\">" + $scope.jsonData[0].Criteria[i].RemediationDate; + "</td>";
       html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[i].RemediationDetails; + "</td>";
       html2 += "</tr>";
     }
@@ -444,7 +453,7 @@ $scope.impactedGroup = [];
 	 "</head>" +
       "<button onclick=\"myPrint()\">Print this page</button> <br>" +	  
       "<h1> Test Report </h1>" +	  
-      "  <h2 id=\"draftMsg\"  style=\"color: #F0FFFF; background-color: #FF0000;\" hidden> This is a Draft Report, To view final Report please select all required test results  </h2> " +     
+      "  <h2 id=\"draftMsg\"  style=\"color: #FFFFFF; background-color: #be0004;\" hidden> This is a Draft Report, To view final Report please select all required test results  </h2> " +     
 	  " <p>This application was tested according to the Trusted Tester Section 508 Conformance Test Process version " + $scope.evalMethod + $scope.evalMethodVrsn + ". The review may be a sampling of pages to confirm product compliance.  The responsibility for full and complete testing and compliance remains with the owner of the application or website.  </p>" +
       " <br>*'Undefined' denotes fields where no selections have been made" +
 	  "<br><b>Date test was submitted:  &nbsp;  </b>" + $scope.dateSubmitted + "<br>" +
@@ -473,7 +482,7 @@ $scope.impactedGroup = [];
       "<b>Notes:  &nbsp;  </b>" + $scope.testScope + "<br>" +
       "<b>Testing Method:  &nbsp;  </b>" + $scope.evalMethod + "<br>" +
       "<b>Testing Method Version:  &nbsp;  </b>" + $scope.evalMethodVrsn + "<br>" +  "<h2> Please check below for WCAG  Report </h2>" + html3 + "<br>" + "<h2> Test Results </h2>" + html2 + "<br>" +
-      "<h2> Disability Impact Summary </h2>" + $scope.DisabilityImpactCollection + "<br><br>" +       
+      "<h2> Disability Impact Summary </h2>" + "<h3> Different impacted groups are saperated by comma, check below </h3>" + $scope.DisabilityImpactCollection + "<br><br>" +       
       "<h2> End of Report </h2>" +
       "<script>function myPrint(){window.print(); }; if(document.getElementById('isDraftValue').value==\"true\")document.getElementById('draftMsg').style.display = \"block\";  </script>" +
       "<script> function zoom("+0+") { var modal = document.getElementById("+0+"); var img = document.getElementById(\"image\" + "+0+"); var modalImg = document.getElementById(\"img\" + "+0+"); var captionText = document.getElementById(\"caption\" + "+0+"); var span = document.getElementsByClassName(\"close\")["+0+"]; img.onclick = function() { modal.style.display = \"block\"; modalImg.src = this.src; captionText.innerHTML = this.alt; }span.onclick = function() { modal.style.display = \"none\"; } } </script>"+     
