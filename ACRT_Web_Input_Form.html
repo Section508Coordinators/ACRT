@@ -332,7 +332,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 	<th scope="col" title="Screenshot"> <div style="width: 188px">Screenshot </div> </th>	
 	<th style="width: 50px" scope="col" title="Global Issue" >Global Issue? </th>  
     <th  scope="col" title="Remediation Details" ><div style="width: 198px"> Remediation Details </div></th>  	
-	<th  scope="col" title="Remediation Date" ><div style="width: 148px"> Date </div></th>  	
+	<th  scope="col" title="Date" ><div style="width: 148px"> Date </div></th>  	
 	<!-- <th ><div style="width: 10px"> </div></th> -->
   </tr>  
   </thead>
@@ -515,7 +515,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 <td title="Screenshot">  <div class="widetd8">
 
 <br><input  type="file"  ng-model='imgCnvrsn[$index]' title="Screenshot"  onchange="angular.element(this).scope().uploadImage(this)" /> <br>
- <img   id="image{{test.Counter}}" ng-src = {{test.ImageSrc}}  class="large-image" width="50" height="50" ng-click="zoom(test.Counter)" > 
+ <img   id="image{{test.Counter}}" ng-src = {{test.ImageSrc}}  class="large-image" width="50" height="50" ng-click="zoom(test.Counter)" onerror="this.style.display='none';"> 
  
              <div id="{{test.Counter}}" class="modal">
              <span class="close">&times;</span>
@@ -541,7 +541,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 <textarea rows="4" cols="50" type="text" ng-model="rmdatnDtlID[$index]" class="txtarea" title="Remediation Details"> </textarea>
 </div></div>
 </td>
- <td title="Remediation Date"> <div style="width: 150px"> <input   type="date" title="Remediation Date" ng-model="rmdatnDatelID[$index]"  ng-click="dateTime(test.Counter)" placeholder="mm/dd/yyyy" id="rmdatnDatelID" name="Remediation Date" />{{defaultDate[$index]}}
+ <td title="Date"> <div style="width: 150px"> <input   type="date" title="Remediation Date" ng-model="rmdatnDatelID[$index]"  ng-click="dateTime(test.Counter)" placeholder="mm/dd/yyyy" id="rmdatnDatelID" name="Remediation Date" /> {{defaultDate[$index]}}
  </div>
  </td> 
 
@@ -657,7 +657,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 <textarea rows="4" cols="50" type="text" ng-model="rmdatnDtlID1[$index]" class="txtarea" title="Remediation Details" maxlength="500"> </textarea>
 </div></div>
 </td>
- <td > <div style="width: 150px"> <input type="date" title="Remediation Date" ng-model="rmdatnDatelID1[$index]"  placeholder="mm/dd/yyyy" id="rmdatnDatelID1" name="Remediation Date" /></div></td>
+ <td > <div style="width: 150px"> <input type="date" title="Date" ng-model="rmdatnDatelID1[$index]"  placeholder="mm/dd/yyyy" id="rmdatnDatelID1" name="Remediation Date" /></div></td>
               
         </tr>
 </tbody>
