@@ -1291,13 +1291,13 @@ $scope.loadFile = function loadFile() {
 	   //console.log('yyyy :'+$scope.imgCnvrsnDefault);
 	  }
 		        $scope.addedIssueRow[b] = $scope.jsonData[0].Criteria[b].AddedIssue; 
-         if(b != b-1) {   
+        /* if(b != b-1) {   
          if($scope.jsonData[0].Criteria[b].ImageSrc == '.')	
 		 continue;
          else 			 
 		$scope.imgCnvrsn.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');	
 		 }		
-	   $scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);  				
+	   $scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);  */				
 	   }
   }
   
