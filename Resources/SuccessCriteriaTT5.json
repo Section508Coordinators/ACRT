@@ -42,7 +42,8 @@
 		"T_lstnm": " ",
 		"T_ID": " ",
 		"T_cntc": " ",
-		"T_Role": " "
+		"T_Role": " ",
+		"T_evalMthd_Vrsn": "V5"
 	},
 	"Criteria": [
 
