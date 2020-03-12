@@ -18,7 +18,7 @@
   <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
   <a title="Create/Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create/Edit Report </a> 
   <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>   
-  <a title="View License" href= "./Resources/LICENSE.md"  target="_blank"  id="licenseID"> View License </a>  
+  <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
 </div>
 
   <div ng-controller="acrtWebIntakeCtrl">  
@@ -26,22 +26,22 @@
 	 <p><strong ng-if="draftReport" style="color: #FFFFFF; background-color: #be0004;"> You have not selected all test results, Feel free to edit/update as needed. </strong><p>
 	 <br>
  	<label for="alerts" name="chkUnchk" id="chkUnchk"><strong>Enable</strong>  Common alerts. </label> 
-    <input type="checkbox" id="alerts" title="enable/disable alerts" ng-model="checkboxModel.alerts"  onclick="chkBxMsg('alerts', 'chkUnchk');"  ng-true-value="'on'" ng-false-value="'off'">
+    <input type="checkbox" id="alerts" title="enable alerts" ng-model="checkboxModel.alerts"  onclick="chkBxMsg('alerts', 'chkUnchk');"  ng-true-value="'on'" ng-false-value="'off'">
 	
   
  <h1> Create/Edit Test Results Form </h1>  
   Create a new test results form and complete required details in the Product and Tester sections. <a title="Create Report instructions." href= "./Help_Input.html"  target="_blank"  id="tstinstrID" > "Create/Edit Report" instructions.  </a> 
    <p >
-	  First, select a Success Criteria template. <br>
+	  First, select a Success Criteria template or saved results file. <br>
 	  <ul id="instr">
-	    <li>To view the results table, load a template first</li>
+	    <li>To view the results table, load a file first</li>
 	    <li>The default JSON files for <strong>TT4 & TT5</strong> are located inside ACRT Resources folder.</li>
 		<li>If you wish to use a json file you have customized, e.g. with your  information, navigate to and select that file.</li>
 	  </ul>
 	</p>
-		<label for="fileinput">Select template file</label> <br>  <input type="file"  class="button" id="fileinput" name="Browse Input File" >  <br>  
+		<label for="fileinput"><strong> Select  file</strong></label> <br>  <input type="file"  class="button" id="fileinput" name="Browse Input File" >  <br>  
 	  <br>
-	   <label for="loadFile"> Click <strong> Load Template</strong> to create a new test results form below.  </label> <br> <button id='button' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form" ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}">Load Template </button>  
+	   <label for="loadFile"> Click <strong> Load File </strong> to load templete or reasult below.  </label> <br> <button id='button' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form" ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}">Load File </button>  
 	   <p id="msg"></p> 
 	 
 		
@@ -282,14 +282,13 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 <option value="" selected disabled hidden>{{default_evalMethod}}</option>
 <option ng-repeat="result in optiontstprcss" value="{{result.name}}">{{result.name}}</option>
 </select>	&nbsp;&nbsp;&nbsp;
-	<label for="evlMthdVrsn">Version: </label> 
-<select name="Test Version Used" ng-model="evlMthdVrsn"  id="evlMthdVrsn"  >
+	<!--<label for="evlMthdVrsn" class="required" >Version: </label> 
+<select name="Test Version Used" ng-model="evlMthdVrsn"  id="evlMthdVrsn"  ng-click="selectTstVrsn()"  >
 <option value="">{{default_tstVrsn}}</option> 
 <option ng-repeat="result in optiontstvrsn" value="{{result.name}}">{{result.name}}</option>
-</select>
+</select> -->	
 	
-	
-	<!-- <input type="string" ng-model="evlMthdVrsn" ng-init="evlMthdVrsn='V5'" class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" maxlength="50" ng-readonly="true"> &nbsp;      -->
+	 <input type="string" class="required" ng-model="evlMthdVrsn"  class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" maxlength="50" ng-readonly="true"> &nbsp;      
 	&nbsp;  
  </div> </div>
  </fieldset>
@@ -402,9 +401,9 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 
  <td > <div style="width: 236px">
  <label for="selectorrr111[$index]"> Change browser used
-   <input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20"   ng-click="brsrChkBoxClicked([$index])" > <br />
+   <input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20[$index]"   ng-click ="brsrChkBoxClicked([$index])" > <br />
 </label> &nbsp;
-<div  ng-show="checked20"  >  
+<div  ng-show="checked20[$index]"  >  
 
 
 <span style="width: 200px" title="Browser Type"  ng-model="chkBoxValIE1[$index]" >   
@@ -561,15 +560,15 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 	  ng-model="selected_name_tstgrp1[$index]"  
       ng-options="o.id as o.name for o in optionsTstrslt"  
       ng-change="selected_name_tstgrp1[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt1[$index]})[0].name" title="Test Result" ng-click="elemntClicked4([$index])" id="testResultt1[$index]">
-	  <option value="" selected disabled hidden>Result</option> </select>  
+	  <!-- <option value="" selected disabled hidden> </option> --></select>  
 </span> 
  </td>
 
 
 <td  > <div style="width: 240px">
-  Change browser used<input id="selectorrr1111[$index]" name="BrowserTypes"  type="checkbox" ng-model="checked21"  ng-click="brsrChkBoxClicked1([$index])" >  <br />
+  Change browser used<input id="selectorrr1111[$index]" name="BrowserTypes"  type="checkbox" ng-model="checked21[$index]"  ng-click="brsrChkBoxClicked1([$index])" >  <br />
 
-<div  ng-show="checked21">  
+<div  ng-show="checked21[$index]">  
     <label id="iiee[$index]" title="Internet Explorer" >IE:
     <input type="checkbox" ng-checked="chkBoxValIE11[$index]" ng-model="checkboxModel.value141[$index]" ng-click="ieChekBox1($index)" id="iiee[$index]" title="Internet Explorer" ng-true-value="'Internet Explorer, '" ng-false-value="''"> 
   </label> &nbsp; <label for="iieeVersnID5[$index]">Ver. </label> 
