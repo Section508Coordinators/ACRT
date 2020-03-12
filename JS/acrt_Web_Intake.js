@@ -6,7 +6,7 @@ function IsJsonString(str) {
   try {
     JSON.parse(str);
   } catch (e) {    
-	alert("There is a problem with the data, contact technical support.");
+	alert("There is a problem while trying to convert to JSON format, contact technical support.");
 	console.log(str);
 	//return false;
   }
@@ -90,9 +90,11 @@ span.onclick = function() {
  
 
 $scope.brsrChkBoxClicked = function(x) {
+
   if ($scope.checkboxModel.alerts == "on")
-  alert('Do you want to change default browser type and version')
-  
+  alert('Do you want to change default browser type and version');
+  /* let brsrChk = document.getElementById("brsrChk");
+  brsrChk.style.display = chkPassport.checked ? "block" : "none"; */
 }
 
 $scope.brsrChkBoxClicked1 = function(x) {
@@ -528,26 +530,30 @@ $scope.optionsfVersn = [{
   },
   {
     id: 1,
-    name: 'Safari 12'
+    name: 'Safari 13'
   },
   {
     id: 2,
-    name: 'Safari 11'
+    name: 'Safari 12'
   },
   {
     id: 3,
-    name: 'Safari 10'
+    name: 'Safari 11'
   },
   {
     id: 4,
-    name: 'Safari 9'
+    name: 'Safari 10'
   },
   {
     id: 5,
-    name: 'Safari 8'
+    name: 'Safari 9'
   },
   {
     id: 6,
+    name: 'Safari 8'
+  },
+  {
+    id: 7,
     name: 'Safari 7'
   }
 
@@ -862,8 +868,7 @@ $scope.RemarkExplntnCollection = [];
   $scope.lastname = " ";
   $scope.testerID = " ";
   $scope.myRole = [];
-  $scope.testerContact = [];
-  
+  $scope.testerContact = [];  
   $scope.evlMthdVrsn = "";
   $scope.addedIssueRow = [];
   $scope.entOthrBrsrIDVrsnl =[];
@@ -878,26 +883,7 @@ $scope.chkBoxValOthrWndw1 = false;
  $scope.displayIt = false;
  $scope.defaultDate=[];
  $scope.originalIssueRsltSelected = false;
-
-  $scope.selected_name_rmdtn="";
-$scope.remediationDetails = function() {	
-        if($scope.selected_name_rmdtn == 'Yes'){
-			if($scope.displayIt == false)
-			alert('Please select the approperiate JSON file to  add remediation details.')
-			show_hide_column(10, true);
-			show_hide_column(11, true);
-		}
-		if($scope.selected_name_rmdtn == 'No'){
-			if($scope.displayIt == false)
-			alert('Please select the approperiate JSON file to  add remediation details.')
-		show_hide_column(10, false);
-		show_hide_column(11, false);	
-		}
-			
-    };
-  
-
-
+ 
 $scope.loadFile = function loadFile() {
   var input, file, fr;
    
@@ -993,9 +979,10 @@ $scope.loadFile = function loadFile() {
 		if ($scope.checkboxModel.alerts == "on")
 			alert("Child Issue is added at the end of this table, Please scroll down to work on it.");
 		}
-	else
-     		
+	else {
+    if ($scope.checkboxModel.alerts == "on")		
 	alert('Please select Test result for this test before adding new one.');
+	}
     };
 
     $scope.removeIssue = function(index) {
@@ -1095,9 +1082,10 @@ $scope.loadFile = function loadFile() {
      if($scope.jsonData[0].Tester.S_Compatibility != 'undefined')
       $scope.default_compatibility = $scope.jsonData[0].System.S_Compatibility;     
       $scope.default_evalMethod = "Trusted Tester"; //$scope.jsonData[0].Tester.T_eval;  
+	  $scope.selected_name_tstprcss = $scope.default_evalMethod;
 	  if($scope.jsonData[0].Tester.T_evalMthd_Vrsn != 'undefined')
 	  $scope.default_tstVrsn = $scope.jsonData[0].Tester.T_evalMthd_Vrsn
-      //$scope.evlMthdVrsn = $scope.default_tstVrsn ; 
+      $scope.evlMthdVrsn = $scope.default_tstVrsn ; 
 	  if($scope.jsonData[0].Tester.P_Type != 'undefined')
       $scope.default_productType = $scope.jsonData[0].Product.P_Type;	  
 	  $scope.jsonData[0].System.S_other = $scope.jsonData[0].System.S_other.toString().trim();	  
@@ -1287,28 +1275,67 @@ $scope.loadFile = function loadFile() {
 		 if ($scope.jsonData[0].Criteria[b].S_other === 'Other Browser' || $scope.jsonData[0].Criteria[b].S_other === '  Other Browser  ' ){
        $scope.otherBrowserl[b] = true;
 	   $scope.chkBoxValOthrl = true;
-	   if($scope.jsonData[0].Criteria[b].ImageSrc != "  "){ 
+	   /*if($scope.jsonData[0].Criteria[b].ImageSrc != "  "){ 
        if(b != b-1){         
-		$scope.imgCnvrsn.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');		
+		$scope.imgCnvrsnDefault.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');		
 	   }
 	   continue;
 	   }	   
 	   else if($scope.jsonData[0].Criteria[b].ImageSrc != "   "){ 
        if(b != b-1){       	   
-		$scope.imgCnvrsn.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');		
+		$scope.imgCnvrsnDefault.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');		
 	   }
 	   continue;
-	   }      
-	   $scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);  
+	   }     */ 
+	    
+	   //console.log('yyyy :'+$scope.imgCnvrsnDefault);
 	  }
-		        $scope.addedIssueRow[b] = $scope.jsonData[0].Criteria[b].AddedIssue;  
+		        $scope.addedIssueRow[b] = $scope.jsonData[0].Criteria[b].AddedIssue; 
+         if(b != b-1) {   
+         if($scope.jsonData[0].Criteria[b].ImageSrc == '.')	
+		 continue;
+         else 			 
+		$scope.imgCnvrsn.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');	
+		 }		
+	   $scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);  				
 	   }
   }
-  	
+  
+    
   $scope.displayIt = true;
   
 }
+//$scope.imgCnvrsn =  Array.from($scope.imgCnvrsnDefault); 
+//$scope.imgCnvrsn = Object.assign([], $scope.imgCnvrsnDefault);  
+
 }
+
+
+
+  $scope.selected_name_rmdtn="";
+$scope.remediationDetails = function() {	
+      
+	 // if($scope.crtRsltCollection.length == 0) 
+	   //scope.displayIt = false;
+        if($scope.selected_name_rmdtn == 'Yes'){
+			if($scope.displayIt == false)
+			alert('Please select the approperiate JSON file to  add remediation details.');
+		    if ($scope.checkboxModel.alerts == "on")
+		    alert('Column for Remediation Details Added.');
+			show_hide_column(10, true);
+			show_hide_column(11, true);
+		}
+		if($scope.selected_name_rmdtn == 'No'){
+			if($scope.displayIt == false)
+			alert('Please select the approperiate JSON file to  add remediation details.')
+		    if ($scope.checkboxModel.alerts == "on")
+		    alert('Column for Remediation Details Removed.');
+		show_hide_column(10, false);
+		show_hide_column(11, false);	
+		}
+			
+    };
+ 
 
 $scope.defaultExpand = function defaultExpand() {  
   document.getElementById("aplType").click();
@@ -1392,9 +1419,10 @@ $scope.remarkExplanation = function(i) {
   }
   
    $scope.testresult[i] = $scope.testresult[i] +'","RemediationDate": "' + $scope.rmdatnDatelID[i] +  '","RemediationDetails": "' + $scope.rmdatnDtlID[i]+ '","DraftReport": "' + $scope.draftReport + '"}';
-
+  
 };
 $scope.uploadImageClicked1 = false; 
+
 
 $scope.uploadImage = function(element ) { 
 $scope.uploadImageClicked1 = false;  
@@ -1649,8 +1677,8 @@ $scope.submit = function() {
       $scope.browserTypeCollection1[i] = " ";
     $scope.counter=i;
 		
-    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + "Issue " + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] + '","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' + $scope.counter + '","ImageSrc":".';	
-   
+    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + "Issue " + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] +'","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' + $scope.counter + '","ImageSrc":".';	
+    console.log($scope.imgCnvrsnJSON);
     for(let m=0;m<$scope.imgCnvrsnJSON.length;m++){	
 	       if(i == $scope.imgCnvrsnJSON[m].imgPosition){ 
             $scope.imageAdded =  true;		   
@@ -2412,7 +2440,7 @@ $scope.submit1 = function() {
  setTimeout(function() {
  	if ($scope.checkboxModel.alerts == "on")
 		alert("Your updates have been saved to the Downloads folder (unless otherwise specified). You may continue editing on this page or load the newly created file in the Edit Report page.");
-}, 3000);
+}, 4000);
    
   }
   
