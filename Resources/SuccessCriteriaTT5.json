@@ -6,7 +6,7 @@
 		"P_Type": " ",
 		"P_Location": " ",
 		"P_Desc": " ",
-		"P_Notes": " "
+		"P_Notes": " " 
 	},
 	"System": {
 		"S_window": " ",
@@ -43,6 +43,7 @@
 		"T_ID": " ",
 		"T_cntc": " ",
 		"T_Role": " ",
+		"T_eval": "Trusted Tester",
 		"T_evalMthd_Vrsn": "V5"
 	},
 	"Criteria": [
