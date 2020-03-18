@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
-
+ 
 <head>
   <meta charset="UTF-8">
   <title>Create/Edit Report</title>
@@ -13,35 +13,43 @@
 </head>
 <body ng-app="acrtWebIntake">
 
-<div class="topnav" id="myTopnav"> 
+
+  <div ng-controller="acrtWebIntakeCtrl"> 
+ <div class="topnav" id="myTopnav"> 
   <a title="Home" href="index.html" id="aboutID">Home </a>  
   <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
-  <a title="Create/Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create/Edit Report </a> 
+  <a  title="Create or Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >{{createEditOption}} </a>   
   <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>   
   <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
 </div>
-
-  <div ng-controller="acrtWebIntakeCtrl">  
-     
-	 <p><strong ng-if="draftReport" style="color: #FFFFFF; background-color: #be0004;"> You have not selected all test results, Feel free to edit/update as needed. </strong><p>
+  
+     <div id="hdnMsgId">
+	 <p ng-if="draftReport">
+	 <strong  class="hdnMsg"> You have not selected all test results, Feel free to edit/update as needed. </strong>
+	 </p>
+	 <p ng-if="original">
+	 <strong class="hdnMsg"> Please fill all mandatory fields to save information from this page. </strong>
+	  <br>A red asterisk <strong><span class="required"> </strong> </span> indicates a <strong> mandatory</strong> field. 
+	 </p>
+	 </div>
 	 <br>
  	<label for="alerts" name="chkUnchk" id="chkUnchk"><strong>Enable</strong>  Common alerts. </label> 
     <input type="checkbox" id="alerts" title="enable alerts" ng-model="checkboxModel.alerts"  onclick="chkBxMsg('alerts', 'chkUnchk');"  ng-true-value="'on'" ng-false-value="'off'">
 	
   
- <h1> Create/Edit Test Results Form </h1>  
+ <h1> {{createEditOption}} Test Results Form </h1>  
   Create a new test results form and complete required details in the Product and Tester sections. <a title="Create Report instructions." href= "./Help_Input.html"  target="_blank"  id="tstinstrID" > "Create/Edit Report" instructions.  </a> 
    <p >
 	  First, select a Success Criteria template or saved results file. <br>
 	  <ul id="instr">
 	    <li>To view the results table, load a file first</li>
-	    <li>The default JSON files for <strong>TT4 & TT5</strong> are located inside ACRT Resources folder.</li>
+	    <li>The default JSON files for Trusted Tester v.4 and Trusted Tester v.5 ( <strong>TT4 & TT5</strong>) are located inside ACRT Resources folder.</li>		
 		<li>If you wish to use a json file you have customized, e.g. with your  information, navigate to and select that file.</li>
 	  </ul>
 	</p>
 		<label for="fileinput"><strong> Select  file</strong></label> <br>  <input type="file"  class="button" id="fileinput" name="Browse Input File" >  <br>  
 	  <br>
-	   <label for="loadFile"> Click <strong> Load File </strong> to load templete or reasult below.  </label> <br> <button id='button' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form" ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}">Load File </button>  
+	   <label for="loadFile"> Select <strong> Load File </strong> button to load template or test results.  </label> <br> <button id='button' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form" ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}">Load File </button>  
 	   <p id="msg"></p> 
 	 
 		
@@ -50,8 +58,9 @@
  
   
  <p>  <strong> Note: </strong> <br>
+ 
  <ul>  
-  <li> A red asterisk <span class="required"> </span> indicates a <strong> mandatory</strong> field. </li>
+  <li> You have selected <strong>{{default_evalMethod}} </strong> Version <strong class="hdnMsg">{{default_tstVrsn}}</strong> </li>  
   <li> Expand each section below to enter required information.</li>
  
  </ul>  </p>
@@ -59,7 +68,7 @@
 <fieldset>
   <legend>
     <h2> Product  </h2></legend>
-	<button class="collapsible" onclick="expandCollapse1()"><div id="expandCollapse1"> <i class="up"></i> Click to show Product section</div> </button> 
+	<button class="collapsible" onclick="expandCollapse1()"><div id="expandCollapse1"> <i class="up"></i> Select to show Product section</div> </button> 
 <div class="content">
 <div class="divSpace" id="productInfo" >
    <label for="productID" class="required"> Product Name (Required, 100 chars max): </label> <input type="string" name= "product Name" ng-model="productID" class= "betnTags" id="productID" name="Name Of Product" maxlength="50" required size="100">&nbsp;     
@@ -92,7 +101,7 @@
 <legend> 
  <h2> Test Environment   </h2>
  </legend> 
- <button class="collapsible" onclick="expandCollapse2()"><div id="expandCollapse2"> <i class="up"></i> Click to show Test Environment section</div> </button>
+ <button class="collapsible" onclick="expandCollapse2()"><div id="expandCollapse2"> <i class="up"></i> Select to show Test Environment section</div> </button>
  <div class="content">
 <div class="divSpace" id="sysInfo" >  
    <div class="left-div">   
@@ -262,11 +271,11 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
  </fieldset></br>
  
  
- <fieldset>
+ <fieldset> 
  <legend>
  <h2> Testing Information </h2>
  </legend> 
- <button class="collapsible" onclick="expandCollapse3()"> <div id="expandCollapse3"> <i class="up"></i> Click to show Testing Information section</div> </button>
+ <button class="collapsible" onclick="expandCollapse3()"> <div id="expandCollapse3"> <i class="up"></i> Select to show Testing Information section</div> </button>
 <div class="content">
 
  <div class="divSpace" id="testersInfo" >
@@ -278,17 +287,17 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
    <br><label for="testScope"  > Testing Scope (500 chars max):</label><br> <textarea rows="4"cols="90"type="text"ng-model="testScope"class="txtarea"id="testScope"name="Test Scope"></textarea>   
     <br><br> <label for="evalMthd"> Testing Method: </label> 	
 
-	  <select name="  Evaluation Method " ng-model="selected_name_tstprcss" id="evalMthd"  >  
+	 <!-- <select name="  Evaluation Method " ng-model="selected_name_tstprcss" id="evalMthd"  >  
 <option value="" selected disabled hidden>{{default_evalMethod}}</option>
 <option ng-repeat="result in optiontstprcss" value="{{result.name}}">{{result.name}}</option>
-</select>	&nbsp;&nbsp;&nbsp;
+</select>	&nbsp;&nbsp;&nbsp; -->
 	<!--<label for="evlMthdVrsn" class="required" >Version: </label> 
 <select name="Test Version Used" ng-model="evlMthdVrsn"  id="evlMthdVrsn"  ng-click="selectTstVrsn()"  >
 <option value="">{{default_tstVrsn}}</option> 
 <option ng-repeat="result in optiontstvrsn" value="{{result.name}}">{{result.name}}</option>
 </select> -->	
-	
-	 <input type="string" class="required" ng-model="evlMthdVrsn"  class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" maxlength="50" ng-readonly="true"> &nbsp;      
+	 <input type="string" class="required" ng-model="selected_name_tstprcss"  class= "betnTags" id="evalMthd" name="Evaluation Method" maxlength="50" ng-readonly="true"> &nbsp;      
+	 Version <input type="string" class="required" ng-model="evlMthdVrsn"  class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" maxlength="50" ng-readonly="true"> &nbsp;      
 	&nbsp;  
  </div> </div>
  </fieldset>
@@ -302,7 +311,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 </select> &nbsp; &nbsp; 
  
 <h3> Generate test results form </h3>
- To view table below, load template file first. If needed, you may open a copy of the 
+ Upload the <strong>JSON</strong> File <u><string>first</strong></u> to access the test results table. If needed, you may open a copy of the 
  <a title="Trusted Tester Test Process" href= "https://www.dhs.gov/sites/default/files/publications/trusted_tester_test_process_v5_0_aug_16_2019.pdf"  target="_blank"  id="tstinstrID" >Trusted Tester Test Process.</a> 
  
  </br> </br>
@@ -400,10 +409,10 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
  </td>
 
  <td > <div style="width: 236px">
- <label for="selectorrr111[$index]"> Change browser used
-   <input id="selectorrr111[$index]" name="Browser Types"  type="checkbox" ng-model="checked20[$index]"   ng-click ="brsrChkBoxClicked([$index])" > <br />
+ <label > Change browser used
+   <input title="Change browser used" name="Browser Types"  type="checkbox" ng-model="checked20[$index]"   ng-click ="brsrChkBoxClicked([$index])" > <br />
 </label> &nbsp;
-<div  ng-show="checked20[$index]"  >  
+<div  ng-show="checked20[$index]" >  
 
 
 <span style="width: 200px" title="Browser Type"  ng-model="chkBoxValIE1[$index]" >   
@@ -521,6 +530,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
             <img class="modal-content" id="img{{test.Counter}}">
              <div class="caption" id="caption{{test.Counter}}" ></div>
              </div>
+			 <!-- <div ng-if="imageCaptured[$index]"> <button type="button" ng-click="removeImage($index)">Remove Image</button> </div> -->
 </div>
 	 </td>   
 <td  title="Global Issue type">
