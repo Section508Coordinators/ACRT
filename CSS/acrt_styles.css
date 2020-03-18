@@ -5,6 +5,11 @@
    left: -9999px !important;
 }
 
+
+.hdnMsg{color: #FFFFFF; 
+background-color: #be0004;}
+
+
 .large-image {
   border-radius: 5px;
   cursor: pointer;
