@@ -1,12 +1,12 @@
 var app = angular.module('acrt', ["ngSanitize"]);
-
+ 
 
 function expandCollapse1() {
   var x = document.getElementById("expandCollapse1");
-  if (x.innerHTML === "<i class=\"down\"></i> Click to hide Product section") {
-    x.innerHTML = "<i class=\"up\"></i> Click to show Product section";
+  if (x.innerHTML === "<i class=\"down\"></i> Select to hide Product section") {
+    x.innerHTML = "<i class=\"up\"></i> Select to show Product section";
   } else {
-    x.innerHTML = "<i class=\"down\"></i> Click to hide Product section";
+    x.innerHTML = "<i class=\"down\"></i> Select to hide Product section";
   }
 
 }
@@ -14,10 +14,10 @@ function expandCollapse1() {
 function expandCollapse2() {
 
   var y = document.getElementById("expandCollapse2");
-  if (y.innerHTML === "<i class=\"down\"></i> Click to hide Test Environment section") {
-    y.innerHTML = "<i class=\"up\"></i> Click to show Test Environment section";
+  if (y.innerHTML === "<i class=\"down\"></i> Select to hide Test Environment section") {
+    y.innerHTML = "<i class=\"up\"></i> Select to show Test Environment section";
   } else {
-    y.innerHTML = "<i class=\"down\"></i> Click to hide Test Environment section";
+    y.innerHTML = "<i class=\"down\"></i> Select to hide Test Environment section";
   }
 
 }
@@ -25,10 +25,10 @@ function expandCollapse2() {
 function expandCollapse3() {
 
   var z = document.getElementById("expandCollapse3");
-  if (z.innerHTML === "<i class=\"down\"></i> Click to hide Testing Information section") {
-    z.innerHTML = "<i class=\"up\"></i> Click to show Testing Information section";
+  if (z.innerHTML === "<i class=\"down\"></i> Select to hide Testing Information section") {
+    z.innerHTML = "<i class=\"up\"></i> Select to show Testing Information section";
   } else {
-    z.innerHTML = "<i class=\"down\"></i> Click to hide Testing Information section";
+    z.innerHTML = "<i class=\"down\"></i> Select to hide Testing Information section";
   }
 }
 
@@ -279,7 +279,7 @@ span.onclick = function() {
         html2 += "<td title=\"Tester's Comment\">" + $scope.jsonData[0].Criteria[b].TesterComment; + "</td>";
         html2 += "<td title=\"Browser Type\">" + $scope.jsonData[0].Criteria[b].T_brwsrType; + "</td>";
         html2 += "<td title=\"Browser Version\">" + $scope.jsonData[0].Criteria[b].T_brwsrVrsn; + "</td>";
-        html2 += "<td title=\"Image Source\">" + "<img id=\"i\"  alt=\"test screenshot\" src= \"" + $scope.jsonData[0].Criteria[b].ImageSrc + 'onerror=\"this.style.display=\"none\"\"' + "\">" + "</td>";
+        html2 += "<td title=\"Image Source\">" + "<img id=\"i\"  alt=\"screenshot\" src= \"" + $scope.jsonData[0].Criteria[b].ImageSrc + 'onerror=\"this.style.display=\"none\"\"' + "\">" + "</td>";
         html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[b].GlobalIssue; + "</td>";
         html2 += "<td title=\"Date\">" + $scope.jsonData[0].Criteria[b].RemediationDate; + "</td>";
         html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[b].RemediationDetails; + "</td>";
@@ -380,7 +380,7 @@ $scope.impactedGroup = [];
     $scope.saveHtmlIsClickedd = true;
 	
 	//This creates WCAG report
-	var html3 = "<table class=\"table2\" role=\"presentation\"> <strong>WCAG  Report </strong>";
+	var html3 = "<table class=\"table2\" > <strong>WCAG  Report </strong>";
 
     html3 += "<tr>";
     html3 += "<th scope=\"col\"  title=\"Criteria\"  width=\"98px\">" + "Criteria" + "</th>";
@@ -400,7 +400,7 @@ $scope.impactedGroup = [];
     html3 += "</table>";
 	
 	//this creates html test report
-    var html2 = "<table class=\"table1\" role=\"presentation\"> <caption> Test Results</caption>";
+    var html2 = "<table class=\"table1\" > <caption> Test Results</caption>";
 
     html2 += "<tr>";
     html2 += "<th scope=\"col\"  title=\"Test Name\"  width=\"60px\">" + "Test Name" + "</th>";
@@ -435,7 +435,7 @@ $scope.impactedGroup = [];
       html2 += "<td title=\"Tester's comment\">" + $scope.jsonData[0].Criteria[i].TesterComment; + "</td>";
       html2 += "<td title=\"Browser Type\">" + $scope.jsonData[0].Criteria[i].T_brwsrType; + "</td>";
       html2 += "<td title=\"Browser's Version\">" + $scope.jsonData[0].Criteria[i].T_brwsrVrsn; + "</td>";
-      html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"Image Source\">" + "<img id=\""+$scope.jsonData[0].Criteria[i].Counter+"\" width=\"350\"  src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + '" '+"onerror=\"this.style.display='none'\"" + "\>" + "</td>";
+      html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"ScreenShot Captured\">" + "<img id=\""+$scope.jsonData[0].Criteria[i].Counter+"\" width=\"350\"  alt=\"screenshot\" src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + '" '+"onerror=\"this.style.display='none'\"" + "\>" + "</td>";
       html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[i].GlobalIssue; + "</td>";
       html2 += "<td title=\"Date\">" + $scope.jsonData[0].Criteria[i].RemediationDate; + "</td>";
       html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[i].RemediationDetails; + "</td>";
@@ -454,7 +454,7 @@ $scope.impactedGroup = [];
       "<button onclick=\"myPrint()\">Print this page</button> <br>" +	  
       "<h1> Test Report </h1>" +	  
       "  <h2 id=\"draftMsg\"  style=\"color: #FFFFFF; background-color: #be0004;\" hidden> This is a Draft Report, To view final Report please select all required test results  </h2> " +     
-	  " <p>This application was tested according to the Trusted Tester Section 508 Conformance Test Process version " + $scope.evalMethod + $scope.evalMethodVrsn + ". The review may be a sampling of pages to confirm product compliance.  The responsibility for full and complete testing and compliance remains with the owner of the application or website.  </p>" +
+	  " <p>This application was tested according to the Trusted Tester Section 508 Conformance Test method: " + $scope.evalMethod +"& Version :"+ $scope.evalMethodVrsn + ". The review may be a sampling of pages to confirm product compliance.  The responsibility for full and complete testing and compliance remains with the owner of the application or website.  </p>" +
       " <br>*'Undefined' denotes fields where no selections have been made" +
 	  "<br><b>Date test was submitted:  &nbsp;  </b>" + $scope.dateSubmitted + "<br>" +
       "<h2> Product Information </h2>" +
