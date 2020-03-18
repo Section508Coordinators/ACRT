@@ -35,7 +35,7 @@
 		"S_selectedBrowser": ",",
 		"S_selectedBrowserVersions": "",
 		"S_Compatibility": " "
-	},
+	}, 
 
 	"Tester": {
 		"T_fstnm": " ",
@@ -43,6 +43,7 @@
 		"T_ID": " ",
 		"T_cntc": " ",
 		"T_Role": " ",
+		"T_eval": "Trusted Tester",
 		"T_evalMthd_Vrsn": "V4"
 	},
 	"Criteria": [{
