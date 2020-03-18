@@ -2,7 +2,7 @@
 <html lang="en">
 <script src="./JS/AngularJS1.6.9/angular.min.js"></script>
 <script src="./JS/angular-sanitize.js"></script>
-
+ 
 <head>
   <title>View Report</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
@@ -25,15 +25,17 @@
     <form id="webTestResult">
       <h1> View Test Report </h1>
         View test report. <a title="View Report instructions" href="./Help_Report.html" target="_blank" id="tstinstrID"> "View Report" instructions </a> 
-        <p><strong ng-if="isDraft" style="color: #FFFFFF; background-color: #be0004;"> This is a Draft report. To view final report please input all required test results. </strong><p>
+        <p><strong ng-if="isDraft" class="hdnMsg"> This is a Draft report. To view final report please input all required test results. </strong><p>
         <label for="fileinput"> Select test results file.
         </label><br>	
 		<input type='file' class="button" id='fileinput' name='Browse to file'>
-        <br><br><label for="loadFile"> Click <strong>Load Results</strong> to load the selected test results file.
+        <br><br><label for="loadFile"> Select <strong> Load File </strong> button to load test results.
         </label><br> <button id='buttonLoad' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form"  ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}" >Load Results</button>
-			    
+		<br>You have selected <strong>{{evalMethod}} </strong> Version <strong class="hdnMsg">{{evalMethodVrsn}}</strong> 	    
 		<p id="msg1"></p> 
 	  </ul> <br>
+	  
+		 
 		
 		
 		
@@ -41,7 +43,7 @@
           <legend>
             <h2> Product </h2>
           </legend>
-		  <button class="collapsible" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Click to show Product section</div> </button> 
+		  <button class="collapsible" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Select to show Product section</div> </button> 
 		  <div class="content">
     <div class="divSpace" id="productInfo" >           
               <label for="productID"> Product Name: </label> <input type="string" ng-model="productID" class="betnTags" id="productID" name="Entered Name Of Product" ng-readonly="true" size="100"> &nbsp;
@@ -60,7 +62,7 @@
             <h2> Test Environment </h2>
           </legend>
           <button class="collapsible" onclick="expandCollapse2()">
-            <div id="expandCollapse2"> <i class="up"></i> Click to show Test Environment section</div>
+            <div id="expandCollapse2"> <i class="up"></i> Select to show Test Environment section</div>
           </button>
           <div class="content">
             <div class="divSpace" id="sysInfo">
@@ -78,7 +80,7 @@
             <h2> Testing Information </h2>
           </legend>
           <button class="collapsible" onclick="expandCollapse3()">
-            <div id="expandCollapse3"> <i class="up"></i> Click to show Testing Information section</div>
+            <div id="expandCollapse3"> <i class="up"></i> Select to show Testing Information section</div>
           </button>
           <div class="content">
 
