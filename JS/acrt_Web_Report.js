@@ -1,12 +1,12 @@
-var app = angular.module('acrt', ["ngSanitize"]);
+var app = angular.module('acrt', ["ngSanitize"]); 
+   
  
-
 function expandCollapse1() {
   var x = document.getElementById("expandCollapse1");
-  if (x.innerHTML === "<i class=\"down\"></i> Select to hide Product section") {
-    x.innerHTML = "<i class=\"up\"></i> Select to show Product section";
+  if (x.innerHTML === "<i class=\"down\"></i> Hide Product section") {
+    x.innerHTML = "<i class=\"up\"></i> Show Product section";
   } else {
-    x.innerHTML = "<i class=\"down\"></i> Select to hide Product section";
+    x.innerHTML = "<i class=\"down\"></i> Hide Product section";
   }
 
 }
@@ -14,10 +14,10 @@ function expandCollapse1() {
 function expandCollapse2() {
 
   var y = document.getElementById("expandCollapse2");
-  if (y.innerHTML === "<i class=\"down\"></i> Select to hide Test Environment section") {
-    y.innerHTML = "<i class=\"up\"></i> Select to show Test Environment section";
+  if (y.innerHTML === "<i class=\"down\"></i> Hide Test Environment section") {
+    y.innerHTML = "<i class=\"up\"></i> Show Test Environment section";
   } else {
-    y.innerHTML = "<i class=\"down\"></i> Select to hide Test Environment section";
+    y.innerHTML = "<i class=\"down\"></i> Hide Test Environment section";
   }
 
 }
@@ -25,10 +25,10 @@ function expandCollapse2() {
 function expandCollapse3() {
 
   var z = document.getElementById("expandCollapse3");
-  if (z.innerHTML === "<i class=\"down\"></i> Select to hide Testing Information section") {
-    z.innerHTML = "<i class=\"up\"></i> Select to show Testing Information section";
+  if (z.innerHTML === "<i class=\"down\"></i> Hide Testing Information section") {
+    z.innerHTML = "<i class=\"up\"></i> Show Testing Information section";
   } else {
-    z.innerHTML = "<i class=\"down\"></i> Select to hide Testing Information section";
+    z.innerHTML = "<i class=\"down\"></i> Hide Testing Information section";
   }
 }
 
@@ -48,7 +48,7 @@ app.filter('unique', function() {
   };
 });
 
-
+/*
 function chkBxMsg(thecheckbox, thelabel) {
 
     var checkboxvar = document.getElementById(thecheckbox);
@@ -61,7 +61,7 @@ function chkBxMsg(thecheckbox, thelabel) {
     }
 }
 
-
+*/
 
 function grpImpact() {
   var x = document.getElementById("myImpact");
@@ -136,6 +136,9 @@ span.onclick = function() {
   $scope.DisabilityImpactCollection = [];
 	
 	$scope.loadclicked = 0;
+	$scope.dataLoaded = false;
+	$scope.wcagRprt = false;
+	$scope.sucCrtLngth =0;
 
 	
   $scope.loadFile = function loadFile() {
@@ -166,10 +169,7 @@ span.onclick = function() {
     function receivedText(e) {
       let lines = e.target.result;
       var newArr = JSON.parse(lines);
-      $scope.jsonData = newArr;
-  	  document.getElementById("msg1").innerHTML = "<b>File load completed</b>. <br> 'Undefined' denotes fields where no selections have been made";	
-      document.getElementById('displayTestRslt').style.display = "block"; 	  
-	  document.getElementById('htmlReportDiv').style.display = "block";  
+      $scope.jsonData = newArr;  	   
       $scope.myBrowser = "";
       $scope.isDraft = false;
       $scope.CrtID = [];
@@ -195,6 +195,8 @@ span.onclick = function() {
       $scope.diffCrtId = [];
       $scope.myText = [];
       $scope.uniqSCCrtIdCollection = [];
+	  $scope.dataLoaded = true;
+	  
 
       $scope.productID = $scope.jsonData[0].Product.P_Name;
       $scope.ownerID = $scope.jsonData[0].Product.P_Version;
@@ -219,9 +221,9 @@ span.onclick = function() {
       $scope.evalMethod = $scope.jsonData[0].Tester.T_eval;
       $scope.evalMethodVrsn = $scope.jsonData[0].Tester.T_evalMthd_Vrsn;
       $scope.dateSubmitted = $scope.jsonData[0].Tester.T_Date;
-      $scope.Guideline = $scope.jsonData[0].Guideline.Guideline;
-      $scope.Section508 = $scope.jsonData[0].Guideline.Section508;
-      $scope.EN_Accessibility = $scope.jsonData[0].Guideline.EN_Accessibility;
+      //$scope.Guideline = $scope.jsonData[0].Guideline.Guideline;
+      //$scope.Section508 = $scope.jsonData[0].Guideline.Section508;
+      //$scope.EN_Accessibility = $scope.jsonData[0].Guideline.EN_Accessibility;
       $scope.crtID = $scope.jsonData[0].Criteria[0].CrtID;
 	  
 	  
@@ -237,6 +239,7 @@ span.onclick = function() {
         $scope.TestID[b] = $scope.jsonData[0].Criteria[b].TestID;
         $scope.TestCondition[b] = $scope.jsonData[0].Criteria[b].TestCondition;
         $scope.TestResult[b] = $scope.jsonData[0].Criteria[b].TestResult;
+		if($scope.TestResult[b]== 'undefined') $scope.TestResult[b] = '';
         $scope.IssueNo[b] = $scope.jsonData[0].Criteria[b].IssueNo;
 		$scope.location[b] = $scope.jsonData[0].Criteria[b].location;
         $scope.TesterComment[b] = $scope.jsonData[0].Criteria[b].TesterComment;
@@ -248,7 +251,7 @@ span.onclick = function() {
         $scope.RemediationDetails[b] = $scope.jsonData[0].Criteria[b].RemediationDetails;
         $scope.Counter[b] = $scope.jsonData[0].Criteria[b].Counter;		
         $scope.CrtIDCollection.push($scope.CrtID[b]);	
-		
+		if ($scope.jsonData[0].Criteria[b].TestResult == 'undefined') $scope.jsonData[0].Criteria[b].TestResult ='';
 
         var html2 = "<table class=\"table1\"  role=\"presentation\" >";
 
@@ -265,7 +268,7 @@ span.onclick = function() {
         html2 += "<th scope=\"col\">" + "Browser Version " + "</th>";
         html2 += "<th scope=\"col\">" + "ScreenShot" + "</th>";
         html2 += "<th scope=\"col\">" + "GlobalIssue" + "</th>";
-        html2 += "<th scope=\"col\">" + "Date" + "</th>";
+        html2 += "<th scope=\"col\">" + "Remediation Date" + "</th>";
         html2 += "<th scope=\"col\" >" + "RemediationDetails" + "</th>";
         html2 += "</tr>";
         html2 += "<tr>";
@@ -281,7 +284,7 @@ span.onclick = function() {
         html2 += "<td title=\"Browser Version\">" + $scope.jsonData[0].Criteria[b].T_brwsrVrsn; + "</td>";
         html2 += "<td title=\"Image Source\">" + "<img id=\"i\"  alt=\"screenshot\" src= \"" + $scope.jsonData[0].Criteria[b].ImageSrc + 'onerror=\"this.style.display=\"none\"\"' + "\">" + "</td>";
         html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[b].GlobalIssue; + "</td>";
-        html2 += "<td title=\"Date\">" + $scope.jsonData[0].Criteria[b].RemediationDate; + "</td>";
+        html2 += "<td title=\"Remediation Date\">" + $scope.jsonData[0].Criteria[b].RemediationDate; + "</td>";
         html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[b].RemediationDetails; + "</td>";
         html2 += "</tr>";
         //}
@@ -304,12 +307,41 @@ span.onclick = function() {
           $scope.isDraft = true;
 		  continue;
           
-        }  
-
+        } 
+setTimeout(function() {
+document.getElementById("dsblGrpBtn").click();
+}, 1000);	    
       }
-$scope.impactedGroup = [];
+      $scope.impactedGroup = [];
+       document.getElementById("msg1").innerHTML = "<strong>"+$scope.evalMethod +" Version "+$scope.evalMethodVrsn +"</strong> file load completed.<br>";		  
+        
+	  
+	  //$scope.validData=true;
+      if($scope.jsonData[0].SuccessCriteria == undefined){
+	 // $scope.validData = false;
+	  alert('Either select different file (by refreshing this page) or use "Create Report" option for same file.');
+	  }
+	  
+	  if($scope.jsonData[0].SuccessCriteria != undefined)
+      $scope.sucCrtLngth =  $scope.jsonData[0].SuccessCriteria.length;	
 
-      for (let a = 0; a < $scope.jsonData[0].SuccessCriteria.length; a++) {
+    //if($scope.productID == " ")
+	//alert('Either refresh page & select different file or use "Create Report" option.');
+	    
+     if ($scope.sucCrtLngth == 0){
+	$scope.wcagRprt = false;
+     alert('Make sure to load file with all manddatory fields and at least one valid test result to view complete report page.');	 
+	 }
+
+    if ($scope.sucCrtLngth >0) {
+		$scope.wcagRprt = true;
+		//making sure table displays only for valid data. 
+		document.getElementById('displayTestRslt').style.display = "block"; 	
+		document.getElementById('htmlReportDiv').style.display = "block";	
+	}
+		
+	//alert($scope.wcagRprt);
+      for (let a = 0; a < $scope.sucCrtLngth; a++) {
 		  if ($scope.jsonData[0].SuccessCriteria[a].DisabilityImpact == undefined || $scope.jsonData[0].SuccessCriteria[a].DisabilityImpact == 'undefined') 
            $scope.jsonData[0].SuccessCriteria[a].DisabilityImpact = "";
        
@@ -329,6 +361,10 @@ $scope.impactedGroup = [];
 	  $scope.DisabilityImpactCollectionString ="";
 	  $scope.DisabilityImpactCollectionString = $scope.DisabilityImpactCollection.toString();	  
 	  $scope.DisabilityImpactCollectionString = Array.from(new Set($scope.DisabilityImpactCollectionString.split(','))).toString();
+	  $scope.DisabilityImpactCollectionString = $scope.DisabilityImpactCollectionString.replace(/^,/, ''); //removes first comma from string 
+	  $scope.DisabilityImpactCollectionString = $scope.DisabilityImpactCollectionString.replace(/,\s*$/, " "); //removes comma from last of string
+	  $scope.DisabilityImpactCollectionString = $scope.DisabilityImpactCollectionString.replace(/,+/g, ','); //removes multiple commas from string
+	  
 	  $scope.DisabilityImpactCollection = $scope.DisabilityImpactCollectionString; 
 	  if($scope.DisabilityImpactCollection.length >0)
 	  $scope.DisabilityImpactCollectionLength = true;
@@ -375,12 +411,12 @@ $scope.impactedGroup = [];
 
   $scope.saveHtml = function() {	 
 	  setTimeout(function() {  		
-			alert("Printer-friendly HTML report has been saved to your Downloads folder (unless otherwise specified).");
-}, 3000);
+			alert("Please keep  both JSON & HTML files for future reference.Printer-friendly HTML report has been saved to your Downloads folder (unless otherwise specified).");
+}, 6000);
     $scope.saveHtmlIsClickedd = true;
 	
 	//This creates WCAG report
-	var html3 = "<table class=\"table2\" > <strong>WCAG  Report </strong>";
+	var html3 = "<table class=\"table2\" > <caption>WCAG Report </caption>";
 
     html3 += "<tr>";
     html3 += "<th scope=\"col\"  title=\"Criteria\"  width=\"98px\">" + "Criteria" + "</th>";
@@ -414,14 +450,15 @@ $scope.impactedGroup = [];
     html2 += "<th scope=\"col\" title=\"Tester's Comment\" width=\"140px\">" + "Tester Comments" + "</th>";
     html2 += "<th scope=\"col\"  title=\"Browser Type\" width=\"80px\">" + "Browser Type" + "</th>";
     html2 += "<th scope=\"col\"  title=\"Browser Versions\" width=\"80px\">" + "Browser Ver." + "</th>";
-    html2 += "<th scope=\"col\" title=\"Screenshot\" >" + "ScreenShot" + "</th>";
+    html2 += "<th scope=\"col\" title=\"Screenshot\" >" + "Screenshot" + "</th>";
     html2 += "<th scope=\"col\"  title=\"Global Issue\" width=\"40px\">" + "Global Issue" + "</th>";
-    html2 += "<th scope=\"col\"  title=\"Date\" width=\"60px\">" + "Date" + "</th>";
+    html2 += "<th scope=\"col\"  title=\"Remediation Date\" width=\"60px\">" + "Remediation Date" + "</th>";
     html2 += "<th scope=\"col\" title=\"Remediation Details\" width=\"140px\">" + "Remediation Details" + "</th>";
     html2 += "</tr>";
+ 
 
-
-    for (let i = 0; i < $scope.jsonData[0].Criteria.length; i++) {		
+    for (let i = 0; i < $scope.jsonData[0].Criteria.length; i++) {	
+     if ($scope.jsonData[0].Criteria[i].TestResult == 'undefined') $scope.jsonData[0].Criteria[i].TestResult ='';	
 		let d=i+1;
       html2 += "<tr >";
 	  html2 += "<th scope=\"row\"  title=\"Test Name\">" + $scope.jsonData[0].Criteria[i].TestName; + "</th>";      
@@ -437,7 +474,7 @@ $scope.impactedGroup = [];
       html2 += "<td title=\"Browser's Version\">" + $scope.jsonData[0].Criteria[i].T_brwsrVrsn; + "</td>";
       html2 += "<td onclick=\"zoom("+$scope.jsonData[0].Criteria[i].Counter+")\"   title=\"ScreenShot Captured\">" + "<img id=\""+$scope.jsonData[0].Criteria[i].Counter+"\" width=\"350\"  alt=\"screenshot\" src= \"" + $scope.jsonData[0].Criteria[i].ImageSrc + '" '+"onerror=\"this.style.display='none'\"" + "\>" + "</td>";
       html2 += "<td title=\"Global Issue\">" + $scope.jsonData[0].Criteria[i].GlobalIssue; + "</td>";
-      html2 += "<td title=\"Date\">" + $scope.jsonData[0].Criteria[i].RemediationDate; + "</td>";
+      html2 += "<td title=\"Remediation Date\">" + $scope.jsonData[0].Criteria[i].RemediationDate; + "</td>";
       html2 += "<td title=\"Remediation Details\">" + $scope.jsonData[0].Criteria[i].RemediationDetails; + "</td>";
       html2 += "</tr>";
     }
@@ -447,19 +484,19 @@ $scope.impactedGroup = [];
     $scope.capturedFormData = "<!DOCTYPE html>" +
       "<html lang=\"en\">" +
       "<head>" +
-      "<title>ACRT Test Report </title>" +
+      "<title>Application Test Report Summary</title>" +
       "<style>  body{font-family: \"system-ui\",\"Segoe UI\",\"Ubuntu\",\"Helvetica Neue\",\"sans-serif\";} h1,h2{color: #F8F8FF; background-color: rgb(0, 51, 102);font-family: \"system-ui\",\"Segoe UI\",\"Ubuntu\",\"Helvetica Neue\",\"sans-serif\"; text-align: center;}  table { font-family: \"system-ui\",\"Segoe UI\",\"Ubuntu\",\"Helvetica Neue\",\"sans-serif\"; text-decoration:none; border-collapse: collapse; width: 100%; display:block; padding: 3px; } td, th { border: 1px solid #A9A9A9; text-align: left; padding: 3px;font-family: \"system-ui\",\"Segoe UI\",\"Ubuntu\",\"Helvetica Neue\",\"sans-serif\";} th{vertical-align: top;} tr:nth-child(even) { background-color: #F0FFFF; padding-top: 0px; padding-bottom: 0px;font-family: \"system-ui\",\"Segoe UI\",\"Ubuntu\",\"Helvetica Neue\",\"sans-serif\";} tr, th {vertical-align: top;}</style>" +
           
 	 "</head>" +
       "<button onclick=\"myPrint()\">Print this page</button> <br>" +	  
-      "<h1> Test Report </h1>" +	  
+      "<h1> Application Test Report Summary </h1>" +	  
       "  <h2 id=\"draftMsg\"  style=\"color: #FFFFFF; background-color: #be0004;\" hidden> This is a Draft Report, To view final Report please select all required test results  </h2> " +     
-	  " <p>This application was tested according to the Trusted Tester Section 508 Conformance Test method: " + $scope.evalMethod +"& Version :"+ $scope.evalMethodVrsn + ". The review may be a sampling of pages to confirm product compliance.  The responsibility for full and complete testing and compliance remains with the owner of the application or website.  </p>" +
-      " <br>*'Undefined' denotes fields where no selections have been made" +
-	  "<br><b>Date test was submitted:  &nbsp;  </b>" + $scope.dateSubmitted + "<br>" +
+	  " <p>This application was tested according to the Trusted Tester Section 508 Conformance Test method: " + $scope.evalMethod +" "+ $scope.evalMethodVrsn + ". The review may be a sampling of pages to confirm product compliance. The responsibility for full and complete testing and compliance remains with the owner of the application or website.</p>" +
+      
+	  "<br><b>Review Date:  &nbsp;  </b>" + $scope.dateSubmitted + "<br>" +
       "<h2> Product Information </h2>" +
 	  "<input type=\"text\" hidden id=\"isDraftValue\" value=" +  $scope.isDraft+ "> "   + 
-      "<b> Name of Product:  &nbsp;  </b>" + $scope.productID + "<br>" +
+      "<b> Product Name:  &nbsp;  </b>" + $scope.productID + "<br>" +
       "<b>Product Version:  &nbsp;  </b>" + $scope.ownerID + "<br>" +
       "<b>Product Owner/Vendor:  &nbsp;  </b>" + $scope.versionID + "<br>" +
       "<b>Product Type:  &nbsp;  </b>" + $scope.productType + "<br>" +
@@ -481,8 +518,8 @@ $scope.impactedGroup = [];
       "<b>Tester's Email:  &nbsp;  </b>" + $scope.testerContact + "<br>" +
       "<b>Notes:  &nbsp;  </b>" + $scope.testScope + "<br>" +
       "<b>Testing Method:  &nbsp;  </b>" + $scope.evalMethod + "<br>" +
-      "<b>Testing Method Version:  &nbsp;  </b>" + $scope.evalMethodVrsn + "<br>" +  "<h2> Please check below for WCAG  Report </h2>" + html3 + "<br>" + "<h2> Test Results </h2>" + html2 + "<br>" +
-      "<h2> Disability Impact Summary </h2>" + "<h3> Different impacted groups are saperated by comma, check below </h3>" + $scope.DisabilityImpactCollection + "<br><br>" +       
+      "<b>Testing Method Version:  &nbsp;  </b>" + $scope.evalMethodVrsn + "<br>" +  "<h2> Web Content Accessibility Guidelines (WCAG) Report </h2>" + html3 + "<br>" + "<h2> Test Results </h2>" + html2 + "<br>" +
+      "<h2> Disability Impact Summary </h2>" + $scope.DisabilityImpactCollection + "<br><br>" +       
       "<h2> End of Report </h2>" +
       "<script>function myPrint(){window.print(); }; if(document.getElementById('isDraftValue').value==\"true\")document.getElementById('draftMsg').style.display = \"block\";  </script>" +
       "<script> function zoom("+0+") { var modal = document.getElementById("+0+"); var img = document.getElementById(\"image\" + "+0+"); var modalImg = document.getElementById(\"img\" + "+0+"); var captionText = document.getElementById(\"caption\" + "+0+"); var span = document.getElementsByClassName(\"close\")["+0+"]; img.onclick = function() { modal.style.display = \"block\"; modalImg.src = this.src; captionText.innerHTML = this.alt; }span.onclick = function() { modal.style.display = \"none\"; } } </script>"+     
@@ -495,7 +532,8 @@ $scope.impactedGroup = [];
     });
     var a = document.createElement("a");
     a.href = URL.createObjectURL(bl);
-    a.download = "ACRTHtmlResult.html";
+    //a.download = "ACRTHtmlResult.html";
+	a.download = $scope.productID+$scope.ownerID+'.html';
     a.hidden = true;
     document.body.appendChild(a);
     a.innerHTML = "This section will not be visible";
