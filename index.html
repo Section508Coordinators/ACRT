@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html lang="en"> 
+    
 <head>
 <title>ACRT Home page</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
@@ -11,69 +11,62 @@
 <body >
 <div class="topnav" id="myTopnav"> 
   <a title="Home" href="index.html" id="aboutID">Home </a>
-  <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
-  <a title="Create/Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create/Edit Report </a>   
+  <a title="Instructions" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">Instructions </a>
+  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a> 
   <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
   <a title="License License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
   
 </div>
 <article>
 <div id="myHme" align="center">
-  <h1 style="text-align:center"> Accessibility Conformance Reporting Tool (ACRT) </h1>
-   Version 1.1.2
-  <p > <font size="4">
-  an open source tool <br>
-  developed by the U.S. Department of Homeland Security<br>
-  to track testing results from the<br>
- <i style="border: none;"  >Section 508 Conformance Test process</i> </font> <br><br>
+  <h1 style="text-align:center"> Accessibility Conformance Reporting Tool (ACRT) - TEST </h1>
+   <strong>Version 1.2.0 </strong>
+  <br><br>
   
   <font size="2">Developed for use in Chrome, Edge and Firefox</font>
-  <br><br>For the latest version of the ACRT and support files, all users please visit <a title="ACRT GitHub Repository" href= "https://github.com/Section508Coordinators/ACRT " target="_blank"   id="githubSrc"> ACRT GitHub Repository </a> 
-  <br>DHS Employees can also visit <a title="ACRT Repository" href= "https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt" target="_blank"   id="bitbucketSrc"> ACRT BitBucket Repository </a> <br>
-  </p>
-</div>
-</article>
-
-
-
-<p>
+  <br><br>  
+  </div>
+  <p>
 
 <h2 style="text-align:center">About ACRT</h2>
 </div>
 <div style="padding-left:100px;padding-right:100px" align="left"> 
 
 <p>
-ACRT was developed to record testing results from  Testers. ACRT and all data input are stored on the user's local machine. Data are stored as JSON files, which can be further edited for analytics and reporting purposes. Final test results can also be saved as static html files.
-ACRT is open source - free to use and modify (see the license information for full details). We encourage and welcome feedback and suggestions from the testing community! 
-<br>
-You can email us at the <a href="mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback">DHS Accessibility Help Desk.</a>
+ACRT is an open source tool developed by the U.S. Department of Homeland Security to track testing results from the Section 508 Conformance Test process.  
+We encourage and welcome feedback and suggestions from the testing community! For user support, email at <a href="mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback">DHS Accessibility Help Desk.</a>
 </p>
 
 </div>
-<br><br><br>
+
+  <div id='repInfo' align="center">
+  <h2 style="text-align:center">ACRT Updates</h2>
+  To get latest version of the ACRT:  <br> <br>
+  visit <a title="ACRT Bitbucket Repository" href= "https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt" target="_blank"   id="bitbucketSrc"> ACRT BitBucket Repository </a> 
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  visit <a title="ACRT GitHub Repository" href= "https://github.com/Section508Coordinators/ACRT " target="_blank"   id="githubSrc"> ACRT GitHub Repository </a>  <br>
+  </div>
+  <span>
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;
+  (DHS Employees Only)
+  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;  &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  (All Users)
+  </span>
+  
+  
+
+</article>
+<br><br><br><br><br><br>
+
+
+
  <div class="footer">
   <p>Accessibility Conformance Reporting Tool (ACRT)</p>
 </div>
 </div>
-<script>
-function myHome() {
-  var x = document.getElementById("myHme");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  } 
-}
-
-function myContact() {
-  var x = document.getElementById("myCntct");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  } 
-}
-</script>
+ <script src="./JS/common.js"></script>
 
 
 </body>
