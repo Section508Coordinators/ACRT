@@ -2,7 +2,7 @@
 <html lang="en">
 <script src="./JS/AngularJS1.6.9/angular.min.js"></script>
 <script src="./JS/angular-sanitize.js"></script>
- 
+    
 <head>
   <title>View Report</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1, user-scalable=no" />
@@ -13,8 +13,8 @@
 <body ng-app="acrt" ng-controller="acrtFormCtrl">
   <div class="topnav" id="myTopnav"> 
   <a title="Home" href="index.html" id="aboutID">Home </a>
-  <a title="Instructions" href="./Help.html" target="_blank"  id="helpID">Instructions </a>
-  <a title="Create/Edit Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create/Edit Report </a>    
+  <a title="Instructions" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">Instructions </a>
+  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a>  
   <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
   <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
   
@@ -24,15 +24,16 @@
   <main>
     <form id="webTestResult">
       <h1> View Test Report </h1>
-        View test report. <a title="View Report instructions" href="./Help_Report.html" target="_blank" id="tstinstrID"> "View Report" instructions </a> 
-        <p><strong ng-if="isDraft" class="hdnMsg"> This is a Draft report. To view final report please input all required test results. </strong><p>
-        <label for="fileinput"> Select test results file.
+        <!-- View test report. <a title="View Report instructions" href="./Help_Report.html" target="_blank" id="tstinstrID"> "View Report" instructions </a> -->
+        <p><strong ng-if="isDraft" class="hdnMsg"> This is a Draft report. For final report, please input results for all tests.</strong><p>
+        <label for="fileinput"> <strong> Select test results file </strong>
         </label><br>	
 		<input type='file' class="button" id='fileinput' name='Browse to file'>
-        <br><br><label for="loadFile"> Select <strong> Load File </strong> button to load test results.
+        <br><br><label for="loadFile"> <strong> Load selected file</strong>
         </label><br> <button id='buttonLoad' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form"  ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}" >Load Results</button>
-		<br>You have selected <strong>{{evalMethod}} </strong> Version <strong class="hdnMsg">{{evalMethodVrsn}}</strong> 	    
-		<p id="msg1"></p> 
+		<!-- <br>You have selected <strong>{{evalMethod}} </strong> Version <strong class="hdnMsg">{{evalMethodVrsn}}</strong> -->	    
+		<p id='afterDwnloded'><img   id="dwnldConfm"  ng-src ="./Resources/chkMrk.jpg"  ng-if="dataLoaded" width="20" height="20"  alt="right sign" onerror="this.style.display='none';"> 
+		<span id="msg1"></span> </P>
 	  </ul> <br>
 	  
 		 
@@ -43,7 +44,7 @@
           <legend>
             <h2> Product </h2>
           </legend>
-		  <button class="collapsible" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Select to show Product section</div> </button> 
+		  <button class="collapsible" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Show Product section</div> </button> 
 		  <div class="content">
     <div class="divSpace" id="productInfo" >           
               <label for="productID"> Product Name: </label> <input type="string" ng-model="productID" class="betnTags" id="productID" name="Entered Name Of Product" ng-readonly="true" size="100"> &nbsp;
@@ -62,7 +63,7 @@
             <h2> Test Environment </h2>
           </legend>
           <button class="collapsible" onclick="expandCollapse2()">
-            <div id="expandCollapse2"> <i class="up"></i> Select to show Test Environment section</div>
+            <div id="expandCollapse2"> <i class="up"></i> Show Test Environment section</div>
           </button>
           <div class="content">
             <div class="divSpace" id="sysInfo">
@@ -80,7 +81,7 @@
             <h2> Testing Information </h2>
           </legend>
           <button class="collapsible" onclick="expandCollapse3()">
-            <div id="expandCollapse3"> <i class="up"></i> Select to show Testing Information section</div>
+            <div id="expandCollapse3"> <i class="up"></i> Show Testing Information section</div>
           </button>
           <div class="content">
 
@@ -101,11 +102,11 @@
 
         <label for="evalMethod"> Testing Method:</label> <input type="string" ng-model="evalMethod" class="betnTags" id="evalMethod" name="Selected Evaluation Method Used" ng-readonly="true"> &nbsp;
         <label for="evalMethodVrsn">Testing Method Version: </label> <input type="string" ng-model="evalMethodVrsn" class="betnTags" id="evalMethodVrsn" name="Entered Evaluation Version" ng-readonly="true"> &nbsp; <br>
-        <label for="dateSubmitted"> Test Completion Date:</label> <input type="string" ng-model="dateSubmitted" class="dateField" id="dateSubmitted" name="Test submitted date" ng-readonly="true"> <br> <br>
+        <label for="dateSubmitted"> Review Date:</label> <input type="string" ng-model="dateSubmitted" class="dateField" id="dateSubmitted" name="Review Date" ng-readonly="true"> <br> <br>
 
         
 
-        <table   id="sc1">
+        <table   id="sc1" ng-if="wcagRprt" >
 
           <caption> <strong>WCAG  Report </strong></caption> 
 
@@ -134,15 +135,15 @@
         </tbody>
         </table>
 		
- 		  <input id="selector111" name="Checkbox to view test results" title="Checkbox to view test results" type="checkbox" ng-model="checked1"  onclick="chkBxMsg('selector111', 'chkUnchk');"> 
-		  <label for="smoking" name="chkUnchk" id="chkUnchk">Select Checkbox to view all test results</label>
+ 		  <input id="selector111" name="Checkbox to view test results" title="View all test results" type="checkbox" ng-model="checked1" > <!-- onclick="chkBxMsg('selector111', 'chkUnchk');" -->
+		  <label for="smoking" name="chkUnchk" id="chkUnchk"><strong> View all test results </strong></label>
 
 		  <br />
                
                
                  <div ng-show="checked1">
  
-				<div>
+				<div ng-if="wcagRprt">
                   
 
 
@@ -181,7 +182,7 @@
                           <div style="width: 198px"> Remediation Details </div>
                         </th>
                         <th scope="col" title="Date" id="rmdt[$index]">
-                          <div style="width: 102px"> Date </div>
+                          <div style="width: 102px"> Remediation Date </div>
                         </th>
                         
                       </tr>
@@ -220,7 +221,7 @@
               
              <div id="{{test.Counter}}" class="modal">
              <span class="close">&times;</span>
-            <img class="modal-content" id="img{{test.Counter}}">
+            <img alt="Selected screenshot" class="modal-content" id="img{{test.Counter}}">
              <div class="caption" id="caption{{test.Counter}}" ></div>
              </div>
 			  </td>
@@ -253,7 +254,7 @@
           
           <button class="collapsible"  id="dsblGrpBtn">Impact Summary </button>
           <div class="content">
-		   <label for="dsblImpctRslt"> <h4>Different impacted groups are saperated by comma, check below</h4> </label> 
+		   <label for="dsblImpctRslt"> </label>  <!-- <h4>Different impacted groups are separated by comma, check below</h4> -->
 		  <span id="dsblImpctRslt" >{{DisabilityImpactCollection}}</span>
 		  <!-- commented out because we dont want to display duplicate groups based on failed test conditions
             <div id="myImpact" ng-repeat="record in jsonData">
@@ -273,9 +274,9 @@
           </div>
         </fieldset>
 
-        <fieldset>
+        <fieldset >
           <legend>
-            <h3> Other Test Results </h3>
+            <h3 > Other Test Results </h3>
           </legend>
           <button class="collapsible">Other Results </button>
           <div class="content">
@@ -289,7 +290,7 @@
     </form>
   </main>
   <br/><br/><br/><br/> 
-  <div id="htmlReportDiv" class="footerbutton" hidden >
+  <div id="htmlReportDiv" class="footerbutton"  hidden >
 	Select <strong>Save as HTML</strong> to generate a printer-friendly HTML version of the report (saved in the system's Downloads folder by default). <br/>
 	<input type="button" id="sbtBtn" class="button" value="Save as HTML" ng-click="saveHtml()">
 	</div>	
