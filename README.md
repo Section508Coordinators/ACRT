@@ -11,11 +11,11 @@ Refer to 'ACRTTrainingManual' inside 'Resources' folder for detail instruction.
 
 
 ## Instruction to use application
-After all files are unzipped/extracted open index.html file, preferred browsers are Microsoft Edge, Firefox or Google Chrome.
-Select 'Instructions' to view instruction manual in accessible pdf file.
-Select 'Create Report' to create or modify test result. Make sure to select and load either standard template file (TT4 or TT5 JSON file from 'Resources' folder) or valid custom file (one you created).
-Once filled/edited all required fields, you will see option to save test result and file will be saved in your local machine. 
-Select 'View Report' to view test result you saved. This is read only page, to edit use 'Create Report' page. In this page, you have option to save your test result as HTML file.
+####After all files are unzipped/extracted open index.html file, preferred browsers are Microsoft Edge, Firefox or Google Chrome.
+####Select 'Instructions' to view instruction manual in accessible pdf file.
+####Select 'Create Report' to create or modify test result. Make sure to select and load either standard template file (TT4 or TT5 JSON file from 'Resources' folder) or valid custom file (one you created).
+####Once filled/edited all required fields, you will see option to save test result and file will be saved in your local machine. 
+####Select 'View Report' to view test result you saved. This is read only page, to edit use 'Create Report' page. In this page, you have option to save your test result as HTML file.
 
 
 ## Versioning
