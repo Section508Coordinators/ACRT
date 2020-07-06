@@ -2222,6 +2222,8 @@ $scope.submit = function() {
 		$scope.rmdatnDatelIDCollection1[k] = '';
 	if($scope.rmdatnDatelIDCollection1[k] == 'Invalid Date') 
 		$scope.rmdatnDatelIDCollection1[k] = '';
+	  if($scope.rmdatnDtlID1[k] == undefined) $scope.rmdatnDtlID1[k] ="";
+	if($scope.rmdatnDtlID1[k] == "undefined") $scope.rmdatnDtlID1[k] ="";
 	$scope.rmdatnDtlID1[k] = $scope.rmdatnDtlID1[k].toString().replace(/"/g, "'").trim();
     $scope.rmdatnDtlID1[k] = $scope.rmdatnDtlID1[k].toString().replace(/\n/g, " ");
 	
