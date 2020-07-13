@@ -152,7 +152,7 @@
 			"CrtIDGrp": "Same",
 			"Test": "2 Autoplay/update",
 			"TestName": "4.1.2-change-notify-auto",
-			"TestID": "2.E",
+			"TestID": "2.D",
 			"TestCondition": "The page provides notification of each automatic update/change in content.",
 			"GrpID": "Does Not Apply",
 			"OptMenu1": "menu2",
