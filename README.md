@@ -5,17 +5,17 @@
 This is browser based standalone application which records accessibility test results from testers.All input data will be stored as JSON &/or html file in local machine which can be shared with others as needed. Information on JSON file can be further manipulated for analytics and reporting purposes as your need. 
 
 ## Getting Started
-Download/Copy files to your local machine. For instruction how to download from GitHub visit [Download](https://www.wikihow.com/Download-a-GitHub-Folder ).  
+1) Download/Copy files to your local machine. For instruction how to download from GitHub visit [Download](https://www.wikihow.com/Download-a-GitHub-Folder ).  
 Once downloaded, unzip/extract files. 
-Refer to 'ACRTTrainingManual' inside 'Resources' folder for detail instruction. 
+2) Refer to 'ACRTTrainingManual' inside 'Resources' folder for detail instruction. 
 
 
 ## Instruction to use application
-After all files are unzipped/extracted open index.html file, preferred browsers are Microsoft Edge, Firefox or Google Chrome. <br />
-Select 'Instructions' to view instruction manual in accessible pdf file. <br />
-Select 'Create Report' to create or modify test result. Make sure to select and load either standard template file (TT4 or TT5 JSON file from 'Resources' folder) or valid custom file (one you created). <br />
-Once filled/edited all required fields, you will see option to save test result and file will be saved in your local machine. <br />
-Select 'View Report' to view test result you saved. This is read only page, to edit use 'Create Report' page. In this page, you have option to save your test result as HTML file. <br />
+1) After ACRT is downloaded, unzipped/extracted open index.html file (preferred browsers are Microsoft Edge, Firefox or Google Chrome). <br />
+2) Select 'Instructions' to view instruction manual in accessible pdf file. <br />
+3) Select 'Create Report' to create or modify test result. Make sure to select and load either standard template file (TT4 or TT5 JSON file from 'Resources' folder) or valid custom file (one you created). <br />
+4) Once filled/edited all required fields, you will see option to save test result and file will be saved in your local machine as JSON file. <br />
+5) Select 'View Report' to view test result you saved(with at least one test result). This is read only page, no edit allowded. In this page, you have option to save your test result as HTML file. <br />
 
 
 ## Versioning
