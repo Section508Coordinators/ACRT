@@ -20,7 +20,7 @@ Once downloaded, unzip/extract files.
 
 
 ## Versioning
-For all users we are using [ACRTGitHubRepository](https://github.com/Section508Coordinators/ACRT ) and for Department Of Homeland Security employees who don't have access to GitHub can go to [ACRTBitbucketRepository](https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt).Let's work together to make this tool great for all, Feel free to contribute. 
+For all users we are using [ACRTGitHubRepository](https://github.com/Section508Coordinators/ACRT ) and for Department Of Homeland Security employees who don't have access to GitHub can go to [ACRTBitbucketRepository](https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt). Bitbucket requires DHS Network and user authentication. <br />Let's work together to make this tool great for all, Feel free to contribute. 
 
 ## Authors
 
