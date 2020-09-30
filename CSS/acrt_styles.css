@@ -87,34 +87,92 @@ background-color: #FFFF00;}
   transition: 0.3s;
 }
 
-.close:hover,.close:focus {
+.close:hover {
   color: #bbb;
   text-decoration: none;
   cursor: pointer;
 }
 
-#fileinput:focus, #fileinput:hover, #fileinput:active, #fileinput:visited {
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#fileinput:hover {
+ background-color:rgb(2, 2, 51);
+  color: #ffffff;
+}
+
+#fileinput:focus {
+ background-color:rgb(9, 9, 66);
+  color: #ffffff;
+}
+
+ #fileinput:active {
+ background-color:rgb(5, 41, 59);
+  color: #ffffff;
+}
+
+#fileinput:visited {
  background-color:rgb(0, 102, 153);
   color: #ffffff;
 }
 
-
-
-a:focus,a:hover, a:active, a:visited  {
+a:focus {
+   color: rgb(9, 9, 66);
+font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+a:hover  {
+   color: rgb(2, 2, 51);
+font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+a:active {
+   color: rgb(5, 41, 59);
+font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+a:visited  {
    color: rgb(0, 102, 153);
 font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
-
  
-.collapsible:active,.collapsible:hover, .collapsible:focus, .collapsible:visited {
+.collapsible:active {
+ background-color: rgb(5, 41, 59);
+ color: #ffffff;
+}
+.collapsible:hover{
+ background-color: rgb(2, 2, 51);
+ color: #ffffff;
+}
+.collapsible:focus {
+ background-color:rgb(9, 9, 66);
+ color: #ffffff;
+}
+.collapsible:visited {
  background-color:rgb(0, 102, 153);
  color: #ffffff;
 }
 
-button:focus,button:hover, button:active, button:visited  {
+button:focus  {
+ background-color:rgb(9, 9, 66);
+ color: #ffffff;
+}
+
+button:hover  {
+ background-color:rgb(2, 2, 51);
+ color: #ffffff;
+}
+
+
+button:active   {
+ background-color:rgb(5, 41, 59);
+ color: #ffffff;
+}
+ button:visited  {
  background-color:rgb(0, 102, 153);
  color: #ffffff;
 }
+
 
  
 
@@ -126,10 +184,12 @@ button:focus,button:hover, button:active, button:visited  {
 }
 
 input {
+	 white-space: normal;
 	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 
 }
 textarea {
+	 white-space: normal;
 	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 
 }
@@ -235,32 +295,34 @@ fieldset
 	/*letter-spacing: 2px;
 	 line-height: 1.8; */
 	/* word-spacing: 10px;*/
-	 font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
-	
-	
+	 font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";	
 }
 
 
-.footer {
+.footer {	
    position: fixed;
-   left: 0;
+   left: 10;
    bottom: 0;
-   width: 100%;
-   background-color:rgb(0, 51, 102);
    color: white;
-   text-align: center;
-   font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+   width: 100%;
+   overflow: hidden;
+   background-color:rgb(0, 51, 102);  
+   font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";   
+   text-align: center;   
 }
 
-.footerbutton {
-   position: fixed;
+.footerbutton {    
+   /*position: fixed; */
+   position: relative;
    left: 0;
-   bottom: 0;
-   width: 100%;
-   background-color:rgb(190, 190, 220);
+   bottom: 0;   
+   width: 50%;
+   background-color: white;
    color: black;
-   //text-align: center;
+   text-align: left;
    font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+   border-style: outset;
+   border-radius: 10px;   
 }
 
 .collapsible {
@@ -312,7 +374,7 @@ h2,h3,h4 {font-weight: bold;
   text-align: center;
   text-decoration: none;
   display: inline-block;
-  width: 250px;
+  width: 25%;
   font-size: 100%;
   margin: 4px 2px;
   cursor: pointer;
@@ -470,6 +532,12 @@ article {
 	vertical-align: top; */
 
 }
+
+.resultOptions:focus{
+ background-color: #f4f6f7;
+ color:  black;
+}
+
 .widetd1{    
     width: 85px;	
 	display: inline-block;
@@ -503,7 +571,7 @@ article {
 }
 
 .widetd7{    
-    width: 200px;	
+    width: 130px;	
 	display: inline-block;	
 }
 .widetd8{    
@@ -569,7 +637,7 @@ li a {
 
 /* Change the link color on hover */
 li a:hover {
-	background-color:rgb(0, 102, 153);
+	background-color:rgb(2, 2, 51);
     color: white;
 	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
@@ -587,7 +655,8 @@ body {
 
 .topnav {
   overflow: hidden;
-  background-color:rgb(0, 51, 102);
+  background-color:rgb(0, 51, 102); 
+  /* background-color: green;  test */
   font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
@@ -612,13 +681,13 @@ body {
 */
 
 .topnav a:hover {
- background-color:rgb(0, 102, 153);
+ background-color:rgb(2, 2, 51);
   color: white;
 }
 
 
 .topnav a:active {
-  background-color: rgb(0, 102, 153);
+  background-color: rgb(5, 41, 59);
   color: white;
 }
 
