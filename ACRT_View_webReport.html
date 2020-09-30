@@ -14,16 +14,18 @@
   <div class="topnav" id="myTopnav"> 
   <a title="Home" href="index.html" id="aboutID">Home </a>
   <a title="Instructions" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">Instructions </a>
-  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a>  
-  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>  
-  <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
+  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a> 
+  <a title="Accessibility Conformance Report" href="./ACRT_View_webReport.html"  id="vwRptId" >Accessibility Conformance Report</a>  
+  <a title="License License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
   
 </div>
 <br>
  	
   <main>
     <form id="webTestResult">
-      <h1> View Test Report </h1>
+	<h1> {{companyname}} &nbsp;Accessibility Conformance Report </h1> 
+	<!-- <span> Based on VPAT® Version 2.4 </span> -->
+      <!-- <h1> View Test Report </h1> -->
         <!-- View test report. <a title="View Report instructions" href="./Help_Report.html" target="_blank" id="tstinstrID"> "View Report" instructions </a> -->
         <p><strong ng-if="isDraft" class="hdnMsg"> This is a Draft report. For final report, please input results for all tests.</strong><p>
         <label for="fileinput"> <strong> Select test results file </strong>
@@ -36,9 +38,6 @@
 		<span id="msg1"></span> </P>
 	  </ul> <br>
 	  
-		 
-		
-		
 		
         <fieldset>
           <legend>
@@ -89,10 +88,29 @@
               <label for="firstname"> Tester's First Name: </label> <input type="string" ng-model="firstname" class="betnTags" id="firstname" name="Entered Tester's First Name" ng-readonly="true"> &nbsp;
               <br><label for="lastname"> Tester's Last Name: </label> <input type="string" ng-model="lastname" class="betnTags" id="lastname" name="Entered Tester's Last Name" ng-readonly="true"> &nbsp;
               <br><label for="testerID"> Trusted Tester ID: </label> <input type="string" ng-model="testerID" class="betnTags" id="testerID" name="Entered Tester's ID" ng-readonly="true"> &nbsp;<br>
-              
+              <br><label for="companyname"> Company Name: </label> <input type="string" ng-model="companyname" class="betnTags" id="companyname" name="Entered Tester's Company Name" ng-readonly="true"> &nbsp;
               <br><label for="testerContact"> Tester's Email: </label> <input type="string" ng-model="testerContact" class="betnTags" id="testerContact" name="Entered Tester's Contact" ng-readonly="true">
               <br><label for="testScope">Testing Scope: </label> <textarea rows="4"cols="90" type="text" ng-model="testScope" class="txtarea" id="testScope" name="Entered Test Scope" ng-readonly="true"></textarea> <br>
             </div>
+          </div>
+        </fieldset> <br>
+		
+		<fieldset>
+          <legend>
+            <h2> Terms </h2>
+          </legend>
+          <button class="collapsible" onclick="expandCollapse4()">
+            <div id="expandCollapse4"> <i class="up"></i> Show terms used in the Conformance Level </div>
+          </button>
+          <div class="content">
+		  <ul>
+          <li> <strong>Supports:</strong> The functionality of the product has at least one method that meets the criterion without known defects or meets with equivalent facilitation. </li>          
+		  <li> <strong>Does Not Support:</strong> The majority of product functionality does not meet the criterion.</li>
+		  <li> <strong>Not Applicable:</strong> The criterion is not relevant to the product. </li>
+		   <li> <strong>Not Evaluated:</strong> The product has not been evaluated against the criterion.  This can only be used in WCAG 2.x Level AAA.</li>
+		 </ul>
+            <div class="divSpace" id="termsInfo">
+               </div>
           </div>
         </fieldset> <br>
         &nbsp;
@@ -112,18 +130,20 @@
 
           <thead>
             <tr>
-              <th style="width: 98px" scope="col">Criteria</th>
+              <th style="width: 102px" scope="col">Criteria</th>
               <th style="width: 218px" scope="col">Conformance Level</th>
-              <th style="width: 350px" scope="col">Remarks and Explanations </th>
+			   <th style="width: 216px" scope="col">Standard/Guideline</th> 
+              <th style="width: 398px" scope="col">Remarks and Explanations </th>
+			 <!-- <th style="width: 450px" scope="col">Impacted Group </th> -->
             </tr>
           </thead>
           <tbody ng-repeat="record1 in jsonData">
             <tr ng-repeat="test1 in record1.SuccessCriteria">
-              <th scope="row" title="Success Criteria" style="width: 100px">{{test1.CrtID}}</th>
-
+              <th scope="row" title="Success Criteria" style="width: 102px">{{test1.CrtID}}</th>
               <td style="width: 220px" title="Conformance Level" >{{test1.ConformanceLvl}}</td>
-
-              <td style="width: 350px" title="Remarks & Explanations" > {{test1.RemarkExplntn}} <br> </td>
+			  <td style="width: 220px" title="Guideline" > {{test1.Guideline}}  </td> 
+              <td style="width: 400px" title="Remarks & Explanations" > {{test1.RemarkExplntn}}  </td>			  
+			 <!-- <td style="width: 450px" title="Remarks & Explanations" > {{test1.DisabilityImpact}}  </td> -->
         </tr>
 
         </div>
@@ -144,16 +164,16 @@
                  <div ng-show="checked1">
  
 				<div ng-if="wcagRprt">
-                  
+				 
 
 
                   <table class="table" id="th1" style="font-size: 93%"  >
                 
                     <thead>
-                      <tr>
+                      
                       <tr>
                         <th scope="col" title="Test Name" id="testname[$index]">
-                          <div style="width: 83px">Test Name</div>
+                          <div style="width: 85px">Test Name</div>
                         </th>
                         <th scope="col" title="Test ID" id="testid[$index]">
                           <div style="width: 30px">Test ID</div>
@@ -187,11 +207,11 @@
                         
                       </tr>
 
-            </tr>
+            
             </thead>
 
-          <tbody ng-repeat="record in jsonData ">
-            <tr ng-repeat="test in record.Criteria ">
+          <tbody ng-repeat="record in jsonData">
+            <tr ng-repeat="test in record.Criteria " ng-if="noResult[$index]">
              
               <th scope="row" title="Test Name" id="tnm1[$index]">
                 <div class="widetd1"> {{TestName[$index]}} </div>
@@ -203,7 +223,7 @@
                 <div class="widetd3"> {{TestCondition[$index]}}</div>
               </td>
 							 <td title="Issue Number">
-                <div style="width: 80px"> {{$index+1}} </div>
+                <div style="width: 80px"> Issue {{counterCollection[$index]}} </div>
               </td> 
               <td title="Selected Test Result" id="tstrslt1[$index]">
                 <div style="width: 69px"> {{TestResult[$index]}} </div>
@@ -212,17 +232,17 @@
                 <div style="width: 129px"> {{T_brwsrType[$index]}} </br> {{T_brwsrVrsn[$index]}}</div>
               </td>
 			  <td title="Entered location/screen" id="lcn1[$index]">
-                <div class="widetd7"> {{location[$index]}}</div>
+                <div class="widetd3"> {{location[$index]}}</div>
               </td>
               <td title="Entered Tester's Comment" id="tstcmt1[$index]">
-                <div class="widetd7"> {{TesterComment[$index]}}</div>
+                <div class="widetd3"> {{TesterComment[$index]}}</div>
               </td>
-              <td width="151">  <img width="100" id="image{{test.Counter}}" id="img1[$index]" ng-src={{ImageSrc[$index]}}  ng-click="zoom(test.Counter)" class="large-image" title="Selected screenshot" alt="Selected screenshot" onerror="this.style.display='none';" >
+              <td width="151">  <img width="100" id="image{{$index}}"  ng-src={{ImageSrc[$index]}}  ng-click="zoom($index)" class="large-image" title="Selected screenshot" alt="Selected screenshot" onerror="this.style.display='none';" >
               
-             <div id="{{test.Counter}}" class="modal">
-             <span class="close">&times;</span>
-            <img alt="Selected screenshot" class="modal-content" id="img{{test.Counter}}">
-             <div class="caption" id="caption{{test.Counter}}" ></div>
+             <div id="{{$index}}" class="modal">
+             <span class="close" id="cls{{$index}}" >&times;</span>
+            <img alt="Selected screenshot" class="modal-content" id="img{{$index}}">
+             <div class="caption" id="caption{{$index}}" ></div>
              </div>
 			  </td>
             
@@ -291,8 +311,8 @@
   </main>
   <br/><br/><br/><br/> 
   <div id="htmlReportDiv" class="footerbutton"  hidden >
-	Select <strong>Save as HTML</strong> to generate a printer-friendly HTML version of the report (saved in the system's Downloads folder by default). <br/>
-	<input type="button" id="sbtBtn" class="button" value="Save as HTML" ng-click="saveHtml()">
+	Select <strong>Save as HTML</strong> to generate  HTML version of the printable report (saved in Downloads folder by default). <br/>
+	<input type="button" id="sbtBtn" class="button" value="Save as HTML (ctrl+z)" ng-click="saveHtml()">
 	</div>	
   <script src="./JS/acrt_Web_Report.js"> </script>
 

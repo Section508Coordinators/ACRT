@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">  
+<html lang="en">   
    
 <head>
   <meta charset="UTF-8">
@@ -11,16 +11,14 @@
     <script src = "./JS/FileSaver.min.js"> </script> 
 
 </head>
-<body ng-app="acrtWebIntake">
-
-
+<body ng-app="acrtWebIntake" id="acrtBody">
   <div ng-controller="acrtWebIntakeCtrl"> 
  <div class="topnav" id="myTopnav"> 
-  <a title="Home" href="index.html" id="aboutID">Home </a>  
+  <a title="Home" href="index.html" id="aboutID">Home </a>
   <a title="Instructions" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">Instructions </a>
-  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a>   
-  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" >View Report</a>   
-  <a title="View License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
+  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a> 
+  <a title="Accessibility Conformance Report" href="./ACRT_View_webReport.html"  id="vwRptId" >Accessibility Conformance Report</a>  
+  <a title="License License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>  
 </div>      
 <br> 	
   
@@ -282,10 +280,10 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 <div class="content">
 
  <div class="divSpace" id="testersInfo" >
-  <label for="firstname" class="required"> Tester's First Name (Required, 50 chars max): </label> <input type="string" ng-model="firstname" placeholder ="First Name" class= "betnTags" id="firstname" name="Tester's First Name" maxlength="50" required size="50"> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   
+ <label for="CompanyName" class="required"> Company Name (Required, 100 chars max): </label> <input type="string" ng-model="companyname"  tabindex="0" placeholder ="Company Name" class= "betnTags" id="companyname" name="Company Name" maxlength="100"  required size="100"> 
+  <br><label for="firstname" class="required"> Tester's First Name (Required, 50 chars max): </label> <input type="string" ng-model="firstname" placeholder ="First Name" class= "betnTags" id="firstname" name="Tester's First Name" maxlength="50" required size="50"> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   
    <br><label for="lastname" class="required"> Tester's Last Name (Required, 50 chars max): </label> <input type="string" ng-model="lastname" placeholder ="Last Name" class= "betnTags" id="lastname" name="Tester's Last Name" maxlength="50" required size="50"> 
-  <br><label for="testerID"> Trusted Tester ID (50 chars max): </label> <input type="string" ng-model="testerID" class= "betnTags" placeholder ="ID" id="testerID" name="Trusted Tester's Id" maxlength="50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   
+  <br><label for="testerID"> Trusted Tester ID (50 chars max): </label> <input type="string" ng-model="testerID" class= "betnTags" placeholder ="ID" id="testerID" name="Trusted Tester's Id" maxlength="50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
   <br> <label for="testerContact" class="required"> Tester's Email (Required, 50 chars max): </label> <input type="string" ng-model="testerContact" placeholder ="Contact" class= "betnTags" id="testerContact" name="Tester's Contact" maxlength="50" required size="50">
    <br><label for="testScope"  > Testing Scope (1000 chars max):</label><br> <textarea rows="4"cols="90"type="text"ng-model="testScope"class="txtarea"id="testScope"name="Test Scope"></textarea>   
     <br><br> <label for="evalMthd"> Testing Method: </label> 	
@@ -330,7 +328,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
  </br> 
  
  
-	  
+<div id="rmdTbleDiv">	  
  
 <table style="height: 1000px;" id="rmdTble" >
 <caption id="tableCaption"> Report will be marked as Draft until results are entered for each test 
@@ -342,14 +340,18 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
     <th scope="col" title="Test ID" > <div class="widetd2" >Test ID </div> </th>    	
 	<th scope="col" title="Test Condition"><div style="width: 198px"> Test Condition </div></th>
     <th scope="col" title="Issue Number"><div style="width: 98px"> Issue Number </div> </th> 	
-	<th scope="col" title="Test Result" > <div style="width: 115px"> Test Result </div></th> 
+	<th scope="col" title="Test Result" > <div style="width: 118px"> Test Result </div></th> 
 	<th scope="col" title="Browser" > <div style="width: 234px">  Browser </div> </th> 
 	<th scope="col" title="Tester's Comment" > <div style="width: 198px"> Location/Screen </div> </th> 	
 	<th scope="col" title="Tester's Comment" > <div style="width: 198px"> Tester Comments </div> </th> 
 	<th scope="col" > <div style="width: 248px">Screenshot </div> </th>	
 	<th style="width: 50px" scope="col" title="Global Issue" >Global Issue? </th>  
     <th  scope="col" title="Remediation Details" ><div style="width: 198px"> Remediation Details </div></th>  	
-	<th  scope="col" title="Remediation Date" ><div style="width: 148px"> Remediation Date </div></th>  	
+	<th  scope="col" title="Remediation Date" ><div style="width: 148px"> Remediation Date </div></th> 
+	<th  scope="col" title="Remediation Date" ><div style="width: 135px"> Go to Parent/Add Child Issue </div></th> 
+	
+	
+     	
 	<!-- <th ><div style="width: 10px"> </div></th> -->
   </tr>  
   </thead>
@@ -358,17 +360,19 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 <tr ng-repeat="test in record.Criteria" >  
 
 
-<th scope="row" title="Test Name" ><div class="widetd1">{{test.TestName}}<div></th>
+<th scope="row" title="Test Name" ><div class="widetd1">{{test.TestName}}</div></th>
 <td ><div class="widetd2"  id="testID{{$index}}" title="Test ID"> {{test.TestID}} </div> </td>
 <td > <div class="widetd3" id="testConditionID{{$index}}" title="Test Condition" >{{test.TestCondition}}</div> </td>
-<td > <div style="width: 97px" id="issueID{{$index}}" title="Issue Number" > {{$index+1}} </div></br><button type="button" ng-click="addIssue($index)">Add Issue</button> </td>
+<td > <div ng-if='original' style="width: 97px"  title="Issue Number" > Issue {{$index+1}} </div>
+ <div ng-if='edit' style="width: 97px"  title="Issue Number" >Issue {{counterCollection[$index]}} </div> 
+</td>
 <td style="width: 50px" > 
  <span ng-if="menu1[$index] == 'menu1'" ng-keypress ="elemntClicked2([$index])">    
       <select  class="resultOptions"
       ng-model="selected_id_tstrslt$index"  
 	  ng-model="selected_name_tstgrp[$index]"  
       ng-options="o.id as o.name for o in optionsTstrslt1"  
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt1|filter:{id:selected_id_tstrslt$index})[0].name" id="testResult1{{$index}}" title="  Test Result" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt1|filter:{id:selected_id_tstrslt$index})[0].name" id="{{$index}}"  title="  Test Result" ng-click="elemntClicked2([$index])" >
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 <span ng-if="menu1[$index] == 'menu2' " ng-keypress ="elemntClicked2([$index])" >    
@@ -376,7 +380,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="testResult2{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="{{$index}}"  ng-click="elemntClicked2([$index])" >
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
@@ -385,12 +389,12 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt2" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt2|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="testResult3{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt2|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="{{$index}}"  ng-click="elemntClicked2([$index])" >
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
   <span ng-if="menu1[$index] == 'menu4' " ng-keypress ="elemntClicked2([$index])">    
-      <select class="resultOptions" title="  Test Result" ng-model="selected_name_tstgrp[$index]" id="testResult4{{$index}}" ng-click="rsltSlctionClicked([$index]);">
+      <select class="resultOptions" title="  Test Result" ng-model="selected_name_tstgrp[$index]" id="{{$index}}" ng-click="rsltSlctionClicked([$index]);">
 	  <option value="" > Does Not Apply </option>
 	  <option ng-repeat="result in optionsTstrslt4" value="{{result.name}}">{{result.name}}</option>
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select>       	  
@@ -401,7 +405,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt3" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt3|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="testResult5{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt3|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="{{$index}}" ng-click="elemntClicked2([$index])" >
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
@@ -410,7 +414,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt5" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt5|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="testResult6{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt5|filter:{id:selected_id_tstrslt$index})[0].name" title="  Test Result" id="{{$index}}" ng-click="elemntClicked2([$index])" >
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
    
@@ -528,8 +532,8 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 </div>
 </td>
  
-<td > <div class="widetd7"> <textarea  rows="4" cols="25" type="text" ng-model="location[$index]" class="txtarea" title="Location/Screen" maxlength="1000" > </textarea> </div> </td>
-<td > <div class="widetd7"> <textarea  rows="4" cols="25" type="text" ng-model="testerCommentID[$index]" class="txtarea" maxlength="1000" title="Tester's Comment" > </textarea> </div> </td>
+<td > <div class="widetd3"> <textarea  rows="4" cols="25" type="text" ng-model="location[$index]" class="txtarea" title="Location/Screen" maxlength="1000" > </textarea> </div> </td>
+<td > <div class="widetd3"> <textarea  rows="4" cols="25" type="text" ng-model="testerCommentID[$index]" class="txtarea" maxlength="1000" title="Tester's Comment" > </textarea> </div> </td>
 <td >  <div class="widetd8">
 
 <br> <input  ng-if="browseImageOption[$index]" type="file"  ng-model='imgCnvrsn[$index]' title="Browse Image"   onchange="angular.element(this).scope().uploadImage(this)" /> <br> 
@@ -566,24 +570,33 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
  <td title="Remediation Date"> <div style="width: 150px"> <input   type="date" title="Remediation Date" ng-model="rmdatnDatelID[$index]"  ng-click="dateTime([$index])" placeholder="mm/dd/yyyy" id="rmdatnDatelID{{$index}}" name="Remediation Date" /> 
  </div>
  </td> 
+ <td>
+ 
+</br> <div class="widetd7"  > <button  id="{{ 'PI'+indexCollection[$index] }}" type="button" ng-click="addIssue($index)">Add Child Issue</button> </div>
+</br></br></br> <div class="widetd7"  > <button   ng-if="addedRow[$index]" id="{{ 'o'+indexCollection[$index] }}" type="button" ng-click="goToChildIssue($index)"  >Go to Child Issues </button> </div>
+ 
+ </td>
 
 </tr>
  
  <tr ng-repeat="Issue in Mul_Issues track by $index">
-<td  title="Test Name" > <div class="widetd1"> {{Issue.InsrtTestName}} </div></td>
+<td  title="Test Name" > <div class="widetd1"  > {{Issue.InsrtTestName}} </div></td>
 <td  title="Test ID"><div class="widetd2"> {{Issue.InsrtTestID}} </div> </td>
 <td title="Test Condition"><div class="widetd3"> {{Issue.InsrtTestCondition}}</div> </td>
- <td  title="Issue Number"> <div style="width: 100px"> *Issue #{{indexCollection[$index]+1}}.{{$index+1}} </div> <br/>  <button id="{{ 'remove' + $index }}" type="button" ng-click="removeIssue($index)"  >Remove Issue </button>  </td> 
+ <!-- <td  title="Issue Number"> <div style="width: 100px"> *Issue #{{indexCollection[$index]+1}}.{{$index+1}} </div> <br/>  <button  id="{{ 'p'+indexCollection[$index] }}"type="button" ng-click="removeIssue($index)"  >Remove Issue </button> -->
+ <td  title="Issue Number"> <div style="width: 100px"> Issue {{newlyAddedIssuePosition[$index]}} </div> <br/>  <button   id="{{ 'a'+indexCollection[$index] }}" type="button" ng-click="removeIssue($index)"  >Remove Child Issue </button> 
+<br> 
+ </td> 
  
 <td style="width: 50px" title="Test Result"> 
-	  <span  ng-keypress ="elemntClicked4([$index])">   
+	  <span   ng-keypress ="elemntClicked4([$index])">   <!--ng-if="menu1[$index] == {{test.InsrtOptMenu1}}"-->
       <select  class="resultOptions"  
       ng-model="selected_id_tstrslt1[$index]"  
 	  ng-model="selected_name_tstgrp1[$index]"  
       ng-options="o.id as o.name for o in optionsTstrslt"  
-      ng-change="selected_name_tstgrp1[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt1[$index]})[0].name" title="Test Result"  id= "{{ 'testResultt1' + $index }}"  ng-click="elemntClicked4([$index])" >
+      ng-change="selected_name_tstgrp1[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt1[$index]})[0].name" title="Test Result"   id="{{ 'p'+indexCollection[$index] }}"  ng-click="elemntClicked4([$index])" >
 	 
-	   <option value="" selected disabled hidden > </option> </select>  
+	   <option value="" selected disabled hidden > </option> </select> <!-- {{Issue.InsrtTestResult}} -->
 </span> 
  </td>
 
@@ -660,8 +673,8 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 </div> 
 
 </td>
-<td > <div class="widetd7"> <textarea rows="4" cols="25" type="text" ng-model="location1[$index]" class="txtarea" title="Location/Screen" maxlength="1000" > </textarea> </div> </td>
-<td > <div class="widetd7"> <textarea rows="4" cols="25" type="text" ng-model="testerCommentID1[$index]" class="txtarea" title="Tester's Comment" maxlength="1000" > </textarea> </div> </td>
+<td > <div class="widetd3"> <textarea rows="4" cols="25" type="text" ng-model="location1[$index]"   class="txtarea" title="Location/Screen" maxlength="1000" > </textarea> </div> </td>
+<td > <div class="widetd3"> <textarea rows="4" cols="25" type="text" ng-model="testerCommentID1[$index]"  class="txtarea" title="Tester's Comment" maxlength="1000" > </textarea> </div> </td>
 
 <td > <br><div class="widetd8"> 
  <!-- <input  type="file"   ng-model='imgCnvrsn1[$index]' title="Browse Image"  onchange="angular.element(this).scope().uploadImage1(this)" /> -->
@@ -676,7 +689,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
              </div><br>	
      <!-- <div ng-if="imageCaptured[$index]"> <button  title='Remove Image' type="button" ng-click="removeImage1($index)">Remove Image</button>  -->
      <!-- <div ng-if="browseImageOption1[$index]">  <button  title='Remove Image' type="button" ng-click="removeImage1($index)">Remove Image</button>  -->
-	 <div ng-if="displayRemove1[$index]">  <button  title='Remove Image' type="button" ng-click="removeImage1($index)">Remove Image</button>
+	 <div ng-if="displayRemove1[$index]">  <button   title='Remove Image' type="button" ng-click="removeImage1($index)">Remove Image</button>
  </div>
  </td>   
 
@@ -687,6 +700,7 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 	  ng-model="selected_name_glbl1[$index]" 
       ng-options="o.id as o.name for o in optionsglbl" 
       ng-change="selected_name_glbl1[$index]=(optionsglbl|filter:{id:selected_id_glbl1[$index]})[0].name" id="globalResult[$index]" title="  Global Issue Type">
+	  <option value="" selected disabled hidden>{{test.InsrtGlobalIssue}}</option>
 	  </select>
  </div> 
 </td> 
@@ -698,17 +712,20 @@ Name <input type="string" ng-model="entOthrWindID" class= "betnTags" id="entOthr
 </td>
  <td > <div style="width: 150px"> <input type="date" title="Date" ng-model="rmdatnDatelID1[$index]"  placeholder="mm/dd/yyyy" id="rmdatnDatelID1" name="Remediation Date" /></div></td>
               
-        </tr>
+   <td></br></br><div class="widetd7"  > <button   id="{{ 'b'+addedResultIndex }}" type="button" data-ng-click="goToParentIssue(indexCollection[$index])"  >Go to Parent Issue </button> </div> </td>    
+
+	   </tr>
 </tbody>
 </table>
+</div>
 </br>
 <div/>	 <div/>
 </br></br>
 
-	<div class="footerbutton">
-	<span > {{submitMessage}}</span>	
-      <br/>
-      <input  type="button" id="sbtBtn" class="button" value="Save" ng-click="submit1()">
+	<div class="footerbutton">  
+     <span > {{submitMessage}}</span><br/>    
+      <input  type="button" id="sbtBtn" class="button" value="Save (ctrl+z)" ng-click="submit1()">
+	  
     </div>    
   </form>
   </main>
