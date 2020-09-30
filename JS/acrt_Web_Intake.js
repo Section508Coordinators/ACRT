@@ -2632,7 +2632,9 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 			$scope.slctTstRslt = "NotSelected";	
 			}
 						
-        }  // alert( 'b'+ $scope.slctTstRslt );         		
+        }  // alert( 'b'+ $scope.slctTstRslt );   
+	             if($scope.guideline[a]==undefined) $scope.guideline[a]="";		
+                     if($scope.guideline[a]=='undefined') $scope.guideline[a]="";	
 		    if( $scope.slctTstRslt == "FailSelected"){
 				
 
