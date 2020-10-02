@@ -1,6 +1,6 @@
 # ACRT
 # Project Title
-“Accessibility Conformance Report Tool (ACRT)” 
+**“Accessibility Conformance Report Tool (ACRT)”** 
 
 This is browser based standalone application which records accessibility test results from testers.All input data will be stored as JSON &/or html file in local machine which can be shared with others as needed. Information on JSON file can be further manipulated for analytics and reporting purposes as your need. 
 
@@ -30,7 +30,7 @@ For all users we are using [ACRTGitHubRepository](https://github.com/Section508C
 
 
 * Contact
-[DHS Accessibility Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)
+**[DHS Accessibility Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)**
 
 
 ## License
