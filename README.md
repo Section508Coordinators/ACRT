@@ -5,9 +5,8 @@
 This is browser based standalone application which records accessibility test results from testers.All input data will be stored as JSON &/or html file in local machine which can be shared with others as needed. Information on JSON file can be further manipulated for analytics and reporting purposes as your need. 
 
 ## Getting Started
-1) Download files to your local machine from repository, default location is Downloads folder. For instruction how to download from GitHub visit [Download](https://www.wikihow.com/Download-a-GitHub-Folder ).  
-2)Once downloaded, unzip/extract files. 
-3) Refer to **'ACRTTrainingManual'** inside 'Resources' folder for detail instruction. 
+1) Download files to your local machine from repository, default location is Downloads folder. For instruction how to download from GitHub visit [Download](https://www.wikihow.com/Download-a-GitHub-Folder ). Once downloaded, unzip/extract files. 
+2) Refer to **'ACRTTrainingManual'** inside 'Resources' folder for detail instruction. 
 
 
 ## Instruction to use application
