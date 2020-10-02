@@ -14,7 +14,7 @@ This is browser based standalone application which records accessibility test re
 2) Select **'Instructions'** to view instruction manual in accessible pdf file for details. <br />
 3) Select **'Create Report'** to create or edit test result. 
 4) Select and load either standard template JSON file (TT4 or TT5 JSON file from 'Resources' folder for the first time) or valid custom JSON file (one you created for editing). <br />
-![Select & Load](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/select_load.JPG)
+![Select & Load](./Resources/select_load.JPG)
 5) Once filled/edited all required fields, you will see option to save test result.
 6) To save file changes, select the keyboard shortcut (ctrl + z) or Save button located at the bottom of the page.<br/>
 7) File will be saved in your local machine (downloads folder by default) as JSON file, use this for editing or reporting purposes. <br />
