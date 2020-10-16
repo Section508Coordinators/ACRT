@@ -1542,7 +1542,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
    if($scope.default_tstVrsn == undefined)
 	   $scope.default_tstVrsn ='';   
       document.getElementById("msg").innerHTML = "<b>You have successfully loaded the "+ $scope.default_evalMethod+" "+ $scope.default_tstVrsn +" file </b>. Please edit/update file as needed. To load a different file, <b>reload</b> this page.";     
-      alert('To save file changes, select the keyboard shortcut (ctrl + z) or Save button located at the bottom of the page.');
+      alert('To save file changes, select the keyboard shortcut (Alt+s) or Save button located at the bottom of the page.');
 	if($scope.default_tstVrsn == "undefined"  )
 	  $scope.updateJSON = true; 
    if($scope.default_tstVrsn == undefined  )
@@ -1579,10 +1579,10 @@ setTimeout(function() {
 function KeyPress(e) {	  
       var evtobj = window.event? event : e
 	  if($scope.dataLoaded == true){
-        //if (evtobj.keyCode == 89 && evtobj.ctrlKey) document.getElementById("fileinput").click();  //ctrl+y to select file		  
+        //if (evtobj.keyCode == 90 && evtobj.ctrlKey) document.getElementById("fileinput").click();  //ctrl+z to select file		  
 	  //if (evtobj.keyCode == 88 && evtobj.ctrlKey) { document.getElementById($scope.addedResultIndex).focus(); }  //ctrl+x to focus newly added issues	  
 	  //if (evtobj.keyCode == 89 && evtobj.ctrlKey) {document.getElementById($scope.parentIssueSelected).focus();  alert($scope.parentIssueSelected);}  //ctrl+y to focus parent issues
-	  if (evtobj.keyCode == 90 && evtobj.ctrlKey) document.getElementById("sbtBtn").click();  //ctrl+z to save 
+	  if (evtobj.keyCode == 83 && evtobj.altKey) document.getElementById("sbtBtn").click();  //Alt+s to save 
 	  }
 }
 

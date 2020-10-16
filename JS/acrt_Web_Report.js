@@ -328,7 +328,7 @@ document.getElementById("dsblGrpBtn").click();
       }
       $scope.impactedGroup = [];
        document.getElementById("msg1").innerHTML = "<strong>"+$scope.evalMethod +" Version "+$scope.evalMethodVrsn +"</strong> file load completed.<br>";		  
-        alert('To save printer friendly HTML file, select the keyboard shortcut (ctrl + z) or Save button located at the bottom of the page.');
+        alert('To save printer friendly HTML file, select the keyboard shortcut (Alt + s) or Save button located at the bottom of the page.');
 	  
 	  //$scope.validData=true;
       if($scope.jsonData[0].SuccessCriteria == undefined){
@@ -421,7 +421,7 @@ document.getElementById("dsblGrpBtn").click();
 function KeyPress(e) {	  
       var evtobj = window.event? event : e
 	  if($scope.dataLoaded == true){        
-	  if (evtobj.keyCode == 90 && evtobj.ctrlKey) document.getElementById("sbtBtn").click();  //ctrl+z to save 
+	  if (evtobj.keyCode == 83 && evtobj.altKey) document.getElementById("sbtBtn").click();  //Alt+s to save  
 	  }}
 	  document.onkeydown = KeyPress;
 		
