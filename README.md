@@ -6,12 +6,12 @@ This is browser based standalone application which records accessibility test re
 
 ## Getting Started
 1) Download files to your local machine from repository, default location is Downloads folder. For instruction how to download from GitHub visit [Download](https://www.wikihow.com/Download-a-GitHub-Folder ). Once downloaded, unzip/extract files. 
-2) Refer to **'ACRTTrainingManual'** inside 'Resources' folder for detail instruction. 
+2) Refer to [ACRT Training Manual](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/ACRTTrainingManual.pdf ) inside 'Resources' folder for detail instruction. 
 
 
 ## Instruction to use application
 1) After ACRT is downloaded, unzip/extract files and open index.html  (preferred browsers are Firefox, Microsoft Edge, or Google Chrome). <br />
-2) Select **'Instructions'** to view instruction manual in accessible pdf file for details. <br />
+2) Select [ACRT Training Manual](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/ACRTTrainingManual.pdf ) inside 'Resources' folder for detail instruction.  to view instruction manual in accessible pdf file for details. <br />
 3) Select **'Create Report'** to create or edit test result. 
 4) Select and load either standard template JSON file (TT4 or TT5 JSON file from 'Resources' folder for the first time) or valid custom JSON file (one you created for editing). <br />
 ![Select & Load](./Resources/select_load.JPG)
