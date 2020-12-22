@@ -14,7 +14,31 @@ window.onbeforeunload = function(event) {
   return message;
 }
 
+window.addEventListener("error", handleError, true);
 
+function handleError(evt) {
+    if (evt.message) { // Chrome sometimes provides this
+      //alert("error: "+evt.message +" at linenumber: "+evt.lineno+" of file: "+evt.filename);
+	  alert('Please select valid  file for ACRT, error message: '+evt.message);
+    } /*else {
+      //alert("error: "+evt.type+" from element: "+(evt.srcElement || evt.target));
+	  alert('Please select and load valid JSON file for ACRT');
+    } */
+}
+
+
+
+app.directive("limitTo", [function() {
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            var limit = parseInt(attrs.limitTo);
+            angular.element(elem).on("keypress", function(e) {
+                if (this.value.length == limit) e.preventDefault();
+            });
+        }
+    }
+}]);
 
 //this function validates if json is valid
 function IsJsonString(str) {
@@ -59,8 +83,15 @@ function show_hide_column(col_no, do_show) {
 show_hide_column(10, false);show_hide_column(11, false);
 
 app.controller('acrtWebIntakeCtrl', ['$scope', function($scope, $filter) {
-	
- 
+	$scope.selectedFile = '';
+   $scope.fileNameChanged = function () {
+	  $scope.fileInput1 = true;	
+	  $scope.$apply();
+      document.getElementById("selMsg").innerHTML = "File is Selected, please select 'Load File' below to proceed.";	
+      document.getElementById('fileinput').setAttribute('title', 'File is Selected, please select Load File below to proceed.');	  
+      document.getElementById("button").focus(); 	 
+     //alert("File is Selected, please select 'Load File' below to proceed.");	  
+    } 
 //zoom image 
 $scope.zoom = function(i) {
 var modal = document.getElementById(i);
@@ -829,6 +860,7 @@ $scope.productID = " ";
 $scope.ownerID = " ";
 $scope.versionID = " ";
 $scope.productType = " ";
+$scope.otherProduct=" ";
 $scope.urlID = " ";
 $scope.flashID = " ";
 $scope.evalMthd = " ";
@@ -933,7 +965,7 @@ $scope.RemarkExplntnCollection = [];
   $scope.versionID = [];
   //$scope.versionID = "id";
   $scope.ownerID = [];
-  $scope.productType = [];
+  //$scope.productType = [];
   $scope.urlID = [];
  // $scope.prodDescID = [];
   $scope.prdNteDescID = [];
@@ -969,10 +1001,13 @@ $scope.RemarkExplntnCollection = [];
  $scope.imageCaptured1 = [];
  $scope.removeClicked1 =[];
  	$scope.dataLoaded = false;
- $scope.updateJSON = false
+ $scope.updateJSON = false; 
 //$scope.createEditOption = 'Please Select Approperiate JSON File';
 //$scope.imageAdded = false;
-
+$scope.fileInput = function fileInput() {
+$scope.fileInput1 = true;	
+//alert('Please select approperiate JSON file to complete this test');
+}
 
  //$scope.testScope ="";
 $scope.loadFile = function loadFile() {
@@ -1010,12 +1045,20 @@ $scope.loadFile = function loadFile() {
 	//document.getElementById("instr").innerHTML = "";
 	//document.getElementById("hideLoad").innerHTML = "";
 	$scope.dataLoaded = true;
-      if($scope.jsonData[0].Product.P_Name == " ")
-      $scope.original = true;		  
+      if($scope.jsonData[0].Product.P_Name == " "){
+      $scope.original = true;
+	  $scope.validFile = true;	      	  
+	  }	 	 
+       
+	  if($scope.jsonData[0].Product.P_Name == undefined){
+      $scope.edit = true;
+	  $scope.validFile = true;	  
+	  }	  	  
+      
 	  $scope.productID = $scope.jsonData[0].Product.P_Name;	     
       $scope.versionID = $scope.jsonData[0].Product.P_Version;      
       $scope.ownerID = $scope.jsonData[0].Product.P_Owner;     
-      $scope.productType = $scope.jsonData[0].Product.P_Type;     
+      $scope.productType = $scope.jsonData[0].Product.P_Type;        	  
       $scope.urlID = $scope.jsonData[0].Product.P_Location;     
       $scope.prodDescID = $scope.jsonData[0].Product.P_Desc;     
       $scope.prdNteDescID = $scope.jsonData[0].Product.P_Notes;     
@@ -1108,7 +1151,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	  $scope.Mul_Issues3.push($scope.Mul_Issues2[$scope.parentIssueSelected]);
       //console.log($scope.Mul_Issues3);
 		 if ($scope.checkboxModel.alerts == "on")
-			alert("Child issue has been added to the end of this table. Select ‘Go to Child Issues’ to jump to the first child issue.");
+			alert("Child issue added to the end of this table. Select ‘Go to Child Issues’ to jump to first child issue.");
 		}
 	else {
     //if ($scope.checkboxModel.alerts == "on")		
@@ -1208,35 +1251,42 @@ $scope.createEditOption = 'Edit Report Test Results Form';
         $scope.checkboxModel.value7 = 'IOS'
       }
 
-	
+	  if($scope.jsonData[0].System.S_Compatibility != undefined)
 	  $scope.default_compatibilitySetting = $scope.jsonData[0].System.S_Compatibility;
-      $scope.default_ieVersn = $scope.jsonData[0].System.S_ieVrsh;		  
-      $scope.default_edgVersn = $scope.jsonData[0].System.S_edgVrsn;      
+	  if($scope.jsonData[0].System.S_ieVrsh != undefined)
+      $scope.default_ieVersn = $scope.jsonData[0].System.S_ieVrsh;	
+      if($scope.jsonData[0].System.S_edgVrsn != undefined)  
+      $scope.default_edgVersn = $scope.jsonData[0].System.S_edgVrsn;  
+      if($scope.jsonData[0].System.S_chrVrsn != undefined)  
       $scope.default_chrVersn = $scope.jsonData[0].System.S_chrVrsn;
-       
+      if($scope.jsonData[0].System.S_sfVrsn != undefined) 
       $scope.default_sfVersn = $scope.jsonData[0].System.S_sfVrsn;
-     
+      if($scope.jsonData[0].System.S_frfxVrsn != undefined)
       $scope.default_frfxVersn = $scope.jsonData[0].System.S_frfxVrsn;
-     
+      if($scope.jsonData[0].System.S_othrBrsVrsn != undefined)
       $scope.entOthrBrsrIDVrsn = $scope.jsonData[0].System.S_othrBrsVrsn;
-     
+      if($scope.jsonData[0].System.S_othrBrsType != undefined)
       $scope.entOthrBrsrID = $scope.jsonData[0].System.S_othrBrsType;
-     
+      if($scope.jsonData[0].System.S_winVrsn != undefined)
       $scope.default_WindVrsn = $scope.jsonData[0].System.S_winVrsn;
-     
+      if($scope.jsonData[0].System.S_iosVrsn != undefined)
       $scope.default_MacVrsn = $scope.jsonData[0].System.S_iosVrsn;   
-     
+      if($scope.jsonData[0].System.S_otherOSType != undefined)
       $scope.entOthrWindID = $scope.jsonData[0].System.S_otherOSType;
-     
+      if($scope.jsonData[0].System.S_otherOSVrsn != undefined)
       $scope.entOthrWindVrsn = $scope.jsonData[0].System.S_otherOSVrsn;
-     
-      $scope.default_compatibility = $scope.jsonData[0].System.S_Compatibility;     
+      if($scope.jsonData[0].System.S_Compatibility != undefined)
+      $scope.default_compatibility = $scope.jsonData[0].System.S_Compatibility;   
+      if($scope.jsonData[0].Tester.T_eval != undefined)  
       $scope.default_evalMethod = $scope.jsonData[0].Tester.T_eval;  
+      if($scope.default_evalMethod != undefined)
 	  $scope.selected_name_tstprcss = $scope.default_evalMethod;
-	  
+      if( $scope.jsonData[0].Tester.T_evalMthd_Vrsn != undefined)	  
 	  $scope.default_tstVrsn = $scope.jsonData[0].Tester.T_evalMthd_Vrsn;
-      $scope.evlMthdVrsn = $scope.default_tstVrsn ;    
-      $scope.default_productType = $scope.jsonData[0].Product.P_Type;	  
+      if( $scope.default_tstVrsn != undefined)
+      $scope.evlMthdVrsn = $scope.default_tstVrsn ;  
+      if( $scope.jsonData[0].Product.P_Type != undefined)  
+      $scope.default_productType = $scope.jsonData[0].Product.P_Type;	       
 	  $scope.jsonData[0].System.S_other = $scope.jsonData[0].System.S_other.toString().trim();	  
 	  if ($scope.jsonData[0].System.S_other === 'Other Browser' || $scope.jsonData[0].System.S_other === '  Other Browser  ' ){
        $scope.chkBoxValOthrBrwsr1 = true;
@@ -1396,7 +1446,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 				$scope.entOthrBrsrIDl[b] = $scope.jsonData[0].System.S_othrBrsType;
 			
         }*/
-		//if($scope.jsonData[0].Criteria[b].TestResult != undefined)
+		if($scope.jsonData[0].Criteria[b].TestResult != undefined)
         if($scope.jsonData[0].Criteria[b].TestResult != 'undefined'){			
         $scope.default_SelectedResult[b] = $scope.jsonData[0].Criteria[b].TestResult;        	
 		$scope.browseImageOption[b]=true;
@@ -1527,6 +1577,8 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 		  $scope.submitMessage = "Upon saving, the file will be located in the system's Downloads folder by default.";
 		  
 	}
+	if($scope.displayIt == false)
+			alert('Please select the appropriate JSON file to  view complete page.');
 	
 	  if($scope.edit == true ){
 		  $scope.submitMessage = "File was saved on "+  $scope.testDate;
@@ -1541,8 +1593,8 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	   $scope.default_tstVrsn ='';   
    if($scope.default_tstVrsn == undefined)
 	   $scope.default_tstVrsn ='';   
-      document.getElementById("msg").innerHTML = "<b>You have successfully loaded the "+ $scope.default_evalMethod+" "+ $scope.default_tstVrsn +" file </b>. Please edit/update file as needed. To load a different file, <b>reload</b> this page.";     
-      alert('To save file changes, select the keyboard shortcut (Alt+s) or Save button located at the bottom of the page.');
+      document.getElementById("msg").innerHTML = "<strong>"+$scope.default_evalMethod +" Version "+$scope.default_tstVrsn + " "+$scope.productID+$scope.versionID+".json"+ "</strong> file load completed.<br> To load a different file, <strong>reload</strong> this page.";		  	  
+      alert('File loaded.To save changes at any time, use Alt+S or Save button at bottom of the page.');
 	if($scope.default_tstVrsn == "undefined"  )
 	  $scope.updateJSON = true; 
    if($scope.default_tstVrsn == undefined  )
@@ -1567,8 +1619,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
   
 }
   
-	  
-  
+ 
 setTimeout(function() {
 		$scope.$apply();   
    }, 500);
@@ -1592,17 +1643,15 @@ document.onkeydown = KeyPress;
 $scope.remediationDetails = function() {	      
 	 // if($scope.crtRsltCollection.length == 0) 
 	   //scope.displayIt = false;
-        if($scope.selected_name_rmdtn == 'Yes'){
-			if($scope.displayIt == false)
-			alert('Please select the appropriate JSON file to  add remediation details.'); 
+        if($scope.selected_name_rmdtn == 'Yes'){			 
 		    /*if ($scope.checkboxModel.alerts == "on")
 		    alert('Column for Remediation Details Added.'); */
 			show_hide_column(10, true);
 			show_hide_column(11, true);
 		}
 		if($scope.selected_name_rmdtn == 'No'){
-			/*if($scope.displayIt == false)
-			alert('Please select the approperiate JSON file to  add remediation details.') */
+			if($scope.displayIt == false)
+			alert('Please select the approperiate JSON file to  add remediation details.') 
 		    /* if ($scope.checkboxModel.alerts == "on")
 		    alert('Column for Remediation Details Removed.'); */
 		show_hide_column(10, false);
@@ -1786,8 +1835,8 @@ $scope.uploadImageClicked1 = true;
          $scope.removeClicked[index] =  true;	
 		 $scope.displayRemove[index] = false;
 		  //$scope.imgCnvrsn.splice(remPosition, 1, '"imgValue" :"."}'); //removed image and don't select another image               		
-		//if ($scope.checkboxModel.alerts == "on") 		
-	  //alert("Image Removed");
+		//if ($scope.checkboxModel.alerts == "on") 
+		//alert("Image Removed");
 	  setTimeout(function() {
 		$scope.$apply();   
    }, 500);
@@ -2921,7 +2970,10 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
   $scope.Guideline = $scope.checkboxModel.value12;
   $scope.Section508 = $scope.checkboxModel.value13;
  
-  $scope.formData = " ";
+  $scope.formData = " ";  
+  if($scope.productType == 'Other')
+  $scope.productType = $scope.otherProduct;
+  
   
   //preventing special characters   
   $scope.prodDescID = $scope.prodDescID.toString().replace(/"/g, "'").trim();
@@ -2962,7 +3014,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 	$scope.browserCollection = $scope.browserCollection.toString().replace(/, /g, " ").trim();
 	$scope.browserCollection = $scope.browserCollection.toString().replace(/,/g, ", ").trim();
 	$scope.browserCollection = $scope.browserCollection.toString().replace(/,\s*$/, "");
-  $scope.formData = '[{"Product":' +
+    $scope.formData = '[{"Product":' +
     '{"P_Name":"' + $scope.productID + '","P_Version": "' + $scope.versionID + '","P_Owner": "' + $scope.ownerID + '","P_Type": "' + $scope.productType + '","P_Location": "' + $scope.urlID + '","P_Desc": "' + $scope.prodDescID + '","P_Notes": "' + $scope.prdNteDescID + '"}, "System":' +
     $scope.myOpsys + $scope.osVrsnNo + '","S_osVrsnNo": "' + $scope.osVrsnCollection + '","S_selectedOS": "' + $scope.osCollection + $scope.categories + $scope.browserVersionsCollection + '","S_selectedBrowser": "' + $scope.browserCollection + '","S_selectedBrowserVersions": "' + $scope.browserVrsnCollection + '","S_Compatibility": "' + $scope.selected_name_cmpblty + '"},"Tester":' +
     '{"T_fstnm":"' + $scope.firstname + '","T_lstnm": "' + $scope.lastname + '","T_ID": "' + $scope.testerID + '","T_companyname": "' + $scope.companyname +'","T_Role": "' + $scope.myRole + '","T_cntc": "' + $scope.testerContact + '","T_scope": "' + $scope.testScope + '","T_eval": "' + $scope.selected_name_tstprcss + '","T_evalMthd_Vrsn": "' + $scope.evlMthdVrsn + '","crtLength": "' + $scope.criteriaLength + '","T_Date": "' + $scope.tDateId + '"}, "Standard":' +
@@ -2973,39 +3025,40 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 $scope.submit1 = function() {
 
   $scope.error = [];
+  
   if ($scope.productID == " " || $scope.productID == undefined) {
-    $scope.error.push("Product Name");
+    $scope.error.push("Product: Product Name");
     
   }
   if ($scope.versionID == " " || $scope.versionID == undefined) {
-    $scope.error.push("Product Version");
+    $scope.error.push("Product: Product Version");
    
   }
 
   if ($scope.prodDescID == " " || $scope.prodDescID == undefined) {
-    $scope.error.push("Product Description");
+    $scope.error.push("Product: Product Description");
     
   }
 
   if ($scope.firstname == " " || $scope.firstname == undefined) {
-    $scope.error.push("Tester's First name");
+    $scope.error.push("Testing Information: Tester's First name");
     
   }
   if ($scope.lastname == " " || $scope.lastname == undefined) {
-    $scope.error.push("Tester's Last Name");
+    $scope.error.push("Testing Information: Tester's Last Name");
     
   }
   if ($scope.companyname == " " || $scope.companyname == undefined) {
-    $scope.error.push("Company Name in Testing Information Section");
+    $scope.error.push("Testing Information: Company Name in Testing Information Section");
     
   }
   if ($scope.testerContact == " " || $scope.testerContact == undefined) {
-    $scope.error.push("Tester's Email");
+    $scope.error.push("Testing Information: Tester's Email");
    
   }
      
   if ($scope.error.length > 0)
-    alert("Please input data for " + $scope.error);
+    alert("Please fill mandatory field => " + $scope.error);
   /* making sure user selects at least one test result
   else if($scope.originalIssueRsltSelected != true)
   alert("Please select at least one test result to save file.");
