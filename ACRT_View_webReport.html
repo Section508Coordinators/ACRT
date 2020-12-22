@@ -10,40 +10,66 @@
   <link rel="stylesheet" type="text/css" href="./CSS/acrt_styles.css">
 </head>
 
-<body ng-app="acrt" ng-controller="acrtFormCtrl">
-  <div class="topnav" id="myTopnav"> 
-  <a title="Home" href="index.html" id="aboutID">Home </a>
-  <a title="Instructions" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">Instructions </a>
-  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" >Create Report</a> 
-  <a title="Accessibility Conformance Report" href="./ACRT_View_webReport.html"  id="vwRptId" >Accessibility Conformance Report</a>  
-  <a title="License License" href= "./Resources/LICENSE.html" target="_blank"   id="licenseID"> View License </a>
-  
+<body ng-app="acrt" ng-controller="acrtFormCtrl" >
+<a  href="#helpID" id="skipID" class="skip"  autofocus >Skip to Main Content </a>
+<div >
+  <img src=".\Resources\logo.png" alt="ACRT logo" title="ACRT Logo"style="width:5em;height:3.3em;"> 
+<strong style="font-size: 1.5em;display: inline-block;" title="Accessibility Conformance Reporting Tool (ACRT)"> Accessibility Conformance Reporting Tool (ACRT) </strong>
+</div> 
+<div class="topnav" id="myTopnav">   
+  <a title="Home" href="./index.html" id="homeID" class="menu" >Home </a>   <!--target="_blank"  -->
+  <a title="Instructions" href="./Instruction.html" id="instructionID"  class="menu" id="defaultFocus"   >Instructions </a> 
+  <a  title="Create Report" href="./ACRT_Web_Input_Form.html"  id="crtReportID" class="menu" >Create Report</a> 
+  <a title="View Report" href="./ACRT_View_webReport.html"  id="vwRptId" class="menu" >View Report</a>  
+  <a title="View License" href= "./LICENSE.html"   id="licenseID" class="menu" > View License </a>  
 </div>
 <br>
  	
-  <main>
+  <main style="margin-left: 1em;">
     <form id="webTestResult">
-	<h1> {{companyname}} &nbsp;Accessibility Conformance Report </h1> 
+	<h1>View {{companyname}} &nbsp;Accessibility Conformance Report </h1> 
+	<!--   To make sure you have the latest version of ACRT, check either 
+  <a title="ACRT GitHub Repository" href= "https://github.com/Section508Coordinators/ACRT " target="_blank"   id="helpID"> GitHub </a>  &nbsp;(all users) 
+  or <a title="ACRT Bitbucket Repository" href= "https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt" target="_blank"   id="bitbucketSrc">BitBucket </a>  &nbsp;(DHS users) before completing the form. <br><br> -->
+  Refer to the <a title="ACRT User Guide" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">ACRT User Guide </a> &nbsp;for complete instructions.
+  
 	<!-- <span> Based on VPAT® Version 2.4 </span> -->
       <!-- <h1> View Test Report </h1> -->
         <!-- View test report. <a title="View Report instructions" href="./Help_Report.html" target="_blank" id="tstinstrID"> "View Report" instructions </a> -->
-        <p><strong ng-if="isDraft" class="hdnMsg"> This is a Draft report. For final report, please input results for all tests.</strong><p>
-        <label for="fileinput"> <strong> Select test results file </strong>
+        
+		<p > <!--  id="instr" -->
+	  <strong >Tool Tips: </strong><br>
+	  <ol >
+	    <li>This is a read only page, no edits are allowed. </li>  
+		<li>Use 'Skip to main content' link or keyboard shortcut Alt+M to go to go main content.</li>
+		<li>Expand Product, Test Environment, Tester Sections & Terms to view information.</li>
+	    <li>At least one valid test result must be included to view complete report.</li>
+		<li>Double click on image in test result section to zoom it. </li>
+	    <li>To save printer friendly HTML report, use Alt+S or save button is located at the bottom of page.</li>		
+		<li>JSON report is used to edit & further analysis.HTML report is user friendly version. Keep both for future reference.</li>	
+	  </ol>
+	</p>
+         <span id='selectFileHd' ng-hide = "fileInput1" >
+        <label for="fileinput"> <strong> Select test results JSON file </strong>
         </label><br>	
-		<input type='file' class="button" id='fileinput' name='Browse to file'>
-        <br><br><label for="loadFile"> <strong> Load selected file</strong>
-        </label><br> <button id='buttonLoad' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form"  ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}" >Load Results</button>
+		<input type='file' class="input" id='fileinput' name='Browse to file' title="Please select valid file" onchange="angular.element(this).scope().fileNameChanged(this)" accept=".json"> <!--ng-click ="fileInput();" -->
+        </span>
+		<br><br>
+		<strong > <span  id="selMsg" ng-show="fileInput1">  </span></strong>
+	  <br><br>
+	  <label for="loadFile" ng-show="fileInput1"> <strong> Load selected file</strong>
+        </label><br> <button id='buttonLoad' class="button" ng-model="loadbtn" ng-show="fileInput1" ng-click="loadFile();" id='loadFile' name="Load Data In this Form"  ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}" >Load Results</button>
 		<!-- <br>You have selected <strong>{{evalMethod}} </strong> Version <strong class="hdnMsg">{{evalMethodVrsn}}</strong> -->	    
-		<p id='afterDwnloded'><img   id="dwnldConfm"  ng-src ="./Resources/chkMrk.jpg"  ng-if="dataLoaded" width="20" height="20"  alt="right sign" onerror="this.style.display='none';"> 
-		<span id="msg1"></span> </P>
-	  </ul> <br>
+		<p id='afterDwnloded'><img   id="dwnldConfm"  ng-src ="./Resources/chkMrk.jpg"  ng-show="dataLoaded" width="20" height="20"  alt="Checkmark" onerror="this.style.display='none';"> 
+		<span id="msg1"> <Strong> </strong></span> </P>
+	  </ul> <div ng-show="dataLoaded">
 	  
 		
-        <fieldset>
+        <fieldset style="margin-left: 1em;">
           <legend>
             <h2> Product </h2>
           </legend>
-		  <button class="collapsible" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Show Product section</div> </button> 
+		  <button class="collapsible" title="Show or HIde Product Section" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Show Product section</div> </button> 
 		  <div class="content">
     <div class="divSpace" id="productInfo" >           
               <label for="productID"> Product Name: </label> <input type="string" ng-model="productID" class="betnTags" id="productID" name="Entered Name Of Product" ng-readonly="true" size="100"> &nbsp;
@@ -57,29 +83,11 @@
             </div>
           </div>
         </fieldset> <br>
-        <fieldset>
-          <legend>
-            <h2> Test Environment </h2>
-          </legend>
-          <button class="collapsible" onclick="expandCollapse2()">
-            <div id="expandCollapse2"> <i class="up"></i> Show Test Environment section</div>
-          </button>
-          <div class="content">
-            <div class="divSpace" id="sysInfo">
-              <label for="myBrowserTested">Browser: </label> <input type="string" ng-model="myBrowserTested" class="txtarea" id="myBrowserTested" name="Selected Browser Types" ng-readonly="true" width=200 size="100"> &nbsp;
-              <br><br> <label for="myBrowser">Browser Version: </label> <input type="string" ng-model="myBrowser" class="txtarea" id="myBrowser" name="Selected Browser Versions" ng-readonly="true" size="100"> &nbsp;
-              <br><label for="compID">Compatibility View: </label> <input type="string" ng-model="compID" class="betnTags" id="compID" name="Selected Compatibility View" ng-readonly="true"> <br>
-              <br><label for="myOpsysTested"> Operating System: </label> <input type="string" ng-model="myOpsysTested" class="txtarea" id="myOpsysTested" name="Selected OS Tested" ng-readonly="true" size="80"> &nbsp;
-              <br><br><label for="myOpsys"> Operating System Version: </label> <input type="string" ng-model="myOpsys" class="txtarea" id="myOpsys" name="Selected OS Versions" ng-readonly="true" size="80"> &nbsp;
-
-            </div>
-          </div>
-        </fieldset> <br>
-        <fieldset>
+		 <fieldset style="margin-left: 1em;">
           <legend>
             <h2> Testing Information </h2>
           </legend>
-          <button class="collapsible" onclick="expandCollapse3()">
+          <button class="collapsible" title="Show or HIde Testing Information Sectiion" onclick="expandCollapse3()">
             <div id="expandCollapse3"> <i class="up"></i> Show Testing Information section</div>
           </button>
           <div class="content">
@@ -94,8 +102,26 @@
             </div>
           </div>
         </fieldset> <br>
+        <fieldset style="margin-left: 1em;">
+          <legend>
+            <h2> Test Environment </h2>
+          </legend>
+          <button class="collapsible" title="Show or HIde Test Environment Section" onclick="expandCollapse2()">
+            <div id="expandCollapse2"> <i class="up"></i> Show Test Environment section</div>
+          </button>
+          <div class="content">
+            <div class="divSpace" id="sysInfo">
+              <label for="myBrowserTested">Browser: </label> <input type="string" ng-model="myBrowserTested" class="txtarea" id="myBrowserTested" name="Selected Browser Types" ng-readonly="true" width=200 size="100"> &nbsp;
+              <br><br> <label for="myBrowser">Browser Version: </label> <input type="string" ng-model="myBrowser" class="txtarea" id="myBrowser" name="Selected Browser Versions" ng-readonly="true" size="100"> &nbsp;
+              <br><label for="compID">Compatibility View: </label> <input type="string" ng-model="compID" class="betnTags" id="compID" name="Selected Compatibility View" ng-readonly="true"> <br>
+              <br><label for="myOpsysTested"> Operating System: </label> <input type="string" ng-model="myOpsysTested" class="txtarea" id="myOpsysTested" name="Selected OS Tested" ng-readonly="true" size="80"> &nbsp;
+              <br><br><label for="myOpsys"> Operating System Version: </label> <input type="string" ng-model="myOpsys" class="txtarea" id="myOpsys" name="Selected OS Versions" ng-readonly="true" size="80"> &nbsp;
+
+            </div>
+          </div>
+        </fieldset> <br>       
 		
-		<fieldset>
+		<fieldset style="margin-left: 1em;">
           <legend>
             <h2> Terms </h2>
           </legend>
@@ -107,22 +133,25 @@
           <li> <strong>Supports:</strong> The functionality of the product has at least one method that meets the criterion without known defects or meets with equivalent facilitation. </li>          
 		  <li> <strong>Does Not Support:</strong> The majority of product functionality does not meet the criterion.</li>
 		  <li> <strong>Not Applicable:</strong> The criterion is not relevant to the product. </li>
-		   <li> <strong>Not Evaluated:</strong> The product has not been evaluated against the criterion.  This can only be used in WCAG 2.x Level AAA.</li>
+		   <li> <strong>Not Evaluated:</strong> The product has not been evaluated against the criterion.  This can only be used in WCAG 2.0 Level AAA.</li>
 		 </ul>
             <div class="divSpace" id="termsInfo">
                </div>
           </div>
-        </fieldset> <br>
+        </fieldset> 
+		</div>
+		<br>
         &nbsp;
        
 <div id="displayTestRslt" hidden >
         <h3> Test Results </h3>
+		
 
         <label for="evalMethod"> Testing Method:</label> <input type="string" ng-model="evalMethod" class="betnTags" id="evalMethod" name="Selected Evaluation Method Used" ng-readonly="true"> &nbsp;
         <label for="evalMethodVrsn">Testing Method Version: </label> <input type="string" ng-model="evalMethodVrsn" class="betnTags" id="evalMethodVrsn" name="Entered Evaluation Version" ng-readonly="true"> &nbsp; <br>
         <label for="dateSubmitted"> Review Date:</label> <input type="string" ng-model="dateSubmitted" class="dateField" id="dateSubmitted" name="Review Date" ng-readonly="true"> <br> <br>
 
-        
+        <p><strong ng-if="isDraft" class="hdnMsg"> This is a Draft report. For final report, please input results for all tests.</strong><p>
 
         <table   id="sc1" ng-if="wcagRprt" >
 
@@ -131,10 +160,10 @@
           <thead>
             <tr>
               <th style="width: 102px" scope="col">Criteria</th>
-              <th style="width: 218px" scope="col">Conformance Level</th>
-			   <th style="width: 216px" scope="col">Standard/Guideline</th> 
-              <th style="width: 398px" scope="col">Remarks and Explanations </th>
-			 <!-- <th style="width: 450px" scope="col">Impacted Group </th> -->
+              <th style="width: 219px" scope="col">Conformance Level</th>
+			   <th style="width: 219px" scope="col">Standard/Guideline</th> 
+              <th style="width: 400px" scope="col">Remarks and Explanations </th>
+			  <!-- <th style="width: 450px" scope="col">Impacted Group </th> -->
             </tr>
           </thead>
           <tbody ng-repeat="record1 in jsonData">
@@ -143,7 +172,7 @@
               <td style="width: 220px" title="Conformance Level" >{{test1.ConformanceLvl}}</td>
 			  <td style="width: 220px" title="Guideline" > {{test1.Guideline}}  </td> 
               <td style="width: 400px" title="Remarks & Explanations" > {{test1.RemarkExplntn}}  </td>			  
-			 <!-- <td style="width: 450px" title="Remarks & Explanations" > {{test1.DisabilityImpact}}  </td> -->
+			 <!--<td style="width: 450px" title="Impacted Group" > {{test1.DisabilityImpact}}  </td>  -->
         </tr>
 
         </div>
@@ -163,8 +192,7 @@
                
                  <div ng-show="checked1">
  
-				<div ng-if="wcagRprt">
-				 
+				<div ng-show="wcagRprt">	 
 
 
                   <table class="table" id="th1" style="font-size: 93%"  >
@@ -172,6 +200,7 @@
                     <thead>
                       
                       <tr>
+					  <th scope="col" title="Issue Number" id="in[$index]"><div style="width: 78px"> Issue Number </div> </th> 
                         <th scope="col" title="Test Name" id="testname[$index]">
                           <div style="width: 85px">Test Name</div>
                         </th>
@@ -180,20 +209,20 @@
                         </th>
                         <th scope="col" title="Test Condition" id="tc[$index]">
                           <div style="width: 198px"> Test Condition </div>
-                        </th>
-                        <th scope="col" title="Issue Number" id="in[$index]"><div style="width: 78px"> Issue Number </div> </th> 
+                        </th>                        
                         <th scope="col" title="Test Result" id="result[$index]">
                           <div style="width: 67px"> Test Result </div>
                         </th>
                         <th scope="col" title="Browser" id="brsr[$index]">
                           <div style="width: 127px"> Browser </div>
                         </th>
-						<th scope="col" title="Tester's Comment" id="location[$index]"> 
-						<div style="width: 198px"> Location/Screen </div> 
-						</th> 	
-                        <th scope="col" title="Tester's Comment" id="cmnt[$index]">
+						<th scope="col" title="Tester's Comment" id="cmnt[$index]">
                           <div style="width: 198px"> Tester Comments </div>
                         </th>
+						<th scope="col" title="Tester's Comment" id="location[$index]"> 
+						<div style="width: 198px"> Location/Screen </div> 
+						</th> 
+                        
                         <th scope="col" title="Screenshot" id="scrnsht[$index]">
                           <div style="width: 123px" >Screenshot </div>
                         </th>
@@ -212,8 +241,10 @@
 
           <tbody ng-repeat="record in jsonData">
             <tr ng-repeat="test in record.Criteria " ng-if="noResult[$index]">
-             
-              <th scope="row" title="Test Name" id="tnm1[$index]">
+			 <td  title="Issue Number">
+                <div style="width: 80px"> Issue {{counterCollection[$index]}} </div>
+              </td>              
+              <th  scope="row" title="Test Name" id="tnm1[$index]">
                 <div class="widetd1"> {{TestName[$index]}} </div>
               </th>
               <td title="Test Id" id="tid1[$index]">
@@ -222,21 +253,19 @@
               <td title="Selected Test Condition" id="tstcndn1[$index]">
                 <div class="widetd3"> {{TestCondition[$index]}}</div>
               </td>
-							 <td title="Issue Number">
-                <div style="width: 80px"> Issue {{counterCollection[$index]}} </div>
-              </td> 
+							
               <td title="Selected Test Result" id="tstrslt1[$index]">
                 <div style="width: 69px"> {{TestResult[$index]}} </div>
               </td>
               <td title="Selected Browser Types" id="brsr1[$index]">
                 <div style="width: 129px"> {{T_brwsrType[$index]}} </br> {{T_brwsrVrsn[$index]}}</div>
               </td>
-			  <td title="Entered location/screen" id="lcn1[$index]">
-                <div class="widetd3"> {{location[$index]}}</div>
-              </td>
-              <td title="Entered Tester's Comment" id="tstcmt1[$index]">
+			  <td title="Entered Tester's Comment" id="tstcmt1[$index]">
                 <div class="widetd3"> {{TesterComment[$index]}}</div>
               </td>
+			  <td title="Entered location/screen" id="lcn1[$index]">
+                <div class="widetd3"> {{location[$index]}}</div>
+              </td>              
               <td width="151">  <img width="100" id="image{{$index}}"  ng-src={{ImageSrc[$index]}}  ng-click="zoom($index)" class="large-image" title="Selected screenshot" alt="Selected screenshot" onerror="this.style.display='none';" >
               
              <div id="{{$index}}" class="modal">
@@ -262,9 +291,9 @@
         </table>
 
         </div>
-</div>
 
-        <fieldset ng-show='DisabilityImpactCollectionLength' >
+
+        <fieldset ng-show='DisabilityImpactCollectionLength' style="margin-left: 0em;">
           <legend>
             <h3> Disability Impact </h3>
           </legend>
@@ -275,7 +304,8 @@
           <button class="collapsible"  id="dsblGrpBtn">Impact Summary </button>
           <div class="content">
 		   <label for="dsblImpctRslt"> </label>  <!-- <h4>Different impacted groups are separated by comma, check below</h4> -->
-		  <span id="dsblImpctRslt" >{{DisabilityImpactCollection}}</span>
+		  <span id="dsblImpctRslt" >{{DisabilityImpactCollection}} </span>	<!-- {{DisabilityImpactCollectionSC}}-->	  
+		  
 		  <!-- commented out because we dont want to display duplicate groups based on failed test conditions
             <div id="myImpact" ng-repeat="record in jsonData">
               <label for="dsblImpctRslt"> Disability impact summary </label>
@@ -285,16 +315,12 @@
                   {{test.DisabilityImpact}} 
 				  
                 </li>
-
-                
-
-
               </ul>
             </div> -->
           </div>
         </fieldset>
 
-        <fieldset >
+        <fieldset style="margin-left: 0em;">
           <legend>
             <h3 > Other Test Results </h3>
           </legend>
@@ -310,11 +336,12 @@
     </form>
   </main>
   <br/><br/><br/><br/> 
-  <div id="htmlReportDiv" class="footerbutton"  hidden >
+  <div id="htmlReportDiv" class="footerbutton" style="margin-left: 1em;"  hidden >
 	Select <strong>Save as HTML</strong> to generate  HTML version of the printable report (saved in Downloads folder by default). <br/>
-	<input type="button" id="sbtBtn" class="button" value="Save as HTML (Alt+s)" ng-click="saveHtml()">
-	</div>	
+	<input type="button" id="sbtBtn" class="button" value="Save as HTML (Alt+S)" ng-click="saveHtml()">
+	</div>		
   <script src="./JS/acrt_Web_Report.js"> </script>
+  
 
 
 
