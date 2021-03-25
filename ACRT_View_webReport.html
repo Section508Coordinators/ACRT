@@ -27,7 +27,7 @@
  	
   <main style="margin-left: 1em;">
     <form id="webTestResult">
-	<h1>View {{companyname}} &nbsp;Accessibility Conformance Report </h1> 
+	<h1>View {{companyname}} Accessibility Conformance Report </h1> 
 	<!--   To make sure you have the latest version of ACRT, check either 
   <a title="ACRT GitHub Repository" href= "https://github.com/Section508Coordinators/ACRT " target="_blank"   id="helpID"> GitHub </a>  &nbsp;(all users) 
   or <a title="ACRT Bitbucket Repository" href= "https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt" target="_blank"   id="bitbucketSrc">BitBucket </a>  &nbsp;(DHS users) before completing the form. <br><br> -->
@@ -39,9 +39,9 @@
         
 		<p > <!--  id="instr" -->
 	  <strong >Tool Tips: </strong><br>
-	  <ol >
-	    <li>This is a read only page, no edits are allowed. </li>  
+	  <ol >	     
 		<li>Use 'Skip to main content' link or keyboard shortcut Alt+M to go to go main content.</li>
+		<li>This is a read only page. Use “Create Report” to edit. </li> 
 		<li>Expand Product, Test Environment, Tester Sections & Terms to view information.</li>
 	    <li>At least one valid test result must be included to view complete report.</li>
 		<li>Double click on image in test result section to zoom it. </li>
@@ -69,7 +69,7 @@
           <legend>
             <h2> Product </h2>
           </legend>
-		  <button class="collapsible" title="Show or HIde Product Section" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Show Product section</div> </button> 
+		  <button class="collapsible" title="Show Product Section" id="productBtn" onclick="expandCollapse1()"> <div id="expandCollapse1"> <i class="up"></i> Show Product Section</div> </button> 
 		  <div class="content">
     <div class="divSpace" id="productInfo" >           
               <label for="productID"> Product Name: </label> <input type="string" ng-model="productID" class="betnTags" id="productID" name="Entered Name Of Product" ng-readonly="true" size="100"> &nbsp;
@@ -88,7 +88,7 @@
             <h2> Testing Information </h2>
           </legend>
           <button class="collapsible" title="Show or HIde Testing Information Sectiion" onclick="expandCollapse3()">
-            <div id="expandCollapse3"> <i class="up"></i> Show Testing Information section</div>
+            <div id="expandCollapse3"> <i class="up"></i> Show Testing Information Section</div>
           </button>
           <div class="content">
 
@@ -107,7 +107,7 @@
             <h2> Test Environment </h2>
           </legend>
           <button class="collapsible" title="Show or HIde Test Environment Section" onclick="expandCollapse2()">
-            <div id="expandCollapse2"> <i class="up"></i> Show Test Environment section</div>
+            <div id="expandCollapse2"> <i class="up"></i> Show Test Environment Section</div>
           </button>
           <div class="content">
             <div class="divSpace" id="sysInfo">
@@ -144,9 +144,7 @@
         &nbsp;
        
 <div id="displayTestRslt" hidden >
-        <h3> Test Results </h3>
-		
-
+        
         <label for="evalMethod"> Testing Method:</label> <input type="string" ng-model="evalMethod" class="betnTags" id="evalMethod" name="Selected Evaluation Method Used" ng-readonly="true"> &nbsp;
         <label for="evalMethodVrsn">Testing Method Version: </label> <input type="string" ng-model="evalMethodVrsn" class="betnTags" id="evalMethodVrsn" name="Entered Evaluation Version" ng-readonly="true"> &nbsp; <br>
         <label for="dateSubmitted"> Review Date:</label> <input type="string" ng-model="dateSubmitted" class="dateField" id="dateSubmitted" name="Review Date" ng-readonly="true"> <br> <br>
@@ -183,14 +181,45 @@
         </tr>
         </tbody>
         </table>
-		
- 		  <input id="selector111" name="Checkbox to view test results" title="View all test results" type="checkbox" ng-model="checked1" > <!-- onclick="chkBxMsg('selector111', 'chkUnchk');" -->
-		  <label for="smoking" name="chkUnchk" id="chkUnchk"><strong> View all test results </strong></label>
+		<!--
+		this is for checkbox
+		<span  style='display: inline-block;'>
+ 		  <input id="selector111" name="Checkbox to view test results" title="View all test results" type="radio" ng-model="checked1" > 
+		  <label for="smoking" name="chkUnchk" id="chkUnchk"><strong> View 'All' test results </strong></label> 
+		 </span> -->
+		 <!--this is for radio button 
+		 <span>Select one of following to view approperiate test result </span><br>
+		 <span style='display: inline-block;'>
+		   <input id="selector111" name="selectOne" title="View All test results" type="radio" ng-model="checked1" ng-click="chkBxMsg('selector111', 'chkUnchk1');"> 
+		  <label for="selector111" name="chkUnchk" id="chkUnchk1"><strong> 'All' </strong></label>
+		  </span>
+		 <span style='display: inline-block;'>
+		   <input id="selector112" name="selectOne" title="View Pass test results only" type="radio" ng-model="checked2" ng-click="chkBxMsg('selector112', 'chkUnchk2');"> 
+		  <label for="selector112" name="chkUnchk" id="chkUnchk2"><strong> 'Pass' </strong></label>
+		  </span>
+		  <span style='display: inline-block;'>
+		   <input id="selector113" name="selectOne" title="View Fail test results only" type="radio" ng-model="checked3" ng-click="chkBxMsg('selector113', 'chkUnchk3');" > 
+		  <label for="selector113" name="chkUnchk" id="chkUnchk3"><strong> 'Fail'</strong></label>
+		  </span>
+		  <span style='display: inline-block;'>
+		   <input id="selector114" name="selectOne" title="View DNA test results only" type="radio" ng-model="checked4" ng-click="chkBxMsg('selector114', 'chkUnchk4');"> 
+		  <label for="selector114" name="chkUnchk" id="chkUnchk4"><strong> 'Does Not Apply'</strong></label>
+		  </span>
+		  <span style='display: inline-block;'>
+		   <input id="selector115" name="selectOne" title="View Not tested test results only" type="radio" ng-model="checked5" ng-click="chkBxMsg('selector115', 'chkUnchk5');"> 
+		  <label for="selector115" name="chkUnchk" id="chkUnchk5"><strong> 'Not Tested'</strong></label>
+        </span>
+		-->
+		<h3> Test Results </h3>
+            &nbsp;&nbsp;<label for="dsplTstRslt"> Filter results by:</label>
+		  &nbsp;&nbsp;<select name="Select to view test result" ng-model="selected_name_tstrsltdsply"  id="dsplTstRslt" title="" ng-change="displayTestResult()" >
+          <option value="">{{default_SelectedResultDsply}}</option>
+           <option ng-repeat="result in optionsRsltDsply" value="{{result.name}}">{{result.name}}</option>
+          </select>
 
-		  <br />
                
                
-                 <div ng-show="checked1">
+                 <div ng-show="displaytstRslt"  id='tstRslt'>
  
 				<div ng-show="wcagRprt">	 
 
@@ -224,23 +253,84 @@
 						</th> 
                         
                         <th scope="col" title="Screenshot" id="scrnsht[$index]">
-                          <div style="width: 123px" >Screenshot </div>
+                          <div style="width: 118px" >Screenshot </div>
                         </th>
-                        <th style="width: 61px" scope="col" title="Global Issue" id="glbl[$index]">Global Issue </th>
+                        <th style="width: 66px" scope="col" title="Global Issue" id="glbl[$index]">Global Issue </th>
                         <th scope="col" title="Remediation Details" id="rmdtl[$index]">
                           <div style="width: 198px"> Remediation Details </div>
+                        </th>
+						<th scope="col" title="Screenshot" id="scrnsht2[$index]">
+                          <div style="width: 123px" >Remediation Screenshot </div>
                         </th>
                         <th scope="col" title="Date" id="rmdt[$index]">
                           <div style="width: 102px"> Remediation Date </div>
                         </th>
                         
                       </tr>
-
-            
             </thead>
+			<tbody ng-repeat="record in jsonData">
+             <tr ng-repeat="test in record.Criteria " ng-if="filterResult1"> 
+			<!--<tr ng-repeat="test in record.Criteria " ng-if="noResult[$index]" ng-show="TestResult[$index]== filterResult">-->
+			 <th  title="Issue Number">
+                <div style="width: 80px"> Issue {{counterCollection[$index]}} </div>
+              </th>              
+              <th  scope="row" title="Test Name" id="tnm1[$index]">
+                <div class="widetd1"> {{TestName[$index]}} </div>
+              </th>
+              <td title="Test Id" id="tid1[$index]">
+                <div class="widetd2"> {{TestID[$index]}}</div>
+              </td>
+              <td title="Selected Test Condition" id="tstcndn1[$index]">
+                <div class="widetd3"> {{TestCondition[$index]}}</div>
+              </td>
+							
+              <td title="Selected Test Result" id="tstrslt1[$index]">
+                <div style="width: 69px"> {{TestResult[$index]}} </div>
+              </td>
+              <td title="Selected Browser Types" id="brsr1[$index]">
+                <div style="width: 129px"> {{T_brwsrType[$index]}} </br> {{T_brwsrVrsn[$index]}}</div>
+              </td>
+			  <td title="Entered Tester's Comment" id="tstcmt1[$index]">
+                <div class="widetd3"> {{TesterComment[$index]}}</div>
+              </td>
+			  <td title="Entered location/screen" id="lcn1[$index]">
+                <div class="widetd3"> {{location[$index]}}</div>
+              </td>              
+              <td style="width: 143px !important">  <img width="100" id="image{{$index}}"  ng-src={{ImageSrc[$index]}}  ng-click="zoom($index)" class="large-image"   onerror="this.style.display='none';" >
+              
+             <div id="{{$index}}" class="modal">
+             <span class="close" id="cls{{$index}}" >&times;</span>
+            <img  class="modal-content" id="img{{$index}}">
+             <div class="caption" id="caption{{$index}}" ></div>
+             </div>
+			  </td>
+            
+              <td title="Selected Global Issue" id="glbl1[$index]">
+                <div style="width: 40px !important"> {{GlobalIssue[$index]}} </div>
+              </td>
+              <td title="Entered Remediation Details" id="rmdtl1[$index]" >
+                <div style="width: 199px !important"> {{RemediationDetails[$index] }}</div>
+              </td>
+			  
+			  <td width="151">  <img width="100" id="image2{{$index}}"  ng-src={{ImageSrc2[$index]}}  ng-click="zoom2($index)" class="large-image"   onerror="this.style.display='none';" >
+              
+             <div id="rmd2{{$index}}" class="modal">
+             <span class="close" id="cls2{{$index}}" >&times;</span>
+            <img  class="modal-content" id="img2{{$index}}">
+             <div class="caption" id="caption2{{$index}}" ></div>
+             </div>
+			  </td>
+			  
+              <td title="Date" id="rmdt1[$index]" >
+                <div style="width: 102px"> {{RemediationDate[$index]}} </div>
+              </td>
+
+            </tr>
+          </tbody>
 
           <tbody ng-repeat="record in jsonData">
-            <tr ng-repeat="test in record.Criteria " ng-if="noResult[$index]">
+            <!-- <tr ng-repeat="test in record.Criteria " ng-if="filterResult1"> -->
+			<tr ng-repeat="test in record.Criteria " ng-if="noResult[$index]" ng-show="TestResult[$index]== filterResult">
 			 <td  title="Issue Number">
                 <div style="width: 80px"> Issue {{counterCollection[$index]}} </div>
               </td>              
@@ -266,11 +356,11 @@
 			  <td title="Entered location/screen" id="lcn1[$index]">
                 <div class="widetd3"> {{location[$index]}}</div>
               </td>              
-              <td width="151">  <img width="100" id="image{{$index}}"  ng-src={{ImageSrc[$index]}}  ng-click="zoom($index)" class="large-image" title="Selected screenshot" alt="Selected screenshot" onerror="this.style.display='none';" >
+              <td width="151">  <img width="100" id="image{{$index}}"  ng-src={{ImageSrc[$index]}}  ng-click="zoom($index)" class="large-image"  alt='' onerror="this.style.display='none';" >
               
              <div id="{{$index}}" class="modal">
              <span class="close" id="cls{{$index}}" >&times;</span>
-            <img alt="Selected screenshot" class="modal-content" id="img{{$index}}">
+            <img  class="modal-content" id="img{{$index}}">
              <div class="caption" id="caption{{$index}}" ></div>
              </div>
 			  </td>
@@ -281,6 +371,16 @@
               <td title="Entered Remediation Details" id="rmdtl1[$index]" >
                 <div style="width: 201px"> {{RemediationDetails[$index] }}</div>
               </td>
+			  
+			  <td width="151">  <img width="100" id="image2{{$index}}"  ng-src={{ImageSrc2[$index]}}  ng-click="zoom2($index)" class="large-image"  alt='' onerror="this.style.display='none';" >
+              
+             <div id="rmd2{{$index}}" class="modal">
+             <span class="close" id="cls2{{$index}}" >&times;</span>
+            <img  class="modal-content" id="img2{{$index}}">
+             <div class="caption" id="caption2{{$index}}" ></div>
+             </div>
+			  </td>
+			  
               <td title="Date" id="rmdt1[$index]" >
                 <div style="width: 102px"> {{RemediationDate[$index]}} </div>
               </td>
@@ -290,18 +390,19 @@
 
         </table>
 
-        </div>
+        </div></div>
 
-
-        <fieldset ng-show='DisabilityImpactCollectionLength' style="margin-left: 0em;">
+        
+        <fieldset  style="margin-left: 0em;" >
           <legend>
             <h3> Disability Impact </h3>
           </legend>
 
-          <h3> <a title="Disability Impact Information " ng-href="./Resources/WCAG 2.0 Impact Statements_2018-10-02.docx">Disability Impact Summary</a> </h3>
+          <h3> Disability Impact Summary </h3>  
+		  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Refer to <a title="WCAG 2.0 Impact Statements" ng-href="./Resources/WCAG 2.0 Impact Statements_2018-10-02.docx">WCAG 2.0 Impact Statements</a> for more information<br><br>
 
-          
-          <button class="collapsible"  id="dsblGrpBtn">Impact Summary </button>
+          <h4><span  id='dsblImpctDsply'> <span></h4>
+          <button class="collapsible"  id="dsblGrpBtn" ng-show='DisabilityImpactCollectionLength' >Impact Summary </button>
           <div class="content">
 		   <label for="dsblImpctRslt"> </label>  <!-- <h4>Different impacted groups are separated by comma, check below</h4> -->
 		  <span id="dsblImpctRslt" >{{DisabilityImpactCollection}} </span>	<!-- {{DisabilityImpactCollectionSC}}-->	  
@@ -319,6 +420,7 @@
             </div> -->
           </div>
         </fieldset>
+		
 
         <fieldset style="margin-left: 0em;">
           <legend>
