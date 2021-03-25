@@ -70,10 +70,10 @@ for (i = 0; i < coll.length; i++) {
 
 function expandCollapse1() {
   var x = document.getElementById("expandCollapse1");
-  if (x.innerHTML === "<i class=\"down\"></i> Hide Product section") {
-    x.innerHTML = "<i class=\"up\"></i> Show Product section";
+  if (x.innerHTML === "<i class=\"down\"></i> Hide Product Section") {
+    x.innerHTML = "<i class=\"up\"></i> Show Product Section";
   } else {
-    x.innerHTML = "<i class=\"down\"></i> Hide Product section";
+    x.innerHTML = "<i class=\"down\"></i> Hide Product Section";
   }
 
 }
@@ -81,10 +81,10 @@ function expandCollapse1() {
 function expandCollapse2() {
 
   var y = document.getElementById("expandCollapse2");
-  if (y.innerHTML === "<i class=\"down\"></i> Hide Test Environment section") {
-    y.innerHTML = "<i class=\"up\"></i> Show Test Environment section";
+  if (y.innerHTML === "<i class=\"down\"></i> Hide Test Environment Section") {
+    y.innerHTML = "<i class=\"up\"></i> Show Test Environment Section";
   } else {
-    y.innerHTML = "<i class=\"down\"></i> Hide Test Environment section";
+    y.innerHTML = "<i class=\"down\"></i> Hide Test Environment Section";
   }
 
 }
@@ -92,10 +92,10 @@ function expandCollapse2() {
 function expandCollapse3() {
 
   var z = document.getElementById("expandCollapse3");
-  if (z.innerHTML === "<i class=\"down\"></i> Hide Testing Information section") {
-    z.innerHTML = "<i class=\"up\"></i> Show Testing Information section";
+  if (z.innerHTML === "<i class=\"down\"></i> Hide Testing Information Section") {
+    z.innerHTML = "<i class=\"up\"></i> Show Testing Information Section";
   } else {
-    z.innerHTML = "<i class=\"down\"></i> Hide Testing Information section";
+    z.innerHTML = "<i class=\"down\"></i> Hide Testing Information Section";
   }
 }
 
