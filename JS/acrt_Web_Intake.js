@@ -1167,7 +1167,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	$scope.origSelectedResults1=$scope.origSelectedResults-1;
 	
 	$scope.addIssue = function(index) {    	
-     if($scope.selected_name_tstgrp[index] !== undefined){			
+    // if($scope.selected_name_tstgrp[index] !== undefined){			
 	  $scope.newIssueRsltSelected = false;           
       $scope.parentIssueSelected = index;      
       $scope.insertRoww = [];    	  
@@ -1271,11 +1271,11 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 		 if ($scope.checkboxModel.alerts == "on")
 			//alert("Child issue added to the end of this table. Select ‘Go to Child Issues’ to jump to first child issue.");
 		  alert("Child issue added.");
-		}
+		/*}
 	else {
     //if ($scope.checkboxModel.alerts == "on")		
 	alert('Please select Test result for this test before adding new one.');
-	}
+	}*/
 	//$scope.parentIssueSelected = index;
 	$scope.addedResultIndex = 'a'+index ;//+$scope.parentIssueSelected;	 
 	$scope.issueClicked = $scope.issueClicked+1;	
