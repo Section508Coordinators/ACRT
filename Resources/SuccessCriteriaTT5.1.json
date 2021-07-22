@@ -520,7 +520,7 @@
 			"Test": "12 Page and Frame <Titles>",
 			"TestName": "2.4.2-page-title-defined",
 			"TestID": "12.A",
-			"TestCondition": "A <title> element is defined for the web page.",
+			"TestCondition": "A title element is defined for the web page.",
 			"Risk": " ",
 			"OptMenu1": "menu5",
 			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'With Limited Manipulation', 'With Limited Language, Cognitive, and Learning Abilities' " 
@@ -531,7 +531,7 @@
 			"Test": "12 Page and Frame <Titles>",
 			"TestName": "2.4.2-page-title-purpose",
 			"TestID": "12.B",
-			"TestCondition": "The <title> element identifies the contents or purpose of the web page.",
+			"TestCondition": "The title element identifies the contents or purpose of the web page.",
 			"Risk": " ",
 			"OptMenu1": "menu5",
 			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'With Limited Manipulation', 'With Limited Language, Cognitive, and Learning Abilities'" 
