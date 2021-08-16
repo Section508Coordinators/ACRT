@@ -1967,7 +1967,7 @@ $scope.uploadImageClicked2 = false;
     $scope.imageCaptured2[imgPstn] = true;
 	$scope.imgCnvrsnCurrentValue2[imgPstn]= reader.result;	
 	 $scope.imgCnvrsnCurrent2.push('{"imgPosition2" : "'+ imgPstn +'"', '"imgValue2" :"'+ reader.result+'"}');  
-	 $scope.imgCnvrsn2 = $scope.imgCnvrsn.concat($scope.imgCnvrsnCurrent2);	
+	 $scope.imgCnvrsn2 = $scope.imgCnvrsn2.concat($scope.imgCnvrsnCurrent2);	
 	 //$scope.imgCnvrsn2 = $scope.imgCnvrsn2.filter($scope.onlyUnique);  
 	 $scope.imgCnvrsnCurrent2 = [];	
      $scope.imageCapturedStored2[imgPstn]= false;
