@@ -1,6 +1,6 @@
 # ACRT
 # Project Title
-**“Accessibility Conformance Report Tool (ACRT)”** 
+**Accessibility Conformance Report Tool (ACRT)** 
 
 ACRT is a browser-based standalone application for recording accessibility test results from Trusted Testers. All input data will be stored as JSON &/or html files in the local machine which can be shared needed. Information in the JSON file can be further manipulated for analytics and reporting purposes as needed. 
 
