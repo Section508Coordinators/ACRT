@@ -5,7 +5,7 @@
 ACRT is a browser-based standalone application for recording accessibility test results from Trusted Testers. All input data will be stored as JSON &/or html files in the local machine which can be shared needed. Information in the JSON file can be further manipulated for analytics and reporting purposes as needed. 
 
 ## Getting Started
-1) Download files to your local machine from the repository; default location is the Downloads folder. Select the Code button above and select "Download zip". Once downloaded, unzip/extract files. 
+1) Download files to your local machine from the repository; default location is the Downloads folder. Select the Code button above and select "Download ZIP". Once downloaded, unzip/extract files. 
 2) Refer to [ACRT Training Manual](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/ACRTTrainingManual.pdf ) in the 'Resources' folder for detailed instructions. 
 
 
