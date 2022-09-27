@@ -16,8 +16,8 @@
   <div ng-controller="acrtWebIntakeCtrl"> 
  <a  href="#helpID" id="skipID" class="skip"  autofocus >Skip to Main Content </a>
 <div >
-  <img src=".\Resources\logo.png" alt="ACRT logo" title="ACRT Logo"style="width:5em;height:3.3em;"> 
-<strong style="font-size: 1.5em;display: inline-block;" title="Accessibility Conformance Reporting Tool (ACRT)"> Accessibility Conformance Reporting Tool (ACRT) </strong>
+  <img src=".\Resources\acrt-logo-lrg.png" alt="ACRT logo" title="ACRT Logo"style="width:10em; margin-bottom:-7px;"> 
+  <strong style="font-size: 1.5em; display: inline-block; margin-bottom:7px;" title="Accessibility Conformance Reporting Tool (ACRT)"> Accessibility Conformance Reporting Tool (ACRT) </strong>
 </div> 
 <div class="topnav" id="myTopnav">   
   <a title="Home" href="./index.html" id="homeID" class="menu" >Home </a>   <!--target="_blank"  -->
@@ -34,16 +34,17 @@
   To make sure you have the latest version of ACRT, check either 
   <a title="ACRT GitHub Repository" href= "https://github.com/Section508Coordinators/ACRT " target="_blank"   id="helpID"> GitHub </a>  &nbsp;(all users) 
   or <a title="ACRT Bitbucket Repository" href= "https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt" target="_blank"   id="bitbucketSrc">BitBucket </a>  &nbsp;(DHS users) before completing the form. <br><br> -->
-  Refer to the <a title="ACRT User Guide" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID">ACRT User Guide </a> &nbsp;for complete instructions.
+  Refer to the <a title="ACRT User Guide" href="./Resources/ACRTTrainingManual.pdf" target="_blank"  id="helpID" style="display:inline-block; color:blue;">ACRT User Guide </a> &nbsp;for complete instructions.
    <p > <!--  id="instr" -->
 	  <strong>Tool Tips:</strong> <br>
-	  <ol>	    
-	    <li>Load a JSON Trusted Tester v.4 or Trusted Tester v.5 (TT4 or TT5) Success Criteria template.</li>	 
-        <li>Use 'Skip to main content' link or keyboard shortcut Alt+M to go to go main content.</li>		
+	  <ol>	
+        <li>Use 'Skip to main content' link or keyboard shortcut Alt+M to go to main content.</li>		  
+	    <li>To Create a new Report, Load a JSON Trusted Tester v.5.1.1 (for web) or Trusted Tester v.4 (for software)  (TT5.1.1 or TT4) Success Criteria template.</li>	
+        <li>To edit, select JSON file with test results. </li>	        	
 		<li>Expand Product, Test Environment, and Tester Sections to enter information.</li>
-		<li>Complete all (<span class="required"> asterisk) required form fields  </span>in Product and Testing information sections.</li>	
+		<li>Complete all  required form fields marked with an asterisk (&nbsp;&nbsp;&nbsp; <span class="required"></span>) </span>in Product and Testing information sections.</li>	
 		<li>You can customize JSON Success Criteria templates with pre-populated information (e.g., Product Section) for future use.</li>		
-	    <li> If needed, open a copy of the<a style="display: inline-block;" title="Trusted Tester Test Process" href= "https://www.dhs.gov/sites/default/files/publications/trusted_tester_test_process_v5_0_aug_16_2019.pdf"  target="_blank"  id="tstinstrID" ><u>Trusted Tester Test Process</u>.</a> </li>	
+	    <li> If needed, open a copy of the <a href= "./Resources/Trusted_Tester_Test_Process_v5.1.1.docx"  target="_blank" id="li-link" style="display:inline-block; color:blue;"><u>Trusted Tester Test Process</u>.</a> </li>	
 		<li>Trusted Testers should coordinate with their IT Project Manager regarding remediation details.</li>
 	  </ol>
 	</p><span id='selectFileHd' ng-hide = "fileInput1" >
@@ -54,7 +55,7 @@
 	  <br>
 	  <strong > <span  id="selMsg" ng-show="fileInput1">  </span></strong>
 	  <br><br>	  
-	   <span id="hideLoad"  ><label for="loadFile" ng-show="fileInput1" ><strong> Load selected file</strong> </label> <br> <button ng-show="fileInput1" id='button' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form" ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}">Load File </button> </span> 
+	   <span id="hideLoad"  ><label for="loadFile" ng-show="fileInput1" ><strong> Load file</strong> </label> <br> <button ng-show="fileInput1" id='button' class="button" ng-model="loadbtn" ng-click="loadFile();" id='loadFile' name="Load Data In this Form" ng-model-options="{  updateOn: 'click',  debounce: { 'default': 20, 'blur': 0 }}">Load File </button> </span> 
 	   <p> <img  ng-show="fileInput1"  id="dwnldConfm"  ng-src ="./Resources/chkMrk.jpg"  ng-if="dataLoaded" width="20" height="20"  alt="checkmark" onerror="this.style.display='none';"> 
 	   <span  id="msg"><strong > </strong></span>	   
 	   </p> 
@@ -71,7 +72,7 @@
 	 <p ng-show="original">
 	 <!--<strong class="hdnMsg"> Please fill all required fields to save information from this page. </strong> -->
 	 <strong > Please fill all required fields to save information from this page. </strong> 
-	  <br>A red asterisk <strong><span class="required"> </strong> </span> indicates a <strong> required</strong> field. 
+	  <br>A red asterisk <strong>(<span class="required">) </strong> </span> indicates a <strong> required</strong> field. 
 	 </p>
 	 </div>
  <!-- 
@@ -85,33 +86,31 @@
 <fieldset  style="margin-left: 1em;height: auto;">
   <legend>
     <h2> <span class="required"> Product </h2></legend>
-	<button class="collapsible" title="Show or Hide Product Section" onclick="expandCollapse1()"><div id="expandCollapse1"> <i class="up"></i> Show Product Section</div> </button> 
-<div class="content">
-<div class="divSpace" id="productInfo" >
-   <label for="productID" class="required"> Product Name (Required<span ng-if="acrtInputForm.productName.$valid" >, 50 chars max</span>): </label> <input type="string" name= "productName" title="50 Chars max" ng-model="productID" class= "betnTags" id="productID" placeholder="Product Name, 50 Chars max" ng-maxlength="50"  size="50" limit-to="50">&nbsp;    
-   <br><label for="versionID" class="required"> Product Version (Required <span ng-if="acrtInputForm.ProductVersion.$valid" >, 50 chars max</span> ): </label> <input type="string" ng-model="versionID" class= "betnTags" id="versionID" name="ProductVersion" placeholder="Product Version, 50 Chars max" title="50 Char max" ng-maxlength="50"  size="50" limit-to="50"> 
-   <br> <label for="ownerID">Product Owner/Vendor<span ng-if="acrtInputForm.ProductOwner.$valid" >(50 chars max)</span>: </label> <input type="string" ng-model="ownerID" class= "betnTags" id="ownerID" name="ProductOwner" placeholder="Product Owner, 50 Chars max" title="50 Chars max" ng-maxlength="50" size="50" limit-to="50"> &nbsp; <br>
-   
-   
-   <label for="productType"> Product Type:&nbsp;&nbsp;</label>  
-<select name="Type of Product" title="Product type {{default_productType}}" ng-model="productType"  id="productType" >
-<option value="">{{default_productType}}</option>
-<option ng-repeat="result in testProductTypes" value="{{result.name}}">{{result.name}}</option>
-</select>
+    <button class="collapsible" title="Show or Hide Product Section" onclick="expandCollapse1()"><div id="expandCollapse1"> <i class="up"></i> Show Product Section</div> </button> 
+    <div class="content">
+      <div class="divSpace" id="productInfo" >
+      <label for="productID" class="required"> Product Name (Required<span ng-if="acrtInputForm.productName.$valid" >, 50 chars max</span>): </label><br>
+      <input type="string" name= "productName" title="50 Chars max" ng-model="productID" class= "betnTags" id="productID" placeholder="Product Name, 50 Chars max" ng-maxlength="50" size="50" limit-to="50"> 
+      <br><label for="versionID" class="required"> Product Version (Required<span ng-if="acrtInputForm.ProductVersion.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="versionID" class= "betnTags" id="versionID" name="ProductVersion" placeholder="Product Version, 50 Chars max" title="50 Char max" ng-maxlength="50" size="50" limit-to="50"> 
+      <br> <label for="ownerID">Product Owner/Vendor <span ng-if="acrtInputForm.ProductOwner.$valid" >(50 chars max)</span>: </label> <br><input type="string" ng-model="ownerID" class= "betnTags" id="ownerID" name="ProductOwner" placeholder="Product Owner, 50 Chars max" title="50 Chars max" ng-maxlength="50" size="50" limit-to="50"> <br>
+        
+      <label for="productType"> Product Type:</label>  <br>
+      <select name="Type of Product" title="Product type {{default_productType}}" ng-model="productType" class= "betnTags" id="productType" >
+      <option value="">{{default_productType}}</option>
+      <option ng-repeat="result in testProductTypes" value="{{result.name}}">{{result.name}}</option>
+      </select>
 
-<span  ng-show="productType=='Other'"> 
-&nbsp;&nbsp; Please enter <span ng-if="acrtInputForm.OtherProductType.$valid" >(100 chars max)</span><input  type="string"  placeholder="Other Product, 100 chars max." ng-model="otherProduct"  id="otherProduct" name="OtherProductType" ng-maxlength="100"  title="100 Chars max" size="100" limit-to="100"> 
-</span>   
-   <br><br><label for="urlID">Location <span ng-if="acrtInputForm.Location.$valid" >(50 chars max)</span>: </label> <input type="string" ng-model="urlID"  id="urlID" placeholder="location, 150 chars max" name="Location" title="150 Chars max" ng-maxlength="150" size="150" limit-to="150"> &nbsp;    
-   
-   
-   <br>
-   <br><label for="prodDescID" class="required"> Product description (Required <span ng-if="acrtInputForm.ProductDescription.$valid" >, 1000 chars max</span>) : </label><br>
-   <textarea rows="4" cols="90" type="text" ng-model="prodDescID" class="txtarea" id="prodDescID" placeholder="Product Description, 1000 chars max" name="ProductDescription" title="1000 Chars max" ng-maxlength="1000" limit-to="1000" required> </textarea> &nbsp;
-   <br><br><br><label for="prdNteDescID"> Notes <span ng-if="acrtInputForm.Notes.$valid" >(1000 chars max)</span>:</label><br>
-<textarea rows="4" cols="90" type="text" ng-model="prdNteDescID" class="txtarea" id="prdNteDescID" name="Notes" title="1000 Chars max" placeholder="Notes, 1000 chars max" ng-maxlength="1000" limit-to="50"> </textarea> <br>
-   
- </div>  </div>
+      <span  ng-show="productType=='Other'"> 
+      Please enter <span ng-if="acrtInputForm.OtherProductType.$valid" >(100 chars max)</span><br><input  type="string"  placeholder="Other Product, 100 chars max." ng-model="otherProduct" class= "betnTags" id="otherProduct" name="OtherProductType" ng-maxlength="100"  title="100 Chars max" size="100" limit-to="100"> 
+      </span>   
+      <br><label for="urlID">Location/URL <span ng-if="acrtInputForm.Location.$valid" >(150 chars max)</span>: </label> <br><input type="string" ng-model="urlID" class= "betnTags" id="urlID" placeholder="location, 150 chars max" name="Location" title="150 Chars max" ng-maxlength="150" size="100" limit-to="150">     
+      <br>
+      <label for="prodDescID" class="required"> Product description (Required <span ng-if="acrtInputForm.ProductDescription.$valid" >, 1000 chars max</span>) : </label><br>
+      <textarea rows="4" cols="90" type="text" ng-model="prodDescID" class="betnTags" id="prodDescID" placeholder="Product Description, 1000 chars max" name="ProductDescription" title="1000 Chars max" ng-maxlength="1000" limit-to="1000" required> </textarea> 
+      <br><label for="prdNteDescID"> Notes <span ng-if="acrtInputForm.Notes.$valid" >(1000 chars max)</span>:</label><br>
+      <textarea rows="4" cols="90" type="text" ng-model="prdNteDescID" class="betnTags" id="prdNteDescID" name="Notes" title="1000 Chars max" placeholder="Notes, 1000 chars max" ng-maxlength="1000" limit-to="50"> </textarea> <br>
+        
+  </div>  </div>
  </fieldset></br>
  
  
@@ -124,13 +123,13 @@
 <div class="content">
 
  <div class="divSpace" id="testersInfo" >
- <label for="CompanyName" class="required"> Company Name (Required<span ng-if="acrtInputForm.CompanyName.$valid" >, 100 chars max</span>): </label> <input type="string" ng-model="companyname"  title="100 Chars max" placeholder ="Company Name, 100 chars max" id="companyname" name="CompanyName" ng-maxlength="100"   size="100" limit-to="100"> 
-  <br><label for="firstname" class="required"> Tester's First Name (Required <span ng-if="acrtInputForm.TesterFirstName.$valid" >, 50 chars max</span>): </label> <input type="string" ng-model="firstname" placeholder ="First Name, 50 chars max" class= "betnTags" id="firstname" name="TesterFirstName" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50"> &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;   
-   <br><label for="lastname" class="required"> Tester's Last Name (Required <span ng-if="acrtInputForm.TesterLastName.$valid" >, 50 chars max</span>): </label> <input type="string" ng-model="lastname" placeholder ="Last Name, 50 chars max" class= "betnTags" id="lastname" name="TesterLastName" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50"> 
-  <br><label for="testerID"> Trusted Tester ID <span ng-if="acrtInputForm.TrustedTesterId.$valid" >(50 chars max)</span>: </label> <input type="string" ng-model="testerID" class= "betnTags" placeholder ="ID, 50 chars max" id="testerID" name="TrustedTesterId" title="50 Chars max" ng-maxlength="50" limit-to="50"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;   
-  <br> <label for="testerContact" class="required"> Tester's Email (Required <span ng-if="acrtInputForm.TesterContact.$valid" >, 50 chars max</span>): </label> <input type="string" ng-model="testerContact" placeholder ="Contact, 50 chars max" class= "betnTags" id="testerContact" name="TesterContact" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50">
-   <br><label for="testScope" > Testing Scope <span ng-if="acrtInputForm.TestScope.$valid" >(1000 chars max)</span>:</label><br> <textarea rows="4"cols="90"type="text"ng-model="testScope"class="txtarea"id="testScope"name="TestScope" placeholder="test scope, 1000 chars max" title="1000 Chars max" ng-maxlength="1000" limit-to="1000"></textarea>   
-    <br><br> Testing Method: <strong>{{selected_name_tstprcss}}	</strong>  Version  <strong>{{evlMthdVrsn}} </strong>
+ <label for="CompanyName" class="required"> Company Name (Required<span ng-if="acrtInputForm.CompanyName.$valid" >, 100 chars max</span>): </label> <br><input type="string" ng-model="companyname" class= "betnTags" title="100 Chars max" placeholder ="Company Name, 100 chars max" id="companyname" name="CompanyName" ng-maxlength="100"   size="100" limit-to="100"> 
+  <br><label for="firstname" class="required"> Tester's First Name (Required<span ng-if="acrtInputForm.TesterFirstName.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="firstname" placeholder ="First Name, 50 chars max" class= "betnTags" id="firstname" name="TesterFirstName" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50">    
+   <br><label for="lastname" class="required"> Tester's Last Name (Required<span ng-if="acrtInputForm.TesterLastName.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="lastname" placeholder ="Last Name, 50 chars max" class= "betnTags" id="lastname" name="TesterLastName" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50"> 
+  <br><label for="testerID"> Trusted Tester ID <span ng-if="acrtInputForm.TrustedTesterId.$valid" >(50 chars max)</span>: </label> <br><input type="string" ng-model="testerID" class= "betnTags" placeholder ="ID, 50 chars max" id="testerID" name="TrustedTesterId" title="50 Chars max" ng-maxlength="50" limit-to="50">    
+  <br> <label for="testerContact" class="required"> Tester's Email (Required<span ng-if="acrtInputForm.TesterContact.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="testerContact" placeholder ="Contact, 50 chars max" class= "betnTags" id="testerContact" name="TesterContact" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50">
+   <br><label for="testScope" > Testing Scope <span ng-if="acrtInputForm.TestScope.$valid" >(1000 chars max)</span>:</label><br> <textarea rows="4"cols="90"type="text"ng-model="testScope" class= "betnTags" id="testScope"name="TestScope" placeholder="test scope, 1000 chars max" title="1000 Chars max" ng-maxlength="1000" limit-to="1000"></textarea>   
+    <br> Testing Method: <strong>{{selected_name_tstprcss}}	</strong>  Version  <strong>{{evlMthdVrsn}} </strong>
 
 	 <!-- <select name="  Evaluation Method " ng-model="selected_name_tstprcss" id="evalMthd"  >  
 <option value="" selected disabled hidden>{{default_evalMethod}}</option>
@@ -143,7 +142,7 @@
 </select> 	
 	 <input type="string" class="required" ng-model="selected_name_tstprcss"  class= "betnTags" id="evalMthd" name="Evaluation Method" ng-maxlength="50" ng-readonly="true"> &nbsp;      
 	  <input type="string" class="required" ng-model="evlMthdVrsn"  class= "betnTags" id="evlMthdVrsn" name="Evaluation Method Version" ng-maxlength="50" ng-readonly="true"> &nbsp;      
-	--> &nbsp;  
+	-->   
  </div> </div>
  </fieldset><br>
  
@@ -151,7 +150,7 @@
 <legend> 
  <h2> Test Environment   </h2>
  </legend> 
- <button class="collapsible" title="Show or HIde Test Environment Section" onclick="expandCollapse2()"><div id="expandCollapse2"> <i class="up"></i> Show Test Environment Section</div> </button>
+ <button class="collapsible" title="Show or Hide Test Environment Section" onclick="expandCollapse2()"><div id="expandCollapse2"> <i class="up"></i> Show Test Environment Section</div> </button>
  <div class="content">
 <div class="divSpace" id="sysInfo" >  
    <div class="left-div">   
@@ -279,10 +278,10 @@
    
   <div  class="right-div"> 
    <label class="span1" >  Operating System</label>  </br></br>
- <label for="window" ng-model="chkBoxValWin" >Window OS:
+ <label for="window" ng-model="chkBoxValWin" >Windows OS:
     <input ng-checked="chkBoxValWin"  type="checkbox" title="window OS" ng-model="checkboxModel.value6"  id="window" ng-true-value="'Window OS'" ng-false-value="''">
-  </label> &nbsp;
-  <label for="wnVersnIDTest">  Version: </label> 
+  </label>
+  <label for="wnVersnIDTest">Version: </label> 
 
 	  <select title="{{default_WindVrsn}}" ng-model="selected_name_wnVersn" id="wnVersnIDTest"  ng-click="tstWinOSClicked()">
       <option value="" selected disabled hidden>{{default_WindVrsn}}</option>
@@ -306,11 +305,11 @@
    <div class="show">
    <label for="otherWindowID">Other Operating System
     <input ng-checked= "chkBoxValOthrWndw1" id="otherWindowID" name="Other Operating System"  type="checkbox" ng-model="otherWindow"  ng-true-value="'Other window'" ng-false-value="''"> 
-	</label> &nbsp;
+	</label> 
 <br>
-<span  ng-show="otherWindow"> 
-<label for="OtherOSType"> OS Name <span ng-if="acrtInputForm.OtherOSName.$valid" >50 chars max</span> <input type="string" ng-model="entOthrWindID" class= "betnTags"  placeholder="50 Char Max." title="50 Char Max." id="OtherOSName" name="OtherOSName" ng-maxlength="50" size="50" limit-to="50" ></label><br>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <label for="OtherOSVersion">OS Version <span ng-if="acrtInputForm.OtherOSVersion.$valid" >50 chars max</span> <input type="string" ng-model="entOthrWindVrsn" placeholder="50 Char Max." title="50 Char Max." class= "betnTags" id="OtherOSVersion" name="OtherOSVersion" size="50" ng-maxlength="50" limit-to="50"></label>
+<span  ng-show="otherWindow"> <br>
+<label for="OtherOSType"> OS Name <span ng-if="acrtInputForm.OtherOSName.$valid" >(50 chars max):</span> <br><input type="string" ng-model="entOthrWindID" class= "betnTags"  placeholder="50 Char Max." title="50 Char Max." id="OtherOSName" name="OtherOSName" ng-maxlength="50" size="50" limit-to="50" ></label><br>
+<label for="OtherOSVersion">OS Version <span ng-if="acrtInputForm.OtherOSVersion.$valid" >(50 chars max):</span> <br><input type="string" ng-model="entOthrWindVrsn" placeholder="50 Char Max." title="50 Char Max." class= "betnTags" id="OtherOSVersion" name="OtherOSVersion" size="50" ng-maxlength="50" limit-to="50"></label>
 
 </span> </div>
   
@@ -334,7 +333,7 @@
 <option ng-repeat="result in optionsglbl" value="{{result.name}}">{{result.name}}</option>
 </select> &nbsp; &nbsp;   </div> -->
  
-<h3> Test Results Form </h3> 
+<h2> Test Results Form </h2> 
  <label for="alerts" name="chkUnchk" id="chkUnchk"><strong>Disable</strong> Add Child Issue/Remove Child Issue Alerts within the Test Results form. </label> 
  <input type="checkbox" id="alerts" title="Disable Add Child Issue/Remove Child Issue Alerts within the Test Results form." ng-model="checkboxModel.alerts"  ng-init="checkboxModel.alerts='on'"   ng-true-value="'off'" ng-false-value="'on'"> 
  <br><br>
@@ -369,21 +368,21 @@
   
  <tbody ng-repeat="record in jsonData">
 <tr ng-repeat="test in record.Criteria" >
-<th > <div  style="width: 97px"  title="Issue Number" > Issue {{$index+1}} </div> <!-- ng-if='original' -->
+<th scope="row" title="Issue {{$index+1}}"> <div  style="width: 97px"  > Issue {{$index+1}} </div> <!-- ng-if='original' -->
  <!-- <div ng-if='edit' style="width: 97px"  title="Issue Number" >Issue {{counterCollection[$index]}} </div>  -->
 </th>
-<th  scope="row" title="Test Name" ><div class="widetd1">{{test.TestName}}</div></th> 
+<th   scope="row" title="Test Name" ><div class="widetd1">{{test.TestName}}</div></th> 
 <td ><div class="widetd2"  id="testID{{$index}}" title="Test ID"> {{test.TestID}} </div> </td>
 
 <td > <div class="widetd3" id="testConditionID{{$index}}" title="Test Condition" >{{test.TestCondition}}</div> </td>
-<td style="width: 50px" title="Selected test result is {{default_SelectedResult[$index]}}" name="Test Result"> 
-<!--<label for="{{$index}}"> Select Result: </label> -->
+<!-- <td style="width: 50px" title="Selected test result is {{default_SelectedResult[$index]}}" name="Test Result"> -->
+<td style="width: 50px"  name="Test Result"> 
  <span ng-if="menu1[$index] == 'menu1'" ng-keypress ="elemntClicked2([$index])">    
       <select  class="resultOptions"
       ng-model="selected_id_tstrslt$index"  
 	  ng-model="selected_name_tstgrp[$index]"  
       ng-options="o.id as o.name for o in optionsTstrslt1"  
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt1|filter:{id:selected_id_tstrslt$index})[0].name" id="{{$index}}"   onchange="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt1|filter:{id:selected_id_tstrslt$index})[0].name" id="{{$index}}"   onchange="elemntClicked2([$index])" title="Test Result for {{test.TestID}}">
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 <span ng-if="menu1[$index] == 'menu2' " ng-keypress ="elemntClicked2([$index])" >    
@@ -391,7 +390,7 @@
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}"  ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}"  ng-click="elemntClicked2([$index])" title="Test Result for {{test.TestID}}">
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
@@ -400,12 +399,12 @@
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt2" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt2|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}"  ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt2|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}"  ng-click="elemntClicked2([$index])" title="Test Result for {{test.TestID}}" >
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
   <span ng-if="menu1[$index] == 'menu4' " ng-keypress ="elemntClicked2([$index])">    
-      <select class="resultOptions"  ng-model="selected_name_tstgrp[$index]" id="{{$index}}" ng-click="rsltSlctionClicked([$index]);">
+      <select class="resultOptions"  ng-model="selected_name_tstgrp[$index]" id="{{$index}}" ng-click="rsltSlctionClicked([$index]);" title="Test Result for {{test.TestID}}">
 	  <option value="" > Does Not Apply </option>
 	  <option ng-repeat="result in optionsTstrslt4" value="{{result.name}}">{{result.name}}</option>
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select>       	  
@@ -416,7 +415,7 @@
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt3" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt3|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt3|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}" ng-click="elemntClicked2([$index])" title="Test Result for {{test.TestID}}">
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
@@ -425,7 +424,7 @@
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt5" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt5|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt5|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}" ng-click="elemntClicked2([$index])" title="Test Result for {{test.TestID}}">
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
 
@@ -434,7 +433,7 @@
       ng-model="selected_id_tstrslt$index" 
 	  ng-model="selected_name_tstgrp[$index]" 
       ng-options="o.id as o.name for o in optionsTstrslt6" 
-      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt6|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}" ng-click="elemntClicked2([$index])" >
+      ng-change="selected_name_tstgrp[$index]=(optionsTstrslt6|filter:{id:selected_id_tstrslt$index})[0].name"  id="{{$index}}" ng-click="elemntClicked2([$index])" title="Test Result for {{test.TestID}}">
 	  <option value="" selected disabled hidden>{{default_SelectedResult[$index]}}</option> </select> 	  
 </span>
   
