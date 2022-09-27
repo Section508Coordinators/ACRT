@@ -1,5 +1,5 @@
 article{
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 .addChild:focus {
@@ -37,13 +37,13 @@ a.button {
 
     text-decoration: none;
     color: white;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 p{
 	
 	padding-left: 2em;
 	padding-right: 2em;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 * {
@@ -160,20 +160,20 @@ background-color: #FFFF00;}
 }
 
 #fileinput:hover {
- background-color:rgb(220,220,220);
-  color: black;
+  background-color:rgb(5, 154, 114);
+  color: white;
 }
 
 #fileinput:focus {
  /*background-color:rgb(192,192,192);
   color: black; */
-   background-color:white;
- color: rgb(25,25,112);
+  background-color:rgb(5, 154, 114);
+  color: rgb(25,25,112);
  border: 1px solid rgb(25,25,112);
 }
 
  #fileinput:active {
- background-color:rgb(211,211,211);
+  background-color:rgb(5, 154, 114);
   color: black;
 }
 
@@ -198,22 +198,22 @@ a:focus {
     background-color:white;
  color: rgb(25,25,112);
  border: 1px solid rgb(25,25,112);
-font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 
 }
 
 
 a:hover  {
    color: rgb(2, 2, 51);
-font-family: "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+font-family: "Source Sans Pro", "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 a:active {
    color: rgb(5, 41, 59);
-font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 a:visited  {
    color: rgb(0, 102, 153);
-font-family: "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+font-family: "Source Sans Pro", "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
  
 .collapsible:active {
@@ -221,14 +221,14 @@ font-family: "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvet
  color: #ffffff;
 }
 .collapsible:hover{
- background-color: rgb(2, 2, 51);
- color: #ffffff;
+  background-color:rgb(5, 154, 114);
+  color: #ffffff;
 }
 .collapsible:focus {
  /*background-color:rgb(9, 9, 66);
  color: #ffffff; */
- background-color:white;
- color: rgb(25,25,112);
+ background-color:rgb(5, 154, 114);
+ color: white;
  border: 1px solid rgb(25,25,112);
 }
 .collapsible:visited {
@@ -239,14 +239,14 @@ font-family: "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvet
 button:focus  {
  /*background-color:rgb(9, 9, 66);
  color: #ffffff; */
- background-color:white;
- color: rgb(25,25,112);
+ background-color:rgb(5, 154, 114);
+ color:white;
  border: 1px solid rgb(25,25,112);
 }
 
 button:hover  {
- background-color:rgb(2, 2, 51);
- color: #ffffff;
+  background-color:rgb(5, 154, 114);
+  color: #ffffff;
 }
 
 
@@ -271,16 +271,16 @@ button:active   {
 
 input {
 	 white-space: normal;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 
 }
 textarea {
 	 white-space: normal;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 
 }
 select {
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 
 }
 input[type=checkbox] {
@@ -289,8 +289,9 @@ input[type=checkbox] {
 
 i{
 	
-  border: solid rgb(0, 51, 102);
-  border-width: 0px 10px 10px 0px;
+  border: solid white;
+  border-width: 0px 5px 5px 0px;
+  margin-right: 7px;
   display: inline-block;
   padding: 3px;
 }
@@ -318,14 +319,12 @@ i{
 
 .up {
   transform: rotate(-135deg);
-  -webkit-transform: rotate(-135deg);
-  
+  -webkit-transform: rotate(-135deg);  
 }
 
 .down {
   transform: rotate(45deg);
   -webkit-transform: rotate(45deg);
-  
 }
 
 
@@ -333,7 +332,7 @@ h1 {
   color: black;
   display: block;
   font-size: 2em; 
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
  
  /* margin-top: 0.67em;
   margin-bottom: 0.67em;
@@ -346,7 +345,7 @@ h1 {
 a {
   
   color: rgb(0, 51, 102);
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 
@@ -354,13 +353,14 @@ a {
 .warning{
 	color: 	#F0FFFF;
 	background-color: #DAA520;	
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
  .required:before { 
  content:"*"; 
  font-weight: bold;
  color: red;
+ margin-left: -.8em;
  display: inline-block;}
  
 .show{
@@ -401,7 +401,7 @@ fieldset
 	/*letter-spacing: 2px;
 	 line-height: 1.8; */
 	/* word-spacing: 10px;*/
-	 font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";	
+	 font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";	
 }
 
 
@@ -415,7 +415,7 @@ fieldset
    width: 100%;
    overflow: hidden;
    background-color:rgb(0, 51, 102);  
-   font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";   
+   font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";   
    text-align: left;
    padding: 0.5em;   
 }
@@ -430,7 +430,7 @@ fieldset
    background-color: white;
    color: black;
    text-align: left;
-   font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+   font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
    border-style: outset;
    border-radius: 10px;   
 }
@@ -447,7 +447,7 @@ fieldset
   text-align: left;
   outline: none;
   font-size: 90%;
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 
@@ -459,7 +459,7 @@ fieldset
  /* transition: max-height 0.3s ease-out; */
   background-color: #f1f1f1;
 	display: none;
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 .content1 {
   padding: 0 18px;
@@ -468,7 +468,7 @@ fieldset
   overflow: hidden;
   /* transition: max-height 0.3s ease-out; */
   background-color: #f1f1f1;
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 
@@ -476,7 +476,7 @@ h2,h3,h4 {font-weight: bold;
        /*padding: 10px;*/
 	   padding-left: 2em;
        text-align: left;
-	   font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";}
+	   font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";}
 	   
 .button {
   background-color:rgb(0, 51, 102); 
@@ -493,7 +493,11 @@ h2,h3,h4 {font-weight: bold;
   border: 2px solid black;
   padding: 8px;
   border-radius: 11px;
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+#sbtBtn:hover {
+  background-color:rgb(5, 154, 114);
 }
 
 .input {
@@ -510,7 +514,7 @@ h2,h3,h4 {font-weight: bold;
   border: 2px solid black;
   padding: 8px;
   border-radius: 11px;
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 
@@ -542,14 +546,14 @@ txtarea{
 	overflow: scroll; 
 	resize: none;
 	word-wrap: break-word;
-
 }
 
-
 .betnTags{
-margin-left: 20px;
-margin-top:15px;
-margin-bottom:10px;
+margin-left: 0px;
+margin-top:6px;
+margin-bottom:17px;
+line-height: 1.2em;
+font-size: 1.1em;
 }
 .dateField{
 margin-left: 20px;
@@ -596,7 +600,7 @@ table {
     /* can be dynamic  */
 	table-layout:fixed; 
 	overflow:auto;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	 border-collapse: collapse;	  
 	  margin: 10px;
 	  /*
@@ -612,7 +616,7 @@ th
 	border: 1px solid #696969;
     text-align: left;
     padding: 3px;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	font-weight: bold;
 	font-size: 90%;
 	vertical-align: bottom;
@@ -627,7 +631,7 @@ td
 	border: 1px solid #696969;
     text-align: left;
     padding: 2px;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	
 	overflow: hidden; 
 	text-overflow: ellipsis; 
@@ -648,7 +652,7 @@ article {
     width: 100%;
     display:block;
 	padding: 3px;  
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	overflow:auto;  
  
 }
@@ -744,13 +748,13 @@ ul {
     
   /*  width: 170px; */
     background-color: #f1f1f1;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	padding-left:70px;
 	list-style-type:  disc;
 	background-color:white;
 } 
 ol{
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	padding-left:70px;
 	
 }
@@ -764,15 +768,20 @@ li a {
     color: #000;
     padding: 8px 16px;
     text-decoration: none;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 	
 }
 
 /* Change the link color on hover */
 li a:hover {
-	background-color:rgb(2, 2, 51);
-    color: white;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  background-color:rgb(5, 154, 114);
+  color: white;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+#li-link {
+  padding:0%;
+  border:none
 }
 
 
@@ -783,7 +792,7 @@ body {
 	margin: 0em;  
 	/*border: 1px solid #A9A9A9; */
 	border: none;
-	font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
 }
 
 
@@ -793,7 +802,7 @@ body {
   overflow: hidden;
   background-color:rgb(0, 51, 102); 
   /* background-color: green;  test */
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
   
 }
 
@@ -806,7 +815,7 @@ body {
   padding: 14px 16px;
   text-decoration: none;
   font-size: 100%;
-  font-family: "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
   background-color:rgb(0, 51, 102);
 }
 
@@ -818,7 +827,7 @@ body {
 */
 
 .topnav a:hover {
- background-color:rgb(2, 2, 51);
+ background-color:rgb(5, 154, 114);
   color: white;
 }
 
