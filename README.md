@@ -18,7 +18,7 @@ ACRT is a browser-based standalone application for recording accessibility test 
 5) Once you have filled/edited all required fields, you will see the option to save test results.
 6) To save file changes, use the keyboard shortcut (Alt+z) or the Save button located at the bottom of the page.<br/>
 7) The file will be saved to your local machine (Downloads folder by default) as a JSON file. This can be used for further editing or reporting purposes. <br />
-8) Select **'Accessibility Conformance Report'** to view test results you have saved (with at least one valid test result). This is a read-only page; no edits are allowed. To save as a printer-friendly HTML file, use the keyboard shortcut (Alt+s) or Save button located at the bottom of the page.<br/>
+8) Select **'View Report'** to view test results you have saved (with at least one valid test result). This is a read-only page; no edits are allowed. To save as a printer-friendly HTML file, use the keyboard shortcut (Alt+s) or Save button located at the bottom of the page.<br/>
 9) You should save test results in both JSON (for editing) and HTML format (user-friendly) for future reference. <br/>
 
 ## Versioning
