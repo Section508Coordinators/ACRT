@@ -87,8 +87,8 @@ app.controller('acrtWebIntakeCtrl', ['$scope', function($scope, $filter) {
    $scope.fileNameChanged = function () {
 	  $scope.fileInput1 = true;	
 	  $scope.$apply();
-      document.getElementById("selMsg").innerHTML = "File is Selected, please select 'Load File' below to proceed.";	
-      document.getElementById('fileinput').setAttribute('title', 'File is Selected, please select Load File below to proceed.');	  
+      document.getElementById("selMsg").innerHTML = "File selected. Please select 'Load File' below to proceed.";	
+      document.getElementById('fileinput').setAttribute('title', 'File selected. Please select Load File below to proceed.');	  
       document.getElementById("button").focus(); 	 
      //alert("File is Selected, please select 'Load File' below to proceed.");	  
     } 
@@ -2102,11 +2102,11 @@ if ($scope.jsonData[0].Criteria[b].TestID == " 1.A" && $scope.selected_name_tstg
 $scope.default_SelectedResult[b+1] = "Does Not Apply";
 $scope.default_SelectedResult[b+2] = "Does Not Apply";
 $scope.default_SelectedResult[b+3] = "Does Not Apply";
-$scope.default_SelectedResult[b+4] = "Does Not Apply";
+//$scope.default_SelectedResult[b+4] = "Does Not Apply";
 $scope.selected_name_tstgrp[b+1]= "Does Not Apply";
 $scope.selected_name_tstgrp[b+3]= "Does Not Apply";
-$scope.selected_name_tstgrp[b+4]= "Does Not Apply";
-$scope.selected_name_tstgrp[b+5]= "Does Not Apply";
+//$scope.selected_name_tstgrp[b+4]= "Does Not Apply";
+//$scope.selected_name_tstgrp[b+5]= "Does Not Apply";
 } 
 
 if ($scope.jsonData[0].Criteria[b].TestID == "5.A" && $scope.selected_name_tstgrp[b]== "Does Not Apply"){	
@@ -2129,27 +2129,27 @@ $scope.selected_name_tstgrp[b+7]= "Does Not Apply";
 if ($scope.jsonData[0].Criteria[b].TestID == "10.A" && $scope.selected_name_tstgrp[b]== "Does Not Apply"){	
 $scope.default_SelectedResult[b+1] = "Does Not Apply";
 $scope.default_SelectedResult[b+2] = "Does Not Apply";
-$scope.default_SelectedResult[b+3] = "Does Not Apply";
+//$scope.default_SelectedResult[b+3] = "Does Not Apply";
 $scope.selected_name_tstgrp[b+1]= "Does Not Apply";
 $scope.selected_name_tstgrp[b+3]= "Does Not Apply";
-$scope.selected_name_tstgrp[b+4]= "Does Not Apply";
+//$scope.selected_name_tstgrp[b+4]= "Does Not Apply";
 } 
 
 if ($scope.jsonData[0].Criteria[b].TestID == "14.A" && $scope.selected_name_tstgrp[b]== "Does Not Apply"){	
 $scope.default_SelectedResult[b+1] = "Does Not Apply";
-$scope.default_SelectedResult[b+2] = "Does Not Apply";
+//$scope.default_SelectedResult[b+2] = "Does Not Apply";
 $scope.selected_name_tstgrp[b+1]= "Does Not Apply";
-$scope.selected_name_tstgrp[b+3]= "Does Not Apply";
+//$scope.selected_name_tstgrp[b+3]= "Does Not Apply";
 }
 
 if ($scope.jsonData[0].Criteria[b].TestID == "17.A" && $scope.selected_name_tstgrp[b]== "Does Not Apply"){	
 $scope.default_SelectedResult[b+1] = "Does Not Apply";
-$scope.default_SelectedResult[b+2] = "Does Not Apply";
+//$scope.default_SelectedResult[b+2] = "Does Not Apply";
 $scope.default_SelectedResult[b+3] = "Does Not Apply";
 $scope.default_SelectedResult[b+4] = "Does Not Apply";
 $scope.default_SelectedResult[b+5] = "Does Not Apply";
 $scope.selected_name_tstgrp[b+1]= "Does Not Apply";
-$scope.selected_name_tstgrp[b+2]= "Does Not Apply";
+//$scope.selected_name_tstgrp[b+2]= "Does Not Apply";
 $scope.selected_name_tstgrp[b+3]= "Does Not Apply";
 $scope.selected_name_tstgrp[b+4]= "Does Not Apply";
 $scope.selected_name_tstgrp[b+5]= "Does Not Apply";
