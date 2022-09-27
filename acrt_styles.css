@@ -1,0 +1,884 @@
+article{
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+.addChild:focus {
+ background-color:white;
+ color: rgb(25,25,112);
+ border: 1px solid rgb(25,25,112);
+}
+
+.addChild {
+ background-color:rgb(25,25,112);
+ color: white;
+ border: 1px solid rgb(25,25,112);
+}
+
+.skip {
+  color: white;
+  font-size: 0.7em;
+}
+.skip:focus {
+  color: blue;
+}
+
+.skip:hover {
+  color: blue;
+}
+.skip:visited {	
+ color: white;
+ }
+ 
+
+a.button {
+    -webkit-appearance: button;
+    -moz-appearance: button;
+    appearance: button;
+
+    text-decoration: none;
+    color: white;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+p{
+	
+	padding-left: 2em;
+	padding-right: 2em;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+* {
+  box-sizing: border-box;
+}
+
+.row1 {
+  display: flex;
+}
+
+/* Create three equal columns that sits next to each other */
+.column1 {
+  flex: 50%;
+  padding: 5px;
+}
+  
+.visuallyhidden  {
+   position: absolute !important;
+   top: -9999px !important;
+   left: -9999px !important;
+}
+
+.hdnMsg{color: #000000; 
+background-color: #FFFF00;}
+
+.large-image {
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.notbold{
+    font-weight:normal
+}​
+
+.large-image:hover {opacity: 0.7;}
+
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  padding-top: 100px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.9); /* Black w/ opacity */
+}
+
+/* Modal Content (image) */
+.modal-content {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+}
+
+/* Caption of Modal Image */
+#caption {
+  margin: auto;
+  display: block;
+  width: 80%;
+  max-width: 700px;
+  text-align: center;
+  color: #ccc;
+  padding: 10px 0;
+  height: 150px;
+}
+
+/* Add Animation */
+.modal-content, #caption {  
+  -webkit-animation-name: zoom;
+  -webkit-animation-duration: 0.6s;
+  animation-name: zoom;
+  animation-duration: 0.6s;
+}
+
+@-webkit-keyframes zoom {
+  from {-webkit-transform:scale(0)} 
+  to {-webkit-transform:scale(1)}
+}
+
+@keyframes zoom {
+  from {transform:scale(0)} 
+  to {transform:scale(1)}
+}
+
+
+
+/* The Close Button */
+.close {
+  position: absolute;
+  top: 15px;
+  right: 35px;
+  color: #f1f1f1;
+  font-size: 40px;
+  font-weight: bold;
+  transition: 0.3s;
+}
+
+.close:hover {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.close:focus {
+  color: #bbb;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+#fileinput:hover {
+  background-color:rgb(5, 154, 114);
+  color: white;
+}
+
+#fileinput:focus {
+ /*background-color:rgb(192,192,192);
+  color: black; */
+  background-color:rgb(5, 154, 114);
+  color: rgb(25,25,112);
+ border: 1px solid rgb(25,25,112);
+}
+
+ #fileinput:active {
+  background-color:rgb(5, 154, 114);
+  color: black;
+}
+
+#fileinput:visited {
+ background-color: rgb(128,128,128);
+  color: black;
+}
+
+.menu {
+  overflow: hidden;
+  border: 1px solid #FFFFFF;  
+}
+
+.menu:focus {
+ background-color:white;
+ color: rgb(25,25,112);
+ border: 1px solid rgb(25,25,112);
+}
+
+a:focus {
+   /*color: rgb(7, 7, 15);  */
+    background-color:white;
+ color: rgb(25,25,112);
+ border: 1px solid rgb(25,25,112);
+font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+
+
+a:hover  {
+   color: rgb(2, 2, 51);
+font-family: "Source Sans Pro", "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+a:active {
+   color: rgb(5, 41, 59);
+font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+a:visited  {
+   color: rgb(0, 102, 153);
+font-family: "Source Sans Pro", "Franklin Gothic Book", "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+ 
+.collapsible:active {
+ background-color: rgb(5, 41, 59);
+ color: #ffffff;
+}
+.collapsible:hover{
+  background-color:rgb(5, 154, 114);
+  color: #ffffff;
+}
+.collapsible:focus {
+ /*background-color:rgb(9, 9, 66);
+ color: #ffffff; */
+ background-color:rgb(5, 154, 114);
+ color: white;
+ border: 1px solid rgb(25,25,112);
+}
+.collapsible:visited {
+ background-color:rgb(0, 102, 153);
+ color: #ffffff;
+}
+
+button:focus  {
+ /*background-color:rgb(9, 9, 66);
+ color: #ffffff; */
+ background-color:rgb(5, 154, 114);
+ color:white;
+ border: 1px solid rgb(25,25,112);
+}
+
+button:hover  {
+  background-color:rgb(5, 154, 114);
+  color: #ffffff;
+}
+
+
+button:active   {
+ background-color:rgb(5, 41, 59);
+ color: #ffffff;
+}
+ button:visited  {
+ background-color:rgb(0, 102, 153);
+ color: #ffffff;
+}
+
+
+ 
+
+/* 100% Image Width on Smaller Screens */
+@media only screen and (max-width: 700px){
+  .modal-content {
+    width: 100%;
+  }
+}
+
+input {
+	 white-space: normal;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+textarea {
+	 white-space: normal;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+select {
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+
+}
+input[type=checkbox] {
+   float:left;
+ }
+
+i{
+	
+  border: solid white;
+  border-width: 0px 5px 5px 0px;
+  margin-right: 7px;
+  display: inline-block;
+  padding: 3px;
+}
+
+
+
+/*
+.up:focus{
+	
+  border: solid blue;
+  border-width: 0px 10px 10px 0px;
+  display: inline-block;
+  padding: 3px;
+} 
+
+.down:focus{
+	
+  border: solid blue;
+  border-width: 0px 10px 10px 0px;
+  display: inline-block;
+  padding: 3px;
+} */
+
+
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);  
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+
+h1 { 
+  color: black;
+  display: block;
+  font-size: 2em; 
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+ 
+ /* margin-top: 0.67em;
+  margin-bottom: 0.67em;
+  font-weight: bold;
+  background-color:rgb(0, 51, 102);
+  text-align: center;  */
+}
+
+
+a {
+  
+  color: rgb(0, 51, 102);
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+.warning{
+	color: 	#F0FFFF;
+	background-color: #DAA520;	
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+ .required:before { 
+ content:"*"; 
+ font-weight: bold;
+ color: red;
+ margin-left: -.8em;
+ display: inline-block;}
+ 
+.show{
+	display: inline-block;
+	
+}
+
+.span1{
+	font-weight: bold;	
+	color: rgb(0, 51, 102);
+	
+}
+
+fieldset
+{  
+  height: 100%;
+  
+}
+
+.left-div {
+    float: left;
+    width: 500px;
+    height: 0px;
+    margin-right: 8px;
+    
+}
+.right-div {
+    margin-left: 700px;
+	 height: 350px;
+    
+}
+
+.text{
+	color: #000000;
+	text-align: left;
+	text-decoration: none;
+	text-indent: 0em;
+	/*letter-spacing: 2px;
+	 line-height: 1.8; */
+	/* word-spacing: 10px;*/
+	 font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";	
+}
+
+
+.footer {	
+   position: fixed;
+   
+   left: 0em;
+   right: 0em;
+   bottom: 0em;
+   color: white;
+   width: 100%;
+   overflow: hidden;
+   background-color:rgb(0, 51, 102);  
+   font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";   
+   text-align: left;
+   padding: 0.5em;   
+}
+
+.footerbutton {    
+   /*position: fixed; */
+   position: relative;
+   left: 0;   
+   bottom: 0;   
+   padding-left: 2em;
+   width: 50%;
+   background-color: white;
+   color: black;
+   text-align: left;
+   font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+   border-style: outset;
+   border-radius: 10px;   
+}
+
+.collapsible {
+  background-color:rgb(0, 51, 102);
+  color: white;
+  cursor: pointer;
+  padding: 12px;
+  width: 100%;
+  height: 100%;
+  border: none;
+  border-radius: 11px;
+  text-align: left;
+  outline: none;
+  font-size: 90%;
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+.content {
+  padding: 0 18px;
+  max-height: 0;
+  overflow: hidden;
+ /* transition: max-height 0.3s ease-out; */
+  background-color: #f1f1f1;
+	display: none;
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+.content1 {
+  padding: 0 18px;
+  max-height: 10px;
+  height:100%;
+  overflow: hidden;
+  /* transition: max-height 0.3s ease-out; */
+  background-color: #f1f1f1;
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+h2,h3,h4 {font-weight: bold;
+       /*padding: 10px;*/
+	   padding-left: 2em;
+       text-align: left;
+	   font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";}
+	   
+.button {
+  background-color:rgb(0, 51, 102); 
+  color: white;
+  padding-left: 2em;
+  /*padding: 12px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 25%;
+  font-size: 100%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 8px;
+  border-radius: 11px;
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+#sbtBtn:hover {
+  background-color:rgb(5, 154, 114);
+}
+
+.input {
+  background-color:rgb(51 51 51); 
+  color: white;
+  /*padding: 12px 32px;*/
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  width: 25%;
+  font-size: 100%;
+  margin: 4px 2px;
+  cursor: pointer;
+  border: 2px solid black;
+  padding: 8px;
+  border-radius: 11px;
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+.divSpace {    
+    padding: 10px;
+    text-align: left;
+}
+
+/*
+txtarea{
+    margin-top: 20px;
+    /*width: 500px;*/
+	height: 75px;   
+	padding: 5px;
+	overflow-y: scroll;
+	 
+	overflow: scroll; 
+	resize: none;
+*/
+
+.txtarea{
+    margin-top: 20px;
+    /*width: 500px;*/
+	height: 75px;   
+	padding: 5px;
+	overflow-y: scroll;
+	 
+	overflow: scroll; 
+	resize: none;
+	word-wrap: break-word;
+}
+
+.betnTags{
+margin-left: 0px;
+margin-top:6px;
+margin-bottom:17px;
+line-height: 1.2em;
+font-size: 1.1em;
+}
+.dateField{
+margin-left: 20px;
+margin-top:15px;
+margin-bottom:10px;
+width: 450px;
+}
+.checkmark {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 50px;
+  width: 50px;
+  background-color: #eee;
+}
+/*
+ .list_container {
+    direction: rtl;
+    overflow:auto;
+   
+  }
+
+ .item_direction {
+    direction:ltr;
+  }
+*/
+
+table tbody, table thead
+{
+    display: block;
+}
+
+table tbody 
+{
+   overflow: auto;
+  /* height: 500px; */
+}
+
+
+
+
+table {
+	/* width: 100%;  */
+    /* can be dynamic  */
+	table-layout:fixed; 
+	overflow:auto;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	 border-collapse: collapse;	  
+	  margin: 10px;
+	  /*
+	  
+	  display: block;
+  height: 500px;
+  overflow-y: scroll; */
+}
+
+th
+{
+   /*width: 75px; */
+	border: 1px solid #696969;
+    text-align: left;
+    padding: 3px;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-weight: bold;
+	font-size: 90%;
+	vertical-align: bottom;
+}
+
+tr th {
+	vertical-align: top;
+}
+td
+{
+    /*width: 75px; */
+	border: 1px solid #696969;
+    text-align: left;
+    padding: 2px;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+	overflow: hidden; 
+	text-overflow: ellipsis; 
+    word-wrap: break-word;
+	vertical-align: top;
+
+
+}
+
+article {
+	padding-right: 20px;
+	
+}
+.table1 {
+    font-family: arial, sans-serif;
+    text-decoration:none;
+    border-collapse: collapse;
+    width: 100%;
+    display:block;
+	padding: 3px;  
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	overflow:auto;  
+ 
+}
+
+.resultOptions{    
+    width: 120px;	
+	display: inline-block;
+	/*font-weight: normal;
+	font-stretch: condensed;
+	font-size: 90%;
+	vertical-align: top; */
+
+}
+
+.resultOptions:focus{
+	 background-color:white;
+ color: rgb(25,25,112);
+ border: 1px solid rgb(25,25,112);
+ /*background-color: #f4f6f7;
+ color:  black;*/
+}
+
+.widetd1{    
+    width: 85px;	
+	display: inline-block;
+	font-weight: normal;
+	font-stretch: condensed;
+	font-size: 90%;
+	vertical-align: top;
+
+}
+
+.widetd2{    
+    width: 32px;	
+	display: inline-block;	
+}
+.widetd3{    
+    width: 200px;	
+	display: inline-block;	
+}
+.widetd4{    
+    width: 86px;	
+	display: inline-block;	
+	white-space: pre-wrap;
+}
+.widetd5{    
+    width: 105px;	
+	display: inline-block;	
+}
+.widetd6{    
+    width: 40px;	
+	display: inline-block;	
+}
+
+.widetd7{    
+    width: 130px;	
+	display: inline-block;	
+}
+.widetd8{    
+    width: 250px;	
+	display: inline-block;	
+}
+
+/*
+td {
+    border: 1px solid #A9A9A9;
+    text-align: left;
+    padding: 3px;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+	
+}
+th {
+    border: 1px solid #A9A9A9;
+    text-align: left;
+    padding: 3px;
+	font-family: "system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	font-weight: bold;
+	font-size: large;
+	
+	
+}
+*/
+tr:nth-child(even) {
+    background-color: #F0FFFF;
+	 padding-top: 0px;
+    padding-bottom: 0px;
+}
+
+ul {
+    
+    margin: 0;
+    
+  /*  width: 170px; */
+    background-color: #f1f1f1;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	padding-left:70px;
+	list-style-type:  disc;
+	background-color:white;
+} 
+ol{
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	padding-left:70px;
+	
+}
+
+ol.sblst {
+  list-style-type: lower-alpha;
+}
+
+li a {
+    display: block;
+    color: #000;
+    padding: 8px 16px;
+    text-decoration: none;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+	
+}
+
+/* Change the link color on hover */
+li a:hover {
+  background-color:rgb(5, 154, 114);
+  color: white;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+#li-link {
+  padding:0%;
+  border:none
+}
+
+
+body {
+	height:100%;
+    width:100%;
+    padding:0em;    
+	margin: 0em;  
+	/*border: 1px solid #A9A9A9; */
+	border: none;
+	font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+}
+
+
+
+
+.topnav {
+  overflow: hidden;
+  background-color:rgb(0, 51, 102); 
+  /* background-color: green;  test */
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  
+}
+
+.topnav a {
+  float: left;
+  padding-left:170px;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 100%;
+  font-family: "Source Sans Pro", "Franklin Gothic Book","system-ui", "Segoe UI", "Ubuntu", "'Helvetica Neue", "sans-serif";
+  background-color:rgb(0, 51, 102);
+}
+
+/*
+.topnav a:visited {
+  background-color: rgb(0, 102, 153);
+  color: white;
+}
+*/
+
+.topnav a:hover {
+ background-color:rgb(5, 154, 114);
+  color: white;
+}
+
+
+.topnav a:active {
+  background-color: rgb(5, 41, 59);
+  color: white;
+}
+
+.topnav .icon {
+  display: none;
+}
+
+@media screen and (max-width: 600px) {
+  .topnav a:not(:first-child) {display: none;}
+  .topnav a.icon {
+    float: right;
+    display: block;
+	
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .topnav.responsive {position: relative;}
+  .topnav.responsive .icon {
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+  .topnav.responsive a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+}
+
+#fileinput input[type=file] {
+ display:none;
+ margin:10px;
+ }
+ #fileinput input[type=file] + label {
+ display:inline-block;
+ margin:20px;
+ padding: 4px 32px;
+ background-color: #FFFFFF;
+ border:solid 1px #666F77;
+ border-radius: 6px;
+ color:#666F77;
+ }
+ #fileinput input[type=file]:active + label {
+ background-image: none;
+ background-color:#2D6C7A;
+ color:#FFFFFF;
+ }
