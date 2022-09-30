@@ -530,27 +530,27 @@ $scope.optionedVersn = [{
   },
   {
     id: 1,
-    name: '84'
+    name: '100-106'
   },
   {
     id: 2,
-    name: '83'
+    name: '95-99'
   },
   {
     id: 3,
-    name: '82'
+    name: '90-94'
   },
   {
     id: 4,
-    name: '81'
+    name: '80-89'
   },
   {
     id: 5,
-    name: '80'
+    name: '70-79'
   },
   {
     id: 6,
-    name: '41-79'
+    name: '41-69'
   },
   {
     id: 7,
@@ -572,32 +572,32 @@ $scope.optionchVersn = [{
   },
   {
     id: 1,
-    name: '85'
+    name: '105-110'
   },
   
   {
     id: 2,
-    name: '84'
+    name: '100-104'
   },
   {
     id: 3,
-    name: '83'
+    name: '95-99'
   },
   {
     id: 4,
-    name: '82'
+    name: '90-94'
   },
   {
     id: 5,
-    name: '81'
+    name: '81-90'
   },
   {
     id: 6,
-    name: '72-80'
+    name: '71-80'
   },
   {
     id: 7,
-    name: '57-71'
+    name: '50-70'
   },
   {
     id: 8,
@@ -619,31 +619,31 @@ $scope.optionsfVersn = [{
   },
   {
     id: 1,
-    name: '14'
+    name: '15'
   },
   {
     id: 2,
-    name: '13'
+    name: '14'
   },
   {
     id: 3,
-    name: '12'
+    name: '13'
   },
   {
     id: 4,
-    name: '11'
+    name: '12'
   },
   {
     id: 5,
-    name: '10'
+    name: '11'
   },
   {
     id: 6,
-    name: '9'
+    name: '10'
   },
   {
     id: 7,
-    name: '1-8'
+    name: '1-9'
   },
   {
     id: 8,
@@ -667,32 +667,32 @@ $scope.optionfxVersn = [{
   },
   {
     id: 1,
-    name: '80'
+    name: '102-114'
   },
   {
     id: 2,
-    name: '79'
+    name: '91-101'
   },
   {
     id: 3,
-    name: '78'
+    name: '78-90'
   },
   {
     id: 4,
-    name: '77'
+    name: '68-77'
   },
   {
     id: 5,
-    name: '76'
+    name: '60-67'
   },
   {
     id: 6,
-    name: '75'
+    name: '52-59'
   }
   ,
   {
     id: 7,
-    name: '58-74'
+    name: '31-51'
   }
   ,
   {
@@ -776,15 +776,15 @@ $scope.optionwnVersn = [{
   },
   {
     id: 1,
-    name: 'Windows 10'
+    name: 'Windows 11'
   },
   {
     id: 2,
-    name: 'Windows 8'
+    name: 'Windows 10'
   },
   {
     id: 3,
-    name: 'Windows 7'
+    name: 'Windows 7-8'
   },
   {
     id: 4,
@@ -810,31 +810,31 @@ $scope.optioniosVersn = [{
   ,
   {
     id: 1,
-    name: 'OSX 10.15'
+    name: 'OSX 12'
   },
   {
     id: 2,
-    name: 'OSX 10.14'
+    name: 'OSX 11'
   },
   {
     id: 3,
-    name: 'OSX 10.13'
+    name: 'OSX 10.15'
   },
   {
     id: 4,
-    name: 'OSX 10.12'
+    name: 'OSX 10.14'
   },
   {
     id: 5,
-    name: 'OSX 10.11'
+    name: 'OSX 10.13'
   },
   {
     id: 6,
-    name: 'OSX 10.10'
+    name: 'OSX 10.12'
   },
   {
     id: 7,
-    name: 'OSX 10.9'
+    name: 'OSX 10.9 - 10.11'
   },
   {
     id: 8,
@@ -3299,8 +3299,8 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
   $scope.testerContact = $scope.testerContact.toString().replace(/"/g, "'").trim();
   $scope.testerContact = $scope.testerContact.toString().replace(/\n/g, " ");
   
-    if($scope.entOthrWindVrsn != '')
-    $scope.osVrsnCollection = $scope.osVrsnCollection.push($scope.entOthrWindVrsn);
+    /*if($scope.entOthrWindVrsn != '' || $scope.entOthrWindVrsn != undefined )
+    $scope.osVrsnCollection = $scope.osVrsnCollection.push($scope.entOthrWindVrsn);*/
  	$scope.browserVrsnCollection = $scope.browserVrsnCollection.toString().replace(/, /g, "").trim();
 	$scope.browserVrsnCollection = $scope.browserVrsnCollection.toString().replace(/,/g, ", ").trim();	
 	$scope.osVrsnCollection = $scope.osVrsnCollection.toString().replace(/, /g, " ").trim();

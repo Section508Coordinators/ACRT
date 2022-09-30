@@ -878,8 +878,8 @@ document.getElementById("dsblGrpBtn").click();
       "<strong>Browser:  &nbsp;  </strong>" + $scope.myBrowserTested + "<br>" +
       "<strong>Browser Version: &nbsp;  </strong>" + $scope.myBrowser + "<br>" +
       "<strong>Compatibility View:  &nbsp;  </strong>" + $scope.compID + "<br>" +
-      "<strong>Operating System:  &nbsp;  </strong>" + $scope.myOpsys + "<br>" +
-      "<strong>Operating System Version:  &nbsp;  </strong>" + $scope.myOpsysTested + "<br>" +
+      "<strong>Operating System:  &nbsp;  </strong>" + $scope.myOpsysTested + "<br>" +
+      "<strong>Operating System Version:  &nbsp;  </strong>" + $scope.myOpsys + "<br>" +
 
       
       "<strong>Testing Method:  &nbsp;  </strong>" + $scope.evalMethod + "<br>" +
