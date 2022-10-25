@@ -1163,14 +1163,62 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 		$scope.RemediationDetails=[];
 		$scope.ImageSrc2 =[];
 		$scope.RemediationDate=[];
+		$scope.counterCollection =[];
 		
 	$scope.origSelectedResults1=$scope.origSelectedResults-1;
 	
 	$scope.addIssue = function(index) {    	
     // if($scope.selected_name_tstgrp[index] !== undefined){			
 	  $scope.newIssueRsltSelected = false;           
-      $scope.parentIssueSelected = index;      
-      $scope.insertRoww = [];    	  
+      $scope.counterCollection[index]= index;  
+      $scope.menu1[index] = $scope.jsonData[0].Criteria[index].OptMenu1;
+	   $scope.location[index] = $scope.jsonData[0].Criteria[index].location
+	 $scope.testerCommentID[index] = $scope.jsonData[0].Criteria[index].TesterComment; 
+	 $scope.rmdatnDtlID[index] = $scope.jsonData[0].Criteria[index].RemediationDetails;	
+	 $scope.defaultDate[index] = $scope.jsonData[0].Criteria[index].RemediationDate;	 
+	 $scope.default_glblRslt[index] = $scope.jsonData[0].Criteria[index].GlobalIssue;
+	 $scope.location.splice(index, 0, $scope.location[index]);	  
+	  $scope.testerCommentID.splice(index, 0, $scope.testerCommentID[index]);
+	  $scope.rmdatnDtlID.splice(index, 0, $scope.rmdatnDtlID[index]);
+	  $scope.defaultDate.splice(index, 0, $scope.defaultDate[index]);
+	  $scope.default_glblRslt.splice(index, 0, $scope.default_glblRslt[index]);
+
+	  $scope.menu1.splice(index, 0, $scope.menu1[index]);
+	  /*
+	   $scope.default_SelectedResult[index] = $scope.jsonData[0].Criteria[index].TestResult;
+	 $scope.selected_name_tstgrp[index] = $scope.default_SelectedResult[index];			 
+	  $scope.selected_name_tstgrp.splice(index, 0, $scope.selected_name_tstgrp[index]);
+	  
+	  $scope.imgCnvrsn[index]=$scope.jsonData[0].Criteria[index].ImageSrc;
+	 $scope.imgCnvrsn2[index] =$scope.jsonData[0].Criteria[index].ImageSrc2;
+	  $scope.imgCnvrsn.splice(index, 0, $scope.imgCnvrsn[index]);
+	  $scope.imgCnvrsn2.splice(index, 0, $scope.imgCnvrsn2[index]);	 */ 
+	  
+      $scope.insertRoww = []; 
+      //ADD ISSUE NEXT TO PARENT ISSUE 
+	   let addedPosition = index;
+      $scope.Mul_Issues1[addedPosition] = {
+		 "IssueNo": '' + index + '',
+		"CrtID": '' + $scope.jsonData[0].Criteria[addedPosition].CrtID + '',
+        "TestName": '' + $scope.jsonData[0].Criteria[addedPosition].TestName + '',
+		"TestCondition": '' + $scope.jsonData[0].Criteria[addedPosition].TestCondition + '',
+        "TestID": '' + $scope.jsonData[0].Criteria[addedPosition].TestID + '',
+		"Guideline": '' + $scope.jsonData[0].Criteria[addedPosition].Guideline + '',
+		"OptMenu1":'' + $scope.menu1[index] + '',
+		"Test": '' + $scope.jsonData[0].Criteria[addedPosition].Test + '', 		
+		"DisabilityImpact": '' + $scope.jsonData[0].Criteria[addedPosition].DisabilityImpact + '',	   
+        "TestResult": '' + $scope.jsonData[0].Criteria[addedPosition].TestResult + '',				
+		"location": '' +'',  
+		"TesterComment": '' + $scope.jsonData[0].Criteria[addedPosition].TesterComment + '',			
+        "ImageSrc": '',		
+        "RemediationDetails": '',	
+        "ImageSrc2": '',	
+         "RemediationDate": '' + $scope.jsonData[0].Criteria[addedPosition].RemediationDate + '',			
+		"GlobalIssue": '' + $scope.jsonData[0].Criteria[addedPosition].GlobalIssue + '',			        
+		"ChildIssue": '' + "Yes" + '',
+      };	  
+/* ADD ISSUE AT THE END OF PARENT TABLE  
+      $scope.parentIssueSelected = index;	  
       $scope.addedRow[$scope.parentIssueSelected] = true;      
       $scope.indexCollection.push($scope.parentIssueSelected); 	
       $scope.childIssuePosition = $scope.parentIssueSelected+1;	               
@@ -1185,7 +1233,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	  $scope.counterAddIssue =$scope.counterAddIssue+1;	 
 	  let sameIssue = $scope.childIssuePosition+'.'+$scope.counterAddIssue; 
       $scope.newlyAddedIssuePosition.push(sameIssue);
-	  /* ADD ISSUE AT THE END OF PARENT TABLE 
+	  
       $scope.Mul_Issues1[$scope.parentIssueSelected] = {
         "InsrtTestName": '' +'*'+ $scope.jsonData[0].Criteria[$scope.parentIssueSelected].TestName + '',
         "InsrtTestID": '' +'*'+ $scope.jsonData[0].Criteria[$scope.parentIssueSelected].TestID + '',
@@ -1196,29 +1244,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
       };  	
       $scope.Mul_Issues.push($scope.Mul_Issues1[$scope.parentIssueSelected]);
 	  */ 
-	  //ADD ISSUE NEXT TO PARENT ISSUE 
-	   let addedPosition = index;
-      $scope.Mul_Issues1[addedPosition] = {
-		 "IssueNo": '' + index + '',
-		"CrtID": '' + $scope.jsonData[0].Criteria[addedPosition].CrtID + '',
-        "TestName": '' + $scope.jsonData[0].Criteria[addedPosition].TestName + '',
-		"TestCondition": '' + $scope.jsonData[0].Criteria[addedPosition].TestCondition + '',
-        "TestID": '' + $scope.jsonData[0].Criteria[addedPosition].TestID + '',
-		"Guideline": '' + $scope.jsonData[0].Criteria[addedPosition].Guideline + '',
-		"Test": '' + $scope.jsonData[0].Criteria[addedPosition].Test + '',
-        "Index": '' + index + '',
-		"OptMenu1": '' + $scope.jsonData[0].Criteria[addedPosition].OptMenu1 + '',
-		"DisabilityImpact": '' + $scope.jsonData[0].Criteria[addedPosition].DisabilityImpact + '',	   
-        "TestResult": '' + $scope.jsonData[0].Criteria[addedPosition].TestResult + '',				
-		"location": '' +'',  
-		"TesterComment": '' + $scope.jsonData[0].Criteria[addedPosition].TesterComment + '',			
-        "ImageSrc": '',		
-        "RemediationDetails": '',	
-        "ImageSrc2": '',	
-         "RemediationDate": '' + $scope.jsonData[0].Criteria[addedPosition].RemediationDate + '',			
-		"GlobalIssue": '' + $scope.jsonData[0].Criteria[addedPosition].GlobalIssue + '',			        
-		"ChildIssue": '' + "Yes" + '',
-      };
+	  
 	 // let addedPosition1=addedPosition-1;
 	  $scope.jsonData[0].Criteria.splice(addedPosition,0,$scope.Mul_Issues1[addedPosition]);	
 	// $scope.menu1[$scope.origSelectedResults]= $scope.jsonData[0].Criteria[$scope.origSelectedResults1-$scope.addedNewPosition].OptMenu1;
@@ -1486,7 +1512,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
         $scope.browserTypeClicked[i] = true;
       }  
        $scope.criteriaResultOriginal = [];
-	   $scope.counterCollection =[];
+	   //$scope.counterCollection =[];
 	  
      $scope.criteriaResultOriginal = $scope.criteriaResultOriginal.filter($scope.onlyUnique);
 	  $scope.rmdatnDtlID =[];
@@ -1605,7 +1631,12 @@ $scope.createEditOption = 'Edit Report Test Results Form';
         if($scope.jsonData[0].Criteria[b].TesterComment != 'undefined') 	
         $scope.testerCommentID[b] = $scope.jsonData[0].Criteria[b].TesterComment; 
 	    if($scope.jsonData[0].Criteria[b].Counter!= undefined) 
-	    $scope.counterCollection[b]= $scope.jsonData[0].Criteria[b].Counter; 
+	    $scope.counterCollection[b]= $scope.jsonData[0].Criteria[b].Counter;
+	    if($scope.jsonData[0].Criteria[b].Counter== undefined) 
+	    $scope.counterCollection[b]= '';
+        if($scope.jsonData[0].Criteria[b].Counter== 'undefined') 
+	    $scope.counterCollection[b]= '';
+        		
 		
 	    if($scope.jsonData[0].Criteria[b].Guideline != undefined){
 		$scope.guidelinesAdded = true;
@@ -2200,7 +2231,6 @@ $scope.submit = function() {
   $scope.testresult1 = " ";
   $scope.criteriaName = " ";
   $scope.counter =0;
-  //$scope.counterCollection = [];  
   $scope.crtCollection = [];
   $scope.brwsrVrsnColctn = [];
   $scope.brwsrVrsnColctn1 = [];
@@ -2408,15 +2438,15 @@ $scope.submit = function() {
     if ($scope.browserTypeCollection1[i] == undefined)
       $scope.browserTypeCollection1[i] = " ";
     $scope.counter=i;
-	$scope.counter1 = i+1;
+	//$scope.counter1 = i+1;
     if($scope.edit == true )	
-	$scope.counter1= $scope.counterCollection[i];
+	//$scope.counter1= $scope.counterCollection[i];
 	if($scope.selected_name_tstgrp[i] == "Fail"){
 	 let fpcMapping = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+'",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '","TesterComment": "' + $scope.testerCommentID[i] +'"}';
     $scope.fpcMapping.push(fpcMapping);		
 	 }
     if($scope.selected_name_tstgrp[i] == 'No Selection') continue;	 
-    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '","Guideline": "' + $scope.guideline[i] + '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] +'","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' +$scope.counter1 ;	
+    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '","Guideline": "' + $scope.guideline[i] + '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] +'","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' +$scope.counterCollection[i];	
    // if(scope.imgCnvrsnJSON.length > 0){
     for(let m=0;m<$scope.imgCnvrsnJSON.length;m++){	
 	       if(i == $scope.imgCnvrsnJSON[m].imgPosition){ 
