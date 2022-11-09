@@ -1172,6 +1172,8 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	  $scope.newIssueRsltSelected = false;           
       $scope.counterCollection[index]= index;  
       $scope.menu1[index] = $scope.jsonData[0].Criteria[index].OptMenu1;
+	  $scope.menu1.splice(index, 0, $scope.menu1[index]);
+	  /*
 	   $scope.location[index] = $scope.jsonData[0].Criteria[index].location
 	 $scope.testerCommentID[index] = $scope.jsonData[0].Criteria[index].TesterComment; 
 	 $scope.rmdatnDtlID[index] = $scope.jsonData[0].Criteria[index].RemediationDetails;	
@@ -1182,9 +1184,6 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	  $scope.rmdatnDtlID.splice(index, 0, $scope.rmdatnDtlID[index]);
 	  $scope.defaultDate.splice(index, 0, $scope.defaultDate[index]);
 	  $scope.default_glblRslt.splice(index, 0, $scope.default_glblRslt[index]);
-
-	  $scope.menu1.splice(index, 0, $scope.menu1[index]);
-	  /*
 	   $scope.default_SelectedResult[index] = $scope.jsonData[0].Criteria[index].TestResult;
 	 $scope.selected_name_tstgrp[index] = $scope.default_SelectedResult[index];			 
 	  $scope.selected_name_tstgrp.splice(index, 0, $scope.selected_name_tstgrp[index]);
