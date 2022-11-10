@@ -1,4 +1,4 @@
-# ACRT 3.0.2
+# ACRT 3.0.3
 # Project Title
 **Accessibility Conformance Reporting Tool (ACRT)** 
 
