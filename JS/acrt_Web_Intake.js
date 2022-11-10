@@ -1168,12 +1168,32 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	$scope.origSelectedResults1=$scope.origSelectedResults-1;
 	
 	$scope.addIssue = function(index) {    	
-    // if($scope.selected_name_tstgrp[index] !== undefined){			
+    // if($scope.selected_name_tstgrp[index] !== undefined){
+	  $scope.insertRoww = []; 
+	  let addedPosition = index;      	
 	  $scope.newIssueRsltSelected = false;           
       $scope.counterCollection[index]= index;  
       $scope.menu1[index] = $scope.jsonData[0].Criteria[index].OptMenu1;
-	  $scope.menu1.splice(index, 0, $scope.menu1[index]);
-	  /*
+	  $scope.menu1.splice(index, 0, $scope.menu1[index]);	  
+	  $scope.location[addedPosition] = '';
+	  $scope.location.splice(index, 0, $scope.location[addedPosition]);	
+	 $scope.testerCommentID[addedPosition] = ''; 
+	 $scope.testerCommentID.splice(index, 0, $scope.testerCommentID[addedPosition]);
+	 $scope.rmdatnDtlID[addedPosition] = '';	
+     $scope.rmdatnDtlID.splice(index, 0, $scope.rmdatnDtlID[addedPosition]);	 
+	 $scope.default_glblRslt[addedPosition] = '';
+	 $scope.default_glblRslt.splice(index, 0, $scope.default_glblRslt[addedPosition]);	
+	   $scope.default_SelectedResult[addedPosition] = ''; 
+	   $scope.default_SelectedResult[index] = $scope.default_SelectedResult[addedPosition];
+      $scope.selected_name_tstgrp[addedPosition] ='';
+      $scope.selected_name_tstgrp.splice(index, 0, $scope.selected_name_tstgrp[addedPosition]);	
+	  
+	  $scope.imgCnvrsn.splice(index, 2);
+	  
+      	  
+	  	      
+	  //if you want to copy parent field in newly added child issue
+	  /* 
 	   $scope.location[index] = $scope.jsonData[0].Criteria[index].location
 	 $scope.testerCommentID[index] = $scope.jsonData[0].Criteria[index].TesterComment; 
 	 $scope.rmdatnDtlID[index] = $scope.jsonData[0].Criteria[index].RemediationDetails;	
@@ -1188,14 +1208,15 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	 $scope.selected_name_tstgrp[index] = $scope.default_SelectedResult[index];			 
 	  $scope.selected_name_tstgrp.splice(index, 0, $scope.selected_name_tstgrp[index]);
 	  
-	  $scope.imgCnvrsn[index]=$scope.jsonData[0].Criteria[index].ImageSrc;
+	  
 	 $scope.imgCnvrsn2[index] =$scope.jsonData[0].Criteria[index].ImageSrc2;
+	 $scope.imgCnvrsn[index]=$scope.jsonData[0].Criteria[index].ImageSrc;
 	  $scope.imgCnvrsn.splice(index, 0, $scope.imgCnvrsn[index]);
 	  $scope.imgCnvrsn2.splice(index, 0, $scope.imgCnvrsn2[index]);	 */ 
 	  
-      $scope.insertRoww = []; 
+      
       //ADD ISSUE NEXT TO PARENT ISSUE 
-	   let addedPosition = index;
+	  
       $scope.Mul_Issues1[addedPosition] = {
 		 "IssueNo": '' + index + '',
 		"CrtID": '' + $scope.jsonData[0].Criteria[addedPosition].CrtID + '',
@@ -1210,8 +1231,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 		"location": '' +'',  
 		"TesterComment": '' + $scope.jsonData[0].Criteria[addedPosition].TesterComment + '',			
         "ImageSrc": '',		
-        "RemediationDetails": '',	
-        "ImageSrc2": '',	
+        "RemediationDetails": '',	        	
          "RemediationDate": '' + $scope.jsonData[0].Criteria[addedPosition].RemediationDate + '',			
 		"GlobalIssue": '' + $scope.jsonData[0].Criteria[addedPosition].GlobalIssue + '',			        
 		"ChildIssue": '' + "Yes" + '',
@@ -2042,10 +2062,13 @@ $scope.uploadImageClicked1 = true;
 
 } 
 
-
+//this is used to remove image from test ID
   $scope.removeImage = function(index) { 
-         //let remPosition = index+1; 
-         $scope.imgCnvrsn.splice(index, 2);		 
+         
+         $scope.imgCnvrsn.splice(index, 2);	
+		 
+
+         //let remPosition = index+1; 		 
         // $scope.imageCaptured[index]= false;
 		  //$scope.imgCnvrsn[index]= '"imgValue" :"."}';		                 		  
           //$scope.imgCnvrsn.splice(index, 2); //removed image and select another image        	 
