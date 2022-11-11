@@ -334,7 +334,7 @@
             <!-- <tr ng-repeat="test in record.Criteria " ng-if="filterResult1"> -->
 			<tr ng-repeat="test in record.Criteria " ng-if="noResult[$index]" ng-show="TestResult[$index]== filterResult">
 			 <td  title="Issue Number">
-                <div style="width: 80px"> Issue {{counterCollection[$index]}} </div>
+                <div style="width: 80px"> Issue {{$index}} </div>
               </td>              
               <th  scope="row" title="Test Name" id="tnm1[$index]">
                 <div class="widetd1"> {{TestName[$index]}} </div>
