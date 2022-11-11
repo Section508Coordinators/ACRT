@@ -428,7 +428,7 @@ $scope.countOfRepWords =  function wordFreq(string) {
         $scope.TestResult[b] = $scope.jsonData[0].Criteria[b].TestResult;
 		if($scope.TestResult[b]!= 'undefined') {$scope.noResult[b]=true; }
 		if($scope.TestResult[b]== 'undefined') {$scope.TestResult[b] = ''; $scope.noResult[b]=false; };		
-        $scope.IssueNo[b] = $scope.jsonData[0].Criteria[b].IssueNo;
+        $scope.IssueNo[b] = b;//$scope.jsonData[0].Criteria[b].IssueNo;
 		$scope.location[b] = $scope.jsonData[0].Criteria[b].location;
         $scope.TesterComment[b] = $scope.jsonData[0].Criteria[b].TesterComment;
         $scope.T_brwsrType[b] = $scope.jsonData[0].Criteria[b].T_brwsrType;
@@ -755,7 +755,7 @@ document.getElementById("dsblGrpBtn").click();
 		//if($scope.noResult[i]== true && $scope.TestResult[i]== $scope.filterResult){
 		if($scope.TestResult[i]== $scope.filterResult){
       testResult += "<tr >";
-	  testResult += "<th  title=\"Issue Number\"> Issue " + $scope.jsonData[0].Criteria[i].Counter; + "</th>";
+	  testResult += "<th  title=\"Issue Number\"> Issue " + i + "</th>";
 	  testResult += "<th   scope=\"row\" title=\"Test Name\">" + $scope.jsonData[0].Criteria[i].TestName; + "</th>";      
       testResult += "<td title=\"Test ID\">" + $scope.jsonData[0].Criteria[i].TestID; + "</td>";
       testResult += "<td title=\"Test Condition\">" + $scope.jsonData[0].Criteria[i].TestCondition; + "</td>";
@@ -778,7 +778,7 @@ document.getElementById("dsblGrpBtn").click();
 	//if($scope.noResult[i]== true && $scope.filterResult1== true){
 	if($scope.filterResult1== true){
       testResult += "<tr >";
-	  testResult += "<td  title=\"Issue Number\"> Issue " + $scope.jsonData[0].Criteria[i].Counter; + "</td>";
+	  testResult += "<td  title=\"Issue Number\"> Issue " + i; + "</td>";
 	  testResult += "<th   scope=\"row\" title=\"Test Name\">" + $scope.jsonData[0].Criteria[i].TestName; + "</th>";      
       testResult += "<td title=\"Test ID\">" + $scope.jsonData[0].Criteria[i].TestID; + "</td>";
       testResult += "<td title=\"Test Condition\">" + $scope.jsonData[0].Criteria[i].TestCondition; + "</td>";
