@@ -1,4 +1,4 @@
-var app = angular.module('acrt', ["ngSanitize"]); 
+var app = angular.module('acrt', ["ngSanitize"]);    
    
 window.addEventListener("error", handleError, true);
  
@@ -500,7 +500,8 @@ document.getElementById("dsblGrpBtn").click();
            $scope.jsonData[0].SuccessCriteria[a].DisabilityImpact = "";
        
           if ($scope.jsonData[0].SuccessCriteria[a].DisabilityImpact != "" || $scope.jsonData[0].SuccessCriteria[a].DisabilityImpact != " ") {
-            $scope.impactedGroup[a] = true;	{		
+            $scope.impactedGroup[a] = true;	{
+            if($scope.jsonData[0].SuccessCriteria[a].ConformanceLvl == 'Not Evaluated') continue;					
 			$scope.DisabilityImpactCollection.push($scope.jsonData[0].SuccessCriteria[a].DisabilityImpact);
 			//$scope.DisabilityImpactCollectionSC.push($scope.jsonData[0].SuccessCriteria[a].CrtID);
 			}
