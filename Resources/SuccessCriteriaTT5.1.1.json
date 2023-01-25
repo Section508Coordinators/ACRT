@@ -251,7 +251,7 @@
 			"CrtID": "1.1.1",
 			"Guideline": "Level  A",
 			"Test": "5 Forms",
-			"TestName": "1.1.1-programmatic-label",
+			"TestName": "1.3.1-programmatic-label",
 			"TestID": "5.C",
 			"TestCondition": "The combination of the accessible name, accessible description, and other programmatic associations (e.g., table column and/or row associations) describes each input field and includes all relevant instructions and cues (textual and graphical).",
 			"Risk": " ",
