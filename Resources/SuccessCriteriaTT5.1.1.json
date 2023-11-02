@@ -87,6 +87,19 @@
 			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'Without Perception of Color', 'Without Hearing', 'With Limited Hearing', 'Without Speech', 'With Limited Manipulation', 'With Limited Language, Cognitive, and Learning Abilities', 'Photosensitive Epilepsy / Photosensitive Seizure Disorders'"
 
 		},
+	    
+	    	{
+			"CrtID": "Requirements",
+			"Guideline": " ",
+			"Test": "alt-version-nc-access",
+			"TestName": "alt-version-nc-access",
+			"TestID": "1.D",
+			"TestCondition": "The non-conforming version(s) can only be reached from conforming content.",
+			"Risk": " ",
+			"OptMenu1": "menu2",
+			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'Without Perception of Color', 'Without Hearing', 'With Limited Hearing', 'Without Speech', 'With Limited Manipulation', 'With Limited Language, Cognitive, and Learning Abilities', 'Photosensitive Epilepsy / Photosensitive Seizure Disorders'"
+
+		},
 		
 
 		{
@@ -94,7 +107,7 @@
 			"Guideline": " ",
 			"Test": "Non-interference",
 			"TestName": "Non-interference",
-			"TestID": "1.D",
+			"TestID": "1.E",
 			"TestCondition": "Content in the non-conforming version(s) meets Conformance Requirement 5.",
 			"Risk": " ",
 			"OptMenu1": "menu2",
@@ -191,6 +204,7 @@
 			"DisabilityImpact": "'Without Vision','With Limited Vision','With Limited Manipulation'"
 
 		},
+	    	
 		{
 			"CrtID": "2.4.7",
 			"Guideline": "Level  AA",
@@ -214,6 +228,30 @@
 			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'With Limited Language, Cognitive, and Learning Abilities'"
 		},
 		{
+			"CrtID": "2.4.3",
+			"Guideline": "Level  A",
+			"Test": "4 Keyboard/focus",
+			"TestName": "2.4.3-focus-order-meaning",
+			"TestID": "4.F",
+			"TestCondition": "The focus order preserves the meaning and operability of the web page. ",
+			"Risk": " ",
+			"OptMenu1": "menu2",
+			"DisabilityImpact": "'Without Vision','With Limited Vision', 'With Limited Manipulation','With Limited Language, Cognitive, and Learning Abilities'"
+		},
+
+	    {
+			"CrtID": "2.4.3",
+			"Guideline": "Level  A",
+			"Test": "4 Keyboard/focus",
+			"TestName": "2.4.3-focus-order-reveal",
+			"TestID": "4.G",
+			"TestCondition": "Focus is moved to revealed content. ",
+			"Risk": " ",
+			"OptMenu1": "menu2",
+			"DisabilityImpact": "'Without Vision','With Limited Vision', 'With Limited Manipulation','With Limited Language, Cognitive, and Learning Abilities'"
+	    },
+
+	    {
 			"CrtID": "2.4.3",
 			"Guideline": "Level  A",
 			"Test": "4 Keyboard/focus",
@@ -615,12 +653,24 @@
 			"OptMenu1": "menu2",
 			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'With Limited Language, Cognitive, and Learning Abilities'" 
 		},
+	    {
+			"CrtID": "1.3.2",
+			"Guideline": "Level  A",
+			"Test": "15 CSS",
+			"TestName": "1.3.1-meaningful-content-css-before-after",
+			"TestID": "15.A ",
+			"TestCondition": "For the meaningful content provided via CSS pseudo-elements ::before and ::after, equivalent information is available in another way.",
+			"Risk": " ",
+			"OptMenu1": "menu2",
+			"DisabilityImpact": "'Without Vision', 'With Limited Vision', 'With Limited Language, Cognitive, and Learning Abilities'" 
+	    },
+	    
 		{
 			"CrtID": "1.3.2",
 			"Guideline": "Level  A",
 			"Test": "15 CSS",
 			"TestName": "1.3.2-content-order-meaning-css-position",
-			"TestID": "15.A ",
+			"TestID": "15.B ",
 			"TestCondition": "The reading order of the content (in context) is correct and the meaning of the content (in context) is preserved without CSS positioning.",
 			"Risk": " ",
 			"OptMenu1": "menu2",
