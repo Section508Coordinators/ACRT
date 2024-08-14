@@ -44,7 +44,7 @@ app.directive("limitTo", [function() {
 function IsJsonString(str) {
   try {
     JSON.parse(str);
-  } catch (e) {    
+  } catch (e) {
 	alert("There is a problem while trying to convert to JSON format, contact technical support.");
 	console.log(str);
 	//return false;
@@ -1750,7 +1750,7 @@ $scope.createEditOption = 'Edit Report Test Results Form';
 	*/
 		 if($scope.jsonData[0].Criteria[b].ImageSrc != undefined){
 		 if($scope.jsonData[0].Criteria[b].ImageSrc != '.')	{          		 
-		 $scope.imgCnvrsnDefault.push('{"imgPosition" : "'+ b+'"', '"imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');			 
+		  $scope.imgCnvrsnDefault.push('{"imgPosition" : "'+ b+'", "imgValue" :"'+ $scope.jsonData[0].Criteria[b].ImageSrc +'"}');
 		  $scope.imageCapturedStored[b] = true;
 		  $scope.displayRemove[b] = true;
 		   $scope.imageCaptured[b]= false;
@@ -1920,7 +1920,6 @@ $scope.remarkExplanation = function(i) {
 	$scope.draftReport = false;	
     $scope.resultFails[i] = true;
     $scope.resultFailsCollection.push($scope.resultFails[i]);
-    $scope.testerCommentID[i] = $scope.testerCommentID[i].replace(/"/g, "'");
     $scope.RemarkExplntn[i] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "For " + $scope.criteriaTestsJson.Criteria[i].TestName + ". " + $scope.testerCommentID[i] + '"}'];
     $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[i]);
     $scope.crtRsltCollection.push($scope.selected_name_tstgrp[i]);
@@ -1983,13 +1982,13 @@ $scope.uploadImageClicked1 = false;
   reader.onloadend = function() {
 	 $scope.imgPos =0;
    if(element != null ) {
-    let imgPstn = element.closest('tr').rowIndex;	
-    imgPstn = imgPstn-1; 	  		 
-    $scope.imageCaptured[imgPstn] = true;
-	$scope.imgCnvrsnCurrentValue[imgPstn]= reader.result;	
-	 $scope.imgCnvrsnCurrent.push('{"imgPosition" : "'+ imgPstn +'"', '"imgValue" :"'+ reader.result+'"}');  
+     let imgPstn = element.closest('tr').rowIndex;
+     imgPstn = imgPstn-1;
+     $scope.imageCaptured[imgPstn] = true;
+	 $scope.imgCnvrsnCurrentValue[imgPstn]= reader.result;
+     $scope.imgCnvrsnCurrent.push('{"imgPosition" : "'+ imgPstn +'", "imgValue" :"'+ reader.result+'"}');
 	 $scope.imgCnvrsn = $scope.imgCnvrsn.concat($scope.imgCnvrsnCurrent);
-    //$scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);  	 
+    //$scope.imgCnvrsn = $scope.imgCnvrsn.filter($scope.onlyUnique);
 	 $scope.imgCnvrsnCurrent = [];	
      $scope.imageCapturedStored[imgPstn]= false;
      $scope.removeClicked[imgPstn] =  false;      	
@@ -2063,27 +2062,31 @@ $scope.uploadImageClicked1 = true;
 } 
 
 //this is used to remove image from test ID
-  $scope.removeImage = function(index) { 
-         
-         $scope.imgCnvrsn.splice(index, 2);	
-		 
+  $scope.removeImage = function(index) {
+      // Clear the file input
+      var fileInput = document.getElementById('fileInput' + index);
+      if (fileInput) {
+          fileInput.value = null;
+      }
 
-         //let remPosition = index+1; 		 
-        // $scope.imageCaptured[index]= false;
-		  //$scope.imgCnvrsn[index]= '"imgValue" :"."}';		                 		  
-          //$scope.imgCnvrsn.splice(index, 2); //removed image and select another image        	 
-		  //$scope.imgCnvrsn.splice(index, 2,'{"imgPosition" : "'+ index +'"', '"imgValue" :"."}');		  
-          $scope.imgCnvrsnCurrentValue[index]=".";	
-         $scope.imageCapturedStored[index]= false;
-         $scope.imageCaptured[index]= false;
-         $scope.removeClicked[index] =  true;	
-		 $scope.displayRemove[index] = false;
-		  //$scope.imgCnvrsn.splice(remPosition, 1, '"imgValue" :"."}'); //removed image and don't select another image               		
-		//if ($scope.checkboxModel.alerts == "on") 
-		//alert("Image Removed");
-	  setTimeout(function() {
-		$scope.$apply();   
-   }, 500);
+      $scope.imgCnvrsnCurrentValue[index]=".";
+
+      // Remove image data from existing json data
+      $scope.imgCnvrsn.forEach(function(row, idx) {
+          let parsedRow = JSON.parse(row);
+          if (parsedRow.imgPosition == index) {
+              $scope.imgCnvrsn.splice(idx, 1);
+          }
+      });
+
+      $scope.imageCapturedStored[index] = false;
+      $scope.imageCaptured[index] = false;
+      $scope.removeClicked[index] = true;
+      $scope.displayRemove[index] = false;
+
+      setTimeout(function() {
+          $scope.$apply();
+      }, 500);
 	} 
 	
 	  $scope.removeImage2 = function(index) { 
@@ -2273,17 +2276,17 @@ $scope.submit = function() {
   
   $scope.imgCnvrsnJSON = "[ "+$scope.imgCnvrsn+ " ]";
  //document.write( $scope.imgCnvrsnJSON );
-  $scope.imgCnvrsnJSON = IsJsonString($scope.imgCnvrsnJSON); 
+  $scope.imgCnvrsnJSON = IsJsonString($scope.imgCnvrsnJSON);
   
   $scope.imgCnvrsnJSON2 = "[ "+$scope.imgCnvrsn2+ " ]";
  //document.write( $scope.imgCnvrsnJSON );
-  $scope.imgCnvrsnJSON2 = IsJsonString($scope.imgCnvrsnJSON2);  
+  $scope.imgCnvrsnJSON2 = IsJsonString($scope.imgCnvrsnJSON2);
   
   
   //$scope.imgCnvrsn1 = $scope.imgCnvrsn1.filter($scope.onlyUnique); 
   $scope.imgCnvrsnJSON1 = "[ "+$scope.imgCnvrsn1+ " ]";
  // document.write($scope.imgCnvrsnJSON1);
-  $scope.imgCnvrsnJSON1 = IsJsonString($scope.imgCnvrsnJSON1);  
+  $scope.imgCnvrsnJSON1 = IsJsonString($scope.imgCnvrsnJSON1);
   
  
   for (i = 0; i < $scope.criteriaTestsJson.Criteria.length; i++) {	  
@@ -2440,14 +2443,10 @@ $scope.submit = function() {
     
     if ($scope.testerCommentID[i] == undefined)
       $scope.testerCommentID[i] = "";
-    $scope.testerCommentID[i] = $scope.testerCommentID[i].toString().replace(/"/g, "'");
-	$scope.testerCommentID[i] = $scope.testerCommentID[i].toString().replace(/\n/g, " ");
-	//alert($scope.testerCommentID[i]);
-	
+
 	 if ($scope.location[i] == undefined)
       $scope.location[i] = " ";
-    $scope.location[i] = $scope.location[i].toString().replace(/"/g, "'");
-	$scope.location[i] = $scope.location[i].toString().replace(/\n/g, " ");
+
 	$scope.criteriaTestsJson.Criteria[i].DisabilityImpact = $scope.criteriaTestsJson.Criteria[i].DisabilityImpact.toString();
 	$scope.criteriaTestsJson.Criteria[i].DisabilityImpact = $scope.criteriaTestsJson.Criteria[i].DisabilityImpact.replace(/^,/, ''); //removes first comma from string 
     $scope.criteriaTestsJson.Criteria[i].DisabilityImpact = $scope.criteriaTestsJson.Criteria[i].DisabilityImpact.replace(/,\s*$/, " "); //removes comma from last of string          
@@ -2464,17 +2463,17 @@ $scope.submit = function() {
     if($scope.edit == true )	
 	//$scope.counter1= $scope.counterCollection[i];
 	if($scope.selected_name_tstgrp[i] == "Fail"){
-	 let fpcMapping = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+'",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '","TesterComment": "' + $scope.testerCommentID[i] +'"}';
-    $scope.fpcMapping.push(fpcMapping);		
+	  let fpcMapping = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+'",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '","TesterComment": "' + $scope.escapeSpecialChars($scope.testerCommentID[i]) +'"}';
+      $scope.fpcMapping.push(fpcMapping);
 	 }
-    if($scope.selected_name_tstgrp[i] == 'No Selection') continue;	 
-    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '","Guideline": "' + $scope.guideline[i] + '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] +'","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.location[i]  + '","TesterComment": "' + $scope.testerCommentID[i] + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' +$scope.counterCollection[i];	
+    if($scope.selected_name_tstgrp[i] == 'No Selection') continue;
+    $scope.testresult[i] = '{"CrtID": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '",' + '"DisabilityImpact": "' + $scope.criteriaTestsJson.Criteria[i].DisabilityImpact+ '","Guideline": "' + $scope.guideline[i] + '",'+ '"Test": "' + $scope.criteriaTestsJson.Criteria[i].Test + '",' + '"TestName": "' + $scope.criteriaTestsJson.Criteria[i].TestName + '",' + '"TestID": "' + $scope.criteriaTestsJson.Criteria[i].TestID + '",' + '"TestCondition": "' + $scope.criteriaTestsJson.Criteria[i].TestCondition + '",' + '"IssueNo": "' + i + '","TestResult": "' + $scope.selected_name_tstgrp[i] +'","OptMenu1": "' + $scope.menu1[i] + '","location": "' + $scope.escapeSpecialChars($scope.location[i])  + '","TesterComment": "' + $scope.escapeSpecialChars($scope.testerCommentID[i]) + $scope.browserIndividualTypeCollection1[i] + '","T_brwsrType": "' + $scope.browserTypeCollection1[i] + '","T_brwsrVrsn": "' + $scope.browserVersionsCollection1[i] + $scope.browserIndividualVersionsCollection1[i] + '","GlobalIssue": "' + $scope.selected_name_glbl[i]  + '","Counter": "' +$scope.counterCollection[i];
    // if(scope.imgCnvrsnJSON.length > 0){
     for(let m=0;m<$scope.imgCnvrsnJSON.length;m++){	
 	       if(i == $scope.imgCnvrsnJSON[m].imgPosition){ 
             $scope.imageAdded =  true;	           	   
 		    //$scope.testresult[i] = $scope.testresult[i].substring(0, $scope.testresult[i].length - 1);
-			$scope.testresult[i] = $scope.testresult[i]+ '","ImageSrc":"'+ $scope.imgCnvrsnJSON[m].imgValue;			
+			$scope.testresult[i] = $scope.testresult[i]+ '","ImageSrc":"'+ $scope.imgCnvrsnJSON[m].imgValue;
 	   }   
 	 } 
 	//}
@@ -2643,13 +2642,10 @@ $scope.submit = function() {
 
     if ($scope.imgCnvrsnJSON1[k] == undefined)
       $scope.imgCnvrsnJSON1[k] = " ";  
- $scope.testerCommentID1[k] = $scope.testerCommentID1[k].toString().replace(/"/g, "'").trim();
- $scope.testerCommentID1[k] = $scope.testerCommentID1[k].toString().replace(/\n/g, " ");
- 
+
  if ($scope.location1[k] == undefined)
       $scope.location1[k] = " ";  
- $scope.location1[k] = $scope.location1[k].toString().replace(/"/g, "'").trim();
- $scope.location1[k] = $scope.location1[k].toString().replace(/\n/g, " ");
+
  let o = i+1;let p=k+1; 
 // $scope.remarkExplanation(n);
  if ($scope.selected_name_tstgrp1[k] == "Pass") {		
@@ -2664,7 +2660,7 @@ $scope.submit = function() {
     } else if ($scope.selected_name_tstgrp1[k] == "Fail") {		
       $scope.resultFails[k] = true;
       $scope.resultFailsCollection.push($scope.resultFails[k]);
-      $scope.testerCommentID[k] = $scope.testerCommentID[k].replace(/"/g, "'");
+
       $scope.RemarkExplntn[k] = ['{"crtId": "' + $scope.criteriaTestsJson.Criteria[i].CrtID + '", "explanation":"' + "For " + $scope.criteriaTestsJson.Criteria[i].TestName + ". " + $scope.testerCommentID[k] + '"}'];
       $scope.RemarkExplntnCollection.push($scope.RemarkExplntn[k]);
       if ($scope.rmdatnDtlID1[k] == undefined)
@@ -2796,8 +2792,8 @@ $scope.submit = function() {
   }
   $scope.totTstRslt = $scope.totTstRslt.toString();
   if ($scope.submitClkCount != 0) {
-    //$scope.totTstRslt = $scope.totTstRslt.replace(/""/g, '"');
-    $scope.totTstRslt = $scope.totTstRslt;
+    $scope.totTstRsltJson = "[" + $scope.totTstRslt + "]";
+    $scope.totTstRsltJson = IsJsonString($scope.totTstRsltJson);
   }
   
   $scope.totTstRslt = $scope.totTstRslt.toString();
@@ -3043,7 +3039,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 
             if($scope.dsbl_Impctd_grp[a] != "")				
            // $scope.criteriaResult.push('{"CrtID": "' + $scope.totTstRsltJson[a].CrtID + '","ConformanceLvl": "' + $scope.selected_name[a] + '","DisabilityImpact": "' + $scope.dsbl_Impctd_grp[a] + '","RemarkExplntn": "' + $scope.totTstRsltJson[a].TestName + ". " + $scope.totTstRsltJson[a].TesterComment + '"}');
-			 $scope.criteriaResult.push('{"CrtID": "' + $scope.totTstRsltJson[a].CrtID +'","Guideline": "' + $scope.guideline[a] + '","ConformanceLvl": "' + "Does Not Support" + '","DisabilityImpact": "' + $scope.dsbl_Impctd_grp[a] + '","RemarkExplntn": "' + $scope.totTstRsltJson[a].TestName + ". " + $scope.totTstRsltJson[a].TesterComment + '"}');
+			 $scope.criteriaResult.push('{"CrtID": "' + $scope.totTstRsltJson[a].CrtID +'","Guideline": "' + $scope.guideline[a] + '","ConformanceLvl": "' + "Does Not Support" + '","DisabilityImpact": "' + $scope.dsbl_Impctd_grp[a] + '","RemarkExplntn": "' + $scope.totTstRsltJson[a].TestName + ". " + $scope.escapeSpecialChars($scope.totTstRsltJson[a].TesterComment) + '"}');
 			}
 			else if($scope.slctTstRslt == "PassSelected"){	
             			
@@ -3051,7 +3047,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 			}
 			else if($scope.slctTstRslt == "DNASelected"){
 				
-			$scope.criteriaResult.push('{"CrtID": "' + $scope.totTstRsltJson[a].CrtID + '","Guideline": "' + $scope.guideline[a] + '","ConformanceLvl": "' + "Does Not Apply" + '","DisabilityImpact": "' + "" + '","RemarkExplntn": "' + $scope.totTstRsltJson[a].TestName + ". " + $scope.totTstRsltJson[a].TesterComment + '"}');	
+			$scope.criteriaResult.push('{"CrtID": "' + $scope.totTstRsltJson[a].CrtID + '","Guideline": "' + $scope.guideline[a] + '","ConformanceLvl": "' + "Does Not Apply" + '","DisabilityImpact": "' + "" + '","RemarkExplntn": "' + $scope.totTstRsltJson[a].TestName + ". " + $scope.escapeSpecialChars($scope.totTstRsltJson[a].TesterComment) + '"}');
 			}
 			else if($scope.slctTstRslt == "NotSelected"){				
 
@@ -3085,7 +3081,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
 		  $scope.criteriaResult = $scope.criteriaResult.replace(/^,/, ''); //removes comma from front of string
           $scope.criteriaResult = $scope.criteriaResult.replace(/,\s*$/, " "); //removes comma from last of string
           $scope.criteriaResult = $scope.criteriaResult.replace(/,+/g, ','); //removes multiple commas from string
-		  $scope.criteriaResultJSON = "[ "+ $scope.criteriaResult +" ]";
+		  $scope.criteriaResultJSON = '['+ $scope.criteriaResult +']';
 	      $scope.criteriaResultJSON = IsJsonString($scope.criteriaResultJSON);
 			//Assigning approperiate Conformance Level
     				 
@@ -3323,34 +3319,7 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
   $scope.productType = $scope.otherProduct;
   
   
-  //preventing special characters   
-  $scope.prodDescID = $scope.prodDescID.toString().replace(/"/g, "'").trim();
-  $scope.prodDescID = $scope.prodDescID.toString().replace(/\n/g, " ");
-  $scope.prdNteDescID = $scope.prdNteDescID.toString().replace(/"/g, "'").trim();
-  $scope.prdNteDescID = $scope.prdNteDescID.toString().replace(/\n/g, " ");
-  $scope.testScope = $scope.testScope.toString().replace(/"/g, "'").trim();
-  $scope.testScope = $scope.testScope.toString().replace(/\n/g, " ");  
-  $scope.productID = $scope.productID.toString().replace(/"/g, "'").trim();
-  $scope.productID = $scope.productID.toString().replace(/\n/g, " ");
-  $scope.versionID = $scope.versionID.toString().replace(/"/g, "'").trim();
-  $scope.versionID = $scope.versionID.toString().replace(/\n/g, " ");
-  $scope.ownerID = $scope.ownerID.toString().replace(/"/g, "'").trim();
-  $scope.ownerID = $scope.ownerID.toString().replace(/\n/g, " ");
-  $scope.productType = $scope.productType.toString().replace(/"/g, "'").trim();  
-  $scope.productType = $scope.productType.toString().replace(/\n/g, " ");
-  $scope.urlID = $scope.urlID.toString().replace(/"/g, "'").trim();
-  $scope.urlID = $scope.urlID.toString().replace(/\n/g, " ");
-  $scope.firstname = $scope.firstname.toString().replace(/"/g, "'").trim();
-  $scope.firstname = $scope.firstname.toString().replace(/\n/g, " ");
-  $scope.lastname = $scope.lastname.toString().replace(/"/g, "'").trim();
-  $scope.lastname = $scope.lastname.toString().replace(/\n/g, " ");
-  $scope.companyname = $scope.companyname.toString().replace(/"/g, "'").trim();
-  $scope.companyname = $scope.companyname.toString().replace(/\n/g, " ");
-  $scope.testerID = $scope.testerID.toString().replace(/"/g, "'").trim();
-  $scope.testerID = $scope.testerID.toString().replace(/\n/g, " ");
-  $scope.testerContact = $scope.testerContact.toString().replace(/"/g, "'").trim();
-  $scope.testerContact = $scope.testerContact.toString().replace(/\n/g, " ");
-  
+  //preventing special characters
     /*if($scope.entOthrWindVrsn != '' || $scope.entOthrWindVrsn != undefined )
     $scope.osVrsnCollection = $scope.osVrsnCollection.push($scope.entOthrWindVrsn);*/
  	$scope.browserVrsnCollection = $scope.browserVrsnCollection.toString().replace(/, /g, "").trim();
@@ -3369,6 +3338,42 @@ $scope.testresult1 = '"Criteria":[' + $scope.totTstRslt + ']';
     '{"Guideline":"' + $scope.Guideline + '","Section508": "' + $scope.Section508 + '","EN_Accessibility": "' + $scope.EN_Accessibility + '"},' +'"FPCMapping": ['+ $scope.fpcMapping+' ],'+ $scope.criteriaResult1 + ',' + $scope.testresult1 +'}]';
 
 };
+
+    // Function to escape special characters
+    $scope.escapeSpecialChars = function(str) {
+        if (typeof str === 'string') {
+            // Replace actual new lines with \n
+            str = str.replace(/\r?\n/g, '\\n');
+
+            // Replace already escaped quotes
+            str = str.replace(/\\"/g, '\\"');
+
+            // Escape special characters
+            return str.replace(/[\b\f\r\t"\\]/g, function (char) {
+                switch (char) {
+                    case '\b':
+                        return '\\b';
+                    case '\f':
+                        return '\\f';
+                    case '\r':
+                        return '\\r';
+                    case '\t':
+                        return '\\t';
+                    case '"':
+                        return '\\"';
+                    case '\\':
+                        return '\\\\';
+                }
+            });
+        } else {
+            return str;
+        }
+    }
+
+    // Function to clean the file name
+    $scope.cleanFileName = function(fileName) {
+        return fileName.replace(/[\b\f\n\r\t\"\'\\\/:*?<>|]/g, '_');
+    };
 
 $scope.submit1 = function() {
 
@@ -3402,6 +3407,18 @@ $scope.submit1 = function() {
   }
   if ($scope.testerContact == " " || $scope.testerContact == undefined) {
     $scope.error.push("Testing Information: Tester's Email");
+
+      if ($scope.acrtInputForm.TesterContact.$invalid) {
+          if ($scope.acrtInputForm.TesterContact.$error.required) {
+              $scope.error.push("Testing Information: Tester's Email is required.");
+          }
+          if ($scope.acrtInputForm.TesterContact.$error.email) {
+              $scope.error.push("Testing Information: Invalid email address.");
+          }
+          if ($scope.acrtInputForm.TesterContact.$error.maxlength) {
+              $scope.error.push("Testing Information: Email must be less than 50 characters.");
+          }
+      }
    
   }
      
@@ -3434,29 +3451,43 @@ $scope.submit1 = function() {
   $scope.tDateId1 = $scope.tDateId;	
 	  //$scope.draftReport = false;
       //$scope.original = false;
-	  document.getElementById("hdnMsgId").style.visibility = "hidden";     
+	  document.getElementById("hdnMsgId").style.visibility = "hidden";
 
-	 
-    var blob = new Blob([$scope.formData], {
-      type: "Content-Type: application/json"
+    let formDataEscaped = '[{"Product":' +
+        '{"P_Name":"' + $scope.escapeSpecialChars($scope.productID) + '","P_Version": "' + $scope.escapeSpecialChars($scope.versionID) + '","P_Owner": "' + $scope.escapeSpecialChars($scope.ownerID) + '","P_Type": "' + $scope.productType + '","P_Location": "' + $scope.escapeSpecialChars($scope.urlID) + '","P_Desc": "' + $scope.escapeSpecialChars($scope.prodDescID) + '","P_Notes": "' + $scope.escapeSpecialChars($scope.prdNteDescID) + '"}, "System":' +
+        $scope.myOpsys + $scope.osVrsnNo + '","S_osVrsnNo": "' + $scope.osVrsnCollection + '","S_selectedOS": "' + $scope.osCollection + $scope.categories + $scope.browserVersionsCollection + '","S_selectedBrowser": "' + $scope.browserCollection + '","S_selectedBrowserVersions": "' + $scope.browserVrsnCollection + '","S_Compatibility": "' + $scope.selected_name_cmpblty + '"},"Tester":' +
+        '{"T_fstnm":"' + $scope.escapeSpecialChars($scope.firstname) + '","T_lstnm": "' + $scope.escapeSpecialChars($scope.lastname) + '","T_ID": "' + $scope.escapeSpecialChars($scope.testerID) + '","T_companyname": "' + $scope.escapeSpecialChars($scope.companyname) +'","T_Role": "' + $scope.myRole + '","T_cntc": "' + $scope.escapeSpecialChars($scope.testerContact) + '","T_scope": "' + $scope.escapeSpecialChars($scope.testScope) + '","T_eval": "' + $scope.selected_name_tstprcss + '","T_evalMthd_Vrsn": "' + $scope.evlMthdVrsn + '","crtLength": "' + $scope.criteriaLength + '","T_Date": "' + $scope.tDateId + '"}, "Standard":' +
+        '{"Guideline":"' + $scope.Guideline + '","Section508": "' + $scope.Section508 + '","EN_Accessibility": "' + $scope.EN_Accessibility + '"},' +'"FPCMapping": ['+ $scope.fpcMapping+' ],'+ $scope.criteriaResult1 + ',' + $scope.testresult1 +'}]';
+
+    var blob = new Blob([formDataEscaped], {
+        type: "Content-Type: application/json"
     });
-    saveAs(blob, $scope.productID + $scope.versionID + ".json");	
-	
+
+    // Clean the file name
+    var cleanFileName = $scope.cleanFileName($scope.productID + $scope.versionID) + ".json";
+
+    saveAs(blob, cleanFileName);
+
 
  /*setTimeout(function() {
  	if ($scope.checkboxModel.alerts == "on")
 		alert("Your updates have been saved to the Downloads folder (unless otherwise specified).");
 }, 6000); */
-   
+
   }
   
- //Resetting Arrays  
- $scope.criteriaResult.push( $scope.criteriaResult) ; //is blank for some reason 
- $scope.criteriaResult = $scope.criteriaResult.concat($scope.criteriaResult); 
- $scope.criteriaResult2 = $scope.criteriaResult2.push( $scope.criteriaResult2) ;
-// $scope.criteriaResult2 = $scope.criteriaResult2.concat($scope.criteriaResult2); 
- 
- 
+ //Resetting Arrays
+ if (typeof $scope.criteriaResult === 'object' && $scope.criteriaResult !== null) {
+   $scope.criteriaResult = [$scope.criteriaResult];
+   $scope.criteriaResult.push(...$scope.criteriaResult);
+ }
+
+ if ($scope.criteriaResult !== null) {
+   $scope.criteriaResult = $scope.criteriaResult.concat($scope.criteriaResult);
+ }
+ $scope.criteriaResult2 = [$scope.criteriaResult2];
+ $scope.criteriaResult2.push(...$scope.criteriaResult2);
+
  $scope.Mul_Issues.push( $scope.Mul_Issues); 
  $scope.Mul_Issues=[];//comment this if you want to see child issue at the buttom of table. 
  //$scope.Mul_Issues3.push( $scope.Mul_Issues3); 

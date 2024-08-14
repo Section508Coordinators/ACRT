@@ -192,10 +192,18 @@ $scope.optionsRsltDsply = [
     name: 'All'
   }
 
-];  
-  
- 
- 
+];
+
+// Section 508 PM Score select options
+$scope.optionsSection508Score = [];
+for (let i = 1; i <= 10; i++) {
+    $scope.optionsSection508Score.push({ id: i });
+}
+
+// Set the default selected score
+$scope.default_SelectedSection508Score = '';
+$scope.selected_section508_pm_score = $scope.default_SelectedSection508Score.toString();
+
 $scope.displayTestResult = function() {
     $scope.displaytstRslt = false;
 	$scope.filterResult1 = false;	
@@ -408,11 +416,14 @@ $scope.countOfRepWords =  function wordFreq(string) {
       $scope.evalMethod = $scope.jsonData[0].Tester.T_eval;
       $scope.evalMethodVrsn = $scope.jsonData[0].Tester.T_evalMthd_Vrsn;
       $scope.dateSubmitted = $scope.jsonData[0].Tester.T_Date;
+
+      $scope.selected_section508_pm_score = $scope.jsonData[0].selected_section508_pm_score || '';
       //$scope.Guideline = $scope.jsonData[0].Guideline.Guideline;
       //$scope.Section508 = $scope.jsonData[0].Guideline.Section508;
       //$scope.EN_Accessibility = $scope.jsonData[0].Guideline.EN_Accessibility;
       $scope.crtID = $scope.jsonData[0].Criteria[0].CrtID;
-	  $scope.titforImg =[];
+
+      $scope.titforImg =[];
 	  $scope.altforImg = [];
 	        
       for (let b = 0; b < $scope.jsonData[0].Criteria.length; b++) {	
@@ -592,6 +603,8 @@ document.getElementById("dsblGrpBtn").click();
 	$scope.TotalMobilityList = 'With Limited Manipulation ('+ $scope.Manipulation+ ')';
 	$scope.TotalImpactedGroupNo = 0;
 	 $scope.TotalImpactedGroupNo = $scope.TotalMobility + $scope.TotalPhotosensitive +  $scope.TotalCognitive + $scope.HearingTotal + $scope.TotalVision;
+	 if ($scope.TotalImpactedGroupNo > 40) $scope.TotalImpactedGroupNo =40;
+	 $scope.TotalImpactedGroupNo = ($scope.TotalImpactedGroupNo/40)*100+'%';
 	if($scope.isDraft == true)
     $scope.TotalImpactedGroupNo = $scope.TotalImpactedGroupNo + ' (Final score will be determined upon completion of testing.)';
 	/* commented  because we need to work on score range to display risk message 
@@ -885,15 +898,22 @@ document.getElementById("dsblGrpBtn").click();
       
       "<strong>Testing Method:  &nbsp;  </strong>" + $scope.evalMethod + "<br>" +
       "<strong>Testing Method Version:  &nbsp;  </strong>" + $scope.evalMethodVrsn + "<br>" +  
-     "<h2> Terms used in the Conformance Level </h2> <ul> <li> <strong>Supports:</strong> The functionality of the product has at least one method that meets the criterion without known defects or meets with equivalent facilitation. </li>  <li> <strong>Does Not Support:</strong> The majority of product functionality does not meet the criterion.</li> <li> <strong>Not Applicable:</strong> The criterion is not relevant to the product. </li> <li> <strong>Not Evaluated:</strong> The product has not been evaluated against the criterion.  This can only be used in WCAG 2.x Level AAA.</li> </ul> <br>" +
-    "<h2> Web Content Accessibility Guidelines (WCAG) Report </h2>" + WCAG + "<br>" + "<h2> Test Results </h2>" + testResult + "<br>" +
-	 "<h2> Disability Impact Score </h2>" +$scope.impctInfoMsg+"<br><br> <strong>Risk Score: "+$scope.TotalImpactedGroupNo+"</strong><br>"+ RSCSCORE + "<br><br>" +  
-     "<b>Your feedback is important to us! Please take the <a title=\"ACRT Survey\" href= \"https://www.surveymonkey.com/r/DHSACRT\" target=\"_blank\"   id=\"surveyID\"> ACRT Survey </a> </b>"+
+      "<h2> Terms used in the Conformance Level </h2> <ul> <li> <strong>Supports:</strong> The functionality of the product has at least one method that meets the criterion without known defects or meets with equivalent facilitation. </li>  <li> <strong>Does Not Support:</strong> The majority of product functionality does not meet the criterion.</li> <li> <strong>Not Applicable:</strong> The criterion is not relevant to the product. </li> <li> <strong>Not Evaluated:</strong> The product has not been evaluated against the criterion.  This can only be used in WCAG 2.x Level AAA.</li> </ul> <br>" +
+      "<h2> Web Content Accessibility Guidelines (WCAG) Report </h2>" + WCAG + "<br>" + "<h2> Test Results </h2>" + testResult + "<br>" +
+	  "<h2> Disability Impact Score </h2>" +$scope.impctInfoMsg+"<br><br> <strong>Risk Score: "+$scope.TotalImpactedGroupNo+"</strong><br>"+ RSCSCORE + "<br><br>";
+
+      // Check if selected_section508_pm_score is a number and not an empty string
+      if ($scope.selected_section508_pm_score && !isNaN($scope.selected_section508_pm_score)) {
+          $scope.capturedFormData += "<strong>Section 508 PM Score: </strong>" + $scope.selected_section508_pm_score + "<br /><br />";
+      }
+
+      $scope.capturedFormData +=
+      "<b>Your feedback is important to us! Please take the <a title=\"ACRT Survey\" href= \"https://www.surveymonkey.com/r/DHSACRT\" target=\"_blank\"   id=\"surveyID\"> ACRT Survey </a> </b>"+
       "<h2> End of Report </h2>" +
       "<script>function myPrint(){window.print(); }; if(document.getElementById('isDraftValue').value==\"true\")document.getElementById('draftMsg').style.display = \"block\";  </script>" +
       "<script> function zoom("+0+") { var modal = document.getElementById("+0+"); var img = document.getElementById(\"image\" + "+0+"); var modalImg = document.getElementById(\"img\" + "+0+"); var captionText = document.getElementById(\"caption\" + "+0+"); var span = document.getElementsByClassName(\"close\")["+0+"]; img.onclick = function() { modal.style.display = \"block\"; modalImg.src = this.src; captionText.innerHTML = this.alt; }span.onclick = function() { modal.style.display = \"none\"; } } </script>"+     
 	 "</body>" +
-      "</html>";
+     "</html>";
     var htmlContent = [$scope.capturedFormData];
 
     var bl = new Blob(htmlContent, {
