@@ -402,7 +402,7 @@
            <h3>Risk Score: {{TotalImpactedGroupNo}} </h3>
           
           <button class="collapsible"  id="dsblGrpBtn"  onclick="expandCollapse5()" >
-		  <div id="expandCollapse5"> <i class="up"></i> <h3> Show Risk Score Breakdown</h3></div>
+		  <div id="expandCollapse5"> <i class="up"></i> Show Risk Score Breakdown</div>
 		  </button>
           <div class="content">
 		   <label for="dsblImpctRslt"> </label>  <!-- <h4>Different impacted groups are separated by comma, check below</h4> -->
@@ -472,8 +472,15 @@
               </ul>
             </div> -->
           </div>
-        </fieldset>
-		
+
+           <div style="padding: 15px;">
+             <label for="section508PMScore">Section 508 PM Score:</label>
+             <select name="Select a score" ng-model="selected_section508_pm_score" id="section508PMScore" title="">
+                 <option value="">{{default_SelectedSection508Score}}</option>
+                 <option ng-repeat="result in optionsSection508Score" value="{{result.id}}">{{result.id}}</option>
+             </select>
+           </div>
+         </fieldset>
 
         <fieldset style="margin-left: 0em;">
           <legend>

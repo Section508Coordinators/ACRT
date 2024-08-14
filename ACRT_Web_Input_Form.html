@@ -127,7 +127,14 @@
   <br><label for="firstname" class="required"> Tester's First Name (Required<span ng-if="acrtInputForm.TesterFirstName.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="firstname" placeholder ="First Name, 50 chars max" class= "betnTags" id="firstname" name="TesterFirstName" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50">    
    <br><label for="lastname" class="required"> Tester's Last Name (Required<span ng-if="acrtInputForm.TesterLastName.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="lastname" placeholder ="Last Name, 50 chars max" class= "betnTags" id="lastname" name="TesterLastName" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50"> 
   <br><label for="testerID"> Trusted Tester ID <span ng-if="acrtInputForm.TrustedTesterId.$valid" >(50 chars max)</span>: </label> <br><input type="string" ng-model="testerID" class= "betnTags" placeholder ="ID, 50 chars max" id="testerID" name="TrustedTesterId" title="50 Chars max" ng-maxlength="50" limit-to="50">    
-  <br> <label for="testerContact" class="required"> Tester's Email (Required<span ng-if="acrtInputForm.TesterContact.$valid" >, 50 chars max</span>): </label> <br><input type="string" ng-model="testerContact" placeholder ="Contact, 50 chars max" class= "betnTags" id="testerContact" name="TesterContact" title="50 Chars max" ng-maxlength="50"  size="50" limit-to="50">
+  <br>
+     <label for="testerContact" class="required"> Tester's Email (Required<span ng-if="acrtInputForm.TesterContact.$valid" >, 50 chars max</span>): </label> <br>
+     <input type="email" ng-model="testerContact" placeholder="Contact, 50 chars max" class="betnTags" id="testerContact" name="TesterContact" title="50 Chars max" ng-maxlength="50" size="50" required>
+     <div ng-show="acrtInputForm.TesterContact.$dirty && acrtInputForm.TesterContact.$invalid">
+         <span ng-show="acrtInputForm.TesterContact.$error.required">Tester's Email is required.</span>
+         <span ng-show="acrtInputForm.TesterContact.$error.email">Invalid email address.</span>
+         <span ng-show="acrtInputForm.TesterContact.$error.maxlength">Email must be less than 50 characters.</span>
+     </div>
    <br><label for="testScope" > Testing Scope <span ng-if="acrtInputForm.TestScope.$valid" >(1000 chars max)</span>:</label><br> <textarea rows="4"cols="90"type="text"ng-model="testScope" class= "betnTags" id="testScope"name="TestScope" placeholder="test scope, 1000 chars max" title="1000 Chars max" ng-maxlength="1000" limit-to="1000"></textarea>   
     <br> Testing Method: <strong>{{selected_name_tstprcss}}	</strong>  Version  <strong>{{evlMthdVrsn}} </strong>
 
@@ -555,23 +562,34 @@
 
 <td >  <div class="widetd8">
 
-<br> <input  ng-if="browseImageOption[$index]" type="file"  ng-model='imgCnvrsn[$index]'  class='addChild'  title="Browse to screenshot images" onchange="angular.element(this).scope().uploadImage(this)" accept=".jpg,.jpeg,.icon,.png,.svg,.gif" /> <br> 
+<br>
+    <input
+        ng-if="browseImageOption[$index]"
+        id="fileInput{{$index}}"
+        type="file"
+        ng-model='imgCnvrsn[$index]'
+        class='addChild'
+        title="Browse to screenshot images"
+        onchange="angular.element(this).scope().uploadImage(this)"
+        accept=".jpg,.jpeg,.icon,.png,.svg,.gif" />
+    <br>
     <img   id="image{{$index}}" ng-if="imageCapturedStored[$index]"  ng-src = {{test.ImageSrc}}  alt="" title="Browse to screenshot images" class="large-image" width="50" height="50" ng-click="zoom($index)" onerror="this.style.display='none';">      
    <img    id="image{{$index}}" ng-if="imageCaptured[$index]"  ng-src = {{imgCnvrsnCurrentValue[$index]}}  alt="" title="Browse to screenshot images" class="large-image" width="50" height="50" ng-click="zoom($index)" onerror="this.style.display='none';">    
-   <img    id="image{{$index}}" ng-if="removeClicked[$index]"  ng-src = {{imgCnvrsnCurrentValue[$index]}}  alt="" title="Browse to screenshot images" class="large-image" width="50" height="50" ng-click="zoom($index)" onerror="this.style.display='none';">    
-			
-			 <div id="{{$index}}" class="modal">
-             <span class="close" id="cls{{$index}}" >&times;</span>
-            <img  class="modal-content" id="img{{$index}}">
-             <div class="caption" id="caption{{$index}}" ></div>
-             </div>
-			
-			<br>
-			 <div ng-show="displayRemove[$index]" id= {{ 'removeImage' + $index }} >    <button   ng-model='imgCnvrsn[$index]'  title='Remove Image ' type="button" class='addChild' ng-click="removeImage([$index])">Remove Image </button>  </div>
-			  <!-- <div ng-if="browseImageOption[$index]">    <button  ng-model='imgCnvrsn[$index]'  title='Remove Image ' type="button" ng-click="removeImage([$index])">Remove Image </button>  </div> --> 
-			 <!-- <div ng-if="imageCaptured[$index]">    <button  ng-model='imgCnvrsn[$index]'  title='Remove Image ' type="button" ng-click="removeImage([$index])">Remove Image </button>  </div> -->
+   <img    id="image{{$index}}" ng-if="removeClicked[$index]"  ng-src = {{imgCnvrsnCurrentValue[$index]}}  alt="" title="Browse to screenshot images" class="large-image" width="50" height="50" ng-click="zoom($index)" onerror="this.style.display='none';">
+
+    <div id="{{$index}}" class="modal">
+        <span class="close" id="cls{{$index}}" >&times;</span>
+        <img  class="modal-content" id="img{{$index}}">
+        <div class="caption" id="caption{{$index}}" ></div>
+    </div>
+
+    <br>
+    <div ng-show="displayRemove[$index]" id="{{ 'removeImage' + $index }}" >
+        <button ng-model="imgCnvrsn[$index]" title="Remove Image" type="button" class='addChild' ng-click="removeImage($index)">Remove Image </button>
+    </div>
 </div>
-	 </td>   
+
+</td>
 <td  title="Global Issue {{default_glblRslt[$index]}}">
 <div style="width: 55px">
 
