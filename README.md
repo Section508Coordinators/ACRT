@@ -3,7 +3,7 @@
 **Accessibility Conformance Reporting Tool (ACRT)** 
 
 ACRT is a browser-based standalone application for recording accessibility test results from Trusted Testers. All input data will be stored as JSON &/or html files in the local machine which can be shared as needed. Information in the JSON file can be further manipulated for analytics and reporting purposes as needed. 
-Try [ACRT Here](https://acrttool.github.io/ACRTTest/ )
+Try [ACRT Here](https://section508coordinators.github.io/ACRT/)
 
 ## Getting Started
 1) Download the ACRT files to your local machine from the repository. The default location is the Downloads folder. On the [main page](https://github.com/Section508Coordinators/ACRT), select the Code button above and select "Download ZIP". Once downloaded, unzip/extract files. 
