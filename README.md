@@ -1,18 +1,18 @@
-# ACRT 4.0.0
+# SCRT 5.0.0
 # Project Title
-**Accessibility Conformance Reporting Tool (ACRT)** 
+**Section 508 Compliance Reporting Tool (SCRT)** 
 
-ACRT is a browser-based standalone application for recording accessibility test results from Trusted Testers. All input data will be stored as JSON &/or html files in the local machine which can be shared as needed. Information in the JSON file can be further manipulated for analytics and reporting purposes as needed. 
-Try [ACRT Here](https://section508coordinators.github.io/ACRT/)
+SCRT is a browser-based standalone application for recording accessibility test results from Trusted Testers. All input data will be stored as JSON &/or html files in the local machine which can be shared as needed. Information in the JSON file can be further manipulated for analytics and reporting purposes as needed. 
+Try [SCRT Here](https://section508coordinators.github.io/ACRT/)
 
 ## Getting Started
-1) Download the ACRT files to your local machine from the repository. The default location is the Downloads folder. On the [main page](https://github.com/Section508Coordinators/ACRT), select the Code button above and select "Download ZIP". Once downloaded, unzip/extract files. 
-2) Refer to the [ACRT Training Manual](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/ACRTTrainingManual.pdf ) in the 'Resources' folder for detailed instructions. 
+1) Download the SCRT files to your local machine from the repository. The default location is the Downloads folder. On the [main page](https://github.com/Section508Coordinators/ACRT), select the Code button above and select "Download ZIP". Once downloaded, unzip/extract files. 
+2) Refer to the [ACRT Training Manual]( https://github.com/Section508Coordinators/ACRT/blob/master/Resources/SCRTTrainingManual.pdf) in the 'Resources' folder for detailed instructions. 
 
 
 ## Instructions
-1) After ACRT is downloaded, unzip/extract the files and open index.html  (preferred browsers are Firefox, Microsoft Edge, or Google Chrome). <br />
-2) Select [Instructions](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/ACRTTrainingManual.pdf ) to view a detailed instruction manual in accessible PDF format. <br />
+1) After SCRT is downloaded, unzip/extract the files and open index.html  (preferred browsers are Firefox, Microsoft Edge, or Google Chrome). <br />
+2) Select [Instructions](https://github.com/Section508Coordinators/ACRT/blob/master/Resources/SCRTTrainingManual.pdf) to view a detailed instruction manual in accessible PDF format. <br />
 3) Select **'Create Report'** to create or edit test results. 
 4) Select and load either the standard template JSON file (TT4 or TT5 JSON file from 'Resources' folder for the first time) or a valid custom JSON file that you have created or pre-filled for editing. <br />
 ![Select & Load](./Resources/select_load.JPG)
@@ -31,7 +31,7 @@ You can access the latest version at [ACRTGitHubRepository](https://github.com/S
 
 
 * Contact
-**[DHS Accessibility Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)**
+**[DHS Section 508 Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)**
 
 
 ## License
