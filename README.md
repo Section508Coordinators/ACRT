@@ -33,6 +33,9 @@ You can access the latest version at [ACRTGitHubRepository](https://github.com/S
 * Contact
 **[DHS Section 508 Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)**
 
+*Submit an Issue
+**[Submit an Issue](https://forms.office.com/pages/responsepage.aspx?id=bOfNPG2UEkq7evydCEI1Ss2mEhj9aoZIswA9Qjq0d75UMURVTThYWU1PN1NDWTQySDcyU1lCVlJDRS4u&origin=lprLink&route=shorturl)**
+
 
 ## License
 
