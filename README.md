@@ -24,6 +24,7 @@ Try [SCRT Here](https://section508coordinators.github.io/ACRT/)
 
 ## Versioning
 You can access the latest version at [ACRTGitHubRepository](https://github.com/Section508Coordinators/ACRT). Department Of Homeland Security employees who don't have access to GitHub can use [ACRTBitbucketRepository](https://maestro.dhs.gov/stash/projects/APPDEV/repos/acrt/browse/acrt). Bitbucket requires DHS Network and user authentication. <br />Let's work together to make this tool great for all! Feel free to contribute. 
+**[Submit SCRT Issue](https://forms.office.com/pages/responsepage.aspx?id=bOfNPG2UEkq7evydCEI1Ss2mEhj9aoZIswA9Qjq0d75UMURVTThYWU1PN1NDWTQySDcyU1lCVlJDRS4u&origin=lprLink&route=shorturl)**
 
 ## Authors
 
@@ -33,8 +34,8 @@ You can access the latest version at [ACRTGitHubRepository](https://github.com/S
 * Contact
 **[DHS Section 508 Help Desk](mailto:accessibility@hq.dhs.gov?subject=ACRT%20feedback)**
 
-*Submit an Issue
-**[Submit an Issue](https://forms.office.com/pages/responsepage.aspx?id=bOfNPG2UEkq7evydCEI1Ss2mEhj9aoZIswA9Qjq0d75UMURVTThYWU1PN1NDWTQySDcyU1lCVlJDRS4u&origin=lprLink&route=shorturl)**
+
+
 
 
 ## License
